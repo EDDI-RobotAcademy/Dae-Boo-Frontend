@@ -3,6 +3,12 @@ on:
   push:
     branches:
       - main
+      
+env:
+  DOCKER_IMAGE: ghcr.io/${{ github.actor }}/frontend-server
+  VERSION: $ {{ github.sha }}
+  NAME: frontend-server
+
 jobs:
   build:
     name: build-app
