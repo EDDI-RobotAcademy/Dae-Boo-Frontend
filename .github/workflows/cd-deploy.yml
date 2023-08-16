@@ -1,13 +1,13 @@
-name: Build and Deploy
+name: Deploy
+
 on:
-  push:
-    branches:
-      - main
-      
+  repository_dispatch:
+    types: [FRONTEND_DEPLOY_FINISH_TRIGGER]
+    
 env:
-  DOCKER_IMAGE: ghcr.io/${{ secrets.Actor }}/frontend-server
+  DOCKER_IMAGE: ghcr.io/${{ secrets.Actor }}/${{ secrets.Docker_Image }}
   VERSION: $ {{ github.sha }}
-  NAME: frontend-server
+  NAME: ${{ secrets.Docker_Image }}
 
 jobs:
   build:
