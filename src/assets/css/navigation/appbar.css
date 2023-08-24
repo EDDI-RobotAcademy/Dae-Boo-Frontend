@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2? family= Foldit & family= Noto+Sans+KR:wght@100;900 & display=swap');
+.app-line{
+    border: 1px linear-gradient(to right, #1697F4, #9790B6, #FF8983);;
+    background-image: linear-gradient(to right, #1697F4, #9790B6, #FF8983);
+  }
+  .main-logo{
+    color: rgb(255, 255, 255);
+    margin: 1rem;
+    font-family: 'Foldit', cursive;
+  }
+  .main-button{
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+  }
+  .app-bar-color{
+    border: 1px linear-gradient(to right, #1697F4, #9790B6, #FF8983);;  
+  }
+  .login-title{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: rgb(255, 255, 255);  
+  }
+  .login-font{
+    margin-bottom: 2.5rem;
+    color: rgb(255, 255, 255);
+  }
+  .kakao{
+    background-color: rgb(240, 204, 0);
+    color: white;
+    width: 60%;
+    height: 4vh;
+    font-size: 18px;
+  }
+  .naver{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: rgb(19, 230, 110);
+    color: white;
+    width: 60%;
+    height: 4vh;
+    font-size: 18px;
+  }
+  .google{
+    margin-bottom: 2rem;
+    width: 60%;
+    height: 4vh;
+    font-size: 18px;
+  }
+  .triangle {
+    width: 0;
+    right: 1rem;
+    height: 0;
+    top: 6px;
+    position: absolute;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #222224;
+  }
+  .list-mt{
+    margin-top: 1rem;
+  }
+  
