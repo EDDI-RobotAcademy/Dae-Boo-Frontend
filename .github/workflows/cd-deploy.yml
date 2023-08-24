@@ -83,8 +83,8 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           script_stop: true
           script: |
-            cd DaeBoo/vue/actions-runner
-            cp -r ~/actions-tmp-repo/dist/* ./
+            cd DaeBoo/vue
+            cp -r ~/actions-tmp-repo/dist/* ./html/
             
             docker image prune -f
             docker logout
