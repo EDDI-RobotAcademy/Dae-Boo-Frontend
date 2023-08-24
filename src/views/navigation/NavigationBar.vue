@@ -31,7 +31,7 @@
         <p class="text-h4 login-title">LOGIN</p>
         <p class="login-font">로그인 후 이용해 주세요!</p>
         <v-btn class="kakao" rounded>카카오로 로그인</v-btn>
-        <v-btn class="naver" rounded>네이버로 로그인</v-btn>
+        <v-btn @click="naverLogin" color="green" class="naver" rounded>NAVER</v-btn>
         <v-btn class="google" rounded>구글로 로그인</v-btn>
       </v-list>
     </v-menu>
@@ -43,6 +43,9 @@
 import '@/assets/css/navigation/appbar.css'
 import { ref, onMounted } from 'vue';
 import { useStore } from "vuex";
+import { mapActions } from "vuex";
+const LogInModule = 'LogInModule'
+
 export default {
   setup() {
     const store = useStore()
@@ -66,11 +69,16 @@ export default {
       }
     };
 
-
     return {
       appBarStyle,
       signOut,
     };
+  },
+  methods: {
+    ...mapActions(LogInModule, ['requestNaverLoginToSpring']),
+    naverLogin() {
+      this.requestNaverLoginToSpring()
+    }
   }
 }
 </script>
