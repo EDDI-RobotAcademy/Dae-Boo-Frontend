@@ -1,12 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import mainRouter from '@/router/main';
 import errorRouter from './error';
-import logInRouter from '@/router/logIn'
-
 const routes = [  
   ...mainRouter,
-  ...errorRouter,
-  ...logInRouter
+  ...errorRouter
 ]
 
 const router = createRouter({
