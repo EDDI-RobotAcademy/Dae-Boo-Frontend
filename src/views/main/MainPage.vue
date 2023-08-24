@@ -1,19 +1,17 @@
 <template>
   <div>
-    <main-form/>
+    <main-form />
   </div>
 </template>
 
 <script>
 import MainForm from '@/components/main/MainForm.vue'
-    export default {
+export default {
   components: {
-     MainForm 
-    },
-        
-    }
+    MainForm
+  },
+
+}
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
