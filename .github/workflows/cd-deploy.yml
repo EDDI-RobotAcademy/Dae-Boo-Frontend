@@ -84,7 +84,7 @@ jobs:
           script_stop: true
           script: |
             cd DaeBoo/vue/actions-runner
-            cp -r ~/actions-tmp-repo/dist/* ./html/
+            cp -r ~/actions-tmp-repo/dist/* ./
             
             docker image prune -f
             docker logout
