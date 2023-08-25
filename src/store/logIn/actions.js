@@ -22,5 +22,8 @@ export default {
             .then((res)=>{
                  console.log(res.data)
             })
+            .catch(()=>{
+                console.error
+            })
     }
 }
