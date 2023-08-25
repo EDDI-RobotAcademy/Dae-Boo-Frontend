@@ -16,5 +16,11 @@ export default {
                 localStorage.setItem("accesstoken", res.data.access_token)
                 localStorage.setItem("refreshtoken", res.data.refresh_token)
             });
+    },
+    getBoardList(){
+        axiosInst.get('/jpa-board/list')
+            .then((res)=>{
+                 console.log(res.data)
+            })
     }
 }

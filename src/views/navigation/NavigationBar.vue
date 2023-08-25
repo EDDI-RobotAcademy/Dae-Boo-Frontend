@@ -18,7 +18,7 @@
       <v-btn variant="plain" :ripple="false" to="/" class="main-button">소개</v-btn>
     </v-col>
     <v-col cols="auto">
-      <v-btn variant="plain" :ripple="false" to="/" class="main-button">내 공간</v-btn>
+      <v-btn variant="plain" :ripple="false" to="/" class="main-button" @click="list">내 공간</v-btn>
     </v-col>
     <v-menu>
       <template v-slot:activator="{ props }">
@@ -75,9 +75,13 @@ export default {
     };
   },
   methods: {
-    ...mapActions(LogInModule, ['requestNaverLoginToSpring']),
+    ...mapActions(LogInModule, ['requestNaverLoginToSpring', 'getBoardList']),
     naverLogin() {
       this.requestNaverLoginToSpring()
+
+    },
+    list(){
+      this.getBoardList
     }
   }
 }
