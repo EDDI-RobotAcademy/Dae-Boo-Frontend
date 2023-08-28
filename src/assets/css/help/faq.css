@@ -1,0 +1,33 @@
+.faq-head{
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    color: #ffffff;
+    font-size: 50px;
+
+}
+.faq-bady{
+    margin: 3rem;
+    color: #ffffff;
+    font-size: 30px;
+}
+.faq{
+    margin-bottom: 10rem;
+    width: 90%;
+}
+.faq3{
+    background-color: #222224;
+    color: #ffffff;
+}
+
+.faq-title{
+    font-size: 25px;
+}
+.faq-text{
+    font-size: 18px;
+    background-color: #ffffff;
+    color: #000;
+}
+.no-margin {
+    margin: 0;
+    padding: 0;
+  }
