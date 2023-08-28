@@ -64,4 +64,11 @@
   .color{
     background-color: #222224;
   }
+  .logout{
+    margin: 1.5rem;
+    background-color: #222224;
+    width: 60%;
+    height: 4vh;
+    font-size: 18px;
+  }
   

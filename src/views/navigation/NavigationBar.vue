@@ -28,13 +28,23 @@
       </template>
       <div class="triangle"></div>
       <v-list style="background-color: #222224;" align="center" justify="center" class="list-mt">
-        <p class="text-h4 login-title">LOGIN</p>
-        <p class="login-font">로그인 후 이용해 주세요!</p>
-        <v-btn class="kakao" rounded @click="kakaoLogin">
-          <b style="color:black">KAKAO</b>
-        </v-btn>
-        <v-btn @click="naverLogin" color="green" class="naver" rounded>NAVER</v-btn>
-        <v-btn class="google" rounded>구글로 로그인</v-btn>
+        <div :style="{ display: LoginDisplay }">
+          <p class="text-h4 login-title">LOGIN</p>
+          <p class="login-font">로그인 후 이용해 주세요!</p>
+          <v-btn class="kakao" rounded @click="kakaoLogin">
+            <b style="color:black">KAKAO</b>
+          </v-btn>
+          <v-btn @click="naverLogin" color="green" class="naver" rounded>NAVER</v-btn>
+          <v-btn class="google" rounded>구글로 로그인</v-btn>
+        </div>
+
+        <div :style="{ display: LogoutDisplay }">
+          <!-- <p class="text-h4 login-title">LOGOUT</p>-->
+          <!-- <p class="login-font">모카님 반갑습니다!</p> -->
+          <v-btn @click="logOut" class="logout" rounded>
+            <b style="color:rgb(255, 255, 255)"> LOGOUT </b>
+          </v-btn>
+        </div>
       </v-list>
     </v-menu>
     <v-spacer />
@@ -45,12 +55,17 @@
 import '@/assets/css/navigation/appbar.css'
 import { ref, onMounted } from 'vue';
 import { useStore, mapActions } from "vuex";
+
 const LogInModule = 'LogInModule'
 
 export default {
   setup() {
     const store = useStore()
     const appBarStyle = ref({ backgroundColor: 'transparent' });
+
+    const LoginDisplay = ref("block");
+    const LogoutDisplay = ref("none");
+    const localStorageAccessToken = localStorage.getItem("accesstoken")
 
     const signOut = () => {
       store.dispatch("userModule/requestSignOut")
@@ -59,6 +74,10 @@ export default {
     onMounted(() => {
       // 스크롤 이벤트를 추가하여 스크롤을 감지하고 배경을 변경합니다.
       window.addEventListener('scroll', handleScroll);
+
+      // 로컬 스토리지 확인
+      updateLoginDisplay();
+      updateLogoutDisplay();
     });
 
     const handleScroll = () => {
@@ -70,26 +89,54 @@ export default {
       }
     };
 
+    const updateLoginDisplay = () => {
+      if (localStorageAccessToken !== null) {
+        LoginDisplay.value = "none";
+        console.log("LoginDisplay : none");
+      } else {
+        LoginDisplay.value = "block";
+        console.log("LoginDisplay : block");
+      }
+    }
+    const updateLogoutDisplay = () => {
+      if (localStorageAccessToken !== null) {
+        LogoutDisplay.value = "block";
+        console.log("LogoutDisplay : none");
+      } else {
+        LogoutDisplay.value = "none";
+        console.log("LogoutDisplay : block");
+      }
+    }
+
     return {
       appBarStyle,
       signOut,
+      LoginDisplay,
+      LogoutDisplay,
+      localStorageAccessToken
     };
   },
   methods: {
-      ...mapActions(LogInModule, [
+    ...mapActions(LogInModule, [
       'requestNaverLoginToSpring',
       'getBoardList',
       'requestKakaoLoginToSpring'
     ]),
     naverLogin() {
       this.requestNaverLoginToSpring()
+      window.location.reload();
     },
     kakaoLogin() {
       this.requestKakaoLoginToSpring()
     },
-    list(){
+    list() {
       this.getBoardList()
     },
+    async logOut() {
+      await localStorage.removeItem("accesstoken")
+      await localStorage.removeItem("refreshtoken")
+      await window.location.reload();
+    }
   },
 }
 </script>
