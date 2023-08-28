@@ -25,6 +25,7 @@ export default {
             this.$router.push("/")
         },
         async getToken() {
+            console.log("before call getKakaoTokenToSpring()")
             await this.getKakaoTokenToSpring(this.codes)
         },
         ...mapActions(LogInModule, ['getKakaoTokenToSpring'])
