@@ -6,7 +6,9 @@
   .main-logo{
     color: rgb(255, 255, 255);
     margin: 1rem;
-    font-family: 'Foldit', cursive;
+    font-family: 'Foldit';
+    font-size: 32px;
+    font-weight: 400;
   }
   .main-button{
     color: rgb(255, 255, 255);
@@ -58,5 +60,8 @@
   }
   .list-mt{
     margin-top: 1rem;
+  }
+  .color{
+    background-color: #222224;
   }
   

@@ -1,0 +1,62 @@
+@font-face {
+  font-family: 'Foldit';
+  font-weight: 900;
+  font-display: swap;
+  src: local('Foldit Black'), url('/public/assets/font/ttf/Foldit-Black.ttf');
+}
+
+@font-face {
+  font-family: 'Foldit';
+  font-weight: 800;
+  font-display: swap;
+  src: local('Foldit ExtraBold'), url('/public/assets/font/ttf/Foldit-ExtraBold.ttf');
+}
+
+@font-face {
+  font-family: 'Foldit';
+  font-weight: 700;
+  font-display: swap;
+  src: local('Foldit Bold'), url('/public/assets/font/ttf/Foldit-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Foldit';
+  font-weight: 600;
+  font-display: swap;
+  src: local('Foldit SemiBold'), url('/public/assets/font/ttf/Foldit-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'Foldit';
+  font-weight: 500;
+  font-display: swap;
+  src: local('Foldit Medium'), url('/public/assets/font/ttf/Foldit-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'Foldit';
+  font-weight: 400;
+  font-display: swap;
+  src: local('Foldit Regular'), url('/public/assets/font/ttf/Foldit-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Foldit';
+  font-weight: 300;
+  font-display: swap;
+  src: local('Foldit Light'), url('/public/assets/font/ttf/Foldit-Light.ttf');
+}
+
+@font-face {
+  font-family: 'Foldit';
+  font-weight: 200;
+  font-display: swap;
+  src: local('Foldit ExtraLight'), url('/public/assets/font/ttf/Foldit-ExtraLight.ttf');
+}
+
+@font-face {
+  font-family: 'Foldit';
+  font-weight: 100;
+  font-display: swap;
+  src: local('Foldit Thin'), url('/public/assets/font/ttf/Foldit-Thin.ttf');
+}
