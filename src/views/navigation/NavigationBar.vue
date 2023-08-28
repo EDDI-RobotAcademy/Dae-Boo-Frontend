@@ -18,7 +18,7 @@
       <v-btn variant="plain" :ripple="false" to="/" class="main-button">게시판</v-btn>
     </v-col>
     <v-col cols="auto">
-      <v-btn variant="plain" :ripple="false" to="/" class="main-button" @click="list">내 공간</v-btn>
+      <v-btn variant="plain" :ripple="false" to="/myPage" class="main-button" @click="list">내 공간</v-btn>
     </v-col>
     <v-menu>
       <template v-slot:activator="{ props }">
