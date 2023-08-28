@@ -46,8 +46,8 @@
   <div class="card-mb">
       <h2 class="h2">실시간 인기 My Card</h2>
       <v-col cols="12">
-      <v-card class="table-size" rounded="">
-        <v-table >
+      <v-card class="table-size" rounded>
+        <v-table>
           <thead>
             <tr>
               <th class="text-left">
@@ -62,6 +62,7 @@
           </thead>
           <tbody>
             <tr
+            class="cardTr"
             v-for="item in desserts"
             :key="item.name"
             @click="redirectToDetails(item.id)"

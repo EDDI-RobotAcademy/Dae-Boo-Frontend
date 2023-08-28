@@ -2,20 +2,20 @@
   <v-app-bar :style="appBarStyle" scroll-behavior="elevate" class="app-bar-color">
     <v-spacer />
     <v-col cols="auto">
-      <v-btn variant="plain" :ripple="false" to="/" class="text-h5 main-logo">MOCA</v-btn>
+      <v-btn variant="plain" :ripple="false" to="/" class="main-logo">MOCA</v-btn>
     </v-col>
     <v-spacer />
     <v-spacer />
     <v-spacer />
     <v-spacer />
-    <v-col cols="auto">
-      <v-btn v-bind="props" variant="plain" :ripple="false" to="/" class="main-button">유의사항</v-btn>
-    </v-col>
     <v-col cols="auto">
       <v-btn variant="plain" :ripple="false" to="/card" class="main-button">카드</v-btn>
     </v-col>
     <v-col cols="auto">
-      <v-btn variant="plain" :ripple="false" to="/" class="main-button">소개</v-btn>
+      <v-btn variant="plain" :ripple="false" to="/home" class="main-button">소개</v-btn>
+    </v-col>
+    <v-col cols="auto">
+      <v-btn variant="plain" :ripple="false" to="/" class="main-button">게시판</v-btn>
     </v-col>
     <v-col cols="auto">
       <v-btn variant="plain" :ripple="false" to="/" class="main-button" @click="list">내 공간</v-btn>

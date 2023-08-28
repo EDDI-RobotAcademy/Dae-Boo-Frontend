@@ -2,11 +2,15 @@ import { createRouter, createWebHistory } from 'vue-router'
 import mainRouter from '@/router/main';
 import errorRouter from './error';
 import logInRouter from '@/router/logIn'
+import homeRouter from './home';
+import helpRouter from './help';
 
 const routes = [  
   ...mainRouter,
   ...errorRouter,
-  ...logInRouter
+  ...logInRouter,
+  ...helpRouter,
+  ...homeRouter,
 ]
 
 const router = createRouter({
