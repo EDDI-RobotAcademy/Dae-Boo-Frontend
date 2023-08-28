@@ -1,7 +1,6 @@
 import axiosInst from '@/utility/axiosInst'
 
 export default {
-    // NAVER OAuth
     requestNaverLoginToSpring() {
         return axiosInst.get('/authentication/naver/login')
             .then((res) => {
@@ -26,22 +25,5 @@ export default {
             .catch(()=>{
                 console.error
             })
-    },
-    // KAKAO OAuth
-    requestKakaoLoginToSpring () {
-        return axiosInst.get('/authentication/kakao/login')
-        .then((res) => {
-          window.location.href = res.data;
-      })
-    },
-    getKakaoTokenToSpring(context, payload) {
-      axiosInst.get("/authentication/kakao/callback", { params: { code: payload } })
-        .then((res) => {
-            console.log("accessToken : " + res.data.access_token)
-            console.log("refreshToken : " + res.data.refresh_token)
-  
-            localStorage.setItem("accesstoken", res.data.access_token)
-            localStorage.setItem("refreshtoken", res.data.refresh_token)
-        });
-    },
+    }
 }

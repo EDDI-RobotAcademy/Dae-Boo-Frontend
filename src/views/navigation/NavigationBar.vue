@@ -30,9 +30,7 @@
       <v-list style="background-color: #222224;" align="center" justify="center" class="list-mt">
         <p class="text-h4 login-title">LOGIN</p>
         <p class="login-font">로그인 후 이용해 주세요!</p>
-        <v-btn class="kakao" rounded @click="kakaoLogin">
-          <b style="color:black">KAKAO</b>
-        </v-btn>
+        <v-btn class="kakao" rounded>카카오로 로그인</v-btn>
         <v-btn @click="naverLogin" color="green" class="naver" rounded>NAVER</v-btn>
         <v-btn class="google" rounded>구글로 로그인</v-btn>
       </v-list>
@@ -44,7 +42,8 @@
 <script>
 import '@/assets/css/navigation/appbar.css'
 import { ref, onMounted } from 'vue';
-import { useStore, mapActions } from "vuex";
+import { useStore } from "vuex";
+import { mapActions } from "vuex";
 const LogInModule = 'LogInModule'
 
 export default {
@@ -76,21 +75,15 @@ export default {
     };
   },
   methods: {
-      ...mapActions(LogInModule, [
-      'requestNaverLoginToSpring',
-      'getBoardList',
-      'requestKakaoLoginToSpring'
-    ]),
+    ...mapActions(LogInModule, ['requestNaverLoginToSpring', 'getBoardList']),
     naverLogin() {
       this.requestNaverLoginToSpring()
-    },
-    kakaoLogin() {
-      this.requestKakaoLoginToSpring()
+
     },
     list(){
       this.getBoardList()
-    },
-  },
+    }
+  }
 }
 </script>
 
