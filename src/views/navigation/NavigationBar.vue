@@ -20,6 +20,9 @@
     <v-col cols="auto">
       <v-btn variant="plain" :ripple="false" to="/" class="main-button" @click="list">내 공간</v-btn>
     </v-col>
+    <v-col cols="auto">
+      <v-btn variant="plain" :ripple="false" to="/manageMentPage" class="main-button" @click="management">관리자 페이지</v-btn>
+    </v-col>
     <v-menu>
       <template v-slot:activator="{ props }">
         <v-col cols="auto">

@@ -4,6 +4,7 @@ import errorRouter from './error';
 import logInRouter from '@/router/logIn'
 import homeRouter from './home';
 import helpRouter from './help';
+import ManagementRouter from '@/router/management';
 
 const routes = [  
   ...mainRouter,
@@ -11,6 +12,7 @@ const routes = [
   ...logInRouter,
   ...helpRouter,
   ...homeRouter,
+  ...ManagementRouter,
 ]
 
 const router = createRouter({
