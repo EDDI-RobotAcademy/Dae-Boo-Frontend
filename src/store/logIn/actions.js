@@ -35,13 +35,14 @@ export default {
       })
     },
     getKakaoTokenToSpring(context, payload) {
-      axiosInst.get("/authentication/kakao/callback", { params: { code: payload } })
+		alert("payload: " + payload)
+        axiosInst.get("/authentication/kakao/callback", { params: { code: payload } })
         .then((res) => {
-            console.log("accessToken : " + res.data.access_token)
-            console.log("refreshToken : " + res.data.refresh_token)
-  
-            localStorage.setItem("accesstoken", res.data.access_token)
-            localStorage.setItem("refreshtoken", res.data.refresh_token)
-        });
-    },
+          console.log("accessToken : " + res.data.access_token)
+          console.log("refreshToken : " + res.data.refresh_token)
+
+          localStorage.setItem("accesstoken", res.data.access_token)
+          localStorage.setItem("refreshtoken", res.data.refresh_token)
+      });
+  },
 }
