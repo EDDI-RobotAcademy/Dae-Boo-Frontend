@@ -26,12 +26,11 @@
       margin-top: 1rem;
   }
   .footer-item2 {
-    border-top: 0.1rem solid #ffffff;
-    
-    border-bottom: 1px solid  #ffffff;  
-    color: rgb(255, 255, 255);
     margin-top: 2rem;
+    border-top: 0.1rem solid #ffffff;    
+    border-bottom: 1px solid  #ffffff;  
     padding: 1rem;
+    color: rgb(255, 255, 255);
   }
   .footer-item3 {
       color: rgb(255, 255, 255);
