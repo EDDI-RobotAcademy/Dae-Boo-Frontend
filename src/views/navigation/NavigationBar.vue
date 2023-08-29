@@ -8,9 +8,93 @@
     <v-spacer />
     <v-spacer />
     <v-spacer />
-    <v-col cols="auto">
-      <v-btn variant="plain" :ripple="false" to="/card" class="main-button">카드</v-btn>
-    </v-col>
+
+    <v-menu open-on-hover>
+      <!-- open-on-hover -->
+      <template v-slot:activator="{ props }">
+        <v-col cols="auto">          
+          <v-btn v-bind="props"  variant="plain" :ripple="false"  class="main-button" to="/card" style="color: white;">카드</v-btn>
+          <!-- to="/card" -->
+        </v-col>
+      </template>
+      <v-list style="background-color: #000000" align="left" justify="center" class="card-list">
+
+        <v-row>
+          <v-col cols="2">
+        <v-btn class="btn-size" rounded="3" style="height: 11vh; color: white;" >카드 추천 >> </v-btn>
+      </v-col>
+      
+      <v-col cols="3">        
+        <h3 class="card-title"><button disabled class="style-btn"/>⚡내 카드 관리</h3>
+        <router-link to="/home" class="custom-link">
+          <p class="appbar-card-text">내 카드 목록</p>
+        </router-link>
+        <router-link to="/recruitment" class="custom-link">
+          <p class="appbar-card-text">카드 신청</p>
+        </router-link>
+      </v-col>
+      
+      <v-col cols="3">
+        <h3 class="card-title"><button disabled class="style-btn"/>⚡MOCA 카드 해택</h3>
+        <router-link to="/home" class="custom-link">
+          <p class="appbar-card-text">포인트 정보</p>
+        </router-link>
+        <router-link to="/recruitment" class="custom-link">
+          <p class="appbar-card-text">카드 신청</p>
+        </router-link>
+      </v-col>
+      
+      <v-col cols="3">
+        <h3 class="card-title"><button disabled class="style-btn"/>⚡MOCA 카드 해택</h3>
+        <router-link to="/home" class="custom-link">
+          <p class="appbar-card-text">포인트 정보</p>
+        </router-link>
+        <router-link to="/recruitment" class="custom-link">
+          <p class="appbar-card-text">카드 신청</p>
+        </router-link>
+        <router-link to="/home" class="custom-link">
+          <p class="appbar-card-text">포인트 정보</p>
+        </router-link>
+        <router-link to="/recruitment" class="custom-link">
+          <p class="appbar-card-text">카드 신청</p>
+        </router-link>
+        <router-link to="/home" class="custom-link">
+          <p class="appbar-card-text">포인트 정보</p>
+        </router-link>
+        <router-link to="/recruitment" class="custom-link">
+          <p class="appbar-card-text">카드 신청</p>
+        </router-link>
+      </v-col>
+    </v-row>
+
+      <v-row>        
+      <v-col cols="2">
+        <v-btn class="btn-size" style="height: 12vh; color: white;" >카드 검색 >></v-btn>
+      </v-col>
+
+      <v-col cols="3">
+        <h3 class="card-title"><button disabled class="style-btn"/>⚡MOCA 카드 해택</h3>
+        <router-link to="/home" class="custom-link">
+          <p class="appbar-card-text">포인트 정보</p>
+        </router-link>
+        <router-link to="/recruitment" class="custom-link">
+          <p class="appbar-card-text">카드 신청</p>
+        </router-link>
+      </v-col>
+
+      <v-col cols="3">
+        <h3 class="card-title"><button disabled class="style-btn"/>⚡MOCA 카드 해택</h3>
+        <router-link to="/home" class="custom-link">
+          <p class="appbar-card-text">포인트 정보</p>
+        </router-link>
+        <router-link to="/recruitment" class="custom-link">
+          <p class="appbar-card-text">카드 신청</p>
+        </router-link>
+      </v-col>  
+    </v-row>
+  </v-list>
+    </v-menu>
+
     <v-col cols="auto">
       <v-btn variant="plain" :ripple="false" to="/home" class="main-button">소개</v-btn>
     </v-col>
@@ -39,7 +123,6 @@
           </v-btn>
           <v-btn @click="naverLogin" color="green" class="naver" rounded>NAVER</v-btn>
           <v-btn class="google" rounded>구글로 로그인</v-btn>
-
         </div>
 
         <div :style="{ display: LogoutDisplay }">
@@ -85,7 +168,7 @@ export default {
     const handleScroll = () => {
       // 스크롤 위치를 확인하여 배경 색상을 조절합니다.
       if (window.scrollY > 0) {
-        appBarStyle.value.backgroundColor = '#222224';
+        appBarStyle.value.backgroundColor = '#000000';
       } else {
         appBarStyle.value.backgroundColor = 'transparent';
       }
@@ -122,7 +205,7 @@ export default {
     ...mapActions(LogInModule, [
       'requestNaverLoginToSpring',
       'getBoardList',
-      'requestKakaoLoginToSpring',
+      'requestKakaoLoginToSpring'
     ]),
     naverLogin() {
       this.requestNaverLoginToSpring()
@@ -138,9 +221,10 @@ export default {
       await localStorage.removeItem("accesstoken")
       await localStorage.removeItem("refreshtoken")
       await window.location.reload();
-    },
+    }
   },
 }
 </script>
 
-<style></style>
+<style>
+</style>

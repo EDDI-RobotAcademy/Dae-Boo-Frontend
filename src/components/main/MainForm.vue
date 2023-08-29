@@ -50,7 +50,7 @@
         <v-table>
           <thead>
             <tr>
-              <th class="text-left">
+              <th class="text-center">
                 No.
               </th>
               <th/>
@@ -67,10 +67,10 @@
             :key="item.name"
             @click="redirectToDetails(item.id)"
             > 
-            <td>{{ item.id }}</td>
+            <td class="text-center">{{ item.id }}</td>
             <td><img :src="item.img" alt="Item Image" class="top10-img"></td>
-            <td>{{ item.name }}</td>
-            <td>{{ item.calories }}</td>
+            <td class="text-center">{{ item.name }}</td>
+            <td class="text-center">{{ item.calories }}</td>
           </tr>
         </tbody>
       </v-table>

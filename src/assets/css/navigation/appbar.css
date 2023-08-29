@@ -11,6 +11,7 @@
     font-weight: 400;
   }
   .main-button{
+    width: 100%;
     color: rgb(255, 255, 255);
     font-size: 15px;
   }
@@ -62,7 +63,7 @@
     margin-top: 1rem;
   }
   .color{
-    background-color: #222224;
+    background-color: #000000;
   }
   .logout{
     margin: 1.5rem;
@@ -71,4 +72,33 @@
     height: 4vh;
     font-size: 18px;
   }
+  .card-title{
+    margin-bottom: 1rem;
+    color: white;
+    padding: 0;
+  }
+  .appbar-card-text{
+    color: white;
+    margin-left: 1rem;
+  }
+  .card-list{
+    margin-top: 13px;
+    padding: 3rem;
+    padding-left: 5rem;
+    width: 115%; 
+    height: 50vh;
+  }
+  .style-btn:disabled{
+    background-color: #000000;
+    border: 2px solid #444444;
+    width: 15px;
+    height: 20px;
+  }
+  .btn-size{
+    width: 35rem;
+    font-size: 20px;
+    border: 2px solid #444444;
+    background-color: #000000;
+  }
+
   

@@ -48,41 +48,12 @@
 </template>
 
 <script>
+import '@/assets/css/help/caution.css'
     export default {
         
     }
 </script>
 
 <style lang="css" scoped>
-.caution-mt{
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-}
-.caution-color{
-    margin: auto;
-    color: white;
-    background-color: #444444;
-    width: 80%;
-    border-radius: 1rem;
-}
-.caution-title{
-    margin-top: 2rem;
-    margin-left: 1rem;
-    margin-bottom: 1rem;
-    
-}
-.caution-text{
-    margin-bottom: 2rem;
-    border-top: 1px solid  #ffffff;  
-    padding: 1rem;
-    color: #d2d2d2;
-}
-.caution-text2{
-    margin-bottom: 2rem;
-    padding: 1rem;
-    color: #d2d2d2;
-}
-.text-mt{
-    margin-top: 1rem;
-}
+
 </style>

@@ -35,10 +35,10 @@
 
       <v-col class="footer-item2" cols="2">
         <h3 class="head-mr">ABOUT US</h3>
-        <router-link to="/error-page" class="custom-link">
+        <router-link to="/home" class="custom-link">
           <p>MOCA 소개</p>
         </router-link>
-        <router-link to="/error-page" class="custom-link">
+        <router-link to="/recruitment" class="custom-link">
           <p>인재채용</p>
         </router-link>
 

@@ -36,11 +36,11 @@ export default {
 
 <style>
 .back-ground-color {
-  background-color: #222224;
+  background-color: #000000;
 }
 .main-container {
   max-width: 1500px;
-  background-color: #222224;
+  background-color: #000000;
   margin: auto;  
 }
 .back-to-top {

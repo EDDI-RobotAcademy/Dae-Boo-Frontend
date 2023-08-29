@@ -1,0 +1,25 @@
+.recruitment-head{
+    color: white;
+    margin-top: 4rem;
+    margin-bottom: 8rem;
+    font-family: 'Foldit';
+    font-size: 80px;
+}
+.recruitment-title{
+    color: #d5d5d5;
+    font-size: 50px;
+    margin-left: 2rem;
+    margin-bottom: 3rem;
+}
+.recruitment-text{
+    margin-bottom: 3rem;
+    margin-left: 2rem;
+    color: #bcbcbc;
+    font-size: 20px;
+}
+.recruitment-text2{
+    color: #bcbcbc;
+    font-size: 18px;
+    margin-left: 2rem;
+    margin-bottom: 5rem;
+}
