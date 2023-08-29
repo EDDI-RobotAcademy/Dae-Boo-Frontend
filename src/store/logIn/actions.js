@@ -19,12 +19,7 @@ export default {
                 localStorage.setItem("refreshtoken", res.data.refresh_token)
             });
     },
-    naverClientId() {
-        return axiosInst.get('/authentication/naver/clientId')
-            .then((res)=>{
-                alert(res.data)
-        })
-    },
+    }
 
 
 

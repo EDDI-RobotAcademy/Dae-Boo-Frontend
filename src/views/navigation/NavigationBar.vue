@@ -40,11 +40,8 @@
         </div>
 
         <div :style="{ display: LogoutDisplay }">
-          <!-- <p class="text-h4 login-title">LOGOUT</p>-->
-          <!-- <p class="login-font">모카님 반갑습니다!</p> -->
           <v-btn @click="logOut" class="logout" rounded>
             <b style="color:rgb(255, 255, 255)"> LOGOUT </b>
-            <v-btn @click="clientIdCheck">클라이언트아이디테스트</v-btn>
           </v-btn>
         </div>
       </v-list>
@@ -123,7 +120,6 @@ export default {
       'requestNaverLoginToSpring',
       'getBoardList',
       'requestKakaoLoginToSpring',
-      'naverClientId'
     ]),
     naverLogin() {
       this.requestNaverLoginToSpring()
@@ -140,9 +136,6 @@ export default {
       await localStorage.removeItem("refreshtoken")
       await window.location.reload();
     },
-    clientIdCheck() {
-      this.naverClientId()
-    }
   },
 }
 </script>
