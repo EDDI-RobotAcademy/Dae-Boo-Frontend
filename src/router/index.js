@@ -4,6 +4,7 @@ import errorRouter from './error';
 import logInRouter from '@/router/logIn'
 import homeRouter from './home';
 import helpRouter from './help';
+import ManagementRouter from '@/router/management';
 import myPageRouter from './myPage';
 
 const routes = [  
@@ -12,6 +13,7 @@ const routes = [
   ...logInRouter,
   ...helpRouter,
   ...homeRouter,
+  ...ManagementRouter,
   ...myPageRouter
 ]
 
