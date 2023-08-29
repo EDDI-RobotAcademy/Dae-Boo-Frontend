@@ -19,8 +19,6 @@ export default {
                 localStorage.setItem("refreshtoken", res.data.refresh_token)
             });
     },
-    }
-
 
 
     getBoardList(){
