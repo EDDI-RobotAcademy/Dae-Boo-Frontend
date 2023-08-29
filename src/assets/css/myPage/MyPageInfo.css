@@ -1,0 +1,37 @@
+.container{
+    margin-left: 70px;
+    margin-right: 70px;
+    margin-top: 50px;
+}
+.divider {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.table {
+    margin-top: 20px;
+}
+.editBtn{
+    min-width: 40px;
+    padding: 0;
+    padding: 10px;
+}
+.editBtn:hover{
+    min-width: 40px;
+    padding: 0;
+    background-color: rgba(197, 197, 197, 0.168);
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+    border-radius: 30%;
+    cursor: pointer;
+}
+.mdi-chevron-right{
+    margin-left: 15px;
+}
+.withdraw {
+    margin-top: 80px;
+    float: right;
+}
+b{
+    font-size: 20px; 
+}
