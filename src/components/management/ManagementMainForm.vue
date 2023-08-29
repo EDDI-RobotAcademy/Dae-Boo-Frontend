@@ -16,7 +16,7 @@
             <div class="bottomBar">
                 <div class="managementBox">
                     <management-account-form v-if="isAccountClick"/>
-                    <management-board-form v-if="isBoardClick"/>
+                    <management-board-form v-if="isBoardClick" :boards="boards"/>
                     <management-card-form v-if="isCardClick"/>
                     <management-one-by-one-form v-if="isOneByOneClick"/>
                 </div>
@@ -31,6 +31,9 @@ import ManagementAccountForm from './ManagementAccountForm.vue';
 import ManagementBoardForm from './ManagementBoardForm.vue';
 import ManagementCardForm from './ManagementCardForm.vue';
 import ManagementOneByOneForm from './ManagementOneByOneForm.vue';
+
+import { mapActions, mapState } from "vuex";
+const BoardModule = "BoardModule";
 
 export default {
     data() {
@@ -47,7 +50,14 @@ export default {
         ManagementCardForm,
         ManagementOneByOneForm
     },
+    computed: {
+        ...mapState(BoardModule, ["boards"]),
+    },
+    mounted() {
+        this.requestmManagementBoardToSpring();
+    },
     methods: {
+        ...mapActions(BoardModule, ["requestmManagementBoardToSpring"]),
         accountManagement() {
             this.isAccountClick = true;
             this.isBoardClick = false;
