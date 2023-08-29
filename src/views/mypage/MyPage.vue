@@ -13,7 +13,7 @@
                 <p class="myPageNavi">내가 찜한 카드</p>
                 <button class="edgeButton mdi mdi-chevron-right"></button>
             </div>
-            <div class="line box3" style="padding-bottom: 15px;" @click="pageNumber = 4">
+            <div class="line " style="padding-bottom: 15px;" @click="pageNumber = 4">
                 <p class="myPageNavi">1:1 문의</p>
                 <button class="edgeButton mdi mdi-chevron-right"></button>
             </div>
