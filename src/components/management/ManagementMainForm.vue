@@ -1,6 +1,6 @@
 <template>
     <div class="outer-container">
-        <div class="container">
+        <div>
             <div class="topBar">
                 <div class="managerInfo">
                     <div class="managerImg"></div>
