@@ -6,6 +6,7 @@ export default {
         return axiosInst.get('/authentication/naver/login')
             .then((res) => {
                 window.location.href = res.data;
+                alert(res.data)
             })
     },
     getTokenToSpring(context, payload) {
@@ -18,10 +19,19 @@ export default {
                 localStorage.setItem("refreshtoken", res.data.refresh_token)
             });
     },
+    naverClientId() {
+        return axiosInst.get('/authentication/naver/clientId')
+            .then((res)=>{
+                alert(res.data)
+        })
+    },
+
+
+
     getBoardList(){
         axiosInst.get('/jpa-board/list')
             .then((res)=>{
-                 console.log(res.data)
+                    console.log(res.data)
             })
             .catch(()=>{
                 console.error
