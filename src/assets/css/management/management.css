@@ -1,0 +1,58 @@
+.outer-container{
+    margin: 40px 0px 70px 0px;
+}
+.managerImg{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: rgb(184, 184, 184);
+}
+.topBar {
+    display: flex;
+    /* justify-content:space-around; */
+    align-items: center;
+    margin-left: 8%;
+    margin-top: 20px;
+}
+.managerInfo{
+    display: flex;
+    flex-direction: column; /* 세로 정렬을 위해 컬럼 방향으로 설정 */
+    align-items: center;
+}
+.managerHi {
+    color: white;
+    font-size: 18px;
+    font-weight: 100;
+    margin-top: 10px;
+}
+.managerPageCategory button {
+    margin-left: 50px;
+    margin-top: 88px;
+    color: rgb(94, 94, 94);
+    font-weight: 380;
+    font-size: 23px;
+}
+
+.managerPageCategory button:hover {
+    margin-left: 50px;
+    margin-top: 88px;
+    color: rgb(255, 255, 255);
+    font-weight: 350;
+    font-size: 23px;
+}
+.managementBox{
+    background-color: white;
+    width: 90%;
+    height: 1000px;
+    border-radius: 4%;
+    margin-top: 40px;
+    padding: 30px;
+}
+.bottomBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.managerPageCategory{
+    margin-left: 40px;
+}
