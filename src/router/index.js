@@ -6,6 +6,7 @@ import homeRouter from './home';
 import helpRouter from './help';
 import ManagementRouter from '@/router/management';
 import myPageRouter from './myPage';
+import recruitmentRouter from './recruitment';
 
 const routes = [  
   ...mainRouter,
@@ -14,12 +15,18 @@ const routes = [
   ...helpRouter,
   ...homeRouter,
   ...ManagementRouter,
-  ...myPageRouter
+  ...myPageRouter,
+  ...recruitmentRouter,
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  window.scrollTo(0, 0);
+  next();
+});
 
 export default router
