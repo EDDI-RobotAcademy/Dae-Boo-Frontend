@@ -3,14 +3,14 @@
     margin-top: 50px;
 }
 .myPageNavi{
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 18px;
     margin-left: 35px;
     margin-top: 30px;
     margin-bottom: 10px;
 }
 .edgeButton{
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 18px;
     margin-right: 30px;
     margin-top: 30px;
@@ -20,8 +20,12 @@
     justify-content: space-between; 
     display: flex;
 }
+.box3:hover {
+    font-weight: bold;
+    cursor: pointer;
+}
 #box1{
-    background: #444444;
+    background: #ffffff;
     float: left;
     width: 230px;
     border-radius: 5px;
@@ -30,7 +34,7 @@
     border-color: #585858;
 }
 #box2{
-    background: #444444;
+    background: #ffffff;
     /* float: right; */
     width: 70%;
     height: 600px;
