@@ -5,7 +5,7 @@
           <th  align="center" width="8%">ID</th>
           <th align="center" width="20%">Name</th>
           <th align="center" width="25%">Fee</th>
-          <th align="center" width="25%">Results</th>
+          <th align="center" width="25%">Conditions</th>
           <th align="center" width="22%">Benefit</th>
         </tr>
         <tr>
