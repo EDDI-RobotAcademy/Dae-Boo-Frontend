@@ -2,7 +2,7 @@
   <v-app-bar :style="appBarStyle" scroll-behavior="elevate" class="app-bar-color">
     <v-spacer />
     <v-col cols="auto">
-      <v-btn variant="plain" :ripple="false" to="/" class="main-logo">MOCA</v-btn>
+      <v-btn variant="text" :ripple="false" to="/" class="main-logo">MOCA</v-btn>
     </v-col>
     <v-spacer />
     <v-spacer />
