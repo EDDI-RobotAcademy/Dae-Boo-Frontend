@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="">
         <b>게시글 관리</b><br />
         <div style="margin-top: 40px;">
             <p class="ab" @click="boardPageNumber = 1">게시물</p>

@@ -1,14 +1,14 @@
 <template>
   <div class="back-ground-color">
     <v-app class="main-container">
-      <navigation-bar/>
+      <navigation-bar />
       <v-main>
-        <router-view/>
+        <router-view />
       </v-main>
       <v-btn data-aos="fade-bottom" rounded="" class="back-to-top" @click="backToTop">
         <span class="mdi mdi-chevron-double-up icon-lg"></span>
       </v-btn>
-      <navigation-foot-bar/>
+      <navigation-foot-bar />
     </v-app>
   </div>
 </template>
@@ -38,16 +38,18 @@ export default {
 .back-ground-color {
   background-color: #000000;
 }
+
 .main-container {
   max-width: 1500px;
   background-color: #000000;
-  margin: auto;  
+  margin: auto;
 }
+
 .back-to-top {
   position: fixed;
   bottom: 20px;
   left: auto;
   right: 20px;
-  z-index: 1;
+  z-index: 2;
 }
 </style>
