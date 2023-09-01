@@ -1,0 +1,15 @@
+.container{
+    margin: 5rem
+}
+.ab {
+    display: inline;
+}
+.boardList{
+    margin-top: 2rem;
+    align-content: center;
+    width: 100%;
+}
+
+.v-selection-control {
+    align-items: flex-end;
+}
