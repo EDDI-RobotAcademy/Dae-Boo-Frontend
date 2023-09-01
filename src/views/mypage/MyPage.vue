@@ -1,5 +1,5 @@
 <template>
-    <div style="margin-top: 80px;">
+    <div class="myPageContainer">
         <div>
             <div id="box1">
                 <div class="line box3" @click="pageNumber = 1">
