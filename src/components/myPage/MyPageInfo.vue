@@ -1,9 +1,9 @@
 <template>
-    <div class="container">
+    <div class="myInfoContainer">
         <b>내 정보 관리</b>
         <!-- <v-btn class="editBtn" append-icon="mdi-pencil-outline" variant="text"></v-btn> -->
         <span class="editBtn mdi mdi-pencil-outline" variant="text"></span>
-        <v-table class="table">
+        <v-table class="myInfoTable">
             <tbody>
                 <tr>
                     <th scope="row">성명</th>

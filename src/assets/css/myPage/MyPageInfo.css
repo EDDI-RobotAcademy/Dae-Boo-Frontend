@@ -1,11 +1,11 @@
-.container{
+.myInfoContainer{
     margin: 5rem
 }
 .divider {
     margin-top: 20px;
     margin-bottom: 10px;
 }
-.table {
+.myInfoTable {
     margin-top: 20px;
 }
 .editBtn{
