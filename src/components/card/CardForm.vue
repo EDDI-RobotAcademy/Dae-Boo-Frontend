@@ -69,35 +69,55 @@
         </div>
     </div>
 
-
-    <div class="pattern-title">
-
-        asdfasdf
-    </div>
     <div>
-        <Carousel :autoplay="1500" :items-to-show="2.5" :wrap-around="true">
+        <v-col cols="12" class="flex">
+            <h1 data-aos="fade-left" class="card-mr" align="left">
+                ㅇㅇㅇ 님을 위한 혜택 만땅 카드
+            </h1>
+
+        </v-col>
+        <Carousel :items-to-show="4" :wrap-around="true">
             <Slide v-for="slide in slides" :key="slide.id">
-                <a :href="slide.link" />
-                <div>
-                    <img :src="slide.imageUrl" alt="Slide Image" class="move-image" data-aos="fade-top" />
+                <div @click="eventLink(`/card/${slide.id}`)">
+                    <div>
+                        <img :src="slide.imageUrl" alt="Slide Image" class="move-image" data-aos="fade-top" />
+                        <p class="card-name">{{ slide.cardName }}</p>
+                    </div>
                 </div>
             </Slide>
             <template #addons>
                 <Navigation />
             </template>
         </Carousel>
-
-
     </div>
 
-    <div class="age-title">
+    <div>
+        <v-col cols="12" class="flex">
+            <h1 data-aos="fade-left" class="card-mr" align="left">
+                ㅇㅇㅇ 님과 같은 연령대 사용자들에게 인기에요!
+            </h1>
 
-        asdfasdf
+        </v-col>
+        <Carousel :items-to-show="4" :wrap-around="true">
+            <Slide v-for="slide in slides" :key="slide.id">
+                <div @click="eventLink(`/card/${slide.id}`)">
+                    <div>
+                        <img :src="slide.imageUrl" alt="Slide Image" class="move-image" data-aos="fade-top" />
+                        <p class="card-name">{{ slide.cardName }}</p>
+                    </div>
+                </div>
+            </Slide>
+            <template #addons>
+                <Navigation />
+            </template>
+        </Carousel>
     </div>
 </template>
 <script>
 
+import AOS from "aos";
 import { Carousel, Slide } from "vue3-carousel";
+import "aos/dist/aos.css";
 
 export default {
     data() {
@@ -107,28 +127,36 @@ export default {
                     id: 1,
                     imageUrl:
                         "https://i.pinimg.com/564x/f3/bc/59/f3bc59bf46d419b3da7b2c413a99eecc.jpg",
+                    cardName: "카드 이름 1",
                 },
                 {
                     id: 2,
                     imageUrl:
                         "https://i.pinimg.com/564x/f3/bc/59/f3bc59bf46d419b3da7b2c413a99eecc.jpg",
+                    cardName: "카드 이름 2"
                 },
                 {
                     id: 3,
                     imageUrl:
                         "https://i.pinimg.com/564x/f3/bc/59/f3bc59bf46d419b3da7b2c413a99eecc.jpg",
+                    cardName: "카드 이름 3"
                 },
                 {
                     id: 4,
                     imageUrl:
                         "https://i.pinimg.com/564x/f3/bc/59/f3bc59bf46d419b3da7b2c413a99eecc.jpg",
+                    cardName: "카드 이름 4"
                 },
                 {
                     id: 5,
                     imageUrl:
                         "https://i.pinimg.com/564x/f3/bc/59/f3bc59bf46d419b3da7b2c413a99eecc.jpg",
+                    cardName: "카드 이름 5"
+
+
                 },
             ],
+
 
 
         }
@@ -137,6 +165,11 @@ export default {
         Carousel,
         Slide,
 
+    },
+    mounted() {
+        AOS.init({
+            duration: 1600,
+        });
     },
 
 
@@ -186,5 +219,22 @@ export default {
 
 .intro {
     margin: 20px;
+}
+
+.card-mr {
+    width: 100%;
+    color: white;
+    position: relative;
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+}
+
+.card-name {
+    color: white;
+
+}
+
+.move-image {
+    width: 50%;
 }
 </style>
