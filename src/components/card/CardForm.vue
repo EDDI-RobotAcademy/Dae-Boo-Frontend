@@ -70,25 +70,30 @@
     </div>
 
     <div>
-        <v-col cols="12" class="flex">
-            <h1 data-aos="fade-left" class="card-mr" align="left">
-                ㅇㅇㅇ 님을 위한 혜택 만땅 카드
-            </h1>
+        <div v-if="cards.length > 0">
+            <v-col cols="12" class="flex">
+                <h1 data-aos="fade-left" class="card-mr" align="left">
+                    ㅇㅇㅇ 님을 위한 혜택 만땅 카드
+                </h1>
 
-        </v-col>
-        <Carousel :items-to-show="4" :wrap-around="true">
-            <Slide v-for="card in cards" :key="card.id">
-                <div @click="eventLink(`/card/${card.id}`)">
-                    <div>
-                        <!-- <img :src="card.imageUrl" alt="카드 이미지" class="move-image" data-aos="fade-top" /> -->
-                        <p class="card-name">{{ card.name }}</p>
+            </v-col>
+            <Carousel :items-to-show="4" :wrap-around="true">
+                <Slide v-for="card in cards" :key="card.id">
+                    <div @click="eventLink(`/card/${card.id}`)">
+                        <div>
+                            <!-- <img :src="card.imageUrl" alt="카드 이미지" class="move-image" data-aos="fade-top" /> -->
+                            <p class="card-name">{{ card.name }}</p>
+                        </div>
                     </div>
-                </div>
-            </Slide>
-            <template #addons>
-                <Navigation />
-            </template>
-        </Carousel>
+                </Slide>
+                <template #addons>
+                    <Navigation />
+                </template>
+            </Carousel>
+        </div>
+        <div class="card-name" v-else>
+            <p>Loading...</p>
+        </div>
     </div>
 
     <div>
