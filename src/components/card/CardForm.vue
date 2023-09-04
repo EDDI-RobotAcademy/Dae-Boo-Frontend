@@ -100,10 +100,10 @@
         </v-col>
         <Carousel :items-to-show="4" :wrap-around="true">
             <Slide v-for="slide in slides" :key="slide.id">
-                <div @click="eventLink(`/card/${slide.id}`)">
+                <div @click="eventLink(`/card/${card.id}`)">
                     <div>
-                        <img :src="slide.imageUrl" alt="Slide Image" class="move-image" data-aos="fade-top" />
-                        <p class="card-name">{{ slide.cardName }}</p>
+                        <img :src="card.imageUrl" alt="카드 이미지" class="move-image" data-aos="fade-top" />
+                        <p class="card-name">{{ card.cardName }}</p>
                     </div>
                 </div>
             </Slide>
@@ -118,10 +118,13 @@
 import AOS from "aos";
 import { Carousel, Slide } from "vue3-carousel";
 import "aos/dist/aos.css";
+import { mapState, mapActions } from "vuex";
+const CardModule = 'CardModule';
 
 export default {
     data() {
         return {
+            cards: [],
             slides: [
                 {
                     id: 1,
@@ -172,12 +175,15 @@ export default {
         });
     },
 
-
     methods: {
         eventLink(link) {
             this.$router.push(link);
         },
+        ...mapActions([CardModule, "requestCardList"]),
     },
+    computed: {
+        ...mapState(CardModule, ['cards']),
+    }
 
 }
 </script>

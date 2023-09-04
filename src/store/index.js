@@ -1,20 +1,18 @@
-import { createStore } from 'vuex'
-import LogInModule from '@/store/logIn/LogInModule'
-import BoardModule from '@/store/board/BoardModule'
-import ManagementModule from './management/ManagementModule'
+import { createStore } from "vuex";
+import LogInModule from "@/store/logIn/LogInModule";
+import BoardModule from "@/store/board/BoardModule";
+import ManagementModule from "./management/ManagementModule";
+import CardModule from "@/store/card/CardModule";
 
 export default createStore({
-  state: {
-  },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
+  state: {},
+  getters: {},
+  mutations: {},
+  actions: {},
   modules: {
-    LogInModule:LogInModule,
-    BoardModule:BoardModule,
-    ManagementModule:ManagementModule
-  }
-})
+    LogInModule: LogInModule,
+    BoardModule: BoardModule,
+    ManagementModule: ManagementModule,
+    CardModule: CardModule,
+  },
+});
