@@ -1,6 +1,6 @@
 <template>
     <div>
-      <table class="cardList" style="width:1200px; height: 700px;">
+      <v-table class="cardList" style="width:1200px; height: 700px;">
         <tr>
           <th  align="center" width="8%">ID</th>
           <th align="center" width="20%">Name</th>
@@ -20,7 +20,7 @@
           <td><span v-html="item.results"></span></td>
           <td><span v-html="item.benefit"></span></td>
         </tr>
-      </table>
+      </v-table>
   
       <!-- 페이지네이션 컨트롤 -->
       <div style="text-align: center;">

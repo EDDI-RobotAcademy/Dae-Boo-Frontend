@@ -1,6 +1,7 @@
-.container{
-    margin-left: 70px;
-    margin-top: 50px;
+.myPageContainer{
+    /* margin-left: 70px;
+    margin-top: 50px; */
+    margin-top: 80px;
 }
 .myPageNavi{
     color: rgb(0, 0, 0);

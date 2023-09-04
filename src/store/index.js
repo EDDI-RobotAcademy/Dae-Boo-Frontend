@@ -1,8 +1,10 @@
-import { createStore } from "vuex";
-import LogInModule from "@/store/logIn/LogInModule";
-import BoardModule from "@/store/board/BoardModule";
-import ManagementModule from "./management/ManagementModule";
+import { createStore } from 'vuex'
+import LogInModule from '@/store/logIn/LogInModule'
+import BoardModule from '@/store/board/BoardModule'
+import MyPageModule from '@/store/myPage/MyPageModule'
+import ManagementModule from './management/ManagementModule'
 import CardModule from "@/store/card/CardModule";
+
 
 export default createStore({
   state: {},
@@ -10,9 +12,11 @@ export default createStore({
   mutations: {},
   actions: {},
   modules: {
-    LogInModule: LogInModule,
-    BoardModule: BoardModule,
-    ManagementModule: ManagementModule,
+
+    LogInModule:LogInModule,
+    BoardModule:BoardModule,
+    MyPageModule: MyPageModule,
+    ManagementModule:ManagementModule,
     CardModule: CardModule,
-  },
-});
+  }
+})

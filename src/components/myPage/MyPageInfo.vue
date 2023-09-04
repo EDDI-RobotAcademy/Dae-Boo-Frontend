@@ -1,33 +1,29 @@
 <template>
-    <div class="container">
+    <div class="myInfoContainer">
         <b>내 정보 관리</b>
         <!-- <v-btn class="editBtn" append-icon="mdi-pencil-outline" variant="text"></v-btn> -->
         <span class="editBtn mdi mdi-pencil-outline" variant="text"></span>
-        <v-table class="table">
+        <v-table class="myInfoTable">
             <tbody>
                 <tr>
                     <th scope="row">성명</th>
-                    <td>{{ userInfo.name }}</td>
+                    <td>{{ myInfo.name }}</td>
                 </tr>
                 <tr>
-                    <th scope="row">아이디</th>
-                    <td>{{ userInfo.id }}</td>
+                    <th scope="row">닉네임</th>
+                    <td>{{ myInfo.nickname }}</td>
                 </tr>
                 <tr>
-                    <th scope="row">비밀번호</th>
-                    <td>{{ userInfo.pw }}</td>
+                    <th scope="row">성별</th>
+                    <td>{{ myInfo.gender }}</td>
                 </tr>
                 <tr>
                     <th scope="row">휴대폰 번호</th>
-                    <td>{{ userInfo.tel }}</td>
+                    <td>{{ myInfo.mobile }}</td>
                 </tr>
                 <tr>
                     <th scope="row">이메일</th>
-                    <td>{{ userInfo.email }}</td>
-                </tr>
-                <tr>
-                    <th scope="row">주소</th>
-                    <td>{{ userInfo.adress }}</td>
+                    <td>{{ myInfo.email }}</td>
                 </tr>
             </tbody>
         </v-table>
@@ -39,20 +35,11 @@
 <script>
 import '@/assets/css/myPage/MyPageInfo.css'
 export default {
-    data() {
-        return {
-            userInfo:
-            {
-                name: "홍길동",
-                id: "abc123",
-                pw: "123",
-                tel: "010-0000-0000",
-                email: "abc@abc.com",
-                adress: "서울시 강남구"
-            }
-
+    props: {
+        myInfo: {
+            type: Object
         }
-    },
+    }
 
 }
 </script>
