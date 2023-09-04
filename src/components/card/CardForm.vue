@@ -77,11 +77,11 @@
 
         </v-col>
         <Carousel :items-to-show="4" :wrap-around="true">
-            <Slide v-for="slide in slides" :key="slide.id">
-                <div @click="eventLink(`/card/${slide.id}`)">
+            <Slide v-for="card in cards" :key="card.id">
+                <div @click="eventLink(`/card/${card.id}`)">
                     <div>
-                        <img :src="slide.imageUrl" alt="Slide Image" class="move-image" data-aos="fade-top" />
-                        <p class="card-name">{{ slide.cardName }}</p>
+                        <!-- <img :src="card.imageUrl" alt="카드 이미지" class="move-image" data-aos="fade-top" /> -->
+                        <p class="card-name">{{ card.name }}</p>
                     </div>
                 </div>
             </Slide>
@@ -92,25 +92,29 @@
     </div>
 
     <div>
-        <v-col cols="12" class="flex">
-            <h1 data-aos="fade-left" class="card-mr" align="left">
-                ㅇㅇㅇ 님과 같은 연령대 사용자들에게 인기에요!
-            </h1>
-
-        </v-col>
-        <Carousel :items-to-show="4" :wrap-around="true">
-            <Slide v-for="slide in slides" :key="slide.id">
-                <div @click="eventLink(`/card/${card.id}`)">
-                    <div>
-                        <img :src="card.imageUrl" alt="카드 이미지" class="move-image" data-aos="fade-top" />
-                        <p class="card-name">{{ card.cardName }}</p>
+        <div v-if="cards.length > 0">
+            <v-col cols="12" class="flex">
+                <h1 data-aos="fade-left" class="card-mr" align="left">
+                    ㅇㅇㅇ 님과 같은 연령대 사용자들에게 인기에요!
+                </h1>
+            </v-col>
+            <Carousel :items-to-show="4" :wrap-around="true">
+                <Slide v-for="card in cards" :key="card.id">
+                    <div @click="eventLink(`/card/${card.id}`)">
+                        <div>
+                            <!-- <img :src="card.imageUrl" alt="카드 이미지" class="move-image" data-aos="fade-top" /> -->
+                            <p class="card-name">{{ card.name }}</p>
+                        </div>
                     </div>
-                </div>
-            </Slide>
-            <template #addons>
-                <Navigation />
-            </template>
-        </Carousel>
+                </Slide>
+                <template #addons>
+                    <Navigation />
+                </template>
+            </Carousel>
+        </div>
+        <div class="card-name" v-else>
+            <p>Loading...</p>
+        </div>
     </div>
 </template>
 <script>
@@ -125,43 +129,6 @@ export default {
     data() {
         return {
             cards: [],
-            slides: [
-                {
-                    id: 1,
-                    imageUrl:
-                        "https://i.pinimg.com/564x/f3/bc/59/f3bc59bf46d419b3da7b2c413a99eecc.jpg",
-                    cardName: "카드 이름 1",
-                },
-                {
-                    id: 2,
-                    imageUrl:
-                        "https://i.pinimg.com/564x/f3/bc/59/f3bc59bf46d419b3da7b2c413a99eecc.jpg",
-                    cardName: "카드 이름 2"
-                },
-                {
-                    id: 3,
-                    imageUrl:
-                        "https://i.pinimg.com/564x/f3/bc/59/f3bc59bf46d419b3da7b2c413a99eecc.jpg",
-                    cardName: "카드 이름 3"
-                },
-                {
-                    id: 4,
-                    imageUrl:
-                        "https://i.pinimg.com/564x/f3/bc/59/f3bc59bf46d419b3da7b2c413a99eecc.jpg",
-                    cardName: "카드 이름 4"
-                },
-                {
-                    id: 5,
-                    imageUrl:
-                        "https://i.pinimg.com/564x/f3/bc/59/f3bc59bf46d419b3da7b2c413a99eecc.jpg",
-                    cardName: "카드 이름 5"
-
-
-                },
-            ],
-
-
-
         }
     },
     components: {
@@ -173,13 +140,18 @@ export default {
         AOS.init({
             duration: 1600,
         });
+        this.cardLoading();
     },
 
     methods: {
         eventLink(link) {
             this.$router.push(link);
         },
-        ...mapActions([CardModule, "requestCardList"]),
+        ...mapActions(CardModule, ["requestCardList"]),
+        async cardLoading() {
+            await this.requestCardList();
+            this.cards = this.$store.state[CardModule].cards;
+        }
     },
     computed: {
         ...mapState(CardModule, ['cards']),
