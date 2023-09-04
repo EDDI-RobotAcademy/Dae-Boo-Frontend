@@ -2,7 +2,7 @@
     <div class="myInfoContainer">
         <b>내 정보 관리</b>
         <!-- <v-btn class="editBtn" append-icon="mdi-pencil-outline" variant="text"></v-btn> -->
-        <span class="editBtn mdi mdi-pencil-outline" variant="text"></span>
+        <span class="editBtn mdi mdi-pencil-outline" variant="text" @click="goToModifyPage"></span>
         <v-table class="myInfoTable">
             <tbody>
                 <tr>
@@ -39,7 +39,12 @@ export default {
         myInfo: {
             type: Object
         }
-    }
+    },
+    methods: {
+        async goToModifyPage() {
+            await this.$router.push({ path: `/myPageModify` });
+        },
+    },
 
 }
 </script>
