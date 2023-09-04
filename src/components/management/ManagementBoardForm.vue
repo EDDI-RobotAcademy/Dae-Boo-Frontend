@@ -24,7 +24,13 @@
         {{ board.boardId }}
       </td>
       <td align="center">
-        {{ board.boardName }}
+        <router-link
+          :to="{
+            name: 'ManagementBoardReadPage',
+            params: { boardId: board.boardId.toString() },
+          }">
+          {{ board.boardName }}
+        </router-link>
       </td>
       <td align="center" style="padding: 10px 0;">
         {{ board.userId.nickname }}
