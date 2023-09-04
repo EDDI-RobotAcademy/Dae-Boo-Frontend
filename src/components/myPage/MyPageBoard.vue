@@ -27,7 +27,6 @@
                     <td align="center">
                         {{ myBoard.boardRegisterDate }}
                     </td>
-
                 </tr>
             </v-table>
         </div>

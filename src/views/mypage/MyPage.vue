@@ -22,7 +22,7 @@
         </div>
         <div id="box2">
             <div v-if="pageNumber === 1">
-                <myPageInfo />
+                <myPageInfo :myInfo="myInfo" />
             </div>
             <div v-if="pageNumber === 2">
                 <myPageBoard :myBoards="myBoards" />
@@ -61,12 +61,13 @@ export default {
     },
     mounted() {
         this.getMyBoardtoSpring(this.userId)
+        this.getMyInfoToSpring(this.userId)
     },
     computed: {
-        ...mapState(MyPageModule, ['myBoards'])
+        ...mapState(MyPageModule, ['myBoards', 'myInfo'])
     },
     methods: {
-        ...mapActions(MyPageModule, ['getMyBoardtoSpring']),
+        ...mapActions(MyPageModule, ['getMyBoardtoSpring', 'getMyInfoToSpring']),
     },
 }
 </script>
