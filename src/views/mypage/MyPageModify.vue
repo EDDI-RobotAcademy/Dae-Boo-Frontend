@@ -33,15 +33,16 @@
             <div v-if="pageNumber === 4">
                 <MyPageQA />
             </div>
-
-            <!-- <MyPageInfoModifyForm :myInfo="myInfo" /> -->
+            <div v-if="pageNumber === 5">
+                <MyPageInfoModifyForm :myInfo="myInfo" @submit="onSubmit" />
+            </div>
         </div>
     </div>
 </template>
 <script>
 import '@/assets/css/myPage/myPage.css'
 import myPageInfo from '@/components/myPage/MyPageInfo.vue'
-// import MyPageInfoModifyForm from '@/components/myPage/MyPageInfoModifyForm.vue'
+import MyPageInfoModifyForm from '@/components/myPage/MyPageInfoModifyForm.vue'
 import myPageBoard from '@/components/myPage/MyPageBoard.vue'
 import MyPageCard from '@/components/myPage/MyPageCard.vue'
 import MyPageQA from '@/components/myPage/MyPageQA.vue'
@@ -52,13 +53,13 @@ const MyPageModule = 'MyPageModule'
 export default {
     data() {
         return {
-            pageNumber: 1,
+            pageNumber: 5,
             userId: 1
         }
     },
     components: {
         myPageInfo,
-        // MyPageInfoModifyForm,
+        MyPageInfoModifyForm,
         myPageBoard,
         MyPageCard,
         MyPageQA
@@ -71,7 +72,13 @@ export default {
         ...mapState(MyPageModule, ['myBoards', 'myInfo'])
     },
     methods: {
-        ...mapActions(MyPageModule, ['getMyBoardToSpring', 'getMyInfoToSpring']),
+        ...mapActions(MyPageModule, ['getMyBoardToSpring', 'getMyInfoToSpring', 'requestMyInfoModifyToSpring']),
+        async onSubmit(payload) {
+            const { nickname, mobile, email } = payload
+            console.log("this.nickname : " + nickname)
+            await this.requestMyInfoModifyToSpring({ nickname, mobile, email })
+            await this.$router.push({ path: `/myPage` });
+        }
     },
 }
 </script>
