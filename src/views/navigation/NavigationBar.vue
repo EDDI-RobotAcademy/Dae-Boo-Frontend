@@ -12,8 +12,8 @@
     <v-menu open-on-hover>
       <!-- open-on-hover -->
       <template v-slot:activator="{ props }">
-        <v-col cols="auto">          
-          <v-btn v-bind="props"  variant="plain" :ripple="false"  class="main-button" to="/card" style="color: white;">카드</v-btn>
+        <v-col cols="auto">
+          <v-btn v-bind="props" variant="plain" :ripple="false" class="main-button" style="color: white;">카드</v-btn>
           <!-- to="/card" -->
         </v-col>
       </template>
@@ -21,78 +21,78 @@
 
         <v-row>
           <v-col cols="2">
-        <v-btn class="btn-size" rounded="3" style="height: 11vh; color: white;" >카드 추천 >> </v-btn>
-      </v-col>
-      
-      <v-col cols="3">        
-        <h3 class="card-title"><button disabled class="style-btn"/>⚡내 카드 관리</h3>
-        <router-link to="/home" class="custom-link">
-          <p class="appbar-card-text">내 카드 목록</p>
-        </router-link>
-        <router-link to="/recruitment" class="custom-link">
-          <p class="appbar-card-text">카드 신청</p>
-        </router-link>
-      </v-col>
-      
-      <v-col cols="3">
-        <h3 class="card-title"><button disabled class="style-btn"/>⚡MOCA 카드 해택</h3>
-        <router-link to="/home" class="custom-link">
-          <p class="appbar-card-text">포인트 정보</p>
-        </router-link>
-        <router-link to="/recruitment" class="custom-link">
-          <p class="appbar-card-text">카드 신청</p>
-        </router-link>
-      </v-col>
-      
-      <v-col cols="3">
-        <h3 class="card-title"><button disabled class="style-btn"/>⚡MOCA 카드 해택</h3>
-        <router-link to="/home" class="custom-link">
-          <p class="appbar-card-text">포인트 정보</p>
-        </router-link>
-        <router-link to="/recruitment" class="custom-link">
-          <p class="appbar-card-text">카드 신청</p>
-        </router-link>
-        <router-link to="/home" class="custom-link">
-          <p class="appbar-card-text">포인트 정보</p>
-        </router-link>
-        <router-link to="/recruitment" class="custom-link">
-          <p class="appbar-card-text">카드 신청</p>
-        </router-link>
-        <router-link to="/home" class="custom-link">
-          <p class="appbar-card-text">포인트 정보</p>
-        </router-link>
-        <router-link to="/recruitment" class="custom-link">
-          <p class="appbar-card-text">카드 신청</p>
-        </router-link>
-      </v-col>
-    </v-row>
+            <v-btn class="btn-size" rounded="3" style="height: 11vh; color: white;" to="/card">카드 추천 >> </v-btn>
+          </v-col>
 
-      <v-row>        
-      <v-col cols="2">
-        <v-btn class="btn-size" style="height: 12vh; color: white;" >카드 검색 >></v-btn>
-      </v-col>
+          <v-col cols="3">
+            <h3 class="card-title"><button disabled class="style-btn" />⚡내 카드 관리</h3>
+            <router-link to="/home" class="custom-link">
+              <p class="appbar-card-text">내 카드 목록</p>
+            </router-link>
+            <router-link to="/recruitment" class="custom-link">
+              <p class="appbar-card-text">카드 신청</p>
+            </router-link>
+          </v-col>
 
-      <v-col cols="3">
-        <h3 class="card-title"><button disabled class="style-btn"/>⚡MOCA 카드 해택</h3>
-        <router-link to="/home" class="custom-link">
-          <p class="appbar-card-text">포인트 정보</p>
-        </router-link>
-        <router-link to="/recruitment" class="custom-link">
-          <p class="appbar-card-text">카드 신청</p>
-        </router-link>
-      </v-col>
+          <v-col cols="3">
+            <h3 class="card-title"><button disabled class="style-btn" />⚡MOCA 카드 해택</h3>
+            <router-link to="/home" class="custom-link">
+              <p class="appbar-card-text">포인트 정보</p>
+            </router-link>
+            <router-link to="/recruitment" class="custom-link">
+              <p class="appbar-card-text">카드 신청</p>
+            </router-link>
+          </v-col>
 
-      <v-col cols="3">
-        <h3 class="card-title"><button disabled class="style-btn"/>⚡MOCA 카드 해택</h3>
-        <router-link to="/home" class="custom-link">
-          <p class="appbar-card-text">포인트 정보</p>
-        </router-link>
-        <router-link to="/recruitment" class="custom-link">
-          <p class="appbar-card-text">카드 신청</p>
-        </router-link>
-      </v-col>  
-    </v-row>
-  </v-list>
+          <v-col cols="3">
+            <h3 class="card-title"><button disabled class="style-btn" />⚡MOCA 카드 해택</h3>
+            <router-link to="/home" class="custom-link">
+              <p class="appbar-card-text">포인트 정보</p>
+            </router-link>
+            <router-link to="/recruitment" class="custom-link">
+              <p class="appbar-card-text">카드 신청</p>
+            </router-link>
+            <router-link to="/home" class="custom-link">
+              <p class="appbar-card-text">포인트 정보</p>
+            </router-link>
+            <router-link to="/recruitment" class="custom-link">
+              <p class="appbar-card-text">카드 신청</p>
+            </router-link>
+            <router-link to="/home" class="custom-link">
+              <p class="appbar-card-text">포인트 정보</p>
+            </router-link>
+            <router-link to="/recruitment" class="custom-link">
+              <p class="appbar-card-text">카드 신청</p>
+            </router-link>
+          </v-col>
+        </v-row>
+
+        <v-row>
+          <v-col cols="2">
+            <v-btn class="btn-size" style="height: 12vh; color: white;">카드 검색 >></v-btn>
+          </v-col>
+
+          <v-col cols="3">
+            <h3 class="card-title"><button disabled class="style-btn" />⚡MOCA 카드 해택</h3>
+            <router-link to="/home" class="custom-link">
+              <p class="appbar-card-text">포인트 정보</p>
+            </router-link>
+            <router-link to="/recruitment" class="custom-link">
+              <p class="appbar-card-text">카드 신청</p>
+            </router-link>
+          </v-col>
+
+          <v-col cols="3">
+            <h3 class="card-title"><button disabled class="style-btn" />⚡MOCA 카드 해택</h3>
+            <router-link to="/home" class="custom-link">
+              <p class="appbar-card-text">포인트 정보</p>
+            </router-link>
+            <router-link to="/recruitment" class="custom-link">
+              <p class="appbar-card-text">카드 신청</p>
+            </router-link>
+          </v-col>
+        </v-row>
+      </v-list>
     </v-menu>
 
     <v-col cols="auto">
@@ -226,5 +226,4 @@ export default {
 }
 </script>
 
-<style>
-</style>
+<style></style>
