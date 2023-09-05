@@ -81,7 +81,7 @@
                 <Slide v-for="card in cards" :key="card.id">
                     <div @click="eventLink(`/card/${card.id}`)">
                         <div>
-                            <!-- <img :src="card.imageUrl" alt="카드 이미지" class="move-image" data-aos="fade-top" /> -->
+                            <img :src="card.card_image" alt="카드 이미지" class="move-image" data-aos="fade-top" />
                             <p class="card-name">{{ card.name }}</p>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
                 <Slide v-for="card in cards" :key="card.id">
                     <div @click="eventLink(`/card/${card.id}`)">
                         <div>
-                            <!-- <img :src="card.imageUrl" alt="카드 이미지" class="move-image" data-aos="fade-top" /> -->
+                            <img :src="card.card_image" alt="카드 이미지" class="move-image" data-aos="fade-top" />
                             <p class="card-name">{{ card.name }}</p>
                         </div>
                     </div>

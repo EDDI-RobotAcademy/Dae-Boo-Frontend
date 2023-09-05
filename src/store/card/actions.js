@@ -4,7 +4,7 @@ import axiosInst from "@/utility/axiosInst";
 export default {
   async requestCardList({ commit }) {
     return await axiosInst
-      .get("/card/list")
+      .get("/card/age/list")
       .then((res) => {
         commit(CARD_LIST, res.data);
       })
