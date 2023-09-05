@@ -8,6 +8,7 @@ import ManagementRouter from "@/router/management";
 import myPageRouter from "./myPage";
 import recruitmentRouter from "./recruitment";
 import cardRouter from "./card";
+import noticeRouter from "./notice";
 
 const routes = [
   ...mainRouter,
@@ -19,6 +20,7 @@ const routes = [
   ...myPageRouter,
   ...recruitmentRouter,
   ...cardRouter,
+  ...noticeRouter
 ];
 
 const router = createRouter({
