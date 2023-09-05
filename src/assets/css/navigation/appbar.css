@@ -89,12 +89,12 @@
     width: 115%; 
     height: 50vh;
   }
-  .style-btn:disabled{
+  /* .style-btn:disabled{
     background-color: #000000;
     border: 2px solid #444444;
     width: 15px;
     height: 20px;
-  }
+  } */
   .btn-size{
     width: 35rem;
     font-size: 20px;

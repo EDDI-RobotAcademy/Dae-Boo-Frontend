@@ -41,6 +41,7 @@
                 </td>
             </tr>
         </table>
+        <router-link class="returnBtn" :to="{ name: 'ManagementPage' }"> 돌아가기 </router-link>
     </div>
 </template>
 
