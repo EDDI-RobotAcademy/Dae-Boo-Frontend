@@ -9,6 +9,7 @@
     font-family: 'Foldit';
     font-size: 40px;
     font-weight: 600;
+    background-color: #000000;
   }
   .main-button{
     width: 100%;
@@ -69,8 +70,8 @@
     margin: 1.5rem;
     background-color: #222224;
     width: 60%;
-    height: 4vh;
-    font-size: 18px;
+    height: 2vh;
+    font-size: 20px;
   }
   .card-title{
     margin-bottom: 1rem;
