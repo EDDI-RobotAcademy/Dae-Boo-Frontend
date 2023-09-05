@@ -1,6 +1,7 @@
 import {
     MANAGEMENT_BOARD_LIST,
-    MANAGEMENT_BOARD
+    MANAGEMENT_BOARD,
+    MYPAGE_BOARD
 } from './mutation-types'
 import axiosInst from '@/utility/axiosInst'
 
@@ -29,6 +30,16 @@ export default {
         return axiosInst.get(`/board/${boardId}`)
         .then((res) => {
             commit(MANAGEMENT_BOARD, res.data);
+            return res.data;
+        })
+    },
+
+    //마이페이지 - 해당 게시물 받아오기
+    requestBoardReadToSpring({ commit }, boardId) {
+        console.log("requestBoardReadToSpring")
+        return axiosInst.get(`/board/${boardId}`)
+        .then((res) => {
+            commit(MYPAGE_BOARD, res.data);
             return res.data;
         })
     }
