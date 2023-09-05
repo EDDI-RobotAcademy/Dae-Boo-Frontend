@@ -1,0 +1,27 @@
+.pd {
+  padding: 3rem;
+  background-color: #222222;
+}
+.notice-register-body {
+  background-color: #222222;
+  color: white;
+}
+.submit-btn {
+  margin-top: 1rem;
+}
+.notice-read-mr {
+  margin: 3rem;
+}
+.notice-read-text {
+  color: white;
+}
+.line {
+  border-bottom: solid 1px white;
+}
+.notice-button{
+  color: white;
+  margin-left: 1rem;   
+}
+.notice-modify-container{
+  background-color: #222222
+}
