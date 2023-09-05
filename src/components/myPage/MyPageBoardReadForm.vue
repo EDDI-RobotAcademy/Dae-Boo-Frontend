@@ -41,7 +41,10 @@ export default {
             type: Object,
             required: true
         }
-    }
+    },
+    methods: {
+        // deleteBoard() {}
+    },
 }
 </script>
 <style></style>

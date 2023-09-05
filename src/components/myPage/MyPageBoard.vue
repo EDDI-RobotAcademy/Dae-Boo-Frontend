@@ -67,7 +67,7 @@ import '@/assets/css/myPage/MyPageBoard.css'
 export default {
     data() {
         return {
-            boardPageNumber: 1
+            boardPageNumber: 1,
         }
     },
     props: {
