@@ -22,7 +22,12 @@
                         {{ myBoard.boardId }}
                     </td>
                     <td align="center">
-                        {{ myBoard.boardName }}
+                        <router-link :to="{
+                            name: 'MyPageBoardReadPage',
+                            params: { boardId: myBoard.boardId.toString() }
+                        }">
+                            {{ myBoard.boardName }}
+                        </router-link>
                     </td>
                     <td align="center">
                         {{ myBoard.boardRegisterDate }}
@@ -69,8 +74,7 @@ export default {
         myBoards: {
             type: Array
         }
-    }
-
+    },
 }
 </script>
 <style></style>
