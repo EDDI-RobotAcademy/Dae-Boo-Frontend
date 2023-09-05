@@ -1,0 +1,16 @@
+.pd{
+  padding: 3rem;
+  background-color: #222222; 
+}
+.notice-register-body{
+  background-color: #222222; 
+  color: white;
+}
+.submit-btn{
+  margin-top: 1rem;
+  color: white;
+}
+.notice-register-container{
+  padding: 0; 
+  margin-top: 3rem;
+}
