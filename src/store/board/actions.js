@@ -1,5 +1,6 @@
 import {
-    MANAGEMENT_BOARD_LIST
+    MANAGEMENT_BOARD_LIST,
+    MANAGEMENT_BOARD
 } from './mutation-types'
 import axiosInst from '@/utility/axiosInst'
 
@@ -22,6 +23,13 @@ export default {
         .then(() => {
             alert("게시물 삭제가 완료되었습니다.")
         })
-    },  
-
+    },
+    // 관리자 - 해당 게시물 받아오기
+    requestManagementBoardReadToSpring({ commit }, boardId) {
+        return axiosInst.get(`/board/${boardId}`)
+        .then((res) => {
+            commit(MANAGEMENT_BOARD, res.data);
+            return res.data;
+        })
+    }
 }

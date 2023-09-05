@@ -2,7 +2,7 @@ import axiosInst from '@/utility/axiosInst'
 import {REQUEST_MY_BOARD_LIST_TO_SPRING, REQUEST_MY_INFO_TO_SPRING} from '../myPage/mutation-types'
 
 export default {
-    getMyBoardtoSpring({ commit }, payload){
+    getMyBoardToSpring({ commit }, payload){
         console.log("userId: " + payload)
 
         return axiosInst.get('/board/myBoard' , { params: { userId: payload }})
@@ -18,5 +18,12 @@ export default {
             console.log("MyInfo res: " + res.data.name)
             commit(REQUEST_MY_INFO_TO_SPRING, res.data)
         })
+    },
+    requestMyInfoModifyToSpring(_, payload) {
+        const { nickname, mobile, email } = payload
+        console.log("requestMyInfoModifyToSpring() nickname: "+ nickname +
+        "mobile: "+ mobile +
+        "email: "+ email)
+        // return axiosInst.put('', { nickname, mobile, email })
     }
 }

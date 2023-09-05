@@ -10,6 +10,7 @@ export default {
     },
     [MANAGEMENT_BOARD] (state, receivedData) {
       state.board = receivedData
+      console.log("state.board: ", state.board)
     },
 }
   
