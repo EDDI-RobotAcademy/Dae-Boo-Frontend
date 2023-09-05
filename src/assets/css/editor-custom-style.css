@@ -1,0 +1,10 @@
+/* Change the color of heading text */
+.toastui-editor h1 {
+color: #ffffff;
+}
+
+/* Add custom styling to links */
+.toastui-editor a {
+color: #ffffff;
+text-decoration: underline;
+}
