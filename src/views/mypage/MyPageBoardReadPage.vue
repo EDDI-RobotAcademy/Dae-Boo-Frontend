@@ -1,8 +1,8 @@
 <template>
     <div style="color:black; background-color: white;">
-        <MyPageBoardReadForm :thisBoard="thisBoard" />
+        <MyPageBoardReadForm v-if="thisBoard" :thisBoard="thisBoard" />
         <button> 수정 </button>
-        <button> 삭제 </button>
+        <button @click="deleteBoard"> 삭제 </button>
     </div>
 </template>
 <script>
@@ -10,6 +10,11 @@ import { mapActions, mapState } from 'vuex';
 import MyPageBoardReadForm from '../../components/myPage/MyPageBoardReadForm.vue'
 const BoardModule = 'BoardModule'
 export default {
+    data() {
+        return {
+            userId: 1,
+        }
+    },
     components: {
         MyPageBoardReadForm
     },
@@ -20,7 +25,14 @@ export default {
         },
     },
     methods: {
-        ...mapActions(BoardModule, ['requestBoardReadToSpring'])
+        ...mapActions(BoardModule, ['requestBoardReadToSpring', 'requestBoardDeleteToSpring']),
+        deleteBoard() {
+            const IdData = {
+                boardId: this.boardId,
+                userId: this.userId
+            }
+            this.requestBoardDeleteToSpring(IdData);
+        }
     },
     created() {
         this.requestBoardReadToSpring(this.boardId);

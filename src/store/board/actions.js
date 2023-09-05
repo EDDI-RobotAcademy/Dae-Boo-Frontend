@@ -42,5 +42,10 @@ export default {
             commit(MYPAGE_BOARD, res.data);
             return res.data;
         })
+    },
+
+    requestBoardDeleteToSpring(_, IdData) {
+        console.log("boardId : " + IdData.boardId)
+        return axiosInst.delete("/board/myPageBoardDelete", { params: { boardId: IdData.boardId, userId: IdData.userId } })
     }
 }
