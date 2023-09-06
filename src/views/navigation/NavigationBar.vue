@@ -147,6 +147,31 @@ export default {
     const LogoutDisplay = ref("none");
     const localStorageAccessToken = localStorage.getItem("accesstoken")
 
+    const handleScroll = () => {
+      // 스크롤 위치를 확인하여 배경 색상을 조절합니다.
+      if (window.scrollY > 0) {
+        appBarStyle.value.backgroundColor = '#000000';
+      } else {
+        appBarStyle.value.backgroundColor = 'transparent';
+      }
+    };
+
+    // 크기 변경 이벤트 처리 추가
+    const handleResize = () => {
+      try {
+        // 크기 변경 이벤트 처리 로직 추가
+      } catch (error) {
+        console.error("Error handling resize:", error);
+        // 예외 처리 코드 추가 (예: 에러 로그 출력)
+      }
+    };
+
+    // 스크롤 이벤트를 추가하여 스크롤을 감지하고 배경을 변경합니다.
+    window.addEventListener('scroll', handleScroll);
+    // 크기 변경 이벤트 처리 추가
+    const resizeObserver = new ResizeObserver(handleResize);
+    resizeObserver.observe(document.body);
+
     const signOut = () => {
       store.dispatch("userModule/requestSignOut")
     }
@@ -159,15 +184,6 @@ export default {
       updateLoginDisplay();
       updateLogoutDisplay();
     });
-
-    const handleScroll = () => {
-      // 스크롤 위치를 확인하여 배경 색상을 조절합니다.
-      if (window.scrollY > 0) {
-        appBarStyle.value.backgroundColor = '#000000';
-      } else {
-        appBarStyle.value.backgroundColor = 'transparent';
-      }
-    };
 
     const updateLoginDisplay = () => {
       if (localStorageAccessToken !== null) {
