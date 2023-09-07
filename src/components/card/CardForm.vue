@@ -81,7 +81,7 @@
                 <Slide v-for="card in cards" :key="card.id">
                     <div @click="eventLink(`/card/${card.id}`)">
                         <div>
-                            <img :src="card.card_image" alt="카드 이미지" class="move-image" data-aos="fade-top" />
+                            <img :src="dynamicLink(card.card_image)" alt="카드 이미지" class="move-image" data-aos="fade-top" />
                             <p class="card-name">{{ card.name }}</p>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
                 <Slide v-for="card in cards" :key="card.id">
                     <div @click="eventLink(`/card/${card.id}`)">
                         <div>
-                            <img :src="card.card_image" alt="카드 이미지" class="move-image" data-aos="fade-top" />
+                            <img :src="dynamicLink(card.card_image)" alt="카드 이미지" class="move-image" data-aos="fade-top" />
                             <p class="card-name">{{ card.name }}</p>
                         </div>
                     </div>
@@ -129,11 +129,13 @@ import { Carousel, Slide } from "vue3-carousel";
 import "aos/dist/aos.css";
 import { mapState, mapActions } from "vuex";
 const CardModule = 'CardModule';
+const LINK = process.env.VUE_APP_S3_LINK;
 
 export default {
     data() {
         return {
             cards: [],
+            link: LINK
         }
     },
     components: {
@@ -156,13 +158,16 @@ export default {
         async cardLoading() {
             await this.requestCardList();
             this.cards = this.$store.state[CardModule].cards;
-        }
+        },
+        dynamicLink(extraPath) {
+            return `${this.link}/${extraPath}`;
+        },
     },
     computed: {
         ...mapState(CardModule, ['cards']),
-    }
+    },
 
-}
+};
 </script>
 <style>
 .container {
