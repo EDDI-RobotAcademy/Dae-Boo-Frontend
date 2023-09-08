@@ -18,7 +18,7 @@
                     <management-account-form v-if="isAccountClick"/>
                     <management-board-form v-if="isBoardClick" :boards="boards"/>
                     <management-card-form v-if="isCardClick"/>
-                    <management-one-by-one-form v-if="isOneByOneClick"/>
+                    <management-one-by-one-form v-if="isOneByOneClick" :questBoards="questBoards"/>
                 </div>
             </div>
         </div>
@@ -51,13 +51,17 @@ export default {
         ManagementOneByOneForm
     },
     computed: {
-        ...mapState(BoardModule, ["boards"]),
+        ...mapState(BoardModule, ["boards", "questBoards"]),
     },
     mounted() {
-        this.requestmManagementBoardToSpring();
+        this.requestManagementBoardToSpring();
+        this.requestManagementQuestionBoardToSpring();
     },
     methods: {
-        ...mapActions(BoardModule, ["requestmManagementBoardToSpring"]),
+        ...mapActions(BoardModule,[
+            "requestManagementBoardToSpring",
+            "requestManagementQuestionBoardToSpring"
+        ]),
         accountManagement() {
             this.isAccountClick = true;
             this.isBoardClick = false;

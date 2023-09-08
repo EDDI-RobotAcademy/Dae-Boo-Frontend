@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import ManagementBoardReadForm from '@/components/management/ManagementBoardReadForm.vue'
+import ManagementBoardReadForm from '@/components/management/subManagementForm/ManagementBoardReadForm.vue'
 import { mapActions, mapState } from "vuex";
 import '@/assets/css/management/managementBoardRead.css'
 const BoardModule = 'BoardModule';

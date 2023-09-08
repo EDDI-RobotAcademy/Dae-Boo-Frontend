@@ -1,0 +1,19 @@
+.managementQuestionBtn{
+    text-align: center;
+    display: flex;
+    justify-content:end;
+    align-items: center;
+    margin-top: 10px;
+}
+.question-search-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: rgba(221, 221, 221, 0.582);
+}
+.question-search-container input {
+    padding: 6px;
+}
+.question-search-container v-btn {
+    font-size: 25px;
+}

@@ -1,5 +1,7 @@
 export default {
     boards: [], 
     board: {},
-    thisBoard: {}
+    thisBoard: {},
+    questBoards: [],
+    questBoard: {}
 }
