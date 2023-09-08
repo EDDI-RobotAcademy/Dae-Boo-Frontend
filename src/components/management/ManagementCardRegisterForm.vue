@@ -87,7 +87,7 @@ s3: null,
 awsFileList: [],
 startAfterAwsS3Bucket: null,
 awsS3NextToken: null,
-localImg: null,
+localImg: '',
 path: '',
 imgPath: null,
 file: null,
@@ -156,10 +156,11 @@ this.s3.upload({
       console.log(err);
       return alert('업로드 중 문제 발생 (사진 파일에 문제가 있음)', err.message);
     }
-    alert('업로드 성공!');
     this.localImg = this.file.name;
     console.log("aws: " + this.localImg);
     this.$emit('imageUploaded', data.Location);
+    alert('업로드 성공!');
+   
   });
 },
 deleteAwsS3File(key) {

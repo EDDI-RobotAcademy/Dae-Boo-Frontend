@@ -13,3 +13,50 @@
 .v-selection-control {
     align-items: flex-end;
 }
+
+#modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    border-radius: 7px;
+    margin: 15% auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 80%;
+    height: 350px;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 15px;
+    /* font-weight: bold; */
+}
+/* .close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+} */
+.centerBtn {
+    width:100px;
+    font-size: 15px;
+    margin:auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display:block;
+    /* font-weight: bold; */
+}
+.modifyTr {
+    font-size: 17px;
+    margin: 10px;
+}
