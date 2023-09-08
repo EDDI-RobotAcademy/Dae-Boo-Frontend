@@ -1,72 +1,78 @@
-<template lang="">
-  <div  class="centered-div" style="width:1000px;">
-    <v-card  justify-center width="1000px">
-      <h2 style="text-align:center">신용카드 등록</h2>
-      <div>
-        <v-card-text >
-          <form @submit.prevent="onSubmit">
-            <table >
-              <tr style="text-align: center;">
-                <td style="font-weight: bold"> 카드 상품</td>
-                <td>
-                  <v-text-field type="text" class="inputValue" 
-                  v-model="cardName" placeholder=""/>
-                </td>
-              </tr> 
-              <tr style="text-align: center;">
-                <td style="font-weight: bold"> 카드사</td>
+<template>
+  <div class="centered-div" style="width: 1000px;">
+    <v-card justify-center width="1000px">
+      <div style="display: flex; justify-content: space-between;">
+        <!-- 왼쪽 컨테이너 -->
+        <div style="flex: 1;">
+          <h2 style="text-align: center">신용카드 등록</h2>
+          <v-card-text>
+            <form @submit.prevent="onSubmit">
+              <table>
+                <tr style="text-align: center;">
+                  <td style="font-weight: bold"> 카드 상품</td>
+                  <td>
+                    <v-text-field type="text" class="inputValue" v-model="cardName" placeholder="" />
+                  </td>
+                </tr>
+                <tr style="text-align: center;">
+                  <td style="font-weight: bold"> 카드사</td>
 
-                <td>
-                  <v-text-field type="text" class="inputValue" 
-                  v-model="cardCompany" placeholder=""/>
-                </td>
-              </tr> 
-              <tr style="text-align: center;">
-                <td style="font-weight: bold"> 연회비 </td>
+                  <td>
+                    <v-text-field type="text" class="inputValue" v-model="cardCompany" placeholder="" />
+                  </td>
+                </tr>
+                <tr style="text-align: center;">
+                  <td style="font-weight: bold"> 연회비 </td>
 
-                <td>
-                  <v-text-field type="text" class="inputValue" 
-                  v-model="cardFee" placeholder=""/>
-                </td>
-              </tr> 
-              <tr style="text-align: center;">
-                <td style="font-weight: bold"> 전월 실적 </td>
+                  <td>
+                    <v-text-field type="text" class="inputValue" v-model="cardFee" placeholder="" />
+                  </td>
+                </tr>
+                <tr style="text-align: center;">
+                  <td style="font-weight: bold"> 전월 실적 </td>
 
-                <td>
-                  <v-text-field type="text" class="inputValue" 
-                  v-model="cardCondition" placeholder=""/>
-                </td>
-              </tr> 
-              <tr style="text-align: center;">
-                <td style="font-weight: bold"> 혜택 </td>
+                  <td>
+                    <v-text-field type="text" class="inputValue" v-model="cardCondition" placeholder="" />
+                  </td>
+                </tr>
+                <tr style="text-align: center;">
+                  <td style="font-weight: bold"> 혜택 </td>
 
-                <td>
-                  <v-text-field type="text" class="inputValue" 
-                  v-model="cardBenefit" placeholder=""/>
-                </td>
-              </tr> 
-              <tr><td>이미지</td><td>  
-                <input id="file-selector" ref="file" type="file" @change="handleFileUpload()">
-                <v-btn @click="uploadAwsS3" color="primary" text>업로드</v-btn><br>
-                <div v-if="localImg!=null">{{localImg}}
-                  <v-btn v-if="localImg!=null" @click="deleteAwsS3File(localImg)" color="red" text icon>x</v-btn>
-                </div>
-              </td>
-            </tr>
-            <p>{{path}}</p>
-          </table>
-          <v-btn raised type="submit">등록</v-btn>
-          <v-btn @click="golist">취소</v-btn>
-        </form>
-      </v-card-text>
-    </div>
-  </v-card>
-</div>
+                  <td>
+                    <v-text-field type="text" class="inputValue" v-model="cardBenefit" placeholder="" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>이미지</td>
+                  <td>
+                    <input id="file-selector" ref="file" type="file" @change="handleFileUpload()">
+                    <v-btn @click="uploadAwsS3" color="primary" text>업로드</v-btn><br>
+                    <div v-if="localImg != null">{{ localImg }}
+                      <v-btn v-if="localImg != null" @click="deleteAwsS3File(localImg)" color="red" text icon>x</v-btn>
+                    </div>
+                  </td>
+                </tr>
+                <p>{{ path }}</p>
+              </table>
+              <v-btn raised type="submit">등록</v-btn>
+              <v-btn @click="golist">취소</v-btn>
+            </form>
+          </v-card-text>
+        </div>
+
+        <!-- 오른쪽 컨테이너 -->
+        <div style="flex: 1;">
+          <img v-if="imgSrc!==''" class="card" :src="dynamicLink(imgSrc)">
+        </div>
+      </div>
+    </v-card>
+  </div>
 </template>
 <script>
 import AWS from 'aws-sdk'
 import env from "../../../env";
 import { mapActions } from 'vuex';
+const LINK = process.env.VUE_APP_S3_LINK
 const awsBucketName = env.api.S3_Bucket;
 const awsBucketRegion = env.api.S3_Region;
 const awsPoolId = env.api.S3_PoolId
@@ -91,6 +97,7 @@ export default {
       path: '',
       imgPath: null,
       file: null,
+      imgSrc:''
     };
   },
   methods: {
@@ -160,6 +167,7 @@ export default {
           console.log("aws: " + this.localImg);
           this.$emit('imageUploaded', data.Location);
           alert('업로드 성공!');
+          this.imgSrc=this.file.name
 
         });
     },
@@ -177,12 +185,18 @@ export default {
 
       })
     },
+    dynamicLink(extraPath) {
+      return `${LINK}/${extraPath}`;
+      },
 
   },
   mounted() {
   }
 };
 </script>
-<style lang="">
-
+<style lang="css">
+.card {
+  width:300px;
+  height:474px;
+}
 </style>
