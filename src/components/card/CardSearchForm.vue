@@ -14,23 +14,22 @@
   </v-card>
     </div>
 
-    <!-- <div v-if="cards.length > 0"> -->
-  <div class="container">
-    <div class="row">
-      <div v-for="card in examples" :key="card.id" class="section">
-        <img :src="card.card_image" alt="example image" class="card-image" data-aos="fade-top" />
-        <div class="intro">
-          <p class="card-name">{{ card.name }}</p>
+  <div v-if="cards.length > 0">
+    <div class="container">
+      <div class="row">
+        <div v-for="card in cards" :key="card.id" class="section">
+          <img :src="card.card_image" alt="card image" class="card-image" data-aos="fade-top" />
+          <div class="intro">
+            <p class="card-name">{{ card.name }}</p>
+          </div>
         </div>
       </div>
     </div>
+  </div> 
+  
+  <div class="card-name" v-else>
+    <p>Loading...</p>
   </div>
-
-    <!-- </div> -->
-
-    <!-- <div class="card-name" v-else>
-      <p>Loading...</p>
-    </div> -->
 
 
 
@@ -70,50 +69,6 @@ export default {
     return {
       cards: [],
       link: LINK,
-      examples: [
-        {
-          id: 1,
-          card_image:
-            "https://i.pinimg.com/564x/f3/bc/59/f3bc59bf46d419b3da7b2c413a99eecc.jpg",
-          name: "카드 이름1",
-        },
-        {
-          id: 2,
-          card_image:
-            "https://i.pinimg.com/564x/f3/bc/59/f3bc59bf46d419b3da7b2c413a99eecc.jpg",
-          name: "카드 이름2",
-        },
-        {
-          id: 3,
-          card_image:
-            "https://i.pinimg.com/564x/f3/bc/59/f3bc59bf46d419b3da7b2c413a99eecc.jpg",
-          name: "카드 이름3",
-        },
-        {
-          id: 4,
-          card_image:
-            "https://i.pinimg.com/564x/f3/bc/59/f3bc59bf46d419b3da7b2c413a99eecc.jpg",
-          name: "카드 이름4",
-        },
-        {
-          id: 5,
-          card_image:
-            "https://i.pinimg.com/564x/f3/bc/59/f3bc59bf46d419b3da7b2c413a99eecc.jpg",
-          name: "카드 이름5",
-        },
-        {
-          id: 6,
-          card_image:
-            "https://i.pinimg.com/564x/f3/bc/59/f3bc59bf46d419b3da7b2c413a99eecc.jpg",
-          name: "카드 이름6",
-        },
-        {
-          id: 7,
-          card_image:
-            "https://i.pinimg.com/564x/f3/bc/59/f3bc59bf46d419b3da7b2c413a99eecc.jpg",
-          name: "카드 이름7",
-        },
-      ],
     };
   },
 }
