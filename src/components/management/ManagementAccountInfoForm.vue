@@ -4,10 +4,6 @@
         <v-table class="myInfoTable">
             <tbody>
                 <tr>
-                    <th scope="row">성명</th>
-                    <td>{{ account.name }}</td>
-                </tr>
-                <tr>
                     <th scope="row">닉네임</th>
                     <td>{{ account.nickname }}</td>
                 </tr>
