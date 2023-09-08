@@ -62,12 +62,11 @@
               <p class="appbar-card-text">오시는 길</p>
             </router-link>
           </v-col>
-
         </v-row>
 
         <v-row>
           <v-col cols="2">
-            <v-btn class="btn-size" style="height: 12vh; color: white;">카드 검색</v-btn>
+            <v-btn class="btn-size" style="height: 12vh; color: white;" to="/card-search">카드 검색</v-btn>
           </v-col>
 
           <v-col cols="3">

@@ -124,6 +124,7 @@
 </template>
 <script>
 
+import '@/assets/css/card/card.css'
 import AOS from "aos";
 import { Carousel, Slide } from "vue3-carousel";
 import "aos/dist/aos.css";
@@ -169,60 +170,4 @@ export default {
 
 };
 </script>
-<style>
-.container {
-    color: #ffffff;
-    display: flex;
-    justify-content: space-around;
-}
-
-.section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 16px;
-    margin: 20px;
-}
-
-.circle {
-    margin: 20px;
-    background-color: #fff;
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.line {
-    border-right: solid 2px #ccc;
-}
-
-.divider {
-    width: 2px;
-    background-color: #ccc;
-    margin: 0px 15%;
-}
-
-.intro {
-    margin: 20px;
-}
-
-.card-mr {
-    width: 100%;
-    color: white;
-    position: relative;
-    margin-top: 10rem;
-    margin-bottom: 10rem;
-}
-
-.card-name {
-    color: white;
-
-}
-
-.move-image {
-    width: 50%;
-}
-</style>
+<style></style>
