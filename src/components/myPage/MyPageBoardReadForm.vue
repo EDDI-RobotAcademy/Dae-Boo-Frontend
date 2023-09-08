@@ -10,7 +10,7 @@
             <tr class="BoardReadTr">
                 <th> 작성자 </th>
                 <td>
-                    {{ thisBoard.userId.name }}
+                    {{ thisBoard.userId.nickname }}
                 </td>
             </tr>
             <tr class="BoardReadTr">

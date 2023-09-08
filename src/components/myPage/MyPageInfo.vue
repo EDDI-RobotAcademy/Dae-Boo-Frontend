@@ -5,10 +5,10 @@
         <span class="editBtn mdi mdi-pencil-outline" variant="text" @click="goToModifyPage"></span>
         <v-table class="myInfoTable">
             <tbody>
-                <tr>
+                <!-- <tr>
                     <th scope="row">성명</th>
                     <td>{{ myInfo.name }}</td>
-                </tr>
+                </tr> -->
                 <tr>
                     <th scope="row">닉네임</th>
                     <td>{{ myInfo.nickname }}</td>
@@ -24,6 +24,10 @@
                 <tr>
                     <th scope="row">이메일</th>
                     <td>{{ myInfo.email }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">관심사</th>
+                    <td>.₊̣̇.— ฅ/ᐠ. ̫ .ᐟ\ฅ —.₊̣̇.ა</td>
                 </tr>
             </tbody>
         </v-table>
