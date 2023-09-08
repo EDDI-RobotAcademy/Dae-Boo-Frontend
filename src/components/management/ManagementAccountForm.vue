@@ -2,8 +2,6 @@
     <div v-show="AccountList">
         <v-table height="800px">
             <tr>
-                <th align="center" width="10%">id</th>
-                <th align="center" width="10%">성명</th>
                 <th align="center" width="10%">닉네임</th>
                 <th align="center" width="5%">성별</th>
                 <th align="center" width="25%">휴대폰 번호</th>
@@ -11,13 +9,11 @@
                 <th align="center" width="10%">상태</th>
             </tr>
             <tr>
-                <td colspan="7">
+                <td colspan="5">
                     <hr style="margin: 10px 0;"> <!-- 가로 선 밑에 10px 여백 추가 -->
                 </td>
             </tr>
             <tr v-for="item in paginatedUser" :key="item.userId" @click="goRead(item.userId)" style="align:center">
-                <td align="center"><span v-html="item.id"></span></td>
-                <td align="center"><span v-html="item.name"></span></td>
                 <td align="center"><span v-html="item.nickname"></span></td>
                 <td align="center"><span v-html="item.gender"></span></td>
                 <td align="center"><span v-html="item.mobile"></span></td>
