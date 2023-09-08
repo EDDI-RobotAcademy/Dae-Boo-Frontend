@@ -10,7 +10,7 @@
         <th align="center" width="22%">Benefit</th>
       </tr>
       <tr>
-        <td colspan="5">
+        <td colspan="6">
           <hr style="margin: 10px 0;"> <!-- 가로 선 밑에 10px 여백 추가 -->
         </td>
       </tr>

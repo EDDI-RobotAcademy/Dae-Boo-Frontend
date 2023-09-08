@@ -1,32 +1,32 @@
 <template>
     <div>
         <v-table>
-            <tr>
-                <td> 게시물 번호 </td>
+            <tr class="BoardReadTr">
+                <th> 게시물 번호 </th>
                 <td>
                     {{ thisBoard.boardId }}
                 </td>
             </tr>
-            <tr>
-                <td> 작성자 </td>
+            <tr class="BoardReadTr">
+                <th> 작성자 </th>
                 <td>
-                    {{ thisBoard.userId.name }}
+                    {{ thisBoard.userId.nickname }}
                 </td>
             </tr>
-            <tr>
-                <td> 등록일자 </td>
+            <tr class="BoardReadTr">
+                <th> 등록일자 </th>
                 <td>
                     {{ thisBoard.boardRegisterDate }}
                 </td>
             </tr>
-            <tr>
-                <td> 제목 </td>
+            <tr class="BoardReadTr">
+                <th> 제목 </th>
                 <td>
                     {{ thisBoard.boardName }}
                 </td>
             </tr>
-            <tr>
-                <td> 내용 </td>
+            <tr class="BoardReadTr">
+                <th> 내용 </th>
                 <td>
                     {{ thisBoard.content }}
                 </td>
@@ -47,4 +47,8 @@ export default {
     },
 }
 </script>
-<style></style>
+<style>
+.BoardReadTr {
+    height: 50px;
+}
+</style>

@@ -58,5 +58,10 @@ export default {
         .then(() => {
             alert("게시물 삭제가 완료되었습니다.")
         })
+    },
+    requestMyBoardModifyToSpring(_, payload) {
+        const { category, boardName, content, userId, boardId } = payload
+        console.log("requestMyBoardModifyToSpring()" + "content: " + content + ", boardName: " +boardName + ", boardId: " +boardId)
+        return axiosInst.put(`/board/${boardId}`, { category, boardName, content, userId })
     }
 }
