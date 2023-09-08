@@ -1,7 +1,8 @@
 import {
     MANAGEMENT_BOARD,
     MANAGEMENT_BOARD_LIST,
-    MYPAGE_BOARD
+    MYPAGE_BOARD,
+    MANAGEMENT_QUESTION_BOARD_LIST
 } from './mutation-types'
   
 export default {
@@ -13,10 +14,13 @@ export default {
       state.board = receivedData
       console.log("state.board: ", state.board)
     },
-    // state.board 같이 써도 되나??
     [MYPAGE_BOARD] (state, receivedData) {
       state.thisBoard = receivedData
-      console.log("state.thisBoard:", state.thisBoard)
+      console.log("state.thisBoard: ", state.thisBoard)
+    },
+    [MANAGEMENT_QUESTION_BOARD_LIST] (state, receivedData) {
+      state.questBoards = receivedData
+      console.log("state.questBoards: ", state.questBoards)
     }
 }
   
