@@ -1,5 +1,6 @@
 import ManagementPage from '@/views/management/ManagementPage.vue'
 import ManagementBoardReadPage from '@/views/management/ManagementBoardReadPage.vue'
+import ManagementAccountInfoForm from '@/components/management/ManagementAccountInfoForm.vue'
 
 const ManagementRouter = [
     {
@@ -16,6 +17,16 @@ const ManagementRouter = [
       props: {
         default: true
       },
-    }
+    },
+    { 
+      path: '/ManagementAccountInfoForm/:id',
+      name: 'ManagementAccountInfoForm',
+      components: {
+        default: ManagementAccountInfoForm
+      },
+      props:{
+        default:true
+      }
+    },
 ]
 export default ManagementRouter
