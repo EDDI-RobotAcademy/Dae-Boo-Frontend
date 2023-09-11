@@ -1,6 +1,7 @@
 import ManagementPage from '@/views/management/ManagementPage.vue'
 import ManagementBoardReadPage from '@/views/management/ManagementBoardReadPage.vue'
 import ManagementAccountInfoForm from '@/components/management/ManagementAccountInfoForm.vue'
+import ManagementQuestionBoardReadPage from '@/views/management/ManagementQuestionBoardReadPage.vue'
 
 const ManagementRouter = [
     {
@@ -27,6 +28,16 @@ const ManagementRouter = [
       props:{
         default:true
       }
+    },
+    {
+      path: '/ManagementQuestionBoardReadPage/:questionId',
+      name: 'ManagementQuestionBoardReadPage',
+      components: {
+        default: ManagementQuestionBoardReadPage
+      },
+      props: {
+        default: true
+      },
     },
 ]
 export default ManagementRouter

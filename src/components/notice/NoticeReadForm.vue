@@ -39,6 +39,13 @@ export default {
       required: true,
     },
   },
+  watch: {
+    notice(newValue) {
+      if(this.viewer) {
+        this.viewer.setMarkdown(newValue.content)
+      }
+    }
+  },
   data() {
     return {
       viewer: null,
@@ -51,7 +58,6 @@ export default {
       initialValue: this.notice.content,
       theme: "dark",
     });
-    this.dataLoaded = true;
   },
 };
 </script>
