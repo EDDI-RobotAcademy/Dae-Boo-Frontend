@@ -5,8 +5,8 @@ import BoardModule from '@/store/board/BoardModule'
 import MyPageModule from '@/store/myPage/MyPageModule'
 import ManagementModule from './management/ManagementModule'
 import CardModule from "@/store/card/CardModule";
-import NoticeModule from './notice/NoticeModule'
-
+import NoticeModule from './notice/NoticeModule';
+import QuestionBoardModule from '@/store/questionBoard/QuestionBoardModule';
 
 export default createStore({
   state: {},
@@ -19,7 +19,8 @@ export default createStore({
     MyPageModule: MyPageModule,
     ManagementModule:ManagementModule,
     CardModule: CardModule,
-    NoticeModule: NoticeModule
+    NoticeModule: NoticeModule,
+    QuestionBoardModule: QuestionBoardModule
   },
   plugins: [
     createPersistedState(),

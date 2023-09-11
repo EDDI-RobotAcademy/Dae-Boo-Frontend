@@ -1,6 +1,6 @@
 <template>
-    <h1 class="notice-head">공지사항</h1>
     <div>
+        <h1 class="notice-head">공지사항</h1>
         <NoticeReadForm v-if="notice" :notice="notice"/>
         <div>
             <button class="notice-button" @click="noticeModifyRouter(notice.noticeId)">수정하기</button>
@@ -13,7 +13,6 @@ import NoticeReadForm from '@/components/notice/NoticeReadForm.vue';
 import { mapActions, mapState } from 'vuex';
 const NoticeModule = 'NoticeModule'
 import "@/assets/css/notice/noticeRead.css";
-import router from '@/router';
 export default {
     components: {
         NoticeReadForm 
@@ -27,27 +26,24 @@ export default {
     computed: {
         ...mapState(NoticeModule, ['notice'])
     },
+    mounted() {
+        this.requestNoticeToSpring(this.noticeId);
+    },
     methods: {
         ...mapActions(NoticeModule, ['requestNoticeToSpring']),
         noticeModifyRouter(noticeId) {
             this.$router.push({path: `/notice/modify-page/${noticeId}`})
         },
-        page(){
-            router.go(0)
+    },
+    beforeRouteUpdate(to, from, next) {
+        if (to.params.noticeId !== from.params.noticeId) {
+            this.$nextTick(() => {
+                this.requestNoticeToSpring(to.params.noticeId);
+            });
         }
-    },
-    created() {
-        this.requestNoticeToSpring(this.noticeId)
-    },
-//     watch: {
-//     "$route.params.noticeId": {
-//       immediate: true, // 초기에도 호출
-//       handler(newId) {
-//         // noticeId가 변경될 때마다 호출됨
-//         this.requestNoticeToSpring(newId); // 예시로 requestNoticeToSpring을 호출
-//       },
-//     },
-//   },
+        next();
+    }
+
 }
 </script>
 

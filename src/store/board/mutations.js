@@ -2,7 +2,6 @@ import {
     MANAGEMENT_BOARD,
     MANAGEMENT_BOARD_LIST,
     MYPAGE_BOARD,
-    MANAGEMENT_QUESTION_BOARD_LIST
 } from './mutation-types'
   
 export default {
@@ -18,9 +17,5 @@ export default {
       state.thisBoard = receivedData
       console.log("state.thisBoard: ", state.thisBoard)
     },
-    [MANAGEMENT_QUESTION_BOARD_LIST] (state, receivedData) {
-      state.questBoards = receivedData
-      console.log("state.questBoards: ", state.questBoards)
-    }
 }
   
