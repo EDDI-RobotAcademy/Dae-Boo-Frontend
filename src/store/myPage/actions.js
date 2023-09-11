@@ -26,5 +26,13 @@ export default {
         //     "userId: " + userId);
         
             return axiosInst.put(`/user/user-info/${userId}`, { nickname, mobile, email })
+    },
+    requestDeleteToSpring(_, payload) {
+        return axiosInst.delete('/user/user-info', {params: { userId:payload }}
+        ).then(() => {
+            alert("탈퇴되었습니다.")
+        }).catch(() => {
+            alert("탈퇴되지 않았습니다.")
+        })
     }
 }

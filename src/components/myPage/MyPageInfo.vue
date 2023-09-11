@@ -31,13 +31,15 @@
                 </tr>
             </tbody>
         </v-table>
-        <v-btn class="withdraw" append-icon="mdi-chevron-double-right" variant="text">
+        <v-btn class="withdraw" append-icon="mdi-chevron-double-right" variant="text" @click="deleteUser">
             탈퇴하기
         </v-btn>
     </div>
 </template>
 <script>
 import '@/assets/css/myPage/MyPageInfo.css'
+import { mapActions } from "vuex"
+const MyPageModule = 'MyPageModule'
 export default {
     props: {
         myInfo: {
@@ -45,9 +47,13 @@ export default {
         }
     },
     methods: {
+        ...mapActions(MyPageModule, ['requestDeleteToSpring']),
         async goToModifyPage() {
             await this.$router.push({ path: `/myPageModify/${this.myInfo.userId}` });
         },
+        deleteUser() {
+            this.requestDeleteToSpring(this.myInfo.userId)
+        }
     },
 
 }
