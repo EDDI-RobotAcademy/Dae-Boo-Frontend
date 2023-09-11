@@ -46,7 +46,7 @@ export default {
     },
     methods: {
         async goToModifyPage() {
-            await this.$router.push({ path: `/myPageModify` });
+            await this.$router.push({ path: `/myPageModify/${this.myInfo.userId}` });
         },
     },
 

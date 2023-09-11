@@ -8,9 +8,14 @@ const myPageRouter = [
         component: MyPage
     },
     {
-        path: '/myPageModify',
+        path: '/myPageModify/:userId',
         name: 'MyPageModify',
-        component: MyPageModify
+        components: {
+            default: MyPageModify
+        },
+        props: {
+            default: true
+        }
     },
     {
         path: '/myPageBoardReadPage/:boardId',

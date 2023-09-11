@@ -55,7 +55,8 @@ export default {
             nickname: '',
             gender: '',
             mobile: '',
-            email: ''
+            email: '',
+            userId: ''
         }
     },
     created() {
@@ -64,6 +65,7 @@ export default {
         this.mobile = this.myInfo.mobile
         this.gender = this.myInfo.gender
         this.email = this.myInfo.email
+        this.userId = this.myInfo.userId
     },
     methods: {
         onSubmit() {

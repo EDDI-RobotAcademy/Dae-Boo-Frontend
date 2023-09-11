@@ -54,7 +54,7 @@ export default {
     data() {
         return {
             pageNumber: 5,
-            userId: 1
+            userId: ''
         }
     },
     components: {
@@ -71,12 +71,16 @@ export default {
     computed: {
         ...mapState(MyPageModule, ['myBoards', 'myInfo'])
     },
+    created() {
+        this.userId = this.$store.state[MyPageModule].myInfo.userId;
+    },
     methods: {
         ...mapActions(MyPageModule, ['getMyBoardToSpring', 'getMyInfoToSpring', 'requestMyInfoModifyToSpring']),
         async onSubmit(payload) {
             const { nickname, mobile, email } = payload
-            console.log("this.nickname : " + nickname)
-            await this.requestMyInfoModifyToSpring({ nickname, mobile, email })
+            const userId = this.userId
+            // console.log("this.nickname : " + nickname)
+            await this.requestMyInfoModifyToSpring({ nickname, mobile, email, userId })
             await this.$router.push({ path: `/myPage` });
         }
     },

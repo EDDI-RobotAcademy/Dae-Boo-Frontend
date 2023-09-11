@@ -53,7 +53,7 @@ export default {
     data() {
         return {
             pageNumber: 1,
-            userId: 1
+            userId: ''
         }
     },
     components: {
@@ -66,6 +66,9 @@ export default {
     mounted() {
         this.getMyBoardToSpring(this.userId)
         this.getMyInfoToSpring(this.userId)
+    },
+    created() {
+        this.userId = this.$store.state[MyPageModule].myInfo.userId;
     },
     computed: {
         ...mapState(MyPageModule, ['myBoards', 'myInfo'])

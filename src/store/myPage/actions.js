@@ -20,10 +20,11 @@ export default {
         })
     },
     requestMyInfoModifyToSpring(_, payload) {
-        const { nickname, mobile, email } = payload
-        console.log("requestMyInfoModifyToSpring() nickname: "+ nickname +
-        "mobile: "+ mobile +
-        "email: "+ email)
-        // return axiosInst.put('', { nickname, mobile, email })
+        const { nickname, mobile, email, userId } = payload;
+        // console.log("requestMyInfoModifyToSpring() nickname: " + nickname +
+        //     "mobile: " + mobile +
+        //     "userId: " + userId);
+        
+            return axiosInst.put(`/user/user-info/${userId}`, { nickname, mobile, email })
     }
 }
