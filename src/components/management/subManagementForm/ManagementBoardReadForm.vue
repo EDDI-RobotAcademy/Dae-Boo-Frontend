@@ -24,7 +24,7 @@
                 <td>작성자</td>
                 <td>
                     <!-- board.userId가 정의되어 있을 때만 email을 출력하도록 조건부 렌더링 -->
-                    <input type="text" v-if="board.userId" :value="board.userId.email" readonly/>
+                    <input type="text" v-if="board.userId.nickname" :value="board.userId.nickname" readonly/>
                     <input type="text" v-else value="작성자 정보 없음" readonly/>
                 </td>
             </tr>

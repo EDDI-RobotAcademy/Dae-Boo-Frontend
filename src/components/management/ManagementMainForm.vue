@@ -34,6 +34,7 @@ import ManagementOneByOneForm from './ManagementOneByOneForm.vue';
 
 import { mapActions, mapState } from "vuex";
 const BoardModule = "BoardModule";
+const QuestionBoardModule = "QuestionBoardModule";
 
 export default {
     data() {
@@ -51,7 +52,8 @@ export default {
         ManagementOneByOneForm
     },
     computed: {
-        ...mapState(BoardModule, ["boards", "questBoards"]),
+        ...mapState(BoardModule, ["boards"]),
+        ...mapState(QuestionBoardModule, ["questBoards"]),
     },
     mounted() {
         this.requestManagementBoardToSpring();
@@ -60,7 +62,9 @@ export default {
     methods: {
         ...mapActions(BoardModule,[
             "requestManagementBoardToSpring",
-            "requestManagementQuestionBoardToSpring"
+        ]),
+        ...mapActions(QuestionBoardModule,[
+            'requestManagementQuestionBoardToSpring'
         ]),
         accountManagement() {
             this.isAccountClick = true;

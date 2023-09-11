@@ -2,35 +2,41 @@
     <div>
         <v-table style="margin: auto">
             <tr>
-            <th align="center" width="10%">문의 번호</th>
-            <th align="center" width="30%">제목</th>
-            <th align="center" width="20%">작성자</th>
-            <th align="center" width="20%">작성일</th>
-            <th align="center" width="20%">상태</th>
+                <th align="center" width="10%">문의 번호</th>
+                <th align="center" width="30%">제목</th>
+                <th align="center" width="20%">작성자</th>
+                <th align="center" width="20%">작성일</th>
+                <th align="center" width="20%">상태</th>
             </tr>
             <tr>
-            <td colspan="5">
-                <hr style="margin: 10px auto;"> <!-- 가로 선 밑에 10px 여백 추가 -->
-            </td>
+                <td colspan="5">
+                    <hr style="margin: 10px auto;"> <!-- 가로 선 밑에 10px 여백 추가 -->
+                </td>
             </tr>
             <tr v-if="!filteredBoards || (Array.isArray(filteredBoards) && filteredBoards.length === 0)">
-            <td colspan="4">검색 결과가 없습니다.</td>
+                <td colspan="4">검색 결과가 없습니다.</td>
             </tr>
-            <tr v-else v-for="question in filteredBoards" :key="question.questionId">
+                <tr v-else v-for="questBoard in filteredBoards" :key="questBoard.questionId">
             <td align="center">
-                {{ question.questionId }}
+                {{ questBoard.questionId }}
             </td>
             <td align="center">
-                {{ question.title }}
+                <router-link
+                :to="{
+                    name: 'ManagementQuestionBoardReadPage',
+                    params: { questionId: questBoard.questionId.toString() },
+                }">
+                {{ questBoard.title }}
+                </router-link>
             </td>
             <td align="center">
-                {{ question.user.nickname }}
+                {{ questBoard.user.nickname }}
             </td>
             <td align="center" style="padding: 10px 0;">
-                {{ question.createdAt }}
+                {{ questBoard.createdAt }}
             </td>
             <td align="center" style="padding: 10px 0;">
-                {{ question.answerComplete ? '완료' : '대기' }}
+                {{ questBoard.answerComplete ? '완료' : '대기' }}
             </td>
             </tr>
         </v-table>
@@ -69,16 +75,16 @@ export default {
             return this.selectAll ? "green" : "black";
         },
         filteredBoards() {
-            if(!this.questBoards || this.questBoards.length === 0) {
-            return [];
-            }
-            // 검색어를 소문자로 변환
-            const query = this.searchQuery.toLowerCase();
-            // 검색어와 일치하는 게시물만 필터링
-            return this.questBoards.filter((question) => {
-            return question.title.toLowerCase().includes(query);
-            });
-        },
+      if (!this.questBoards || this.questBoards.length === 0) {
+        return [];
+      }
+      // 검색어를 소문자로 변환
+      const query = this.searchQuery.toLowerCase();
+      // 검색어와 일치하는 게시물만 필터링
+      return this.questBoards.filter((questBoard) => {
+        return questBoard.title.toLowerCase().includes(query);
+      });
+    },
     }
 }
 </script>

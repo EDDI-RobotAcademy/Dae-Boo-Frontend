@@ -2,7 +2,6 @@ import {
     MANAGEMENT_BOARD_LIST,
     MANAGEMENT_BOARD,
     MYPAGE_BOARD,
-    MANAGEMENT_QUESTION_BOARD_LIST
 } from './mutation-types'
 import axiosInst from '@/utility/axiosInst'
 
@@ -34,14 +33,6 @@ export default {
             return res.data;
         })
     },
-    // 관리자 - 1:1 게시판 리스트 불러오기
-    requestManagementQuestionBoardToSpring({ commit }) {
-        return axiosInst.get("/question/list")
-        .then((res) => {
-            commit(MANAGEMENT_QUESTION_BOARD_LIST, res.data);
-            return res.data;
-        })
-    },
     //마이페이지 - 해당 게시물 받아오기
     requestBoardReadToSpring({ commit }, boardId) {
         console.log("requestBoardReadToSpring")
@@ -51,7 +42,6 @@ export default {
             return res.data;
         })
     },
-
     requestBoardDeleteToSpring(_, IdData) {
         console.log("boardId : " + IdData.boardId)
         return axiosInst.delete("/board/myPageBoardDelete", { params: { boardId: IdData.boardId, userId: IdData.userId } })
