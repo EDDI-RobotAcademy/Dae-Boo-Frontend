@@ -1,7 +1,7 @@
 .managementQuestionBtn{
     text-align: center;
     display: flex;
-    justify-content:end;
+    justify-content: flex-end; /* 이 부분을 수정 */
     align-items: center;
     margin-top: 10px;
 }
