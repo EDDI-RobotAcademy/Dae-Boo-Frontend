@@ -20,10 +20,11 @@ import MyPageBoardReadForm from '../../components/myPage/MyPageBoardReadForm.vue
 import MyPageBoardModify from '../../components/myPage/MyPageBoardModify.vue'
 import '@/assets/css/myPage/MyPageBoard.css'
 const BoardModule = 'BoardModule'
+const MyPageModule = 'MyPageModule'
 export default {
     data() {
         return {
-            userId: 1,
+            userId: '',
             thisBoardA: null
         }
     },
@@ -63,6 +64,7 @@ export default {
     },
     created() {
         this.requestBoardReadToSpring(this.boardId);
+        this.userId = this.$store.state[MyPageModule].myInfo.userId;
     },
     computed: {
         ...mapState(BoardModule, ['thisBoard']),
