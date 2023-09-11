@@ -1,4 +1,5 @@
 import axiosInst from '@/utility/axiosInst'
+import {REQUEST_USERID_TO_SPRING} from '../logIn/mutation-types'
 
 export default {
     // NAVER OAuth
@@ -9,14 +10,17 @@ export default {
                 alert(res.data)
             })
     },
-    getTokenToSpring(context, payload) {
+    getTokenToSpring({ commit }, payload) {
 
         axiosInst.get("/authentication/naver/oauth-code?code=" + payload)
             .then((res) => {
-                console.log("token : " + res.data)
-                console.log("token : " + res.data.access_token)
-                localStorage.setItem("accesstoken", res.data.access_token)
-                localStorage.setItem("refreshtoken", res.data.refresh_token)
+                console.log("res.data : " + res.data)
+                console.log("access_token : " + res.data.naverOAuthToken.access_token)
+                console.log("userId : " + res.data.userId)
+                localStorage.setItem("accesstoken", res.data.naverOAuthToken.access_token)
+                localStorage.setItem("refreshtoken", res.data.naverOAuthToken.refresh_token)
+                // localStorage.setItem("userId", res.data.userId)
+                commit(REQUEST_USERID_TO_SPRING, res.data.userId)
             });
     },
 
