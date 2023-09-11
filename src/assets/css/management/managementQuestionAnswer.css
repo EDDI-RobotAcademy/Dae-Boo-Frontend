@@ -1,0 +1,19 @@
+.answerTextBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(242, 242, 242, 0.727);
+    height: 20vh;
+  }
+  
+  .answerBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .answerInput {
+    background-color: white;
+  }

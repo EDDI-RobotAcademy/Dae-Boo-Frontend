@@ -1,0 +1,36 @@
+.managerQuestionReadTable {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.managerQuestionReadTable td{
+    padding: 10px;
+}
+.managerQuestionReadTable div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.includeQuestionTopBar {
+    background-color: rgba(242, 242, 242, 0.727);
+    padding: 5px;
+}
+.questionTopBar td {
+    flex: 2;
+    white-space: nowrap;
+}
+.questionColumn {
+    font-weight:bold;
+}
+.titleColumn {
+    font-size: 24px; /* 원하는 크기로 조절하세요 */
+    font-weight: bold; /* 글씨를 굵게 표시 */
+}
+.bigTitle {
+    font-size: 30px; /* 원하는 크기로 조절하세요 */
+}
+.v-table {
+    margin: 0 ;
+    padding: 0 ;
+}

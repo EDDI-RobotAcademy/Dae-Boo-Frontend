@@ -21,4 +21,16 @@ export default {
             return res.data.questBoard;
         })
     },
+    // 관리자 - 1:1 게시판 해당 게시물에 댓글 달기
+    responseManagementQuestionAnswerSaveToSping(context, payload) {
+        const { answer, questionId } = payload
+        console.log("전달받은 데이터: "+ answer, questionId);
+
+        return axiosInst.post("/question/managerAnswer", {
+            answer,
+            questionId
+        }) .then((res) => {
+            return res.data;
+        })
+    }
 }
