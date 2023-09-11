@@ -7,7 +7,7 @@ export default {
 
         return axiosInst.get('/board/myBoard' , { params: { userId: payload }})
         .then((res) => {
-            console.log("res: " + res.data[0].boardName)
+            // console.log("res: " + res.data[0].boardName)
             commit(REQUEST_MY_BOARD_LIST_TO_SPRING, res.data)
         })
     },

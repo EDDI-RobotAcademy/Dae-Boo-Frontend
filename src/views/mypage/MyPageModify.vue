@@ -49,6 +49,7 @@ import MyPageQA from '@/components/myPage/MyPageQA.vue'
 
 import { mapActions, mapState } from "vuex";
 const MyPageModule = 'MyPageModule'
+const LogInModule = 'LogInModule'
 
 export default {
     data() {
@@ -69,10 +70,11 @@ export default {
         this.getMyInfoToSpring(this.userId)
     },
     computed: {
-        ...mapState(MyPageModule, ['myBoards', 'myInfo'])
+        ...mapState(MyPageModule, ['myBoards', 'myInfo']),
+        ...mapState(LogInModule, ['userId'])
     },
     created() {
-        this.userId = this.$store.state[MyPageModule].myInfo.userId;
+        this.userId = this.$store.state[LogInModule].userId;
     },
     methods: {
         ...mapActions(MyPageModule, ['getMyBoardToSpring', 'getMyInfoToSpring', 'requestMyInfoModifyToSpring']),
