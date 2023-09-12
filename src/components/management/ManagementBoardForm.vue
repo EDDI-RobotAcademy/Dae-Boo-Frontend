@@ -40,6 +40,7 @@
       </td>
     </tr>
   </v-table>
+  <v-btn color="orange" @click="testToken()">테스트</v-btn>
 
     <div class="managementBoardBtn">
       <div class="btn-container">
@@ -63,6 +64,7 @@
 import '@/assets/css/management/managementBoard.css'
 import { mapActions } from 'vuex';
 const BoardModule = 'BoardModule';
+const LogInModule = 'LogInModule'
 
 export default {
 props: {
@@ -104,6 +106,13 @@ watch: {
 },
 methods: {
   ...mapActions(BoardModule, ['requestManagementBoardDeleteToSpring']),
+
+  // 09.12 : token을 가지고 userInfo를 가져올 시도
+  ...mapActions(LogInModule, ['requestUserInfoToSpring']),
+  async testToken() {
+      await this.requestUserInfoToSpring();
+  },
+
   toggleSelectAll() {
     this.selectAll = !this.selectAll;
     if (this.selectAll) {
