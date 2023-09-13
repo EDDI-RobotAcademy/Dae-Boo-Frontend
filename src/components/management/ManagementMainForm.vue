@@ -4,7 +4,7 @@
             <div class="topBar">
                 <div class="managerInfo">
                     <div class="managerImg"></div>
-                    <div class="managerHi">관리자 님 환영합니다.</div>
+                    <div class="managerHi">{{ memberInfo.nickname }} 님 환영합니다.</div>
                 </div>
                 <div class="managerPageCategory">
                     <button @click="accountManagement">회원 관리</button>
@@ -35,6 +35,7 @@ import ManagementOneByOneForm from './ManagementOneByOneForm.vue';
 import { mapActions, mapState } from "vuex";
 const BoardModule = "BoardModule";
 const QuestionBoardModule = "QuestionBoardModule";
+const LogInModule = 'LogInModule';
 
 export default {
     data() {
@@ -54,6 +55,7 @@ export default {
     computed: {
         ...mapState(BoardModule, ["boards"]),
         ...mapState(QuestionBoardModule, ["questBoards"]),
+        ...mapState(LogInModule, ['memberInfo'])
     },
     mounted() {
         this.requestManagementBoardToSpring();

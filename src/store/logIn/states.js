@@ -1,3 +1,5 @@
 export default {
-    userId: {}
+    userId: {},
+    token: {},
+    memberInfo: null,
 }
