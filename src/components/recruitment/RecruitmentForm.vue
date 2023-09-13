@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1 class="recruitment-head" align="center">MOCA</h1>
-      <div id="map"></div>
+      <div id="map" class="map"></div>
       <h3 class="recruitment-title">Location</h3>
       <p class="recruitment-text">서울특별시 강남구 강남구 테헤란로14길 6 , 2층</p>
       <p class="recruitment-text">6, Teheran-ro 14-gil, Gangnam-gu, Seoul, Republic of Korea</p>
