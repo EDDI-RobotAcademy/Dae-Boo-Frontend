@@ -33,15 +33,12 @@
             <div v-if="pageNumber === 4">
                 <MyPageQA />
             </div>
-
-            <!-- <MyPageInfoModifyForm :myInfo="myInfo" /> -->
         </div>
     </div>
 </template>
 <script>
 import '@/assets/css/myPage/myPage.css'
 import myPageInfo from '@/components/myPage/MyPageInfo.vue'
-// import MyPageInfoModifyForm from '@/components/myPage/MyPageInfoModifyForm.vue'
 import myPageBoard from '@/components/myPage/MyPageBoard.vue'
 import MyPageCard from '@/components/myPage/MyPageCard.vue'
 import MyPageQA from '@/components/myPage/MyPageQA.vue'
@@ -59,17 +56,16 @@ export default {
     },
     components: {
         myPageInfo,
-        // MyPageInfoModifyForm,
         myPageBoard,
         MyPageCard,
         MyPageQA
     },
-    mounted() {
-        this.getMyBoardToSpring(this.userId)
-        this.getMyInfoToSpring(this.userId)
+    async mounted() {
+        await this.getMyBoardToSpring(this.userId)
     },
     created() {
         this.userId = this.$store.state[LogInModule].userId;
+        this.getMyInfoToSpring(this.userId)
     },
     computed: {
         ...mapState(MyPageModule, ['myBoards', 'myInfo']),

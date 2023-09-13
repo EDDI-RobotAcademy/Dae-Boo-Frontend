@@ -20,12 +20,12 @@ export default {
         })
     },
     requestMyInfoModifyToSpring(_, payload) {
-        const { nickname, mobile, email, userId } = payload;
+        const { nickname, mobile, email,interest1, interest2, userId } = payload;
         // console.log("requestMyInfoModifyToSpring() nickname: " + nickname +
         //     "mobile: " + mobile +
         //     "userId: " + userId);
         
-            return axiosInst.put(`/user/user-info/${userId}`, { nickname, mobile, email })
+            return axiosInst.put(`/user/user-info/${userId}`, { nickname, mobile, email, interest1, interest2 })
     },
     requestDeleteToSpring(_, payload) {
         return axiosInst.delete('/user/user-info', {params: { userId:payload }}
