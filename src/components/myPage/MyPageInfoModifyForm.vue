@@ -33,6 +33,28 @@
                             <input type="text" v-model="email" />
                         </td>
                     </tr>
+                    <tr>
+                        <th scope="row">관심사1 </th>
+                        <td>
+                            <select v-model="interest1">
+                                <option v-for="(interest, index) in interestList" :value="interest.value"
+                                    v-bind:key="index">
+                                    {{ interest.name }}
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">관심사2 </th>
+                        <td>
+                            <select v-model="interest2">
+                                <option v-for="(interest, index) in interestList" :value="interest.value"
+                                    v-bind:key="index">
+                                    {{ interest.name }}
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
                 </tbody>
             </v-table>
             <v-btn type="button" @click="onSubmit">
@@ -56,7 +78,15 @@ export default {
             gender: '',
             mobile: '',
             email: '',
-            userId: ''
+            userId: '',
+            interest1: '',
+            interest2: '',
+            interestList: [
+                { name: "관심사1번", value: 'INTEREST1' },
+                { name: "관심사2번", value: 'INTEREST2' },
+                { name: "관심사3번", value: 'INTEREST3' },
+                { name: "관심사4번", value: 'INTEREST4' },
+            ],
         }
     },
     created() {
@@ -66,11 +96,13 @@ export default {
         this.gender = this.myInfo.gender
         this.email = this.myInfo.email
         this.userId = this.myInfo.userId
+        this.interest1 = this.myInfo.interest1
+        this.interest2 = this.myInfo.interest2
     },
     methods: {
         onSubmit() {
-            const { nickname, mobile, email } = this
-            this.$emit('submit', { nickname, mobile, email })
+            const { nickname, mobile, email, interest1, interest2 } = this
+            this.$emit('submit', { nickname, mobile, email, interest1, interest2 })
         }
     },
 

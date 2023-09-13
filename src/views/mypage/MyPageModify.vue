@@ -79,10 +79,9 @@ export default {
     methods: {
         ...mapActions(MyPageModule, ['getMyBoardToSpring', 'getMyInfoToSpring', 'requestMyInfoModifyToSpring']),
         async onSubmit(payload) {
-            const { nickname, mobile, email } = payload
+            const { nickname, mobile, email, interest1, interest2 } = payload
             const userId = this.userId
-            // console.log("this.nickname : " + nickname)
-            await this.requestMyInfoModifyToSpring({ nickname, mobile, email, userId })
+            await this.requestMyInfoModifyToSpring({ nickname, mobile, email, interest1, interest2, userId })
             await this.$router.push({ path: `/myPage` });
         }
     },
