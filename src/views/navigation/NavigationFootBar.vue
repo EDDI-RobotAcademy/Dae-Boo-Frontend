@@ -4,7 +4,7 @@
       <v-btn class="footer-name" @click="goFAQPage">
         <h2 class="text-h5">FAQ</h2>
       </v-btn>
-      <v-btn class="footer-name2">
+      <v-btn class="footer-name2" @click="goQuestionPage">
         <h2 class="text-h5">1:1문의</h2>
       </v-btn>
 
@@ -122,6 +122,9 @@ export default {
     goFAQPage() {
       this.$router.push("/help/faq");
       window.scrollTo(0, 0);
+    },
+    goQuestionPage() {
+      this.$router.push("/help/question");
     },
     ...mapActions(NoticeModule, ["requestNoticeListToSpring"]),
 
