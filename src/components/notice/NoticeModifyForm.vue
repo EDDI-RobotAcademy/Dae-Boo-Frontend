@@ -34,7 +34,7 @@
               name: 'NoticeReadPage',
               params: { noticeId: notice.noticeId },
             }"
-            
+            style="text-decoration: none; color: white;"
           >수정 취소</router-link>
           <button @click="onDelete" type="button" class="notice-button" style="color: white;">삭제</button>
           <button @click="onSubmit" type="button" class="notice-button" style="color: white;">수정 완료</button>

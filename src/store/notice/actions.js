@@ -18,8 +18,8 @@ export default {
     requestCreateNoticeToSpring ( _ , payload) {
         const { title, content, writer } = payload    
         return axiosInst.post('/notice/register', { title, content, writer })
-            .then((res) => {
-                    alert('문의사항 등록에 성공하였습니다.')
+            .then((res) => {    
+                    alert('공지사항 등록에 성공하였습니다.')
                     console.log(res.data)
                     return res.data
             })
