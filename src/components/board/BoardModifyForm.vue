@@ -1,24 +1,24 @@
 <template>
-    <v-container class="notice-modify-container">
+    <v-container class="board-modify-container">
       <form @submit.prevent="onSubmit">
-        <div class="notice-read-mr">
+        <div class="board-read-mr">
           <v-row align="center" justify="left">
             <v-col cols="12">
               <v-text-field
                 label="제목"
                 variant="outlined"
-                class="notice-register-body"
-                v-model="title"
+                class="board-register-body"
+                v-model="boardName"
               />
             </v-col>
             <v-col cols="1">
-              <td class="notice-read-text">no. {{ notice.noticeId }}</td>
+              <td class="board-read-text">no. {{ board.boardId }}</td>
             </v-col>
             <v-col cols="8">
-              <td class="notice-read-text">작성자 :  {{ notice.writer }}</td>
+              <td class="board-read-text">작성자 :  {{ board.writer }}</td>
             </v-col>
             <v-col cols="3">
-              <td class="notice-read-text">등록일자 : {{ notice.createDate }}</td>
+              <td class="board-read-text">등록일자 : {{ board.boardRegisterDate }}</td>
             </v-col>
             <v-col cols="12">
               <span class="line" />
@@ -29,15 +29,23 @@
           </v-row>
         </div>
         <div>
+            <v-row>
+            <v-col cols="10">
           <router-link
             :to="{
-              name: 'NoticeReadPage',
-              params: { noticeId: notice.noticeId },
+              name: 'BoardReadPage',
+              params: { boardId: board.boardId },
             }"
             style="text-decoration: none; color: white;"
           >수정 취소</router-link>
-          <button @click="onDelete" type="button" class="notice-button" style="color: white;">삭제</button>
-          <button @click="onSubmit" type="button" class="notice-button" style="color: white;">수정 완료</button>
+        </v-col>
+        <v-col cols="1">
+          <button @click="onDelete" type="button" style="color: white;">삭제</button>
+        </v-col>
+        <button @click="onSubmit" type="button" style="color: white;">수정 완료</button>
+        <v-col cols="1">
+        </v-col>
+    </v-row>
         </div>
       </form>
     </v-container>
@@ -46,14 +54,14 @@
   <script>
   import Editor from "@toast-ui/editor";
   import "@/assets/css/editor-custom-style.css";
-  import "@/assets/css/notice/noticeModify.css";
+  import "@/assets/css/board/boardModify.css";
   import "@toast-ui/editor/dist/toastui-editor.css";
   import { mapActions, mapState } from "vuex";
-  const NoticeModule = 'NoticeModule';
+  const BoardModule = 'BoardModule';
   
   export default {
     props: {
-      notice: {
+      board: {
         type: Object,
         required: true,
       },
@@ -61,13 +69,13 @@
     data() {
       return {
         editor: null,
-        writer: "관리자",
-        title: "",
+        writer: "",
+        boardName: "",
         content: "",
       };
     },
     computed: {
-      ...mapState(NoticeModule, ['notice'])
+      ...mapState(BoardModule, ['board'])
     },
     mounted() {
       this.editor = new Editor({
@@ -84,22 +92,23 @@
       onSubmit() {
         this.content = this.editor.getMarkdown();
         this.$emit("submit", {
-          title: this.title,
+          boardName: this.boardName,
           writer: this.writer,
           content: this.content,
         });
       },
-      ...mapActions(NoticeModule, ['requestDeleteNoticeToSpring']),
+      ...mapActions(BoardModule, ['DeleteBoardToSpring']),
       async onDelete () {
-        const noticeId = this.notice.noticeId;
-        await this.requestDeleteNoticeToSpring(noticeId);
-        await this.$router.push({ name: 'NoticeListPage' });
+        const boardId = this.boardId;
+        console.log(boardId)
+        await this.DeleteBoardToSpring(boardId);
+        await this.$router.push({ name: 'BoardListPage' });
       }
     },
     created() {
-      this.title = this.notice.title;
-      this.content = this.notice.content;
-      this.writer = this.notice.writer;
+      this.boardName = this.board.boardName;
+      this.content = this.board.content;
+      this.writer = this.board.writer;
     },
   };
   </script>

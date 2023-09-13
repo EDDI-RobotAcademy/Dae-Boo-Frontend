@@ -11,7 +11,7 @@
       </thead>
       <tbody>
         <tr class="row-mr" v-if="!notices || (Array.isArray(notices) && notices.length === 0)">
-          <th colspan="4">현재 등록된 공지가 없습니다!</th>
+          <th colspan="4" style="text-align: center;">현재 등록된 공지가 없습니다!</th>
         </tr>
         <tr
           v-else

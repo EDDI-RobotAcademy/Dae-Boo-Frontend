@@ -1,0 +1,36 @@
+.question-mr{
+    margin: auto;
+    width: 100%;
+    
+  }
+  .th-style{
+    border: solid 0.5px #fff;
+  }
+  .question-mr{
+    margin: auto;
+    background-color: #fff;
+    color: #222222;
+  }
+  .question-title{
+    margin: 1rem;
+    color: #222222;
+    background-color: #fff;
+  }
+  .question-line{
+  border-bottom: solid 1px #222222;
+}
+.question-tr{
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+.question-tr:hover {
+  background-color: rgb(109, 109, 109);
+}
+.question-nation{
+  margin: 1rem;
+}
+.question-btn{
+  margin-top: 2rem;
+  margin-right: 2rem;
+  float: right;
+}
