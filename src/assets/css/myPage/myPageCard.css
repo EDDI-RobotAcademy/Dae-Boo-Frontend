@@ -1,0 +1,38 @@
+.my-card-mr{
+    margin: auto;
+    background-color: #fff;
+    padding-bottom: 3.5rem;
+}
+.my-card-title{
+    margin: 1rem;
+    color: #222;
+}
+.my-card-body{
+    margin: auto;
+    margin-top: 2rem;
+    border: solid 1px #b6b6b6;
+    width: 90%;  
+    background-color: #fff;    
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+.my-card-img{ 
+  margin-top: 2em;
+    margin-bottom: 1rem;   
+    width: 75%; 
+    height: auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+.my-card-img:hover {
+    width: 100%;
+    transition: width 0.3s;
+}
+.my-card-img:not(:hover) {
+    width: 80%;
+    transition: width 0.5s;
+}
+.my-card-carousel{
+    margin: 1rem;
+    height: 50%;
+}
