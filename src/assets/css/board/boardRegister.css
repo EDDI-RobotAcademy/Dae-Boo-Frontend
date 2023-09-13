@@ -1,0 +1,18 @@
+.pd{
+  padding: 3rem;
+  background-color: #222222; 
+}
+.board-register-body{
+  background-color: #222222; 
+  color: white;
+}
+.submit-btn{
+  margin-top: 1rem;
+  color: white;
+}
+.board-register-container{
+  padding: 0; 
+}
+.board-register-body{
+  color: white;
+}

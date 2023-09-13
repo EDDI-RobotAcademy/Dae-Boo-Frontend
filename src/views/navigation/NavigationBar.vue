@@ -23,9 +23,9 @@
           <v-col cols="2">
             <v-btn class="btn-size" rounded="3" style="height: 11vh; color: white;" to="/card">카드 추천</v-btn>
           </v-col>
-
+          <v-col cols="1"><span/></v-col>
           <v-col cols="3">
-            <h3 class="card-title"><button disabled class="style-btn" />모두의 혜택</h3>
+            <h3 class="card-title">모두의 혜택</h3>
             <router-link to="/home" class="custom-link">
               <p class="appbar-card-text">포인트</p>
             </router-link>
@@ -35,7 +35,7 @@
           </v-col>
 
           <v-col cols="3">
-            <h3 class="card-title"><button disabled class="style-btn" />모두의 카드</h3>
+            <h3 class="card-title">모두의 카드</h3>
             <router-link to="/home" class="custom-link">
               <p class="appbar-card-text">전체 카드</p>
             </router-link>
@@ -45,39 +45,40 @@
           </v-col>
 
           <v-col cols="3">
-            <h3 class="card-title"><button disabled class="style-btn" />우리의 카드</h3>
-            <router-link to="/home" class="custom-link">
+            <h3 class="card-title">우리의 카드</h3>
+            <router-link to="/recruitment" class="custom-link">
               <p class="appbar-card-text">인재채용</p>
             </router-link>
-            <router-link to="/home" class="custom-link">
+            <router-link to="/notice/list-page" class="custom-link">
               <p class="appbar-card-text">공지사항</p>
             </router-link>
-            <router-link to="/home" class="custom-link">
+            <router-link to="/help/caution" class="custom-link">
               <p class="appbar-card-text">유의사항</p>
             </router-link>
-            <router-link to="/home" class="custom-link">
+            <router-link to="/help/faq" class="custom-link">
               <p class="appbar-card-text">자주묻는 질문</p>
             </router-link>
-            <router-link to="/home" class="custom-link">
+            <router-link to="/help/directions" class="custom-link">
               <p class="appbar-card-text">오시는 길</p>
             </router-link>
           </v-col>
+
         </v-row>
 
         <v-row>
           <v-col cols="2">
             <v-btn class="btn-size" style="height: 12vh; color: white;" to="/card-search">카드 검색</v-btn>
           </v-col>
-
+          <v-col cols="1"><span/></v-col>
           <v-col cols="3">
-            <h3 class="card-title"><button disabled class="style-btn" />모두의 회원</h3>
-            <router-link to="/home" class="custom-link">
+            <h3 class="card-title">모두의 회원</h3>
+            <router-link to="/board/list-page" class="custom-link">
               <p class="appbar-card-text">게시판</p>
             </router-link>
           </v-col>
 
           <v-col cols="3">
-            <h3 class="card-title"><button disabled class="style-btn" />모두의 쇼핑</h3>
+            <h3 class="card-title">모두의 쇼핑</h3>
             <router-link to="/home" class="custom-link">
               <p class="appbar-card-text">기프트 샵</p>
             </router-link>
@@ -93,13 +94,13 @@
       <v-btn variant="plain" :ripple="false" to="/home" class="main-button">소개</v-btn>
     </v-col>
     <v-col cols="auto">
-      <v-btn variant="plain" :ripple="false" to="/" class="main-button">게시판</v-btn>
+      <v-btn variant="plain" :ripple="false" to="/board/list-page" class="main-button">게시판</v-btn>
     </v-col>
     <v-col cols="auto">
       <v-btn variant="plain" :ripple="false" to="/myPage" class="main-button" @click="list">내 공간</v-btn>
     </v-col>
     <v-col cols="auto">
-      <v-btn variant="plain" :ripple="false" to="/manageMentPage" class="main-button" @click="management">관리자 페이지</v-btn>
+      <v-btn variant="plain" :ripple="false" to="/manageMentPage" class="main-button">관리자 페이지</v-btn>
     </v-col>
     <v-menu>
       <template v-slot:activator="{ props }">
@@ -144,7 +145,10 @@ export default {
 
     const LoginDisplay = ref("block");
     const LogoutDisplay = ref("none");
-    const localStorageAccessToken = localStorage.getItem("accesstoken")
+    // const localStorageAccessToken = localStorage.getItem("accesstoken")
+
+    // redis 로 인해 바꾼 코드
+    const localStorageAccessToken = localStorage.getItem("userToken");
 
     const handleScroll = () => {
       // 스크롤 위치를 확인하여 배경 색상을 조절합니다.
@@ -221,16 +225,22 @@ export default {
       this.requestNaverLoginToSpring()
       window.location.reload();
     },
-    kakaoLogin() {
-      this.requestKakaoLoginToSpring()
+    async kakaoLogin() {
+      await this.requestKakaoLoginToSpring()
+      // await this.requestUserInfoToSpring() // 09.13 : 로그인 시, 토큰 값으로 사용자 정보 가져오기 시도 
     },
     list() {
       this.getBoardList()
     },
+
+    ...mapActions('LogInModule', ['logout']),
     async logOut() {
       await localStorage.removeItem("accesstoken")
       await localStorage.removeItem("refreshtoken")
       await window.location.reload();
+
+      // redis 작업 중 추가 (로그아웃 액션 호출)
+      await this.logout();
     }
   },
 }

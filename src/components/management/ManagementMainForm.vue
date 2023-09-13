@@ -4,7 +4,7 @@
             <div class="topBar">
                 <div class="managerInfo">
                     <div class="managerImg"></div>
-                    <div class="managerHi">{{ memberInfo.nickname }} 님 환영합니다.</div>
+                    <div class="managerHi">{{ memberInfo && memberInfo.nickname }} 님 환영합니다.</div>
                 </div>
                 <div class="managerPageCategory">
                     <button @click="accountManagement">회원 관리</button>

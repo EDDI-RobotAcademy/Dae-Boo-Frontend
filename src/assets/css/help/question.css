@@ -1,0 +1,22 @@
+.question-mt {
+    margin-top: 3rem;
+  }
+  .question-title-mr {
+    margin: 1rem;
+    margin-top: 2rem;
+  }
+  .editor-mr {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .question-cencel-mr {
+    margin: 1rem;
+    float: right;
+  }
+  .question-button-mr {
+    margin: 1rem;
+    float: right;
+    background-color: #222;
+    padding: 7px;
+    border-radius: 10%;
+  }

@@ -1,0 +1,23 @@
+.board-button{
+  color: white;
+}
+.board-read-mr {
+  margin: 2rem;
+}
+.board-read-title {
+  color: white;
+  margin-bottom: 2rem; 
+}
+.board-read-text {
+  color: white;
+}
+.line {
+  border-bottom: solid 1px white;
+}
+.board-read-container{
+  background-color: #222222;
+}
+.board-read-container{
+  background-color: #222;
+  color: #fff;
+}

@@ -1,5 +1,5 @@
 <template>
-  <v-container class="notice-register-container">
+  <v-container class="board-register-container">
     <form @submit.prevent="onSubmit">
       <v-card class="pd" rounded="30px">
         <div>
@@ -8,27 +8,46 @@
               <v-text-field
                 disabled="true"
                 label="작성자"
+                value="tester"
                 variant="outlined"
-                class="notice-register-body"
+                class="board-register-body"
                 v-model="writer"
-              />
+              >
+              </v-text-field>
             </v-col>
-            <v-col cols="1">
-              <span />
-            </v-col>
-            <v-col cols="9">
+            <v-col cols="1"></v-col>
+            <v-col cols="7">
               <v-text-field
                 label="제목"
                 variant="outlined"
-                class="notice-register-body"
-                v-model="title"
+                class="board-register-body"
+                v-model="boardName"
               />
+            </v-col>
+            <v-col cols="2">
+              <v-select
+               class="board-register-body"
+                label="Select"
+                :items="[
+                  '전체',
+                  '일상',
+                  '후기',
+                ]"
+                variant="outlined"
+              ></v-select>
             </v-col>
             <v-col cols="12">
               <div id="editor" class="editor"></div>
             </v-col>
           </v-row>
           <div>
+            <v-row>
+            <v-col cols="11">
+            <router-link to="/board/list-page">
+              <v-btn class="submit-btn" color="error">취소</v-btn>
+            </router-link>
+          </v-col>
+          <v-col cols="1">
             <button
               type="button"
               @click="onSubmit"
@@ -37,10 +56,9 @@
             >
               작성완료
             </button>
+          </v-col>
+        </v-row>
           </div>
-          <router-link to="/notice/list-page">
-            <v-btn class="submit-btn" color="error">취소</v-btn>
-          </router-link>
         </div>
       </v-card>
     </form>
@@ -51,14 +69,15 @@
 import Editor from "@toast-ui/editor";
 import "@/assets/css/editor-custom-style.css";
 import "@toast-ui/editor/dist/toastui-editor.css";
-import "@/assets/css/notice/noticeRegister.css";
+import '@/assets/css/board/boardRegister.css'
+
 export default {
   data() {
     return {
       editor: null,
-      writer: "관리자",
-      title: "",
+      boardName: "",
       content: "",
+      writer:"test",
     };
   },
   mounted() {
@@ -76,7 +95,7 @@ export default {
     onSubmit() {
       this.content = this.editor.getMarkdown();
       this.$emit("submit", {
-        title: this.title,
+        boardName: this.boardName,
         writer: this.writer,
         content: this.content,
       });
@@ -84,5 +103,8 @@ export default {
   },
 };
 </script>
+
 <style>
+
 </style>
+  

@@ -9,6 +9,7 @@ import myPageRouter from "./myPage";
 import recruitmentRouter from "./recruitment";
 import cardRouter from "./card";
 import noticeRouter from "./notice";
+import boardRouter from "./board";
 
 const routes = [
   ...mainRouter,
@@ -20,7 +21,8 @@ const routes = [
   ...myPageRouter,
   ...recruitmentRouter,
   ...cardRouter,
-  ...noticeRouter
+  ...noticeRouter,
+  ...boardRouter,
 ];
 
 const router = createRouter({
