@@ -1,0 +1,28 @@
+.question-container{
+  background-color: #fff;
+  color: #222;
+  margin-top: 3rem;
+  border: solid 3px #444;
+
+}
+.question-button{
+  color: #222;
+}
+.question-read-mr {
+  margin: 2rem;
+}
+.question-read-title {
+  color: #222;
+  margin-bottom: 2rem; 
+  
+}
+.question-read-text {
+  color: #222;
+}
+.read-line{
+  border-bottom: solid 1px #444;
+}
+.qa-viewer{
+  min-height: 200px; 
+  border-bottom: 1px solid #222;
+}
