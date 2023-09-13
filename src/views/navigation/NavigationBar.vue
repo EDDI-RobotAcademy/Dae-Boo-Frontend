@@ -145,7 +145,10 @@ export default {
 
     const LoginDisplay = ref("block");
     const LogoutDisplay = ref("none");
-    const localStorageAccessToken = localStorage.getItem("accesstoken")
+    // const localStorageAccessToken = localStorage.getItem("accesstoken")
+
+    // redis 로 인해 바꾼 코드
+    const localStorageAccessToken = localStorage.getItem("userToken");
 
     const handleScroll = () => {
       // 스크롤 위치를 확인하여 배경 색상을 조절합니다.
@@ -222,16 +225,22 @@ export default {
       this.requestNaverLoginToSpring()
       window.location.reload();
     },
-    kakaoLogin() {
-      this.requestKakaoLoginToSpring()
+    async kakaoLogin() {
+      await this.requestKakaoLoginToSpring()
+      // await this.requestUserInfoToSpring() // 09.13 : 로그인 시, 토큰 값으로 사용자 정보 가져오기 시도 
     },
     list() {
       this.getBoardList()
     },
+
+    ...mapActions('LogInModule', ['logout']),
     async logOut() {
       await localStorage.removeItem("accesstoken")
       await localStorage.removeItem("refreshtoken")
       await window.location.reload();
+
+      // redis 작업 중 추가 (로그아웃 액션 호출)
+      await this.logout();
     }
   },
 }
