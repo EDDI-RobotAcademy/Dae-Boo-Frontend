@@ -38,8 +38,8 @@ export default {
                 commit(REQUEST_QUESTION_TO_SPRING, res.data)
             })
     },
-       requestDeleteInquiryToSpring (_, questionId) {
-        return axiosInst.delete(`/inquiry/${questionId}`)
+       requestDeleteQuestionToSpring (_, questionId) {
+        return axiosInst.delete(`/question/delete/${questionId}`)
             .then(() => {
                 alert('삭제 성공!')
             })
