@@ -22,7 +22,7 @@
         </div>
         <div id="box2">
             <div v-if="pageNumber === 1">
-                <myPageInfo :myInfo="myInfo" />
+                <myPageInfo :memberInfo="memberInfo" />
             </div>
             <div v-if="pageNumber === 2">
                 <myPageBoard :myBoards="myBoards" />
@@ -34,7 +34,7 @@
                 <MyPageQA />
             </div>
             <div v-if="pageNumber === 5">
-                <MyPageInfoModifyForm :myInfo="myInfo" @submit="onSubmit" />
+                <MyPageInfoModifyForm :memberInfo="memberInfo" @submit="onSubmit" />
             </div>
         </div>
     </div>
@@ -70,18 +70,24 @@ export default {
         this.getMyInfoToSpring(this.userId)
     },
     computed: {
-        ...mapState(MyPageModule, ['myBoards', 'myInfo']),
-        ...mapState(LogInModule, ['userId'])
+        ...mapState(MyPageModule, ['myBoards']),
+        ...mapState(LogInModule, ['memberInfo'])
     },
     created() {
-        this.userId = this.$store.state[LogInModule].userId;
+        this.userId = this.$store.state[LogInModule].memberInfo.userId;
     },
     methods: {
         ...mapActions(MyPageModule, ['getMyBoardToSpring', 'getMyInfoToSpring', 'requestMyInfoModifyToSpring']),
+        // async onSubmit(payload) {
+        //     const { nickname, mobile, email, interest1, interest2 } = payload
+        //     const userId = this.userId
+        //     await this.requestMyInfoModifyToSpring({ nickname, mobile, email, interest1, interest2, userId })
+        //     await this.$router.push({ path: `/myPage` });
+        // }
         async onSubmit(payload) {
-            const { nickname, mobile, email, interest1, interest2 } = payload
+            const { nickname, mobile, email, interest1 } = payload
             const userId = this.userId
-            await this.requestMyInfoModifyToSpring({ nickname, mobile, email, interest1, interest2, userId })
+            await this.requestMyInfoModifyToSpring({ nickname, mobile, email, interest1, userId })
             await this.$router.push({ path: `/myPage` });
         }
     },

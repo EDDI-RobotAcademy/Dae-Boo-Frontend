@@ -22,7 +22,7 @@
         </div>
         <div id="box2">
             <div v-if="pageNumber === 1">
-                <myPageInfo :myInfo="myInfo" />
+                <myPageInfo :memberInfo="memberInfo" />
             </div>
             <div v-if="pageNumber === 2">
                 <myPageBoard :myBoards="myBoards" />
@@ -64,12 +64,12 @@ export default {
         await this.getMyBoardToSpring(this.userId)
     },
     created() {
-        this.userId = this.$store.state[LogInModule].userId;
+        this.userId = this.$store.state[LogInModule].memberInfo.userId;
         this.getMyInfoToSpring(this.userId)
     },
     computed: {
-        ...mapState(MyPageModule, ['myBoards', 'myInfo']),
-        ...mapState(LogInModule, ['userId'])
+        ...mapState(MyPageModule, ['myBoards']),
+        ...mapState(LogInModule, ['memberInfo'])
     },
     methods: {
         ...mapActions(MyPageModule, ['getMyBoardToSpring', 'getMyInfoToSpring']),

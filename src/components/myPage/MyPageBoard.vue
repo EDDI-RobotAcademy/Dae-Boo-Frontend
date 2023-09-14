@@ -34,6 +34,7 @@
                     </td>
                 </tr>
             </v-table>
+            <v-btn color="red" @click="deleteSelectedBoards"> 삭제 </v-btn>
         </div>
 
         <div v-if="boardPageNumber === 2">
@@ -68,6 +69,7 @@ export default {
     data() {
         return {
             boardPageNumber: 1,
+            selectedBoards: []
         }
     },
     props: {
@@ -75,6 +77,16 @@ export default {
             type: Array
         }
     },
+    methods: {
+        deleteSelectedBoards() {
+            if (this.selectedBoards.length === 0) {
+                alert("삭제할 게시물을 선택하세요.");
+                return;
+            }
+
+        }
+    }
+
 }
 </script>
 <style></style>
