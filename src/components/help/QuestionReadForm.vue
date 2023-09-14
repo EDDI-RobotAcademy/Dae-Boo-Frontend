@@ -24,6 +24,10 @@
           <div id="viewer" class="qa-viewer"></div>
         </v-col>
       </v-row>
+      <div>
+        <v-btn @click="onDelete" style="margin-top: 1rem; text-align: center;" color="error">삭제하기</v-btn>
+      </div>
+      <question-comment-component/>
     </div>
   </v-container>
 </template>
@@ -34,7 +38,13 @@ import "@/assets/css/editor-custom-style.css";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import "@toast-ui/editor/dist/theme/toastui-editor-dark.css";
 import "@/assets/css/help/questionRead.css";
+import { mapActions } from 'vuex';
+const QuestionModule = 'QuestionModule';
+import QuestionCommentComponent from '@/components/help/QuestionCommentComponent.vue'
 export default {
+  components: {
+    QuestionCommentComponent
+  },
   name: "QuestionReadForm",
   props: {
     question: {
@@ -60,6 +70,14 @@ export default {
       height: "500px",
       initialValue: this.question.contents,
     });
+  },
+  methods: {
+    ...mapActions(QuestionModule, ['requestDeleteQuestionToSpring']),
+    async onDelete() {
+    const questionId = this.question.questionId;
+    await this.requestDeleteQuestionToSpring(questionId);
+    await this.$router.push({name: 'MyPage'})
+  }
   },
 };
 </script>
