@@ -8,32 +8,32 @@
             <tbody>
                 <!-- <tr>
                     <th scope="row">성명</th>
-                    <td>{{ myInfo.name }}</td>
+                    <td>{{ memberInfo.name }}</td>
                 </tr> -->
                 <tr>
                     <th scope="row">닉네임</th>
-                    <td>{{ myInfo.nickname }}</td>
+                    <td>{{ memberInfo.nickname }}</td>
                 </tr>
                 <tr>
                     <th scope="row">성별</th>
-                    <td>{{ myInfo.gender }}</td>
+                    <td>{{ memberInfo.gender }}</td>
                 </tr>
                 <tr>
                     <th scope="row">휴대폰 번호</th>
-                    <td>{{ myInfo.mobile }}</td>
+                    <td>{{ memberInfo.mobile }}</td>
                 </tr>
                 <tr>
                     <th scope="row">이메일</th>
-                    <td>{{ myInfo.email }}</td>
+                    <td>{{ memberInfo.email }}</td>
                 </tr>
                 <tr>
                     <th scope="row">관심사1</th>
                     <td>1. {{ interest1ToKorean }}</td>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <th scope="row">관심사2</th>
                     <td>2. {{ interest2ToKorean }}</td>
-                </tr>
+                </tr> -->
 
             </tbody>
         </v-table>
@@ -46,26 +46,27 @@
 import '@/assets/css/myPage/MyPageInfo.css'
 import { mapActions, mapState } from "vuex"
 const MyPageModule = 'MyPageModule'
+const LogInModule = 'LogInModule'
 
 export default {
     props: {
-        myInfo: {
+        memberInfo: {
             type: Object
         }
     },
     methods: {
         ...mapActions(MyPageModule, ['requestDeleteToSpring']),
         async goToModifyPage() {
-            await this.$router.push({ path: `/myPageModify/${this.myInfo.userId}` });
+            await this.$router.push({ path: `/myPageModify/${this.memberInfo.userId}` });
         },
         deleteUser() {
-            this.requestDeleteToSpring(this.myInfo.userId)
+            this.requestDeleteToSpring(this.memberInfo.userId)
         },
     },
     computed: {
-        ...mapState(MyPageModule, ['myInfo']),
+        ...mapState(LogInModule, ['memberInfo']),
         interest1ToKorean() {
-            switch (this.myInfo.interest1) {
+            switch (this.memberInfo.interest1) {
                 case "INTEREST1":
                     return "관심사1";
                 case "INTEREST2":
@@ -76,18 +77,18 @@ export default {
                     return "관심사4";
             }
         },
-        interest2ToKorean() {
-            switch (this.myInfo.interest2) {
-                case "INTEREST1":
-                    return "관심사1";
-                case "INTEREST2":
-                    return "관심사2";
-                case "INTEREST3":
-                    return "관심사3";
-                default:
-                    return "관심사4";
-            }
-        }
+        // interest2ToKorean() {
+        //     switch (this.memberInfo.interest2) {
+        //         case "INTEREST1":
+        //             return "관심사1";
+        //         case "INTEREST2":
+        //             return "관심사2";
+        //         case "INTEREST3":
+        //             return "관심사3";
+        //         default:
+        //             return "관심사4";
+        //     }
+        // }
     }
 
 }

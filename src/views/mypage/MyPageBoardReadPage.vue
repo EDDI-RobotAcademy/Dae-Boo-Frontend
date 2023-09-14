@@ -64,11 +64,11 @@ export default {
     },
     created() {
         this.requestBoardReadToSpring(this.boardId);
-        this.userId = this.$store.state[LogInModule].userId;
+        this.userId = this.$store.state[LogInModule].memberInfo.userId;
     },
     computed: {
         ...mapState(BoardModule, ['thisBoard']),
-        ...mapState(LogInModule, ['userId']),
+        ...mapState(LogInModule, ['memberInfo']),
     },
     watch: {
         // state의 thisBoard가 변경될 때 thisBoardA에 할당
