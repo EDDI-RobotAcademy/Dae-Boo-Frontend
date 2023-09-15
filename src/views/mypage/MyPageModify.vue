@@ -67,7 +67,6 @@ export default {
     },
     mounted() {
         this.getMyBoardToSpring(this.userId)
-        this.getMyInfoToSpring(this.userId)
     },
     computed: {
         ...mapState(MyPageModule, ['myBoards']),
@@ -77,7 +76,7 @@ export default {
         this.userId = this.$store.state[LogInModule].memberInfo.userId;
     },
     methods: {
-        ...mapActions(MyPageModule, ['getMyBoardToSpring', 'getMyInfoToSpring', 'requestMyInfoModifyToSpring']),
+        ...mapActions(MyPageModule, ['getMyBoardToSpring', 'requestMyInfoModifyToSpring']),
         // async onSubmit(payload) {
         //     const { nickname, mobile, email, interest1, interest2 } = payload
         //     const userId = this.userId

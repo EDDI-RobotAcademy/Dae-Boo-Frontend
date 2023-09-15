@@ -65,14 +65,13 @@ export default {
     },
     created() {
         this.userId = this.$store.state[LogInModule].memberInfo.userId;
-        this.getMyInfoToSpring(this.userId)
     },
     computed: {
         ...mapState(MyPageModule, ['myBoards']),
         ...mapState(LogInModule, ['memberInfo'])
     },
     methods: {
-        ...mapActions(MyPageModule, ['getMyBoardToSpring', 'getMyInfoToSpring']),
+        ...mapActions(MyPageModule, ['getMyBoardToSpring']),
     },
 }
 </script>

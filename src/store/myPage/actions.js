@@ -12,14 +12,6 @@ export default {
             commit(REQUEST_MY_BOARD_LIST_TO_SPRING, res.data)
         })
     },
-    // getMyInfoToSpring( _, payload) {
-    //     console.log("userId: " + payload)
-    //     return  axiosInst.get('/user/userInfo', { params: { userId:payload }})
-    //     .then((res) => {
-    //         console.log("MyInfo res: " + res.data.name)
-    //         commit(REQUEST_MY_INFO_TO_SPRING, res.data)
-    //     })
-    // },
     // requestMyInfoModifyToSpring(_, payload) {
     //     const { nickname, mobile, email,interest1, interest2, userId } = payload;
     //     // console.log("requestMyInfoModifyToSpring() nickname: " + nickname +
@@ -29,7 +21,7 @@ export default {
     //         return axiosInst.put(`/user/user-info/${userId}`, { nickname, mobile, email, interest1, interest2 })
     // },
     requestMyInfoModifyToSpring(_, payload) {
-        const { nickname, mobile, email,interest1, userId } = payload;  
+        const { nickname, mobile, email, interest1, userId } = payload;  
             return axiosInst.put(`/user/user-info/${userId}`, { nickname, mobile, email, interest1})
     },
     requestDeleteToSpring(_, payload) {
