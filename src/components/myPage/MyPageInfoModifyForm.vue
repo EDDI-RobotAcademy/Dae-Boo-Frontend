@@ -6,7 +6,7 @@
                     <tr>
                         <th scope="row">성명</th>
                         <td>
-                            <input type="text" :value="memberInfo.name" disabled />
+                            <input type="text" :value="myInfo.name" disabled />
                         </td>
                     </tr>
                     <tr>
@@ -18,7 +18,7 @@
                     <tr>
                         <th scope="row">성별</th>
                         <td>
-                            <input type="text" :value="memberInfo.gender" disabled />
+                            <input type="text" :value="myInfo.gender" disabled />
                         </td>
                     </tr>
                     <tr>
@@ -33,30 +33,33 @@
                             <input type="text" v-model="email" />
                         </td>
                     </tr>
+
                     <tr>
                         <th scope="row">관심사1 </th>
                         <td>
-                            <!-- <select v-model="interest1">
-                                <option v-for="(interest, index) in interestList" :value="interest.value"
-                                    v-bind:key="index">
-                                    {{ interest.name }}
-                                </option>
-                            </select> -->
                             <v-select v-model="interest1" label="관심사1" :items="interestList" item-title="name"
                                 item-value="value" variant="underlined"></v-select>
                         </td>
                     </tr>
+
                     <tr>
                         <th scope="row">관심사2 </th>
                         <td>
-                            <!-- <select v-model="interest2">
+                            <v-select v-model="interest2" label="관심사2" :items="interestList" item-title="name"
+                                item-value="value" variant="underlined"></v-select>
+                        </td>
+                    </tr>
+                    <!-- <tr>
+                        <th scope="row">관심사2 </th>
+                        <td>
+                            <select v-model="interest2">
                                 <option v-for="(interest, index) in interestList" :value="interest.value"
                                     v-bind:key="index">
                                     {{ interest.name }}
                                 </option>
-                            </select> -->
+                            </select>
                         </td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </v-table>
             <v-btn type="button" @click="onSubmit">
@@ -70,7 +73,7 @@
 import '@/assets/css/myPage/MyPageInfo.css'
 export default {
     props: {
-        memberInfo: {
+        myInfo: {
             type: Object
         }
     },
@@ -83,7 +86,7 @@ export default {
             email: '',
             userId: '',
             interest1: '',
-            // interest2: '',
+            interest2: '',
             interestList: [
                 { name: '관심사1번', value: 'INTEREST1' },
                 { name: '관심사2번', value: 'INTEREST2' },
@@ -93,24 +96,24 @@ export default {
         }
     },
     created() {
-        this.name = this.memberInfo.name
-        this.nickname = this.memberInfo.nickname
-        this.mobile = this.memberInfo.mobile
-        this.gender = this.memberInfo.gender
-        this.email = this.memberInfo.email
-        this.userId = this.memberInfo.userId
-        this.interest1 = this.memberInfo.interest1
-        // this.interest2 = this.memberInfo.interest2
+        this.name = this.myInfo.name
+        this.nickname = this.myInfo.nickname
+        this.mobile = this.myInfo.mobile
+        this.gender = this.myInfo.gender
+        this.email = this.myInfo.email
+        this.userId = this.myInfo.userId
+        this.interest1 = this.myInfo.interest1
+        this.interest2 = this.myInfo.interest2
     },
     methods: {
-        // onSubmit() {
-        //     const { nickname, mobile, email, interest1, interest2 } = this
-        //     this.$emit('submit', { nickname, mobile, email, interest1, interest2 })
-        // }
         onSubmit() {
-            const { nickname, mobile, email, interest1 } = this
-            this.$emit('submit', { nickname, mobile, email, interest1 })
+            const { nickname, mobile, email, interest1, interest2 } = this
+            this.$emit('submit', { nickname, mobile, email, interest1, interest2 })
         }
+        // onSubmit() {
+        //     const { nickname, mobile, email, interest1 } = this
+        //     this.$emit('submit', { nickname, mobile, email, interest1 })
+        // }
     },
 
 }

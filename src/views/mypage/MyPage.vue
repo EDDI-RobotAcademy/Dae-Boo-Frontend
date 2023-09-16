@@ -22,7 +22,7 @@
         </div>
         <div id="box2">
             <div v-if="pageNumber === 1">
-                <myPageInfo :memberInfo="memberInfo" />
+                <myPageInfo :myInfo="myInfo" />
             </div>
             <div v-if="pageNumber === 2">
                 <myPageBoard :myBoards="myBoards" />
@@ -60,15 +60,15 @@ export default {
         MyPageCard,
         MyPageQA
     },
-    async mounted() {
-        await this.getMyBoardToSpring(this.userId)
-    },
-    created() {
-        this.userId = this.$store.state[LogInModule].memberInfo.userId;
+    mounted() {
+        this.getMyBoardToSpring(this.userId)
         this.getMyInfoToSpring(this.userId)
     },
+    created() {
+        this.userId = this.$store.state[MyPageModule].myInfo.userId;
+    },
     computed: {
-        ...mapState(MyPageModule, ['myBoards']),
+        ...mapState(MyPageModule, ['myBoards', 'myInfo']),
         ...mapState(LogInModule, ['memberInfo'])
     },
     methods: {

@@ -8,32 +8,32 @@
             <tbody>
                 <!-- <tr>
                     <th scope="row">성명</th>
-                    <td>{{ memberInfo.name }}</td>
+                    <td>{{ myInfo.name }}</td>
                 </tr> -->
                 <tr>
                     <th scope="row">닉네임</th>
-                    <td>{{ memberInfo.nickname }}</td>
+                    <td>{{ myInfo.nickname }}</td>
                 </tr>
                 <tr>
                     <th scope="row">성별</th>
-                    <td>{{ memberInfo.gender }}</td>
+                    <td>{{ myInfo.gender }}</td>
                 </tr>
                 <tr>
                     <th scope="row">휴대폰 번호</th>
-                    <td>{{ memberInfo.mobile }}</td>
+                    <td>{{ myInfo.mobile }}</td>
                 </tr>
                 <tr>
                     <th scope="row">이메일</th>
-                    <td>{{ memberInfo.email }}</td>
+                    <td>{{ myInfo.email }}</td>
                 </tr>
                 <tr>
                     <th scope="row">관심사1</th>
                     <td>1. {{ interest1ToKorean }}</td>
                 </tr>
-                <!-- <tr>
+                <tr>
                     <th scope="row">관심사2</th>
                     <td>2. {{ interest2ToKorean }}</td>
-                </tr> -->
+                </tr>
 
             </tbody>
         </v-table>
@@ -50,23 +50,24 @@ const LogInModule = 'LogInModule'
 
 export default {
     props: {
-        memberInfo: {
+        myInfo: {
             type: Object
         }
     },
     methods: {
         ...mapActions(MyPageModule, ['requestDeleteToSpring']),
         async goToModifyPage() {
-            await this.$router.push({ path: `/myPageModify/${this.memberInfo.userId}` });
+            await this.$router.push({ path: `/myPageModify/${this.myInfo.userId}` });
         },
         deleteUser() {
-            this.requestDeleteToSpring(this.memberInfo.userId)
+            this.requestDeleteToSpring(this.myInfo.userId)
         },
     },
     computed: {
+        ...mapState(MyPageModule, ['myInfo']),
         ...mapState(LogInModule, ['memberInfo']),
         interest1ToKorean() {
-            switch (this.memberInfo.interest1) {
+            switch (this.myInfo.interest1) {
                 case "INTEREST1":
                     return "관심사1";
                 case "INTEREST2":
@@ -77,18 +78,18 @@ export default {
                     return "관심사4";
             }
         },
-        // interest2ToKorean() {
-        //     switch (this.memberInfo.interest2) {
-        //         case "INTEREST1":
-        //             return "관심사1";
-        //         case "INTEREST2":
-        //             return "관심사2";
-        //         case "INTEREST3":
-        //             return "관심사3";
-        //         default:
-        //             return "관심사4";
-        //     }
-        // }
+        interest2ToKorean() {
+            switch (this.myInfo.interest2) {
+                case "INTEREST1":
+                    return "관심사1";
+                case "INTEREST2":
+                    return "관심사2";
+                case "INTEREST3":
+                    return "관심사3";
+                default:
+                    return "관심사4";
+            }
+        }
     }
 
 }

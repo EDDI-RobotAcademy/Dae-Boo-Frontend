@@ -137,6 +137,7 @@ import { ref, onMounted } from 'vue';
 import { useStore, mapActions } from "vuex";
 
 const LogInModule = 'LogInModule'
+const MyPageModule = 'MyPageModule'
 
 export default {
   setup() {
@@ -218,8 +219,9 @@ export default {
     ...mapActions(LogInModule, [
       'requestNaverLoginToSpring',
       'getBoardList',
-      'requestKakaoLoginToSpring'
+      'requestKakaoLoginToSpring',
     ]),
+    ...mapActions(MyPageModule, ['requestMyPageUserInfo']),
     async naverLogin() {
       await this.requestNaverLoginToSpring()
     },
@@ -228,6 +230,7 @@ export default {
     },
     list() {
       this.getBoardList()
+      this.requestMyPageUserInfo() // 내 공간 페이지 들어갈 때, 사용자 정보 부르기
     },
     ...mapActions('LogInModule', ['logout']),
     async logOut() {
