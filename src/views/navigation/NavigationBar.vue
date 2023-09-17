@@ -220,8 +220,9 @@ export default {
       'requestNaverLoginToSpring',
       'getBoardList',
       'requestKakaoLoginToSpring',
+      'logout'
     ]),
-    ...mapActions(MyPageModule, ['requestMyPageUserInfo']),
+    ...mapActions(MyPageModule, ['deleteVuexUserInfo', 'requestMyPageUserInfo']),
     async naverLogin() {
       await this.requestNaverLoginToSpring()
     },
@@ -232,10 +233,10 @@ export default {
       this.getBoardList()
       this.requestMyPageUserInfo() // 내 공간 페이지 들어갈 때, 사용자 정보 부르기
     },
-    ...mapActions('LogInModule', ['logout']),
     async logOut() {
       // redis 작업 중 추가 (로그아웃 액션 호출)
       await this.logout();
+      await this.deleteVuexUserInfo();
       await window.location.reload();
     }
   },

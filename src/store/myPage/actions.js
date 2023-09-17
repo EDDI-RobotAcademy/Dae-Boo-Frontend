@@ -36,7 +36,6 @@ export default {
     requestMyPageUserInfo({commit}) {
         // 추가되는 코드 (토큰으로 사용자 정보 가져오기 함께 실행)
         const userToken = window.localStorage.getItem('userToken');
-
         return axiosInst.post("/user/testToken", {
             userToken
         }).then((res) => {
@@ -54,5 +53,8 @@ export default {
         }).catch(() => {
             alert("탈퇴되지 않았습니다.")
         })
+    },
+    deleteVuexUserInfo({commit}) {
+        commit(REQUEST_MY_INFO_TO_SPRING, null);
     }
 }

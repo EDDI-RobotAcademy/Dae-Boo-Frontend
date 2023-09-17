@@ -12,19 +12,19 @@
                 </tr> -->
                 <tr>
                     <th scope="row">닉네임</th>
-                    <td>{{ myInfo.nickname }}</td>
+                    <td>{{ myInfo && myInfo.nickname }}</td>
                 </tr>
                 <tr>
                     <th scope="row">성별</th>
-                    <td>{{ myInfo.gender }}</td>
+                    <td>{{ myInfo && myInfo.gender }}</td>
                 </tr>
                 <tr>
                     <th scope="row">휴대폰 번호</th>
-                    <td>{{ myInfo.mobile }}</td>
+                    <td>{{ myInfo && myInfo.mobile }}</td>
                 </tr>
                 <tr>
                     <th scope="row">이메일</th>
-                    <td>{{ myInfo.email }}</td>
+                    <td>{{ myInfo && myInfo.email }}</td>
                 </tr>
                 <tr>
                     <th scope="row">관심사1</th>
@@ -67,7 +67,7 @@ export default {
         ...mapState(MyPageModule, ['myInfo']),
         ...mapState(LogInModule, ['memberInfo']),
         interest1ToKorean() {
-            switch (this.myInfo.interest1) {
+            switch (this.myInfo && this.myInfo.interest1) {
                 case "INTEREST1":
                     return "관심사1";
                 case "INTEREST2":
@@ -79,7 +79,7 @@ export default {
             }
         },
         interest2ToKorean() {
-            switch (this.myInfo.interest2) {
+            switch (this.myInfo && this.myInfo.interest2) {
                 case "INTEREST1":
                     return "관심사1";
                 case "INTEREST2":
