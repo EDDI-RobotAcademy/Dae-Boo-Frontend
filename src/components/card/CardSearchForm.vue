@@ -18,7 +18,7 @@
     <div class="container">
       <div class="row">
         <div v-for="card in cards" :key="card.id" class="section">
-          <img :src="card.cardImage" alt="card image" class="card-image" data-aos="fade-top" />
+          <img :src="dynamicLink(card.cardImage)" alt="card image" class="card-image" data-aos="fade-top" />
           <div class="intro">
             <p class="card-name">{{ card.name }}</p>
           </div>
@@ -59,7 +59,7 @@ export default {
       this.cards = this.$store.state[CardModule].cards;
     },
     dynamicLink(extraPath) {
-      return `${this.link}/${extraPath}`;
+      return `${LINK}/${extraPath}`;
     },
     computed: {
       ...mapState(CardModule, ['cards']),
