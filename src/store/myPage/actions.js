@@ -14,7 +14,7 @@ export default {
             commit(REQUEST_MY_BOARD_LIST_TO_SPRING, res.data)
         })
     },
-    // 주석 풀었습니다. (9/17)
+
     getMyInfoToSpring({commit}, payload) {
         console.log("userId: " + payload)
         return axiosInst.get('/user/userInfo', { params: { userId:payload }})
