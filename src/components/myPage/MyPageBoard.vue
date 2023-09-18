@@ -16,7 +16,7 @@
                 </tr>
                 <tr v-for="myBoard in myBoards" :key="myBoard.boardId">
                     <td align="center">
-                        <input type="checkbox" />
+                        <input type="checkbox" v-model="selectedBoards" :value="myBoard.boardId" />
                     </td>
                     <td align="center">
                         {{ myBoard.boardId }}
@@ -65,6 +65,8 @@
 </template>
 <script>
 import '@/assets/css/myPage/MyPageBoard.css'
+import { mapActions } from 'vuex';
+const BoardModule = 'BoardModule';
 export default {
     data() {
         return {
@@ -78,12 +80,15 @@ export default {
         }
     },
     methods: {
+        ...mapActions(BoardModule, ['requestManagementBoardDeleteToSpring']),
         deleteSelectedBoards() {
             if (this.selectedBoards.length === 0) {
                 alert("삭제할 게시물을 선택하세요.");
                 return;
             }
-
+            console.log(this.selectedBoards);
+            let boardIds = this.selectedBoards.toString()
+            this.requestManagementBoardDeleteToSpring(boardIds);
         }
     }
 
