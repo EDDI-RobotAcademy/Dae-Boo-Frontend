@@ -24,7 +24,8 @@
                             현재 등록하신 게시글이 없습니다!
                         </th>
                     </tr>
-                    <tr class="myPageBoards-mr myPageBoards-tr" v-else v-for="myBoard in myBoards" :key="myBoard.boardId">
+                    <tr class="myPageBoards-mr myPageBoards-tr" v-else v-for="myBoard in paginatedMyBoards"
+                        :key="myBoard.boardId">
                         <td align="center">
                             <input type="checkbox" v-model="selectedBoards" :value="myBoard.boardId" />
                         </td>
@@ -44,10 +45,17 @@
                         </td>
                     </tr>
                 </tbody>
+                <tr>
+                    <th colspan="3">
+                        <v-pagination v-model="page" :length="Math.ceil(myBoards.length / itemsPerPage)"
+                            class="myPageBoards-nation" />
+                    </th>
+                </tr>
             </v-table>
             <v-btn class="myPageBoards-deletBtn" color="red" @click="deleteSelectedBoards"> 삭제 </v-btn>
         </div>
 
+        <!-- 댓글 -->
         <div v-if="boardPageNumber === 2">
             <table style="margin-top: 15px">
                 <tr>
@@ -82,12 +90,21 @@ export default {
     data() {
         return {
             boardPageNumber: 1,
-            selectedBoards: []
+            selectedBoards: [],
+            page: 1,
+            itemsPerPage: 5
         }
     },
     props: {
         myBoards: {
             type: Array
+        }
+    },
+    computed: {
+        paginatedMyBoards() {
+            const startIndex = (this.page - 1) * this.itemsPerPage;
+            const endIndex = startIndex + this.itemsPerPage;
+            return this.myBoards.slice(startIndex, endIndex);
         }
     },
     methods: {
