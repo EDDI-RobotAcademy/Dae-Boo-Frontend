@@ -1,7 +1,8 @@
 import axiosInst from '@/utility/axiosInst'
 import {
     REQUEST_MY_BOARD_LIST_TO_SPRING,
-    REQUEST_MY_INFO_TO_SPRING
+    REQUEST_MY_INFO_TO_SPRING,
+    REQUEST_MY_COMMENT_LIST_TO_SPRING
 } from '../myPage/mutation-types'
 
 export default {
@@ -25,6 +26,12 @@ export default {
         .catch((error) => {
             console.error("Error fetching MyInfo:", error);
         });
+    },
+    getMyCommentsToSprong({ commit }, payload){
+        return axiosInst.get('/comment/myComment', { params: { userId: payload }})
+        .then((res) => {
+            commit(REQUEST_MY_COMMENT_LIST_TO_SPRING,res.data)
+        })
     },
     requestMyInfoModifyToSpring({commit}, payload) {
         const { nickname, mobile, email, interest1, interest2, userId } = payload;

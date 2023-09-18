@@ -57,28 +57,39 @@
 
         <!-- 댓글 -->
         <div v-if="boardPageNumber === 2">
-            <table style="margin-top: 15px">
-                <tr>
-                    <th align="center" width="8%">check</th>
-                    <th align="center" width="22%">댓글 번호</th>
-                    <th align="center" width="50%">내용</th>
-                    <th align="center" width="30%">작성일</th>
-                </tr>
-                <tr>
-                    <td align="center">
-                        <input type="checkbox" />
-                    </td>
-                    <td align="center">
-                        dd
-                    </td>
-                    <td align="center">
-                        dd
-                    </td>
-                    <td align="center">
-                        ff
-                    </td>
-                </tr>
-            </table>
+            <v-table>
+                <thead>
+                    <tr>
+                        <td align="center" width="5%" class="myPageBoards-line">check</td>
+                        <td align="center" width="15%" class="myPageBoards-line">No.</td>
+                        <td align="center" width="40%" class="myPageBoards-line">내용</td>
+                        <td align="center" width="25%" class="myPageBoards-line">작성일</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="myPageBoards-mr" v-if="!myComments || (Array.isArray(myComments) && myComments.length === 0)
+                        ">
+                        <th colspan="3" style="text-align: center">
+                            현재 등록하신 게시글이 없습니다!
+                        </th>
+                    </tr>
+                    <tr class="myPageBoards-mr myPageBoards-tr" v-else v-for="myComment in myComments"
+                        :key="myComment.commentId">
+                        <td align="center">
+                            <input type="checkbox" />
+                        </td>
+                        <td align="center">
+                            {{ myComment.commentId }}
+                        </td>
+                        <td align="center">
+                            {{ myComment.content }}
+                        </td>
+                        <td align="center">
+                            {{ myComment.createDate }}
+                        </td>
+                    </tr>
+                </tbody>
+            </v-table>
         </div>
     </v-container>
 </template>
@@ -97,6 +108,9 @@ export default {
     },
     props: {
         myBoards: {
+            type: Array
+        },
+        myComments: {
             type: Array
         }
     },
