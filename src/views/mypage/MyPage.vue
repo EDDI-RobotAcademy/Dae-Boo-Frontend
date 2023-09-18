@@ -22,7 +22,7 @@
         </div>
         <div id="box2">
             <div v-if="pageNumber === 1">
-                <myPageInfo :memberInfo="memberInfo" />
+                <myPageInfo :myInfo="myInfo" />
             </div>
             <div v-if="pageNumber === 2">
                 <myPageBoard :myBoards="myBoards" />
@@ -60,19 +60,26 @@ export default {
         MyPageCard,
         MyPageQA
     },
-    async mounted() {
-        await this.getMyBoardToSpring(this.userId)
+    mounted() {
+        // 데이터를 가져오는 로직을 이동합니다.
+        this.loadData();
     },
     created() {
         this.userId = this.$store.state[LogInModule].memberInfo.userId;
-        this.getMyInfoToSpring(this.userId)
     },
     computed: {
-        ...mapState(MyPageModule, ['myBoards']),
+        ...mapState(MyPageModule, ['myBoards', 'myInfo']),
         ...mapState(LogInModule, ['memberInfo'])
     },
     methods: {
         ...mapActions(MyPageModule, ['getMyBoardToSpring', 'getMyInfoToSpring']),
+        loadData() {
+            // this.userId가 설정된 이후에 데이터를 가져옵니다.
+            if (this.userId) {
+                this.getMyBoardToSpring(this.userId);
+                this.getMyInfoToSpring(this.userId);
+            }
+        }
     },
 }
 </script>

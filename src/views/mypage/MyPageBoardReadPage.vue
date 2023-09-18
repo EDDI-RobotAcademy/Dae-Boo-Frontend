@@ -21,6 +21,7 @@ import MyPageBoardModify from '../../components/myPage/MyPageBoardModify.vue'
 import '@/assets/css/myPage/MyPageBoard.css'
 const BoardModule = 'BoardModule'
 const LogInModule = 'LogInModule'
+const MyPageModule = 'MyPageModule'
 export default {
     data() {
         return {
@@ -64,9 +65,10 @@ export default {
     },
     created() {
         this.requestBoardReadToSpring(this.boardId);
-        this.userId = this.$store.state[LogInModule].memberInfo.userId;
+        this.userId = this.$store.state[LogInModule].myInfo.userId;
     },
     computed: {
+        ...mapState(MyPageModule, ['myInfo']),
         ...mapState(BoardModule, ['thisBoard']),
         ...mapState(LogInModule, ['memberInfo']),
     },

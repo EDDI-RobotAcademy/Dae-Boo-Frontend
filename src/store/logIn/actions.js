@@ -3,6 +3,7 @@ import {
     REQUEST_USER_TOKEN_TO_SPRING,
     REQUEST_USER_INFO_TO_SPRING
 } from '../logIn/mutation-types'
+import router from '@/router';
 
 export default {
     // NAVER OAuth
@@ -29,7 +30,11 @@ export default {
                     userToken
                 }).then((res) => {
                     commit(REQUEST_USER_INFO_TO_SPRING, res.data);
-                    alert("사용자 정보 잘 받아왔습니다.");
+                    if(res.data.interest1 === null) {
+                        alert("회원가입이 완료된 사용자는 정보 기입 페이지로 이동합니다.")
+                        alert("userId: "+ res.data.userId)
+                        router.push({ name: 'AddInfoRegisterPage', params: { userId: res.data.userId } });
+                    }
                 });
             });
     },
@@ -67,7 +72,11 @@ export default {
             userToken
         }).then((res) => {
             commit(REQUEST_USER_INFO_TO_SPRING, res.data);
-            alert("사용자 정보 잘 받아왔습니다.");
+            if(res.data.interest1 === null) {
+                alert("회원가입이 완료된 사용자는 정보 기입 페이지로 이동합니다.")
+                alert("userId: "+ res.data.userId)
+                router.push({ name: 'AddInfoRegisterPage', params: { userId: res.data.userId } });
+            }
         });
       })
       .catch(() => {
@@ -88,5 +97,5 @@ export default {
                 commit(REQUEST_USER_TOKEN_TO_SPRING, null)
             }
         });
-    }
+    },
 }
