@@ -59,7 +59,7 @@ export default {
       this.cards = this.$store.state[CardModule].cards;
     },
     dynamicLink(extraPath) {
-      return `${this.link}/${extraPath}`;
+      return `${LINK}/${extraPath}`;
     },
     computed: {
       ...mapState(CardModule, ['cards']),
