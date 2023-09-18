@@ -137,6 +137,7 @@ import { ref, onMounted } from 'vue';
 import { useStore, mapActions } from "vuex";
 
 const LogInModule = 'LogInModule'
+const MyPageModule = 'MyPageModule'
 
 export default {
   setup() {
@@ -145,7 +146,6 @@ export default {
 
     const LoginDisplay = ref("block");
     const LogoutDisplay = ref("none");
-    // const localStorageAccessToken = localStorage.getItem("accesstoken")
 
     // redis 로 인해 바꾼 코드
     const localStorageAccessToken = localStorage.getItem("userToken");
@@ -219,28 +219,25 @@ export default {
     ...mapActions(LogInModule, [
       'requestNaverLoginToSpring',
       'getBoardList',
-      'requestKakaoLoginToSpring'
+      'requestKakaoLoginToSpring',
+      'logout'
     ]),
-    naverLogin() {
-      this.requestNaverLoginToSpring()
-      window.location.reload();
+    ...mapActions(MyPageModule, ['deleteVuexUserInfo', 'requestMyPageUserInfo']),
+    async naverLogin() {
+      await this.requestNaverLoginToSpring()
     },
     async kakaoLogin() {
       await this.requestKakaoLoginToSpring()
-      // await this.requestUserInfoToSpring() // 09.13 : 로그인 시, 토큰 값으로 사용자 정보 가져오기 시도 
     },
     list() {
       this.getBoardList()
+      this.requestMyPageUserInfo() // 내 공간 페이지 들어갈 때, 사용자 정보 부르기
     },
-
-    ...mapActions('LogInModule', ['logout']),
     async logOut() {
-      await localStorage.removeItem("accesstoken")
-      await localStorage.removeItem("refreshtoken")
-      await window.location.reload();
-
       // redis 작업 중 추가 (로그아웃 액션 호출)
       await this.logout();
+      await this.deleteVuexUserInfo();
+      await window.location.reload();
     }
   },
 }
