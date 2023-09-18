@@ -9,7 +9,7 @@ import NoticeModule from './notice/NoticeModule';
 import QuestionBoardModule from '@/store/questionBoard/QuestionBoardModule';
 import QuestionModule from './question/QuestionModule';
 import CommentModule from './comment/CommentModule';
-// import ProductModule from './product/ProductModule';
+import ProductModule from './product/ProductModule';
 import PaymentModule from './payment/PaymentModule';
 
 
@@ -28,7 +28,7 @@ export default createStore({
     QuestionBoardModule: QuestionBoardModule,
     QuestionModule: QuestionModule,
     CommentModule: CommentModule,
-    // ProductModule:ProductModule,
+    ProductModule:ProductModule,
     PaymentModule:PaymentModule
   },
   plugins: [
