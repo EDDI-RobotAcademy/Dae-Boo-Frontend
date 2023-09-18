@@ -1,5 +1,5 @@
 export default {
     myBoards: [],
     myBoard: {},
-    // myInfo: {}
+    myInfo: null
 }
