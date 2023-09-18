@@ -3,6 +3,16 @@
 }
 .ab {
     display: inline;
+    margin: 1rem;
+    font-weight: 700;
+    color: #585858;
+}
+.ab:hover {
+    display: inline;
+    margin: 1rem;
+    font-weight: 700;
+    color: #000000;
+    
 }
 .boardList{
     margin-top: 2rem;
@@ -59,4 +69,36 @@
 .modifyTr {
     font-size: 17px;
     margin: 10px;
+}
+.myPageBoards-title{
+    margin: 1rem;
+    color: #222222;
+    background-color: #fff;
+  }
+  .myPageBoards-mr{
+    margin: auto;
+    background-color: #fff;
+    color: #222222;
+  }
+  .myPageBoards-line{
+    border-bottom: solid 1px #222222;
+  }
+  .myPageBoards-tr{
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+  }
+  .myPageBoards-tr:hover {
+    background-color: rgb(109, 109, 109);
+}
+.myPageBoards-deletBtn{
+    margin-top: 2rem;
+    margin-right: 2rem;
+    float: right;
+    /* background-color: red; */
+  }
+  .th-style{
+    border: solid 0.5px #fff;
+  }
+.myPageBoards-textCenter{
+  text-align: center;
 }

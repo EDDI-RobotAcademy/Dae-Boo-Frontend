@@ -65,7 +65,7 @@ export default {
     },
     created() {
         this.requestBoardReadToSpring(this.boardId);
-        this.userId = this.$store.state[LogInModule].myInfo.userId;
+        this.userId = this.$store.state[LogInModule].memberInfo.userId;
     },
     computed: {
         ...mapState(MyPageModule, ['myInfo']),
