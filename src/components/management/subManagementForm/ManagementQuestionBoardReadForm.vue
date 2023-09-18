@@ -40,14 +40,15 @@
                 </td>
             </tr>
         </v-table>
-        <ManagementQuestionBoardAnswerForm @answer-submitted="onAnswerSubmitted"/>
+        <ManagementQuestionBoardAnswerForm v-if="questBoard.answerComplete === false" @answer-submitted="onAnswerSubmitted"/>
         <router-link class="returnBtn" :to="{ name: 'ManagementPage' }"> 돌아가기 </router-link>
     </div>
 </template>
 
 <script>
 const QuestionBoardModule = 'QuestionBoardModule';
-import { mapActions } from 'vuex';
+const MyPageModule = 'MyPageModule';
+import { mapActions, mapState } from 'vuex';
 
 import '@/assets/css/management/managementQuestionReadBoard.css'
 import ManagementQuestionBoardAnswerForm from "@/components/management/subManagementForm/ManagementQuestionBoardAnswerForm.vue"
@@ -65,6 +66,9 @@ export default {
             required: true,
         }
     },
+    computed: {
+        ...mapState(MyPageModule, ['myInfo'])
+    },
     components: {
         ManagementQuestionBoardAnswerForm
     },
@@ -81,6 +85,7 @@ export default {
                 const payload = {
                 answer,
                 questionId,
+                userId: this.myInfo.userId
                 };
 
                 const response = await this.responseManagementQuestionAnswerSaveToSping(payload);
