@@ -9,7 +9,7 @@
           <td class="question-read-text">no. {{ question.questionId }}</td>
         </v-col>
         <v-col cols="7">
-          <td class="question-read-text">작성자 : {{ memberInfo.nickname }}</td>
+          <td class="question-read-text">작성자 : {{ myInfo.nickname }}</td>
         </v-col>
         <v-col cols="3">
           <td class="question-read-text">등록일자 : {{ question.createdAt }}</td>
@@ -40,7 +40,7 @@ import "@toast-ui/editor/dist/theme/toastui-editor-dark.css";
 import "@/assets/css/help/questionRead.css";
 import { mapActions, mapState } from 'vuex';
 const QuestionModule = 'QuestionModule';
-const LogInModule = 'LogInModule';
+const MyPageModule = 'MyPageModule';
 import QuestionCommentComponent from '@/components/help/QuestionCommentComponent.vue'
 export default {
   components: {
@@ -52,10 +52,10 @@ export default {
       type: Object,
       required: true,
     },
-    memberInfo: {
+    myInfo: {
       type: Object,
       required: true,
-    }
+    },
   },
   watch: {
     question(newValue) {
@@ -85,8 +85,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(LogInModule, ['memberInfo']),
-
+    ...mapState(MyPageModule, ['myInfo']),
   }
 };
 </script>
