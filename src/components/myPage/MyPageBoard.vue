@@ -70,18 +70,18 @@
                     <tr class="myPageBoards-mr" v-if="!myComments || (Array.isArray(myComments) && myComments.length === 0)
                         ">
                         <th colspan="3" style="text-align: center">
-                            현재 등록하신 게시글이 없습니다!
+                            현재 등록하신 댓글이 없습니다!
                         </th>
                     </tr>
                     <tr class="myPageBoards-mr myPageBoards-tr" v-else v-for="myComment in myComments"
                         :key="myComment.commentId">
                         <td align="center">
-                            <input type="checkbox" />
+                            <input type="checkbox" v-model="selectedComments" :value="myComment.commentId" />
                         </td>
                         <td align="center">
                             {{ myComment.commentId }}
                         </td>
-                        <td align="center">
+                        <td align="center" @click="commentToBoardReadRink(myComment.boardId)">
                             {{ myComment.content }}
                         </td>
                         <td align="center">
@@ -90,6 +90,7 @@
                     </tr>
                 </tbody>
             </v-table>
+            <v-btn class="myPageBoards-deletBtn" color="red" @click="deleteSelectedCommnets"> 삭제 </v-btn>
         </div>
     </v-container>
 </template>
@@ -102,6 +103,7 @@ export default {
         return {
             boardPageNumber: 1,
             selectedBoards: [],
+            selectedComments: [],
             page: 1,
             itemsPerPage: 5
         }
@@ -122,7 +124,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions(BoardModule, ['requestManagementBoardDeleteToSpring']),
+        ...mapActions(BoardModule, ['requestManagementBoardDeleteToSpring', 'requestMyCommentsDeleteToSpring']),
         deleteSelectedBoards() {
             if (this.selectedBoards.length === 0) {
                 alert("삭제할 게시물을 선택하세요.");
@@ -131,7 +133,19 @@ export default {
             console.log(this.selectedBoards);
             let boardIds = this.selectedBoards.toString()
             this.requestManagementBoardDeleteToSpring(boardIds);
-        }
+        },
+        commentToBoardReadRink(boardId) {
+            this.$router.push({ path: `/board/read-page/${boardId}` })
+        },
+        deleteSelectedCommnets() {
+            if (this.selectedComments.length === 0) {
+                alert("삭제할 댓글을 선택하세요.");
+                return;
+            }
+            console.log(this.selectedComments);
+            let commentIds = this.selectedComments.toString()
+            this.requestMyCommentsDeleteToSpring(commentIds);
+        },
     }
 
 }

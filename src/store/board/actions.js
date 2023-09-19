@@ -56,6 +56,16 @@ export default {
         console.log("requestMyBoardModifyToSpring()" + "content: " + content + ", boardName: " +boardName + ", boardId: " +boardId)
         return axiosInst.put(`/board/${boardId}`, { category, boardName, content, userId })
     },
+    //마이페이지 - 선택한 댓글 삭제하기
+    requestMyCommentsDeleteToSpring(_, commentId){
+        console.log("payload에 담긴 데이터:", commentId);
+        const commentIds = commentId
+        console.log(commentIds)
+        return axiosInst.delete("/comment/delete", { params: { commentId: commentIds } })
+        .then(() => {
+            alert("댓글 삭제가 완료되었습니다.")
+        })
+    },
   // ----------------------------------------- 게시판 ----------------------------------------------
     
   BoardListToSpring ({ commit }) {
