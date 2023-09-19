@@ -1,0 +1,2 @@
+export const SHOP_PRODUCT_LIST = 'SHOP_PRODUCT_LIST'
+export const SHOP_PRODUCT = 'SHOP_PRODUCT'
