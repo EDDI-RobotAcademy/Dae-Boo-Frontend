@@ -25,7 +25,7 @@ export default {
     methods: {
         ...mapActions(ShopModule, ["requestProductListToSpring"]),
         prouctRegisterBtn() {
-            this.$router
+            this.$router.push({ path: 'shopRegisterProductPage' });
         }
     }
 }

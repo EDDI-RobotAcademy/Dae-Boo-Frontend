@@ -5,7 +5,7 @@
             <v-img src="@/assets/cardImg.jpg" style="max-width: 65%; height: auto;"/>
         </div>
         <div>
-        <table>
+        <V-table>
             <tr>
                 <td>상품 번호</td>
                 <td>
@@ -15,13 +15,13 @@
             <tr>
                 <td>상품 이름</td>
                 <td>
-                    <input type="text" :value="product.productName" readonly/>
+                    <input type="text" :value="product.name" readonly/>
                 </td>
             </tr>
             <tr>
                 <td>가격</td>
                 <td>
-                    <input type="text" :value="product.productPrice" readonly/>
+                    <input type="text" :value="product.price" readonly/>
                 </td>
             </tr>
             <tr>
@@ -30,7 +30,10 @@
                     <textarea cols="60" rows="20" :value="product.description" readonly/>
                 </td>
             </tr>
-        </table>
+        </V-table>
+        <router-link :to="{path: '/shopMainpage'}">
+            돌아가기
+        </router-link>
         </div>
     </div>
 </template>
