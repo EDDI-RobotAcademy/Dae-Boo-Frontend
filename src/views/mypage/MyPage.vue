@@ -25,7 +25,7 @@
                 <myPageInfo :myInfo="myInfo" />
             </div>
             <div v-if="pageNumber === 2">
-                <myPageBoard :myBoards="myBoards" />
+                <myPageBoard :myBoards="myBoards" :myComments="myComments" />
             </div>
             <div v-if="pageNumber === 3">
                 <MyPageCard />
@@ -68,16 +68,17 @@ export default {
         this.userId = this.$store.state[LogInModule].memberInfo.userId;
     },
     computed: {
-        ...mapState(MyPageModule, ['myBoards', 'myInfo']),
+        ...mapState(MyPageModule, ['myBoards', 'myComments', 'myInfo']),
         ...mapState(LogInModule, ['memberInfo'])
     },
     methods: {
-        ...mapActions(MyPageModule, ['getMyBoardToSpring', 'getMyInfoToSpring']),
+        ...mapActions(MyPageModule, ['getMyBoardToSpring', 'getMyInfoToSpring', 'getMyCommentsToSprong']),
         loadData() {
             // this.userId가 설정된 이후에 데이터를 가져옵니다.
             if (this.userId) {
                 this.getMyBoardToSpring(this.userId);
                 this.getMyInfoToSpring(this.userId);
+                this.getMyCommentsToSprong(this.userId);
             }
         }
     },

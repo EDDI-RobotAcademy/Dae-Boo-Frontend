@@ -1,7 +1,8 @@
 import {
     REQUEST_MY_BOARD_LIST_TO_SPRING,
     REQUEST_MY_BOARD_TO_SPRING,
-    REQUEST_MY_INFO_TO_SPRING
+    REQUEST_MY_INFO_TO_SPRING,
+    REQUEST_MY_COMMENT_LIST_TO_SPRING
 } from '../myPage/mutation-types'
 
 export default {
@@ -13,5 +14,8 @@ export default {
     },
     [REQUEST_MY_INFO_TO_SPRING] (state, receivedData) {
         state.myInfo = receivedData
+    },
+    [REQUEST_MY_COMMENT_LIST_TO_SPRING] (state, receivedData) {
+        state.myComments = receivedData
     },
 }
