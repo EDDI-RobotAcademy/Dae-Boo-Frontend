@@ -1,13 +1,13 @@
 import {
-  SHOP_PRODUCT_LIST,
-  SHOP_PRODUCT
+  REQUEST_PRODUCT_LIST_TO_SPRING,
+  REQUEST_PRODUCT_TO_SPRING
 } from './mutation-types'
   
 export default {
-    [SHOP_PRODUCT_LIST] (state, receivedData) {
+    [REQUEST_PRODUCT_LIST_TO_SPRING] (state, receivedData) {
       state.products = receivedData
     },
-    [SHOP_PRODUCT] (state, receivedData) {
+    [REQUEST_PRODUCT_TO_SPRING] (state, receivedData) {
       state.product = receivedData
     },
 }
