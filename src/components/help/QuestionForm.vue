@@ -44,7 +44,7 @@ import "@/assets/css/editor-custom-style.css";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import "@/assets/css/help/question.css";
 import { mapState } from 'vuex';
-const QuestionModule = 'QuestionModule'
+const MyPageModule = 'MyPageModule'
 
 export default {
   data() {
@@ -52,7 +52,9 @@ export default {
       editor: null,
       title: "",
       contents: "",
-      userId: 1,
+      myInfo: {
+        userId: Number
+      }
     };
   },
   mounted() {
@@ -67,7 +69,7 @@ export default {
     });
   },
   computed: {
-    ...mapState(QuestionModule,['user'])
+    ...mapState(MyPageModule,['myInfo'])
   },
   methods: {
     onSubmit() {

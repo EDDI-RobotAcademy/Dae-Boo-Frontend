@@ -9,7 +9,7 @@
           <td class="question-read-text">no. {{ question.questionId }}</td>
         </v-col>
         <v-col cols="7">
-          <td class="question-read-text">작성자 : {{ question.writer }}</td>
+          <td class="question-read-text">작성자 : {{ myInfo.nickname }}</td>
         </v-col>
         <v-col cols="3">
           <td class="question-read-text">등록일자 : {{ question.createdAt }}</td>
@@ -23,7 +23,7 @@
         <v-col cols="12">
           <div id="viewer" class="qa-viewer"></div>
         </v-col>
-      </v-row>
+      </v-row>  
       <div>
         <v-btn @click="onDelete" style="margin-top: 1rem; text-align: center;" color="error">삭제하기</v-btn>
       </div>
@@ -38,8 +38,9 @@ import "@/assets/css/editor-custom-style.css";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import "@toast-ui/editor/dist/theme/toastui-editor-dark.css";
 import "@/assets/css/help/questionRead.css";
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 const QuestionModule = 'QuestionModule';
+const MyPageModule = 'MyPageModule';
 import QuestionCommentComponent from '@/components/help/QuestionCommentComponent.vue'
 export default {
   components: {
@@ -48,6 +49,10 @@ export default {
   name: "QuestionReadForm",
   props: {
     question: {
+      type: Object,
+      required: true,
+    },
+    myInfo: {
       type: Object,
       required: true,
     },
@@ -77,8 +82,11 @@ export default {
     const questionId = this.question.questionId;
     await this.requestDeleteQuestionToSpring(questionId);
     await this.$router.push({name: 'MyPage'})
-  }
+    }
   },
+  computed: {
+    ...mapState(MyPageModule, ['myInfo']),
+  }
 };
 </script>
 

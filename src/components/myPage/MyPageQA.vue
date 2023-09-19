@@ -60,7 +60,7 @@
 import { mapActions, mapState } from "vuex";
 import '@/assets/css/myPage/myPageQA.css'
 const QuestionModule = "QuestionModule";
-
+const MyPageModule = "MyPageModule";
 export default {
   data() {
     return {
@@ -75,9 +75,10 @@ export default {
       return this.questions.slice(startIndex, endIndex);
     },
     ...mapState(QuestionModule, ["questions"]),
+    ...mapState(MyPageModule,["myInfo"])
   },
   mounted() {
-    this.requestQuestionListToSpring(1);
+    this.requestQuestionListToSpring(this.myInfo.userId);
   },
   methods: {
     ...mapActions(QuestionModule, ["requestQuestionListToSpring"]),
