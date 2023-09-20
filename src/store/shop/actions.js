@@ -47,5 +47,16 @@ export default {
         }).catch(() => {
             alert("문제 발생!")
         })
+    },
+    // 액세서리 가게 - 상품 삭제
+    requestDeleteProductToSpring(_, productId) {
+        return axiosInst.delete(`/product/delete/${productId}`)
+        .then((res) => {
+            alert("삭제 성공");
+            return res.data;
+        })
+        .catch(() => {
+            alert("문제 발생!");
+        });
     }
 }
