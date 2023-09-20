@@ -11,6 +11,7 @@ import cardRouter from "./card";
 import noticeRouter from "./notice";
 import boardRouter from "./board";
 import paymentRouter from "./payment";
+import shopSearchRouter from "./shopSearch";
 
 const routes = [
   ...mainRouter,
@@ -24,7 +25,8 @@ const routes = [
   ...cardRouter,
   ...noticeRouter,
   ...boardRouter,
-  ...paymentRouter
+  ...paymentRouter,
+  ...shopSearchRouter
   
 ];
 

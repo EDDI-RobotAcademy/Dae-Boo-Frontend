@@ -23,7 +23,7 @@
           <v-col cols="2">
             <v-btn class="btn-size" rounded="3" style="height: 11vh; color: white;" to="/card">카드 추천</v-btn>
           </v-col>
-          <v-col cols="1"><span/></v-col>
+          <v-col cols="1"><span /></v-col>
           <v-col cols="3">
             <h3 class="card-title">모두의 혜택</h3>
             <router-link to="/home" class="custom-link">
@@ -69,7 +69,7 @@
           <v-col cols="2">
             <v-btn class="btn-size" style="height: 12vh; color: white;" to="/card-search">카드 검색</v-btn>
           </v-col>
-          <v-col cols="1"><span/></v-col>
+          <v-col cols="1"><span /></v-col>
           <v-col cols="3">
             <h3 class="card-title">모두의 회원</h3>
             <router-link to="/board/list-page" class="custom-link">
@@ -82,7 +82,7 @@
             <router-link to="/home" class="custom-link">
               <p class="appbar-card-text">기프트 샵</p>
             </router-link>
-            <router-link to="/recruitment" class="custom-link">
+            <router-link to="/shopSearch" class="custom-link">
               <p class="appbar-card-text">가게 찾기</p>
             </router-link>
           </v-col>
