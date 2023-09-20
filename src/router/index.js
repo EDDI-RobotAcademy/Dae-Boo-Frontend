@@ -27,7 +27,7 @@ const routes = [
   ...noticeRouter,
   ...boardRouter,
   ...paymentRouter,
-  ...shopRouter
+  ...shopRouter,
   ...shopSearchRouter
 ];
 
