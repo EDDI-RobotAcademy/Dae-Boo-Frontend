@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div class="mapBox">
         <h1>카테고리로 장소 검색하기
             <v-btn color="green" @click="searchPlaces">검색</v-btn>
@@ -24,16 +24,20 @@ export default {
         } else {
             this.loadScript();
         }
+        // this.loadScript();
+        // this.loadMap();
     },
     methods: {
         loadScript() {
+            console.log("loadScript()");
             const script = document.createElement("script");
-            script.src = "http://dapi.kakao.com/v2/maps/sdk.js?appkey=8d011539f6afb367977025c264447cea&autoload=false&libraries=clusterer,services&";
+            script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=7d8a7c6bd0d9cdb29c1a7b876d32b1c2&libraries=services&autoload=false`;
+            // script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=7d8a7c6bd0d9cdb29c1a7b876d32b1c2`;
             script.onload = () => window.kakao.maps.load(this.loadMap);
-
             document.head.appendChild(script);
         },
         loadMap() {
+            console.log("loadMap")
             const container = document.getElementById("map");
             const options = {
                 center: new window.kakao.maps.LatLng(37.499000, 127.032850),
@@ -45,6 +49,7 @@ export default {
         },
         searchPlaces() {//카테고리 검색을 요청하는 함수
             const ps = new window.kakao.maps.services.Places();
+            console.log(ps)
             const currentMapCoordinate = this.map.getCenter();
             const radius = 10000;
             ps.categorySearch('PO3', this.placesSearchCB, {
@@ -114,12 +119,12 @@ export default {
 
         attachMarkerEvents(marker, title) {
             // 마커와 검색결과 항목에 mouseover 했을때
-            // 해당 장소에 인포윈도우에 장소명을 표시합니다
+            // 해당 장소에 인포윈도우에 장소명을 표시
             window.kakao.maps.event.addListener(marker, "mouseover", () => {
                 this.displayInfowindow(marker, title);
                 console.log("title" + title)
             });
-            // mouseout 했을 때는 인포윈도우를 닫습니다
+            // mouseout 했을 때는 인포윈도우를 닫음
             window.kakao.maps.event.addListener(marker, "mouseout", () => {
                 this.infowindow.close();
             });
@@ -134,7 +139,6 @@ export default {
     }
 };
 </script>
-  
 <style>
 .map {
     width: 100%;
@@ -147,4 +151,4 @@ export default {
     color: white;
 }
 </style>
-  
+   -->
