@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div class="mapBox">
         <h1>카테고리로 장소 검색하기
             <v-btn color="green" @click="searchPlaces">검색</v-btn>
@@ -29,9 +29,9 @@ export default {
     },
     methods: {
         loadScript() {
-            console.lod("loadScript()");
+            console.log("loadScript()");
             const script = document.createElement("script");
-            script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=7d8a7c6bd0d9cdb29c1a7b876d32b1c2&libraries=services$autoload=false`;
+            script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=7d8a7c6bd0d9cdb29c1a7b876d32b1c2&libraries=services&autoload=false`;
             // script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=7d8a7c6bd0d9cdb29c1a7b876d32b1c2`;
             script.onload = () => window.kakao.maps.load(this.loadMap);
             document.head.appendChild(script);
@@ -49,6 +49,7 @@ export default {
         },
         searchPlaces() {//카테고리 검색을 요청하는 함수
             const ps = new window.kakao.maps.services.Places();
+            console.log(ps)
             const currentMapCoordinate = this.map.getCenter();
             const radius = 10000;
             ps.categorySearch('PO3', this.placesSearchCB, {
@@ -139,7 +140,7 @@ export default {
 };
 </script>
 <style>
-#map {
+.map {
     width: 100%;
     height: 50%;
     padding-left: 50px;
@@ -150,4 +151,4 @@ export default {
     color: white;
 }
 </style>
-  
+   -->
