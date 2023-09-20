@@ -3,14 +3,13 @@
         <h1 class="mapShop-head" align="center">MOCA</h1>
         <div id="mapShop" class="mapShop"></div>
         <h3 class="mapShop-title">Category</h3>
-        <p class="mapShop-text">category1</p>
-        <p class="mapShop-text">category2</p>
-        <p class="mapShop-text2">
-            .<br>
-            .<br>
-            .<br>
-            <v-btn @click="searchPlaces">검색</v-btn>
-        </p>
+        <p class="mapShop-text" @click="this.categoty = 'MT1', searchPlaces()">대형마트</p>
+        <p class="mapShop-text" @click="this.categoty = 'CS2', searchPlaces()">편의점</p>
+        <p class="mapShop-text" @click="this.categoty = 'OL7', searchPlaces()">주유소, 충전소</p>
+        <p class="mapShop-text" @click="this.categoty = 'CT1', searchPlaces()">문화시설</p>
+        <p class="mapShop-text" @click="this.categoty = 'AD5', searchPlaces()">숙박</p>
+        <p class="mapShop-text" @click="this.categoty = 'FD6', searchPlaces()">음식점</p>
+        <p class="mapShop-text" @click="this.categoty = 'CE7', searchPlaces()"> 카페</p>
     </div>
 </template>
   
@@ -23,6 +22,7 @@ export default {
             placesData: [],
             markers: [],
             // infowindow: new window.kakao.maps.InfoWindow
+            categoty: 'PO3'
         };
     },
     mounted() {
@@ -65,7 +65,7 @@ export default {
             // console.log(ps)
             const currentMapCoordinate = this.mapShop.getCenter();
             const radius = 1000;
-            ps.categorySearch('PO3', this.placesSearchCB, {
+            ps.categorySearch(this.categoty, this.placesSearchCB, {
                 location: currentMapCoordinate,
                 radius: radius
             });
