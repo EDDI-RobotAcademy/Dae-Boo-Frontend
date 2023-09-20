@@ -79,7 +79,7 @@
 
           <v-col cols="3">
             <h3 class="card-title">모두의 쇼핑</h3>
-            <router-link to="/home" class="custom-link">
+            <router-link to="/shopMainpage" class="custom-link">
               <p class="appbar-card-text">기프트 샵</p>
             </router-link>
             <router-link to="/shopSearch" class="custom-link">

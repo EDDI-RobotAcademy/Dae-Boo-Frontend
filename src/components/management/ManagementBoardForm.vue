@@ -33,7 +33,7 @@
         </router-link>
       </td>
       <td align="center" style="padding: 10px 0;">
-        {{ board.writer || board.userId.nickname }}
+        {{ board.writer || (board.userId ? board.userId.nickname : '없음') }} <!-- 게시판 등록 부분 userId로 제대로 수정해야 해결되는 문제 -->
       </td>
       <td align="center" style="padding: 10px 0;">
         {{ board.boardRegisterDate }}
