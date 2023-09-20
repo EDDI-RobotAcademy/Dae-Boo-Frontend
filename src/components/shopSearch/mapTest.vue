@@ -9,6 +9,7 @@
             .<br>
             .<br>
             .<br>
+            <v-btn @click="searchPlaces">검색</v-btn>
         </p>
     </div>
 </template>
@@ -59,6 +60,7 @@ export default {
             this.searchPlaces();
         },
         searchPlaces() {//카테고리 검색을 요청하는 함수
+            this.removeMarker();
             const ps = new window.kakao.maps.services.Places();
             // console.log(ps)
             const currentMapCoordinate = this.mapShop.getCenter();
@@ -123,6 +125,12 @@ export default {
             marker.setMap(this.mapShop);// 지도 위에 마커를 표출
             this.markers.push(marker);// 배열에 생성된 마커를 추가
             return marker;
+        },
+
+        // 지도 위에 표시되고 있는 마커를 모두 제거
+        removeMarker() {
+            this.markers.forEach((marker) => marker.setMap(null));
+            this.markers = [];
         },
 
     },
