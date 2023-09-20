@@ -1,6 +1,7 @@
 import {
     MANAGEMENT_QUESTION_BOARD_LIST,
-    MANAGEMENT_QUESTION_BOARD
+    MANAGEMENT_QUESTION_BOARD,
+    MANAGEMENT_ANSWER_BOARD
 } from './mutation-types'
   
 export default {
@@ -11,6 +12,9 @@ export default {
     [MANAGEMENT_QUESTION_BOARD] (state, receivedData) {
       state.questBoard = receivedData
       console.log("state.questBoard: ", state.questBoard)
-    }
+    },
+    [MANAGEMENT_ANSWER_BOARD] (state, receivedData) {
+      state.answer = receivedData
+    },
 }
   
