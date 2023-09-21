@@ -1,69 +1,70 @@
 <template>
-    <v-container class="my-card-mr" justify="center">
-        <h2 class="my-card-title">내가 찜한 카드</h2>
-        <v-card class="my-card-body" theme="dark" rounded="100%">
-            <Carousel :items-to-show="3" :wrap-around="true" class="my-card-carousel">
-          <Slide v-for="slide in slides" :key="slide.id">
-            <a :href="slide.link" />
+  <v-container class="my-card-mr" justify="center">
+    <h2 class="my-card-title">내가 찜한 카드</h2>
+    <!-- 찜한 카드가 있을 때만 카드 목록 표시 -->
+    <v-card v-if="cards.length > 0" class="my-card-body" theme="dark" rounded="100%">
+      <Carousel :items-to-show="3" :wrap-around="true" class="my-card-carousel">
+        <Slide v-for="card in cards" :key="card.cardId">
+          <div @click="cardReadLink(`/card/${card.cardId}`)">
             <div>
-              <div style="color: #222;">{{ slide.text }}</div>
-              <img :src="slide.imageUrl" alt="Slide Image" class="my-card-img"/>
+              <div style="color: #222">{{ card.name }}</div>
+              <img
+                :src="dynamicLink(card.cardImage)"
+                alt="카드 이미지"
+                class="my-card-img"
+              />
             </div>
-          </Slide>
-          <template #addons>
-            <Navigation/>
-          </template>
-        </Carousel>
-        </v-card>
-    </v-container>
+          </div>
+        </Slide>
+        <template #addons>
+          <Navigation />
+        </template>
+      </Carousel>
+    </v-card>
+    <!-- 찜한 카드가 없을 때 "카드 보러가기" 버튼 표시 -->
+    <button v-else @click="cardListLink()">카드 보러가기</button>
+  </v-container>
 </template>
+
 <script>
-import { Carousel, Navigation, Slide } from 'vue3-carousel';
-import '@/assets/css/myPage/myPageCard.css'
+import { Carousel, Navigation, Slide } from "vue3-carousel";
+import "@/assets/css/myPage/myPageCard.css";
+import { mapState, mapActions } from "vuex";
+const CardModule = "CardModule";
+const LINK = process.env.VUE_APP_S3_LINK;
+
 export default {
-components: {
+  components: {
     Carousel,
     Navigation,
-    Slide
-},
-data() {
+    Slide,
+  },
+  data() {
     return {
-        slides: [
-  {
-    id: 1,
-    imageUrl:
-      "https://www.hyundaicard.com/images/cardscommon/img_card_TRE5_metal_0.png",
-    text:"현대카드",
+      link: LINK,
+    };
   },
-  {
-    id: 2,
-    imageUrl:
-      "https://www.hyundaicard.com/images/cardscommon/img_card_Caution.png",
-      text:"현대카드",
+  methods: {
+    cardReadLink(link) {
+      this.$router.push(link);
+    },
+    ...mapActions(CardModule, ["requestLikeCardList"]),
+    async cardLoading() {
+      await this.requestLikeCardList();
+      this.cards = this.$store.state[CardModule].cards;
+    },
+    dynamicLink(extraPath) {
+      return `${LINK}/${extraPath}`;
+    },
+    cardListLink() {
+      this.$router.push("/card")
+    },
   },
-  {
-    id: 3,
-    imageUrl:
-      "https://www.hyundaicard.com/img/com/card/card_SGE2_03_f.png",
-      text:"현대카드",
+  computed: {
+    ...mapState(CardModule, ["cards"]),
   },
-  {
-    id: 4,
-    imageUrl:
-      "https://www.hyundaicard.com/images/cardscommon/img_card_NVHC_line.png",
-      text:"MOCA카드",
-  },
-  {
-    id: 5,
-    imageUrl:
-      "https://www.hyundaicard.com/img/com/card/card_SGE2_01_f.png",
-      text:"MOCA카드",
-  },
-]
-    }
-},
-}
+};
 </script>
-<style>
 
+<style>
 </style>
