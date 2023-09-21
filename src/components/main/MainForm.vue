@@ -71,7 +71,7 @@
                     @click="redirectToDetails(card.cardId)"
                   >                    
                   <td v-if="index < 10" class="text-center">{{ card.cardId }}</td>
-                    <td class="top10-img">{{ card.cardImage }}</td>
+                    <td class="top10-img"><img :src="dynamicLink(card.cardImage)" alt="카드 이미지"></td>
                     <td class="text-center">{{ card.name }}</td>
                     <td class="text-center">{{ card.company }}</td>
                   </tr>
@@ -200,6 +200,7 @@
 </template>
 
 <script>
+const LINK = process.env.VUE_APP_S3_LINK;
 import "@/assets/css/main/main.css";
 export default {
   props: {
@@ -210,7 +211,7 @@ export default {
   },
   data() {
     return {
-
+      link: LINK
     };
   },
   methods: {
@@ -224,7 +225,9 @@ export default {
       console.log("Redirecting to details page for item ID:", cardId);
       this.$router.push({ path: `/card/${cardId}` });
     },
-
+    dynamicLink(extraPath) {
+            return `${LINK}/${extraPath}`;
+        },
   },
 };
 </script>
