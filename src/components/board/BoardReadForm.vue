@@ -2,14 +2,17 @@
     <v-container class="board-read-container">
       <div class="board-read-mr">
         <v-row align="center">
-          <v-col cols="12">
-            <td><h2 class="board-read-title"> 제목 : {{ board.boardName }}</h2></td>
+          <v-col cols="2">
+            <td><h2 class="board-read-title">[{{ board.category }}]</h2></td>
+          </v-col>
+          <v-col cols="10">
+            <td><h2 class="board-read-title"> 제목 :  {{ board.boardName }}</h2></td>
           </v-col>
           <v-col cols="1">
             <td class="board-read-text">no. {{ board.boardId }}</td>
           </v-col>
           <v-col cols="8">
-            <td class="board-read-text">작성자 : {{ board.writer }}</td>
+            <td class="board-read-text">작성자 : {{ board.userId.nickname }}</td>
           </v-col>
           <v-col cols="3">
             <td class="board-read-text">등록일자 : {{ board.boardRegisterDate }}</td>
@@ -38,6 +41,10 @@
         type: Object,
         required: true,
       },
+      // memberinfo: {
+      //   type: Object,
+      //   required: true,
+      // }
     },
     watch: {
     board(newValue) {

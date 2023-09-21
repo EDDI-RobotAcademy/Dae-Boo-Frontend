@@ -15,7 +15,7 @@
               <td class="board-read-text">no. {{ board.boardId }}</td>
             </v-col>
             <v-col cols="8">
-              <td class="board-read-text">작성자 :  {{ board.writer }}</td>
+              <td class="board-read-text">작성자 :  {{ board.userId.nickname }}</td>
             </v-col>
             <v-col cols="3">
               <td class="board-read-text">등록일자 : {{ board.boardRegisterDate }}</td>
@@ -60,16 +60,10 @@
   const BoardModule = 'BoardModule';
   
   export default {
-    props: {
-      board: {
-        type: Object,
-        required: true,
-      },
-    },
     data() {
       return {
         editor: null,
-        writer: "",
+        nickname: "",
         boardName: "",
         content: "",
       };
@@ -93,8 +87,8 @@
         this.content = this.editor.getMarkdown();
         this.$emit("submit", {
           boardName: this.boardName,
-          writer: this.writer,
           content: this.content,
+          userId: this.userId
         });
       },
       ...mapActions(BoardModule, ['DeleteBoardToSpring']),
@@ -108,7 +102,7 @@
     created() {
       this.boardName = this.board.boardName;
       this.content = this.board.content;
-      this.writer = this.board.writer;
+      this.nickname = this.board.userId.nickname;
     },
   };
   </script>
