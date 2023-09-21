@@ -1,7 +1,7 @@
 <template>
     <div style="margin-top: 3rem;">
         <board-list-form :boards="boards"/>
-        <button @click="goRegisterBoard" style="margin: 1rem; color: #fff; background-color: #222;">생성하기</button>
+        <button @click="goRegisterBoard" style="margin: 1rem; color: #fff; background-color: #000;">생성하기</button>
     </div>
 </template>
 
@@ -14,7 +14,7 @@ const BoardModule ='BoardModule'
          BoardListForm 
         },        
     computed: {
-        ...mapState(BoardModule, ['boards'])
+        ...mapState(BoardModule, ['boards']),
     },
     mounted() {
       this.BoardListToSpring()      
