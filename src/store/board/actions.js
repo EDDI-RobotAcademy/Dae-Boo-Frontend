@@ -78,8 +78,8 @@ export default {
         })
 },
 CreateBoardToSpring ( _ , payload) {
-    const { boardName, content, writer, category } = payload    
-    return axiosInst.post('/board/register/data', { boardName, content, writer , category })
+    const { boardName, content, writer, category, userId } = payload    
+    return axiosInst.post('/board/register/data', { boardName, content, writer , category, userId })
         .then((res) => {
                 alert('게시판 등록에 성공하였습니다.')
                 console.log(res.data)
