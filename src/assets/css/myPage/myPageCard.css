@@ -19,8 +19,8 @@
 .my-card-img{ 
   margin-top: 2em;
     margin-bottom: 1rem;   
-    width: 75%; 
-    height: auto;
+    width: 120px; 
+    height: 200px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 
 }
