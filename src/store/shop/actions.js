@@ -58,5 +58,21 @@ export default {
         .catch(() => {
             alert("문제 발생!");
         });
-    }
+    },
+    async requestPurchaseRegisterToSpring(context, payload) {
+        try {
+            const response = await axiosInst.post("/purchase/register", payload, {
+                headers: {
+                    'Content-Type': 'application/json' // JSON 데이터를 전송하도록 설정
+                }
+            });
+            
+            // 응답 데이터가 객체 형식으로 제공되므로 객체로 반환합니다.
+            return response.data;
+        } catch (error) {
+            // 에러 발생 시 에러 핸들링
+            console.error(error);
+            throw error; // 에러를 다시 던져서 호출한 곳에서 처리할 수 있도록 합니다.
+        }
+    },
 }
