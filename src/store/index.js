@@ -12,8 +12,6 @@ import CommentModule from './comment/CommentModule';
 import ProductModule from './product/ProductModule';
 import PaymentModule from './payment/PaymentModule';
 import ShopModule from './shop/ShopModule';
-
-
 export default createStore({
   state: {},
   getters: {},
@@ -31,7 +29,7 @@ export default createStore({
     CommentModule: CommentModule,
     ProductModule:ProductModule,
     PaymentModule:PaymentModule,
-    ShopModule:ShopModule
+    ShopModule:ShopModule,
   },
   plugins: [
     createPersistedState(),

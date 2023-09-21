@@ -1,4 +1,5 @@
 export default {
     questBoards: [],
-    questBoard: {}
+    questBoard: {},
+    answer: {}
 }

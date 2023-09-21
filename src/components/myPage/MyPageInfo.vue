@@ -6,10 +6,6 @@
         <td>.₊̣̇.— ฅ/ᐠ. ̫ .ᐟ\ฅ —.₊̣̇.ა</td>
         <v-table class="myInfoTable">
             <tbody>
-                <!-- <tr>
-                    <th scope="row">성명</th>
-                    <td>{{ myInfo.name }}</td>
-                </tr> -->
                 <tr>
                     <th scope="row">닉네임</th>
                     <td>{{ myInfo && myInfo.nickname }}</td>

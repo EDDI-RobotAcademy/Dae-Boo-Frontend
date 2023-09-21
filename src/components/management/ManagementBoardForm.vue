@@ -33,14 +33,14 @@
         </router-link>
       </td>
       <td align="center" style="padding: 10px 0;">
-        {{ board.userId.nickname }}
+        {{ board.writer || (board.userId ? board.userId.nickname : '없음') }} <!-- 게시판 등록 부분 userId로 제대로 수정해야 해결되는 문제 -->
       </td>
       <td align="center" style="padding: 10px 0;">
         {{ board.boardRegisterDate }}
       </td>
     </tr>
   </v-table>
-  <v-btn color="orange" @click="testToken()">테스트</v-btn>
+  <!-- <v-btn color="orange" @click="testToken()">테스트</v-btn> -->
 
     <div class="managementBoardBtn">
       <div class="btn-container">
@@ -64,7 +64,6 @@
 import '@/assets/css/management/managementBoard.css'
 import { mapActions } from 'vuex';
 const BoardModule = 'BoardModule';
-const LogInModule = 'LogInModule'
 
 export default {
 props: {
@@ -107,12 +106,6 @@ watch: {
 methods: {
   ...mapActions(BoardModule, ['requestManagementBoardDeleteToSpring']),
 
-  // 09.12 : token을 가지고 userInfo를 가져올 시도
-  ...mapActions(LogInModule, ['requestUserInfoToSpring']),
-  async testToken() {
-      await this.requestUserInfoToSpring();
-  },
-
   toggleSelectAll() {
     this.selectAll = !this.selectAll;
     if (this.selectAll) {
@@ -137,6 +130,7 @@ methods: {
 
     let boardIds = this.selectedItems.toString()
     this.requestManagementBoardDeleteToSpring(boardIds);
+    window.location.reload();
   } 
 },
 };

@@ -67,7 +67,6 @@ export default {
     },
     mounted() {
         this.getMyBoardToSpring(this.userId)
-        this.getMyInfoToSpring(this.userId)
     },
     created() {
         this.userId = this.$store.state[MyPageModule].myInfo.userId;
@@ -77,19 +76,19 @@ export default {
         ...mapState(LogInModule, ['memberInfo'])
     },
     methods: {
-        ...mapActions(MyPageModule, ['getMyBoardToSpring', 'getMyInfoToSpring', 'requestMyInfoModifyToSpring']),
+        ...mapActions(MyPageModule, ['getMyBoardToSpring', 'requestMyInfoModifyToSpring']),
+        // async onSubmit(payload) {
+        //     const { nickname, mobile, email, interest1, interest2 } = payload
+        //     const userId = this.userId
+        //     await this.requestMyInfoModifyToSpring({ nickname, mobile, email, interest1, interest2, userId })
+        //     await this.$router.push({ path: `/myPage` });
+        // }
         async onSubmit(payload) {
             const { nickname, mobile, email, interest1, interest2 } = payload
             const userId = this.userId
             await this.requestMyInfoModifyToSpring({ nickname, mobile, email, interest1, interest2, userId })
             await this.$router.push({ path: `/myPage` });
         }
-        // async onSubmit(payload) {
-        //     const { nickname, mobile, email, interest1 } = payload
-        //     const userId = this.userId
-        //     await this.requestMyInfoModifyToSpring({ nickname, mobile, email, interest1, userId })
-        //     await this.$router.push({ path: `/myPage` });
-        // }
     },
 }
 </script>

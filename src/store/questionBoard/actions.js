@@ -1,6 +1,7 @@
 import {
     MANAGEMENT_QUESTION_BOARD_LIST,
-    MANAGEMENT_QUESTION_BOARD
+    MANAGEMENT_QUESTION_BOARD,
+    MANAGEMENT_ANSWER_BOARD
 } from './mutation-types'
 import axiosInst from '@/utility/axiosInst'
 
@@ -23,13 +24,25 @@ export default {
     },
     // 관리자 - 1:1 게시판 해당 게시물에 댓글 달기
     responseManagementQuestionAnswerSaveToSping(context, payload) {
-        const { answer, questionId } = payload
-        console.log("전달받은 데이터: "+ answer, questionId);
+        const { answer, questionId, userId } = payload
+        console.log("전달받은 데이터: "+ answer, questionId, userId);
 
         return axiosInst.post("/question/managerAnswer", {
             answer,
-            questionId
+            questionId,
+            userId
         }) .then((res) => {
+            alert("답변 등록이 완료되었습니다.")
+
+            this.$router.push({ name: 'ManagementQuestionBoardReadPage', params: { userId: userId } });
+            return res.data;
+        })
+    },
+    // 관리자 - 1:1 게시판 해당 게시물의 댓글 불러오기
+    requestManagementDetailQuestionAnswerToSpring({ commit }, questionId) {
+        return axiosInst.get(`/answer/details/${questionId}`)
+        .then((res) => {
+            commit(MANAGEMENT_ANSWER_BOARD, res.data)
             return res.data;
         })
     }

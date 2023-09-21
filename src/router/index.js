@@ -11,6 +11,8 @@ import cardRouter from "./card";
 import noticeRouter from "./notice";
 import boardRouter from "./board";
 import paymentRouter from "./payment";
+import shopRouter from "./shop";
+import shopSearchRouter from "./shopSearch";
 
 const routes = [
   ...mainRouter,
@@ -24,8 +26,9 @@ const routes = [
   ...cardRouter,
   ...noticeRouter,
   ...boardRouter,
-  ...paymentRouter
-  
+  ...paymentRouter,
+  ...shopRouter,
+  ...shopSearchRouter
 ];
 
 const router = createRouter({

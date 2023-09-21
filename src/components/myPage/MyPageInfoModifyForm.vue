@@ -4,12 +4,6 @@
             <v-table class="myInfoTable">
                 <tbody>
                     <tr>
-                        <th scope="row">성명</th>
-                        <td>
-                            <input type="text" :value="myInfo.name" disabled />
-                        </td>
-                    </tr>
-                    <tr>
                         <th scope="row">닉네임</th>
                         <td>
                             <input type="text" v-model="nickname" />

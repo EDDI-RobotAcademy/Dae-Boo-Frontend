@@ -1,0 +1,33 @@
+.mapShop-head{
+    color: white;
+    margin-top: 4rem;
+    margin-bottom: 6rem;
+    font-family: 'Foldit';
+    font-size: 80px;
+}
+.mapShop-title{
+    color: #d5d5d5;
+    font-size: 50px;
+    margin-left: 4rem;
+    margin-bottom: 2rem;
+}
+.mapShop-text{
+    margin-bottom: 2rem;
+    margin-left: 5rem;
+    color: #bcbcbc;
+    font-size: 20px;
+}
+.mapShop-text:hover{
+    margin-bottom: 2rem;
+    margin-left: 5.3rem;
+    color: #e0e0e0;
+    font-size: 20px;
+    cursor: pointer;
+}
+.mapShop{
+    margin-top: 3rem;
+    width: 60%; 
+    height: 35%;
+    position: absolute;
+    right: 5rem;
+  }

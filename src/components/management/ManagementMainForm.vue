@@ -4,7 +4,7 @@
             <div class="topBar">
                 <div class="managerInfo">
                     <div class="managerImg"></div>
-                    <div class="managerHi">{{ memberInfo && memberInfo.nickname }} 님 환영합니다.</div>
+                    <div class="managerHi">{{ myInfo ? myInfo.nickname + ' 님 환영합니다.' : '로그인이 필요합니다.' }}</div>
                 </div>
                 <div class="managerPageCategory">
                     <button @click="accountManagement">회원 관리</button>
@@ -35,7 +35,8 @@ import ManagementOneByOneForm from './ManagementOneByOneForm.vue';
 import { mapActions, mapState } from "vuex";
 const BoardModule = "BoardModule";
 const QuestionBoardModule = "QuestionBoardModule";
-const LogInModule = 'LogInModule';
+// const LogInModule = 'LogInModule';
+const MyPageModule = 'MyPageModule'
 
 export default {
     data() {
@@ -55,12 +56,12 @@ export default {
     computed: {
         ...mapState(BoardModule, ["boards"]),
         ...mapState(QuestionBoardModule, ["questBoards"]),
-        ...mapState(LogInModule, ['memberInfo'])
+        ...mapState(MyPageModule, ['myInfo'])
     },
-    mounted() {
-        this.requestManagementBoardToSpring();
-        this.requestManagementQuestionBoardToSpring();
-    },
+    // mounted() {
+    //     this.requestManagementBoardToSpring();
+    //     this.requestManagementQuestionBoardToSpring();
+    // },
     methods: {
         ...mapActions(BoardModule,[
             "requestManagementBoardToSpring",
@@ -75,6 +76,7 @@ export default {
             this.isOneByOneClick = false;
         },
         boardManagement() {
+            this.requestManagementBoardToSpring();
             this.isAccountClick = false;
             this.isBoardClick = true;
             this.isCardClick = false;
@@ -87,6 +89,7 @@ export default {
             this.isOneByOneClick = false;
         },
         oneByOneManagement() {
+            this.requestManagementQuestionBoardToSpring();
             this.isAccountClick = false;
             this.isBoardClick = false;
             this.isCardClick = false;
