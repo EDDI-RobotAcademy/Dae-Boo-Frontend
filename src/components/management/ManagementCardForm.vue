@@ -15,12 +15,12 @@
         </td>
       </tr>
       <tr v-for="item in paginatedItems" :key="item.id">
-        <td><span v-html="item.cardId"></span></td>
-        <td><span v-html="item.name"></span></td>
-        <td><span v-html="item.company"></span></td>
-        <td><span v-html="item.fee"></span></td>
-        <td><span v-html="item.cardCondition"></span></td>
-        <td><span v-html="item.benefit"></span></td>
+        <td><span align="center" v-html="item.cardId"></span></td>
+        <td><span align="center" v-html="item.name"></span></td>
+        <td><span align="center" v-html="item.company"></span></td>
+        <td><span align="center" v-html="item.fee"></span></td>
+        <td><span align="center" v-html="item.cardCondition"></span></td>
+        <td><span align="center" v-html="item.benefit"></span></td>
       </tr>
     </v-table>
 

@@ -11,6 +11,8 @@
                     <button @click="boardManagement">게시물 관리</button>
                     <button @click="cardManagement">카드 관리</button>
                     <button @click="oneByOneManagement">1:1 문의 관리</button>
+                    <button @click="purchaseManage">판매 내역 관리</button>
+                    <button @click="paymentCancelManage">환불 관리</button>
                 </div>
             </div>
             <div class="bottomBar">
@@ -19,6 +21,8 @@
                     <management-board-form v-if="isBoardClick" :boards="boards"/>
                     <management-card-form v-if="isCardClick"/>
                     <management-one-by-one-form v-if="isOneByOneClick" :questBoards="questBoards"/>
+                    <management-payment-cancel-form v-if="isPaymentCancelClick"/>
+                    <management-purchase-list-form v-if="isPurchaseClick"/>
                 </div>
             </div>
         </div>
@@ -31,7 +35,8 @@ import ManagementAccountForm from './ManagementAccountForm.vue';
 import ManagementBoardForm from './ManagementBoardForm.vue';
 import ManagementCardForm from './ManagementCardForm.vue';
 import ManagementOneByOneForm from './ManagementOneByOneForm.vue';
-
+import ManagementPaymentCancelForm from './ManagementPaymentCancelForm.vue';
+import ManagementPurchaseListForm from './ManagementPurchaseListForm.vue';
 import { mapActions, mapState } from "vuex";
 const BoardModule = "BoardModule";
 const QuestionBoardModule = "QuestionBoardModule";
@@ -45,13 +50,17 @@ export default {
             isBoardClick: false,
             isCardClick: false,
             isOneByOneClick: false,
+            isPurchaseClick:false,
+            isPaymentCancelClick:false
         };
     },
     components: {
         ManagementAccountForm,
         ManagementBoardForm,
         ManagementCardForm,
-        ManagementOneByOneForm
+        ManagementOneByOneForm,
+        ManagementPaymentCancelForm,
+        ManagementPurchaseListForm
     },
     computed: {
         ...mapState(BoardModule, ["boards"]),
@@ -74,6 +83,8 @@ export default {
             this.isBoardClick = false;
             this.isCardClick = false;
             this.isOneByOneClick = false;
+            this.isPurchaseClick = false;
+            this.isPaymentCancelClick =false;
         },
         boardManagement() {
             this.requestManagementBoardToSpring();
@@ -94,7 +105,25 @@ export default {
             this.isBoardClick = false;
             this.isCardClick = false;
             this.isOneByOneClick = true;
+        },
+        paymentCancelManage(){
+            this.isAccountClick = false;
+            this.isBoardClick = false;
+            this.isCardClick = false;
+            this.isOneByOneClick = false;
+            this.isPurchaseClick = false;
+            this.isPaymentCancelClick =true;
+        },
+        purchaseManage(){
+            this.isAccountClick = false;
+            this.isBoardClick = false;
+            this.isCardClick = false;
+            this.isOneByOneClick = false;
+            this.isPurchaseClick = true;
+            this.isPaymentCancelClick =false;
         }
+
+
     },
 }
 
