@@ -1,11 +1,11 @@
 <template>
-    <div>
-    <h2 class="managerAnswerTitle">A. 관리자 답변</h2>
-    <div class="managerAnswerBox">
-        <div class="answerText">
-            {{ answer.content }}
+    <div class="testBack">
+        <h2 class="managerAnswerTitle">A. 관리자 답변</h2>
+        <div class="managerAnswerBox">
+            <div class="answerText">
+                {{ answer.content }}
+            </div>
         </div>
-    </div>
     </div>
 </template>
 
