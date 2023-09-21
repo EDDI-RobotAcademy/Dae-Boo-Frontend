@@ -25,7 +25,7 @@ export default {
     },
     methods: {
     async onSubmit() {
-        alert("데이터 이동 합니다: "+ this.answer);
+        console.log("managementQuestionboardAnswerForm: "+ this.answer);
         this.$emit("answer-submitted", this.answer);
     },
   }
