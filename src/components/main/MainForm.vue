@@ -71,9 +71,9 @@
                     @click="redirectToDetails(card.cardId)"
                   >                    
                   <td v-if="index < 10" class="text-center">{{ card.cardId }}</td>
-                    <td class="top10-img"><img :src="dynamicLink(card.cardImage)" alt="카드 이미지"></td>
+                    <td><img :src="dynamicLink(card.cardImage)" alt="카드 이미지" class="top10-img"></td>
                     <td class="text-center">{{ card.name }}</td>
-                    <td class="text-center">{{ card.company }}</td>
+                    <td class="text-center">{{ card.company }}카드</td>
                   </tr>
                 </tbody>
               </v-table>
