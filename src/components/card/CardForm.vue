@@ -73,7 +73,7 @@
         <div v-if="cards.length > 0">
             <v-col cols="12" class="flex">
                 <h1 data-aos="fade-left" class="card-mr" align="left">
-                    ㅇㅇㅇ 님을 위한 혜택 만땅 카드
+                    {{ myInfo ? myInfo.nickname : '아무개' }} 님을 위한 혜택 만땅 카드
                 </h1>
 
             </v-col>
@@ -102,7 +102,7 @@
         <div v-if="cards.length > 0">
             <v-col cols="12" class="flex">
                 <h1 data-aos="fade-left" class="card-mr" align="left">
-                    ㅇㅇㅇ 님과 같은 연령대 사용자들에게 인기에요!
+                    {{ myInfo ? myInfo.nickname : '아무개' }} 님과 같은 연령대 사용자들에게 인기에요!
                 </h1>
             </v-col>
             <Carousel :items-to-show="4" :wrap-around="true">
@@ -134,6 +134,8 @@ import { Carousel, Slide } from "vue3-carousel";
 import "aos/dist/aos.css";
 import { mapState, mapActions } from "vuex";
 const CardModule = 'CardModule';
+const MyPageModule = 'MyPageModule'
+const LogInModule = 'LogInModule'
 const LINK = process.env.VUE_APP_S3_LINK;
 
 export default {
@@ -146,20 +148,20 @@ export default {
     components: {
         Carousel,
         Slide,
-
     },
     mounted() {
+        this.loadData();
         AOS.init({
             duration: 1600,
         });
         this.cardLoading();
     },
-
     methods: {
         eventLink(link) {
             this.$router.push(link);
         },
         ...mapActions(CardModule, ["requestCardList"]),
+        ...mapActions(MyPageModule, ['getMyInfoToSpring']),
         async cardLoading() {
             await this.requestCardList();
             this.cards = this.$store.state[CardModule].cards;
@@ -167,11 +169,21 @@ export default {
         dynamicLink(extraPath) {
             return `${LINK}/${extraPath}`;
         },
+        loadData() {
+            // this.userId가 설정된 이후에 데이터를 가져옵니다.
+            if (this.userId) {
+                this.getMyInfoToSpring(this.userId);
+            }
+        }
+    },
+    created() {
+        this.userId = this.$store.state[LogInModule].memberInfo.userId;
     },
     computed: {
+        ...mapState(LogInModule, ['memberInfo']),
         ...mapState(CardModule, ['cards']),
+        ...mapState(MyPageModule, ['myInfo'])
     },
-
 };
 </script>
 <style></style>
