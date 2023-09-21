@@ -18,10 +18,10 @@
                     <th scope="row">휴대폰 번호</th>
                     <td>{{ myInfo && myInfo.mobile }}</td>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <th scope="row">이메일</th>
                     <td>{{ myInfo && myInfo.email }}</td>
-                </tr>
+                </tr> -->
                 <tr>
                     <th scope="row">관심사1</th>
                     <td>1. {{ interest1ToKorean }}</td>
