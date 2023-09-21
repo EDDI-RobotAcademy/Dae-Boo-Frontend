@@ -35,7 +35,6 @@ import ManagementOneByOneForm from './ManagementOneByOneForm.vue';
 import { mapActions, mapState } from "vuex";
 const BoardModule = "BoardModule";
 const QuestionBoardModule = "QuestionBoardModule";
-// const LogInModule = 'LogInModule';
 const MyPageModule = 'MyPageModule'
 
 export default {
@@ -58,10 +57,6 @@ export default {
         ...mapState(QuestionBoardModule, ["questBoards"]),
         ...mapState(MyPageModule, ['myInfo'])
     },
-    // mounted() {
-    //     this.requestManagementBoardToSpring();
-    //     this.requestManagementQuestionBoardToSpring();
-    // },
     methods: {
         ...mapActions(BoardModule,[
             "requestManagementBoardToSpring",

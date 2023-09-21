@@ -13,7 +13,7 @@
         <tr
           class="question-mr"
           v-if="
-            !questions || (Array.isArray(questions) && questions.length === 0)
+            !questBoards || (Array.isArray(questBoards) && questBoards.length === 0)
           "
         >
           <th colspan="3" style="text-align: center">
@@ -22,24 +22,24 @@
         </tr>
         <tr
           v-else
-          v-for="question in paginatedquestions"
-          :key="question.questionId"
-          @click="questionReadRink(question.questionId)"
+          v-for="questBoard in paginatedquestions"
+          :key="questBoard.questionId"
+          @click="questionReadRink(questBoard.questionId)"
           class="question-mr question-tr"
         >
-          <td align="center">{{ question.questionId }}</td>
+          <td align="center">{{ questBoard.questionId }}</td>
           <td align="left">
-            [{{ question.isAnswerComplete ? "완료" : "대기" }}]
-            {{ question.title }}
+            [{{ questBoard.isAnswerComplete ? "완료" : "대기" }}]
+            {{ questBoard.title }}
           </td>
-          <td align="center">{{ question.createdAt }}</td>
+          <td align="center">{{ questBoard.createdAt }}</td>
         </tr>
       </tbody>
       <tr>
         <th colspan="3">
           <v-pagination
             v-model="page"
-            :length="Math.ceil(questions.length / itemsPerPage)"
+            :length="Math.ceil(questBoards.length / itemsPerPage)"
             class="question-nation"
           />
         </th>
@@ -61,6 +61,8 @@ import { mapActions, mapState } from "vuex";
 import '@/assets/css/myPage/myPageQA.css'
 const QuestionModule = "QuestionModule";
 const MyPageModule = "MyPageModule";
+const QuestionBoardModule = 'QuestionBoardModule'
+
 export default {
   data() {
     return {
@@ -72,10 +74,11 @@ export default {
     paginatedquestions() {
       const startIndex = (this.page - 1) * this.itemsPerPage;
       const endIndex = startIndex + this.itemsPerPage;
-      return this.questions.slice(startIndex, endIndex);
+      return this.questBoards.slice(startIndex, endIndex);
     },
-    ...mapState(QuestionModule, ["questions"]),
-    ...mapState(MyPageModule,["myInfo"])
+    // ...mapState(QuestionModule, ["questions"]),
+    ...mapState(MyPageModule,["myInfo"]),
+    ...mapState(QuestionBoardModule, ['questBoards'])
   },
   mounted() {
     this.requestQuestionListToSpring(this.myInfo.userId);

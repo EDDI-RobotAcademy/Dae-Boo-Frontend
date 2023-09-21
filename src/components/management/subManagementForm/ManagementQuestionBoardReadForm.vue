@@ -40,17 +40,7 @@
                 </td>
             </tr>
         </v-table>
-        <ManagementQuestionBoardAnswerForm v-if="questBoard.answerComplete === false" @answer-submitted="onAnswerSubmitted" />
-        <div v-else>
-            <h2 class="managerAnswerTitle">A. 관리자 답변</h2>
-            <div class="managerAnswerBox">
-                <div class="answerText">
-                    {{ answer.content }}
-                </div>
-            </div>
-        </div>
-        <!-- <ManagementAnswerForm v-if="questBoard.answerComplete === true" :questBoard="questBoard" /> -->
-        <router-link class="returnBtn" :to="{ name: 'ManagementPage' }"> 돌아가기 </router-link>
+        <router-link class="returnBtn" :to="{ name: 'ManagementPage' }">돌아가기</router-link>
     </div>
 </template>
 
@@ -62,15 +52,8 @@ import { mapActions, mapState } from 'vuex';
 import '@/assets/css/management/managementAnswerForm.css';
 import '@/assets/css/management/managementQuestionReadBoard.css';
 
-import ManagementQuestionBoardAnswerForm from "@/components/management/subManagementForm/ManagementQuestionBoardAnswerForm.vue"
-// import ManagementAnswerForm from "@/components/management/subManagementForm/ManagementAnswerForm.vue";
 
 export default {
-    data() {
-        return {
-            comments: [], // 댓글 데이터를 저장하는 배열
-        }
-    },
     name: "ManagementQuestionBoardReadForm",
     props: {
         questBoard: {
@@ -80,47 +63,12 @@ export default {
     },
     computed: {
         ...mapState(MyPageModule, ['myInfo']),
-        ...mapState(QuestionBoardModule, ['answer', 'questBoard'])
-    },
-    components: {
-        ManagementQuestionBoardAnswerForm,
-        // ManagementAnswerForm
-    },
-    async mounted() { // 컴포넌트가 마운트된 후 실행됨
-        if (this.questBoard.answerComplete === true) {
-            const questionId = this.questBoard.questionId; // questBoard 객체의 id 속성을 추출
-            await this.requestManagementDetailQuestionAnswerToSpring(questionId);
-        }
+        ...mapState(QuestionBoardModule, ['answer'])
     },
     methods: {
         ...mapActions(QuestionBoardModule, [
             'responseManagementQuestionAnswerSaveToSping',
-            'requestManagementDetailQuestionAnswerToSpring'
         ]),
-        async onAnswerSubmitted(answer) {
-            this.comments.push({ text: answer }); // 댓글 배열에 넣었음
-            alert("부모 컴포넌트로 이동했습니다: "+ answer)
-
-            const { questionId } = this.questBoard;
-
-            // 서버로 데이터를 전송
-            try {
-                const payload = {
-                answer,
-                questionId,
-                userId: this.myInfo.userId
-                };
-
-                const response = await this.responseManagementQuestionAnswerSaveToSping(payload);
-
-                if (response == false) {
-                // 서버에서 응답을 받은 후 댓글을 배열에 추가
-                this.comments.push({ text: answer });
-                }
-            } catch (error) {
-                console.error('댓글 생성 오류:', error);
-            }
-        },
     },
 }
 </script>
