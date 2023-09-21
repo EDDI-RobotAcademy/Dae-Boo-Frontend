@@ -76,9 +76,7 @@ export default {
       boardName: "",
       content: "",
       writer: "",
-      userId: {
-        
-      } ,
+      userId: "",
       category: "",
     };
   },
