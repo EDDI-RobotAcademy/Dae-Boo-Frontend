@@ -13,7 +13,7 @@
         <tr
           class="question-mr"
           v-if="
-            !questBoards || (Array.isArray(questBoards) && questBoards.length === 0)
+            !questions || (Array.isArray(questions) && questions.length === 0)
           "
         >
           <th colspan="3" style="text-align: center">
@@ -29,7 +29,7 @@
         >
           <td align="center">{{ questBoard.questionId }}</td>
           <td align="left">
-            [{{ questBoard.isAnswerComplete ? "완료" : "대기" }}]
+            [{{ questBoard.answerComplete ? "완료" : "대기" }}]
             {{ questBoard.title }}
           </td>
           <td align="center">{{ questBoard.createdAt }}</td>
@@ -39,7 +39,7 @@
         <th colspan="3">
           <v-pagination
             v-model="page"
-            :length="Math.ceil(questBoards.length / itemsPerPage)"
+            :length="Math.ceil(questions.length / itemsPerPage)"
             class="question-nation"
           />
         </th>
@@ -61,7 +61,7 @@ import { mapActions, mapState } from "vuex";
 import '@/assets/css/myPage/myPageQA.css'
 const QuestionModule = "QuestionModule";
 const MyPageModule = "MyPageModule";
-const QuestionBoardModule = 'QuestionBoardModule'
+// const QuestionBoardModule = 'QuestionBoardModule'
 
 export default {
   data() {
@@ -74,11 +74,11 @@ export default {
     paginatedquestions() {
       const startIndex = (this.page - 1) * this.itemsPerPage;
       const endIndex = startIndex + this.itemsPerPage;
-      return this.questBoards.slice(startIndex, endIndex);
+      return this.questions.slice(startIndex, endIndex);
     },
-    // ...mapState(QuestionModule, ["questions"]),
+    ...mapState(QuestionModule, ["questions"]),
     ...mapState(MyPageModule,["myInfo"]),
-    ...mapState(QuestionBoardModule, ['questBoards'])
+    // ...mapState(QuestionBoardModule, ['questBoards'])
   },
   mounted() {
     this.requestQuestionListToSpring(this.myInfo.userId);

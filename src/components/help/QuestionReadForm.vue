@@ -15,7 +15,7 @@
           <td class="question-read-text">등록일자 : {{ question.createdAt }}</td>
         </v-col>
         <v-col cols="1">
-          <td>[{{ question.isAnswerComplete ? '완료' : '대기'}}]</td>
+          <td>[{{ question.answerComplete ? '완료' : '대기'}}]</td>
         </v-col>
         <v-col cols="12">
           <div class="read-line"/>
