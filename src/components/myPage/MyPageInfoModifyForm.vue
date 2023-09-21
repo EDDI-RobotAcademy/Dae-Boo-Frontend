@@ -21,12 +21,12 @@
                             <input type="text" v-model="mobile" />
                         </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <th scope="row">이메일</th>
                         <td>
                             <input type="text" v-model="email" />
                         </td>
-                    </tr>
+                    </tr> -->
 
                     <tr>
                         <th scope="row">관심사1 </th>
