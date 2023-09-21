@@ -11,4 +11,3 @@ export default {
       state.product = receivedData
     },
 }
-  
