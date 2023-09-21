@@ -5,7 +5,7 @@
       <h1 class="board-head" align="center">게시판</h1>
     </router-link>
   </v-col>
-    <board-register-form @submit="onSubmit" />
+    <board-register-form @submit="onSubmit"/>
   </div>
 </template>
 
@@ -22,6 +22,8 @@ export default {
     async onSubmit(payload) {
       try {
         const board = await this.CreateBoardToSpring(payload);
+        console.log(payload.category);
+        console.log(board)
         console.log("typeof(board): " + typeof board);
         console.log("boardId: " + JSON.stringify(board));
         this.$router.push({

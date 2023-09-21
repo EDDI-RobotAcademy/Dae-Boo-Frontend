@@ -25,8 +25,8 @@
           class="row-mr cardTr"
         >
           <td align="center">{{ board.boardId }}</td>
-          <td align="center">{{ board.category }} {{ board.boardName }}</td>
-          <td align="center">{{ board.writer }}</td>
+          <td align="center"> <p style="font-size: small;">[{{ board.category }}]{{ board.boardName }}</p> </td>
+          <td align="center">{{ board.userId.nickname }}</td>
           <td align="center">{{ board.boardRegisterDate }}</td>
         </tr>
       </tbody>
@@ -46,8 +46,12 @@ import '@/assets/css/board/boardList.css'
 export default {
   props: {
     boards: {
-      type: Array
+      type: Array,
+      userId: {
+        nickname: String
+      }
     },
+    
   },
   data() {
     return {
@@ -60,7 +64,7 @@ export default {
       const startIndex = (this.page - 1) * this.itemsPerPage;
       const endIndex = startIndex + this.itemsPerPage;
       return this.boards.slice(startIndex, endIndex);
-    }
+    },
   },
   methods: {
     boardReadRink(boardId) {

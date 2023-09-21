@@ -5,20 +5,32 @@
         <div>
           <v-row justify="center" align="center" no-gutters>
             <v-col cols="2">
-              <v-text-field disabled="true" label="작성자" value="tester" variant="outlined" class="board-register-body"
-                v-model="writer">
+              <v-text-field
+                disabled="true"
+                label="작성자"
+                variant="outlined"
+                class="board-register-body"
+                v-model="myInfo.nickname"
+              >
               </v-text-field>
             </v-col>
             <v-col cols="1"></v-col>
             <v-col cols="7">
-              <v-text-field label="제목" variant="outlined" class="board-register-body" v-model="boardName" />
+              <v-text-field
+                label="제목"
+                variant="outlined"
+                class="board-register-body"
+                v-model="boardName"
+              />
             </v-col>
             <v-col cols="2">
-              <v-select class="board-register-body" label="Select" :items="[
-                '전체',
-                '일상',
-                '후기',
-              ]" variant="outlined"></v-select>
+              <v-select
+                class="board-register-body"
+                label="선택"
+                :items="['REVIEW', 'DAILY']"
+                v-model="category"
+                variant="outlined"
+              ></v-select>
             </v-col>
             <v-col cols="12">
               <div id="editor" class="editor"></div>
@@ -32,7 +44,12 @@
                 </router-link>
               </v-col>
               <v-col cols="1">
-                <button type="button" @click="onSubmit" class="submit-btn" style="color: white">
+                <button
+                  type="button"
+                  @click="onSubmit"
+                  class="submit-btn"
+                  style="color: white"
+                >
                   작성완료
                 </button>
               </v-col>
@@ -49,8 +66,8 @@ import { mapState } from "vuex";
 import Editor from "@toast-ui/editor";
 import "@/assets/css/editor-custom-style.css";
 import "@toast-ui/editor/dist/toastui-editor.css";
-import '@/assets/css/board/boardRegister.css'
-const LogInModule = "LogInModule";
+import "@/assets/css/board/boardRegister.css";
+const MyPageModule = "MyPageModule";
 
 export default {
   data() {
@@ -58,8 +75,9 @@ export default {
       editor: null,
       boardName: "",
       content: "",
-      writer: "test",
-      userId: ""
+      writer: "",
+      userId: "",
+      category: "",
     };
   },
   mounted() {
@@ -80,18 +98,20 @@ export default {
         boardName: this.boardName,
         writer: this.writer,
         content: this.content,
-        userId: this.userId
+        category: this.category,
+        userId: this.userId,
       });
     },
   },
   computed: {
-    ...mapState(LogInModule, ["memberInfo"])
+    ...mapState(MyPageModule, ["myInfo"]),
   },
   created() {
-    this.userId = this.memberInfo.userId
-  }
+    this.userId = this.myInfo.userId;
+  },
 };
 </script>
 
 <style></style>
   
+

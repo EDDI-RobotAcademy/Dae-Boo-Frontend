@@ -9,7 +9,7 @@
     <div>
       <v-row align="center" justify="center">
         <v-col cols="2" align="center" justify="center">
-              <button class="board-button" to="/board/list-page">이전으로</button>
+              <button class="board-button" @click="boardListRouter">이전으로</button>
             </v-col>
             <v-col cols="8"><span/></v-col>
             <v-col cols="2" align="center" justify="center">
@@ -23,8 +23,8 @@
       </v-row>
     </div>
     <div>
-      <comment-list-page />
-      <comment-page />
+      <comment-list-page :comments="comments" :boardId="boardId"/>
+      <comment-page/>
     </div>
   </v-container>
   <v-container class="board-read-style2">
@@ -51,6 +51,9 @@ export default {
       type: String,
       required: true,
     },
+    comments: {
+      type: Array,
+    },
   },
   computed: {
     ...mapState(BoardModule, ["board"]),
@@ -61,6 +64,9 @@ export default {
     boardModifyRouter(boardId) {
       this.$router.push({ path: `/board/modify-page/${boardId}` });
     },
+    boardListRouter(){
+      this.$router.push({path: "/board/list-page"})
+    }
   },
   created() {
     this.BoardReadToSpring(this.boardId);
