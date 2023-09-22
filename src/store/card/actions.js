@@ -51,6 +51,7 @@ export default {
       });
   },
   requestCardDetail({ commit }, cardId) {
+    console.log("asdfasdfasd");
     console.log(cardId);
     return axiosInst
       .get(`/card/${cardId}`)

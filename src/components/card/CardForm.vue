@@ -80,7 +80,6 @@
             <Carousel :items-to-show="4" :wrap-around="true">
                 <Slide v-for="card in cards" :key="card.cardId">
                     <div @click="eventLink(`/card-detail/${card.cardId}`)">
-
                         <div>
                             <img :src="dynamicLink(card.cardImage)" alt="카드 이미지" class="move-image" data-aos="fade-top"
                                 style="width: 142px;height: 225px;" />

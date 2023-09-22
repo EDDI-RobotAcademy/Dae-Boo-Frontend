@@ -74,7 +74,7 @@ export default {
     name:
         "CardDetailForm",
     props: {
-        cardId: {
+        card: {
             type: Object,
             required: true,
         },
@@ -89,7 +89,7 @@ export default {
         AOS.init({
             duration: 1600,
         });
-        this.requestCardDetail(this.cardId)
+        this.cardInfoLoading();
     },
     methods: {
         dynamicLink(extraPath) {
@@ -99,6 +99,9 @@ export default {
             this.isLiked = !this.isLiked;
         },
         ...mapActions(CardModule, ['requestCardDetail']),
+        cardInfoLoading() {
+            this.requestCardDetail(this.cardId);
+        },
     },
     computed: {
         heartClass() {
