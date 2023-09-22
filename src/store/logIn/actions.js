@@ -55,7 +55,7 @@ export default {
       })
     },
     getKakaoTokenToSpring({commit}, payload) {
-		alert("payload: " + payload)
+		// alert("payload: " + payload)
         axiosInst.get("/authentication/kakao/callback", { params: { code: payload } })
         .then((res) => {
 
@@ -66,7 +66,7 @@ export default {
 
         // 추가되는 코드 (토큰으로 사용자 정보 가져오기 함께 실행)
         const userToken = window.localStorage.getItem('userToken');
-        alert("userToken: " + userToken);
+        // alert("userToken: " + userToken);
 
         return axiosInst.post("/user/testToken", {
             userToken
@@ -82,6 +82,20 @@ export default {
       .catch(() => {
         console.error
       });
+    },
+    // 관리자 및 카드 페이지 - 사용자 정보 불러오기
+    getUserIngoToSpring({commit}) {
+        const userToken = window.localStorage.getItem('userToken');
+
+        if (!userToken) {
+            commit(REQUEST_USER_INFO_TO_SPRING, null);
+            return Promise.resolve(); // Promise.resolve()를 사용하여 프라미스 완료
+        }
+        return axiosInst.post("/user/testToken", {
+            userToken
+        }).then((res) => {
+            commit(REQUEST_USER_INFO_TO_SPRING, res.data);
+        });
     },
     // vuex에 존재하는 값 삭제 (로그아웃)
     logout({commit}) {
