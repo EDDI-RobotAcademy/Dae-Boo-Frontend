@@ -26,7 +26,8 @@
          >
            <td align="center">{{ board.boardId }}</td>
            <td align="center"> <p style="font-size: small;">[{{ board.category }}]{{ board.boardName }}</p> </td>
-           <td align="center">{{ board.userId.nickname }}</td>
+           <!-- <td align="center">{{ board.userId.nickname }}</td> -->
+           <td align="center">{{ board.writer || (board.userId ? board.userId.nickname : '없음') }}</td> <!-- 게시판 등록 부분 userId로 제대로 수정해야 해결되는 문제 -->
            <td align="center">{{ board.boardRegisterDate }}</td>
          </tr>
        </tbody>
