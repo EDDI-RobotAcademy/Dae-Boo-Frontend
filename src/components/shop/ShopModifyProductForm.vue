@@ -1,8 +1,9 @@
 <template>
     <div>
         <div>
-            <!-- <v-img :src="getImageUrl(book.filePathList)" class="imageCss" style="width: 300px"/> -->
-            <v-img src="@/assets/cardImg.jpg" style="max-width: 65%; height: auto;"/>
+            <div style="display: flex; justify-content: center; align-items: center;">
+            <img class="product" :src="dynamicLink(product.image)" v-if="product.image" />
+        </div>
         </div>
         <form @submit.prevent="onSubmit">
             <V-table>
@@ -35,7 +36,7 @@
         <button type="button" @click="submitForm">수정 완료</button>
         <router-link
             :to="{
-                name: 'ShopModifyProductPage',
+                name: 'ShopReadProductPage',
                 params: { productId: product.productId.toString() },
             }">
             수정 취소
@@ -44,6 +45,9 @@
 </template>
 
 <script>
+import AOS from "aos";
+const LINK = process.env.VUE_APP_S3_LINK;
+
 export default {
     props: {
         product: {
@@ -56,14 +60,19 @@ export default {
             price: '',
             productName: '',
             description: '',
-            image: 'cardImg.jpg' // 임시로
+            link: LINK,
         }
     },
     created() {
         this.price = this.product.price;
-        this.productName = this.product.productName;
+        this.productName = this.product.name;
         this.description = this.product.description;
         this.image = this.product.image;
+    },
+    mounted() {
+        AOS.init({
+            duration: 1600,
+        });
     },
     methods: {
         onSubmit() {
@@ -73,6 +82,9 @@ export default {
         submitForm() {
             // 폼 제출 버튼 클릭 시 onSubmit 메서드 호출
             this.onSubmit();
+        },
+        dynamicLink(extraPath) {
+            return `${this.link}/${extraPath}`;
         },
     }
 }
