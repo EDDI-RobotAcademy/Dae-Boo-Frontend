@@ -1,9 +1,9 @@
 <template>
     <div>
-        <div>
-            <!-- <v-img :src="getImageUrl(book.filePathList)" class="imageCss" style="width: 300px"/> -->
-            <v-img src="@/assets/cardImg.jpg" style="max-width: 65%; height: auto;"/>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <img class="product" :src="dynamicLink(product.image)" v-if="product.image" />
         </div>
+
         <div>
         <V-table>
             <tr>
@@ -39,6 +39,9 @@
 </template>
 
 <script>
+import AOS from "aos";
+const LINK = process.env.VUE_APP_S3_LINK;
+
 export default {
     name: "ShopReadProductForm",
     props: {
@@ -49,17 +52,19 @@ export default {
     },
     data() {
         return {
-            // awsBucketName: process.env.VUE_APP_S3_BUCKET_NAME,
-            // awsBucketRegion: process.env.VUE_APP_S3_REGION,
-            // awsIdentityPoolId: process.env.VUE_APP_S3_IDENTITY_POOL_ID,
+            link: LINK,
         }
     },
-    methods:{
-        // S3에서 업로드한 사진 가져오기
-        // getImageUrl(filePath){
-        //     return `https://${this.awsBucketName}.s3.${this.awsBucketRegion}.amazonaws.com/${filePath}`
-        // }
-    }
+    mounted() {
+        AOS.init({
+            duration: 1600,
+        });
+    },
+    methods: {
+        dynamicLink(extraPath) {
+            return `${this.link}/${extraPath}`;
+        },
+    },
 }
 </script>
 
