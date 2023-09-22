@@ -4,7 +4,7 @@
             <div class="topBar">
                 <div class="managerInfo">
                     <div class="managerImg"></div>
-                    <div class="managerHi">{{ myInfo ? myInfo.nickname + ' 님 환영합니다.' : '로그인이 필요합니다.' }}</div>
+                    <div class="managerHi">{{ memberInfo ? memberInfo.nickname + ' 님 환영합니다.' : '로그인이 필요합니다.' }}</div>
                 </div>
                 <div class="managerPageCategory">
                     <button @click="accountManagement">회원 관리</button>
@@ -41,6 +41,7 @@ import { mapActions, mapState } from "vuex";
 const BoardModule = "BoardModule";
 const QuestionBoardModule = "QuestionBoardModule";
 const MyPageModule = 'MyPageModule'
+const LogInModule = 'LogInModule'
 
 export default {
     data() {
@@ -50,7 +51,7 @@ export default {
             isCardClick: false,
             isOneByOneClick: false,
             isPurchaseClick:false,
-            isPaymentCancelClick:false
+            isPaymentCancelClick:false,
         };
     },
     components: {
@@ -64,7 +65,11 @@ export default {
     computed: {
         ...mapState(BoardModule, ["boards"]),
         ...mapState(QuestionBoardModule, ["questBoards"]),
-        ...mapState(MyPageModule, ['myInfo'])
+        ...mapState(MyPageModule, ['myInfo']),
+        ...mapState(LogInModule, ['memberInfo'])
+    },
+    created() {
+        this.getUserIngoToSpring();
     },
     methods: {
         ...mapActions(BoardModule,[
@@ -72,6 +77,9 @@ export default {
         ]),
         ...mapActions(QuestionBoardModule,[
             'requestManagementQuestionBoardToSpring'
+        ]),
+        ...mapActions(LogInModule, [
+            'getUserIngoToSpring'
         ]),
         accountManagement() {
             this.isAccountClick = true;
@@ -123,8 +131,6 @@ export default {
             this.isPurchaseClick = true;
             this.isPaymentCancelClick =false;
         }
-
-
     },
 }
 
