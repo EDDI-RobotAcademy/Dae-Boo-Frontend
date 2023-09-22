@@ -28,6 +28,16 @@ export default {
       console.log(res.data)
       return res.data
     })
-  }
+  },
+
+  async getCardBenefit(_, payload){
+    console.log("cardId: " + payload)
+
+    return await axiosInst.get('/card/cardBenefit' , { params: { cardId: payload }})
+    .then((res) => {
+      console.log(res.data)
+        return res.data
+    })
+  },
 };
 

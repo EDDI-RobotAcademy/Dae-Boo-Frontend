@@ -42,9 +42,6 @@ export default {
             required: true
         }
     },
-    methods: {
-        // deleteBoard() {}
-    },
 }
 </script>
 <style>
