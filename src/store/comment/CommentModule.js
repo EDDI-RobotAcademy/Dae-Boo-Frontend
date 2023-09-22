@@ -1,6 +1,6 @@
-import state from '@/store/board/states'
-import actions from '@/store/board/actions'
-import mutations from '@/store/board/mutations'
+import state from '@/store/comment/states'
+import actions from '@/store/comment/actions'
+import mutations from '@/store/comment/mutations'
 
 const CommentModule = {
     namespaced: true,

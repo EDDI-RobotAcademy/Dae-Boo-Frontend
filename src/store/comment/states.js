@@ -1,3 +1,5 @@
 export default {
-    comments: []
+    comments: [],
+    comment: {},
+    qusetionComment: []
 }

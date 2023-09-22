@@ -1,1 +1,3 @@
+export const COMMENT = "COMMENT"
 export const COMMENT_LIST = 'COMMENT_LIST'
+export const QUESTION_COMMENT_LIST = 'QUESTION_COMMENT_LIST'
