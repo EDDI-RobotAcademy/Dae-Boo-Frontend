@@ -7,6 +7,11 @@
                         <th scope="row">닉네임</th>
                         <td>
                             <input type="text" v-model="nickname" />
+                            <v-btn @click="nicNameDuplicateCheck"
+                                    text large outlined style="font-size: 13px"
+                                    class="mt-1 ml-2" color="teal lighten-1">
+                                중복확인
+                            </v-btn>
                         </td>
                     </tr>
                     <tr>
@@ -65,6 +70,9 @@
 </template>
 <script>
 import '@/assets/css/myPage/MyPageInfo.css'
+import { mapActions } from "vuex";
+const MyPageModule = 'MyPageModule'
+
 export default {
     props: {
         myInfo: {
@@ -73,7 +81,7 @@ export default {
     },
     data() {
         return {
-            name: '',
+            // name: '',
             nickname: '',
             gender: '',
             mobile: '',
@@ -81,6 +89,7 @@ export default {
             userId: '',
             interest1: '',
             interest2: '',
+            nicknamePass: false,
             interestList: [
                 { name: '관심사1번', value: 'INTEREST1' },
                 { name: '관심사2번', value: 'INTEREST2' },
@@ -90,7 +99,7 @@ export default {
         }
     },
     created() {
-        this.name = this.myInfo.name
+        // this.name = this.myInfo.name
         this.nickname = this.myInfo.nickname
         this.mobile = this.myInfo.mobile
         this.gender = this.myInfo.gender
@@ -100,14 +109,24 @@ export default {
         this.interest2 = this.myInfo.interest2
     },
     methods: {
+        ...mapActions(MyPageModule, ['requestSpringToCheckNickname']),
         onSubmit() {
             const { nickname, mobile, email, interest1, interest2 } = this
             this.$emit('submit', { nickname, mobile, email, interest1, interest2 })
-        }
+        },
         // onSubmit() {
         //     const { nickname, mobile, email, interest1 } = this
         //     this.$emit('submit', { nickname, mobile, email, interest1 })
-        // }
+        // },
+        async nicNameDuplicateCheck() {
+            console.log("nickname: ", this.nickname)
+            this.nicknamePass = await this.requestSpringToCheckNickname({ nickname: this.nickname});
+            if(!this.nicknamePass) {
+                alert("중복된 닉네임 입니다.");
+            } else {
+                alert("사용 가능한 닉네임입니다 !");
+            }
+        },
     },
 
 }
