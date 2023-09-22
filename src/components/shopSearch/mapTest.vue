@@ -2,9 +2,26 @@
     <div>
         <h1 class="mapShop-head" align="center">MOCA</h1>
         <div id="mapShop" class="mapShop"></div>
+
+        <!-- 찜한 카드 -->
+        <h3 class="mapShop-title">Wish Card</h3>
+        <v-card v-if="cards.length > 0" class="mapShop-card-body" theme="dark" rounded="100%">
+            <Carousel :items-to-show="1" :wrap-around="true" class="mapShop-card-carousel">
+                <Slide v-for="card in cards" :key="card.cardId">
+                    <div>
+                        <div style="color: #222" @click="this.cardId = card.cardId, cardBtnClick()">{{ card.name }}</div>
+                    </div>
+                </Slide>
+                <template #addons>
+                    <Navigation />
+                </template>
+            </Carousel>
+        </v-card>
+
+
         <v-btn @click="this.cardId = 1, cardBtnClick()">cardId : 1</v-btn>
         <v-btn @click="this.cardId = 2, cardBtnClick()">cardId : 2</v-btn>
-        <v-btn @click="this.cardId = 3, cardBtnClick()">cardId : 3</v-btn>
+        <v-btn @click="this.cardId = 5, cardBtnClick()">cardId : 5</v-btn>
         <h3 class="mapShop-title">Category</h3>
         <p class="mapShop-text" id="AC5" @click="this.category = 'AC5', searchPlaces()">교육</p>
         <p class="mapShop-text" id="MT1" @click="this.category = 'MT1', searchPlaces()">대형마트</p>
@@ -17,8 +34,9 @@
 </template>
   
 <script>
+import { Carousel, Navigation, Slide } from "vue3-carousel";
 import "@/assets/css/shopSearch/shopSearch.css";
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 const CardModule = 'CardModule';
 export default {
     data() {
@@ -30,6 +48,11 @@ export default {
             category: 'PO3'
         };
     },
+    components: {
+        Carousel,
+        Navigation,
+        Slide,
+    },
     mounted() {
         if (window.kakao && window.kakao.maps) {
             this.loadMap();
@@ -38,7 +61,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions(CardModule, ["getCardBenefit"]),
+        ...mapActions(CardModule, ["getCardBenefit", "requestLikeCardList"]),
         loadScript() {
             const script = document.createElement("script");
             script.src =
@@ -150,22 +173,30 @@ export default {
         },
 
         //카드찾기
+
         async cardBtnClick() {
             try {
                 const response = await this.getCardBenefit(this.cardId);
                 console.log(response);
                 const elements = document.getElementsByClassName("mapShop-text");
                 for (let i = 0; i < elements.length; i++) {
-                    elements[i].style.color = "white";
+                    elements[i].style.color = "#d5d5d5";
                 }
 
                 response.forEach((resp) => {
                     // this.category = resp;
-                    document.getElementById(resp).style.color = "orange";
+                    document.getElementById(resp).style.color = "#ff388e";
                     console.log(resp);
                 });
             } catch (error) { console.error(error); }
-        }
+        },
+        async cardLoading() {
+            await this.requestLikeCardList();
+            this.cards = this.$store.state[CardModule].cards;
+        },
+    },
+    computed: {
+        ...mapState(CardModule, ["cards"]),
     },
 };
 </script>

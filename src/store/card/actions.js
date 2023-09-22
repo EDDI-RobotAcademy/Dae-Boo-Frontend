@@ -29,7 +29,6 @@ export default {
       return res.data
     })
   },
-
   async getCardBenefit(_, payload){
     console.log("cardId: " + payload)
 
