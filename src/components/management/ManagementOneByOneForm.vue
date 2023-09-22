@@ -40,12 +40,19 @@
             </td>
             </tr>
         </v-table>
-
+        
         <div class="managementQuestionBtn">
             <div class="question-search-container">
             <input type="text" v-model="searchQuery" placeholder="제목을 입력하세요" />
             <v-btn @click="search" class="mdi mdi-magnify" variant="text"></v-btn>
             </div>
+        </div>
+
+        <!-- 페이지네이션 컨트롤 -->
+        <div class="pagination">
+            <button @click="previousPage" :disabled="currentPage === 1">이전</button>
+            <span>페이지 {{ currentPage }} / {{ totalPages }}</span>
+            <button @click="nextPage" :disabled="currentPage === totalPages">다음</button>
         </div>
 
     </div>
@@ -64,6 +71,8 @@ export default {
         return {
             selectedItems: [],
             searchQuery: "",
+            currentPage: 1, // 현재 페이지 번호
+            itemsPerPage: 15, // 페이지당 항목 수
         };
     },
     computed: {
@@ -75,17 +84,45 @@ export default {
             return this.selectAll ? "green" : "black";
         },
         filteredBoards() {
-      if (!this.questBoards || this.questBoards.length === 0) {
-        return [];
-      }
-      // 검색어를 소문자로 변환
-      const query = this.searchQuery.toLowerCase();
-      // 검색어와 일치하는 게시물만 필터링
-      return this.questBoards.filter((questBoard) => {
-        return questBoard.title.toLowerCase().includes(query);
-      });
+            if (!this.questBoards || this.questBoards.length === 0) {
+                return [];
+            }
+            // 검색어를 소문자로 변환
+            const query = this.searchQuery.toLowerCase();
+            // 검색어와 일치하는 게시물만 필터링
+            const filteredData = this.questBoards.filter((questBoard) => {
+                return questBoard.title.toLowerCase().includes(query);
+            });
+            // 현재 페이지에 따라 데이터를 잘라냅니다.
+            const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+            const endIndex = startIndex + this.itemsPerPage;
+            return filteredData.slice(startIndex, endIndex);
+        },
+        // 전체 페이지 수를 계산하는 계산된 속성
+        totalPages() {
+            if (!this.questBoards || this.questBoards.length === 0) {
+                return 0;
+            }
+            const filteredData = this.questBoards;
+            const totalPages = Math.ceil(filteredData.length / this.itemsPerPage);
+            return totalPages;
+        }
     },
-    }
+    methods: {
+    // 이전 페이지로 이동하는 메서드
+    previousPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+      }
+    },
+    // 다음 페이지로 이동하는 메서드
+    nextPage() {
+      const totalPages = this.totalPages;
+      if (this.currentPage < totalPages) {
+        this.currentPage++;
+      }
+    },
+  },
 }
 </script>
 

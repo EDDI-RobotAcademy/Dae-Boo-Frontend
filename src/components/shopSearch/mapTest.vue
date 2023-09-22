@@ -2,27 +2,32 @@
     <div>
         <h1 class="mapShop-head" align="center">MOCA</h1>
         <div id="mapShop" class="mapShop"></div>
+        <v-btn @click="this.cardId = 1, cardBtnClick()">cardId : 1</v-btn>
+        <v-btn @click="this.cardId = 2, cardBtnClick()">cardId : 2</v-btn>
+        <v-btn @click="this.cardId = 3, cardBtnClick()">cardId : 3</v-btn>
         <h3 class="mapShop-title">Category</h3>
-        <p class="mapShop-text" @click="this.categoty = 'MT1', searchPlaces()">대형마트</p>
-        <p class="mapShop-text" @click="this.categoty = 'CS2', searchPlaces()">편의점</p>
-        <p class="mapShop-text" @click="this.categoty = 'OL7', searchPlaces()">주유소, 충전소</p>
-        <p class="mapShop-text" @click="this.categoty = 'CT1', searchPlaces()">문화시설</p>
-        <p class="mapShop-text" @click="this.categoty = 'AD5', searchPlaces()">숙박</p>
-        <p class="mapShop-text" @click="this.categoty = 'FD6', searchPlaces()">음식점</p>
-        <p class="mapShop-text" @click="this.categoty = 'CE7', searchPlaces()"> 카페</p>
+        <p class="mapShop-text" id="AC5" @click="this.category = 'AC5', searchPlaces()">교육</p>
+        <p class="mapShop-text" id="MT1" @click="this.category = 'MT1', searchPlaces()">대형마트</p>
+        <p class="mapShop-text" id="CS2" @click="this.category = 'CS2', searchPlaces()">편의점</p>
+        <p class="mapShop-text" id="OL7" @click="this.category = 'OL7', searchPlaces()">주유소, 충전소</p>
+        <p class="mapShop-text" id="CT1" @click="this.category = 'CT1', searchPlaces()">문화시설</p>
+        <p class="mapShop-text" id="FD6" @click="this.category = 'FD6', searchPlaces()">음식점</p>
+        <p class="mapShop-text" id="CE7" @click="this.category = 'CE7', searchPlaces()"> 카페</p>
     </div>
 </template>
   
 <script>
 import "@/assets/css/shopSearch/shopSearch.css";
-
+import { mapActions } from "vuex";
+const CardModule = 'CardModule';
 export default {
     data() {
         return {
             placesData: [],
             markers: [],
+            cardId: '',
             // infowindow: new window.kakao.maps.InfoWindow
-            categoty: 'PO3'
+            category: 'PO3'
         };
     },
     mounted() {
@@ -33,6 +38,7 @@ export default {
         }
     },
     methods: {
+        ...mapActions(CardModule, ["getCardBenefit"]),
         loadScript() {
             const script = document.createElement("script");
             script.src =
@@ -65,7 +71,17 @@ export default {
             // console.log(ps)
             const currentMapCoordinate = this.mapShop.getCenter();
             const radius = 1000;
-            ps.categorySearch(this.categoty, this.placesSearchCB, {
+            ps.categorySearch(this.category, this.placesSearchCB, {
+                location: currentMapCoordinate,
+                radius: radius
+            });
+        },
+        searchPlacesNoRemoveMarker() {//카테고리 검색을 요청하는 함수
+            const ps = new window.kakao.maps.services.Places();
+            // console.log(ps)
+            const currentMapCoordinate = this.mapShop.getCenter();
+            const radius = 1000;
+            ps.categorySearch(this.category, this.placesSearchCB, {
                 location: currentMapCoordinate,
                 radius: radius
             });
@@ -133,6 +149,23 @@ export default {
             this.markers = [];
         },
 
+        //카드찾기
+        async cardBtnClick() {
+            try {
+                const response = await this.getCardBenefit(this.cardId);
+                console.log(response);
+                const elements = document.getElementsByClassName("mapShop-text");
+                for (let i = 0; i < elements.length; i++) {
+                    elements[i].style.color = "white";
+                }
+
+                response.forEach((resp) => {
+                    // this.category = resp;
+                    document.getElementById(resp).style.color = "orange";
+                    console.log(resp);
+                });
+            } catch (error) { console.error(error); }
+        }
     },
 };
 </script>
