@@ -6,4 +6,6 @@ export default{
   totalPages: 0,  // 총 페이지 수
   accounts: [],
   account: {},
+  purchaseList:[],
+  purchase:{}
 }

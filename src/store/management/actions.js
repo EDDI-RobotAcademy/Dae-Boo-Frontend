@@ -1,5 +1,5 @@
 import axiosInst from '@/utility/axiosInst'
-import { REQUEST_CARD_LIST_TO_SPRING, REQUEST_ACCOUNT_LIST_TO_SPRING, REQUEST_USER_INFO_TO_SPRING, REQUEST_CARD_INFO_TO_SPRING } from './mutation-types'
+import { REQUEST_CARD_LIST_TO_SPRING, REQUEST_ACCOUNT_LIST_TO_SPRING, REQUEST_USER_INFO_TO_SPRING, REQUEST_CARD_INFO_TO_SPRING, REQUEST_Purchase_LIST_TO_SPRING } from './mutation-types'
 
 export default {
   async requestCardListToSpring({ commit }) {
@@ -41,6 +41,12 @@ export default {
     console.log("UserInfo res: " + res.data.name);
     commit(REQUEST_USER_INFO_TO_SPRING, res.data);
   },
+  async getCardInfoToSpring({ commit }, payload) {
+    
+    const res = await axiosInst.get('/card/manage/CardInfo', { params: { cardId: payload } });
+    console.log("UserInfo res: " + res.data);
+    commit(REQUEST_CARD_INFO_TO_SPRING, res.data);
+  },
   async requestAccountStatusSetToSpring({ commit }, payload) {
     return await axiosInst.get('/user/manage/userStop', { params: { userId: payload } })
       .then((res)=>{
@@ -52,7 +58,18 @@ export default {
       .then((res)=>{
         commit(REQUEST_CARD_INFO_TO_SPRING, res.data);
       })
-  }
+  },
+  async requestPurchaseListToSpring({ commit }) {
+
+    await axiosInst.post('/purchase/list')
+      .then((res) => {
+        // console.log(res.data)
+        commit(REQUEST_Purchase_LIST_TO_SPRING, res.data);
+      })
+      .catch(() => {
+        console.error
+      })
+  },
   
 
 }

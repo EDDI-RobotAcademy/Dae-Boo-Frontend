@@ -95,12 +95,16 @@ export default {
             this.isBoardClick = true;
             this.isCardClick = false;
             this.isOneByOneClick = false;
+            this.isPurchaseClick = false;
+            this.isPaymentCancelClick =false;
         },
         cardManagement() {
             this.isAccountClick = false;
             this.isBoardClick = false;
             this.isCardClick = true;
             this.isOneByOneClick = false;
+            this.isPurchaseClick = false;
+            this.isPaymentCancelClick =false;
         },
         oneByOneManagement() {
             this.requestManagementQuestionBoardToSpring();
@@ -108,6 +112,8 @@ export default {
             this.isBoardClick = false;
             this.isCardClick = false;
             this.isOneByOneClick = true;
+            this.isPurchaseClick = false;
+            this.isPaymentCancelClick =false;
         },
         paymentCancelManage(){
             this.isAccountClick = false;

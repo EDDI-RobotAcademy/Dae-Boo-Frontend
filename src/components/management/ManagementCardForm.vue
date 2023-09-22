@@ -1,5 +1,5 @@
 <template>
-  <div v-show="cardRegister">
+  <div v-show="cardList">
     <v-table class="cardList" style="width:1200px; height: 700px;">
       <tr>
         <th align="center" width="8%">ID</th>
@@ -14,7 +14,7 @@
           <hr style="margin: 10px 0;"> <!-- 가로 선 밑에 10px 여백 추가 -->
         </td>
       </tr>
-      <tr v-for="item in paginatedItems" :key="item.id">
+      <tr v-for="item in paginatedItems" :key="item.id" @click="goRead(item.cardId)">
         <td><span align="center" v-html="item.cardId"></span></td>
         <td><span align="center" v-html="item.name"></span></td>
         <td><span align="center" v-html="item.company"></span></td>
@@ -32,11 +32,13 @@
       <span> {{ ' ' + currentPage }}</span>
     </div>
   </div>
-  <management-card-register-form v-show="!cardRegister" @cancel="cancelRegistration" />
+  <management-card-info v-show="cardInfo" :cardId="cardId" @cancel="cancelForm" />
+  <management-card-register-form v-show="cardRegister" @cancel="cancelRegistration" />
 </template>
   
 <script>
 import ManagementCardRegisterForm from './ManagementCardRegisterForm.vue'
+import ManagementCardInfo from './ManagementCardInfo.vue';
 import { mapActions, mapState } from 'vuex';
 const ManagementModule = 'ManagementModule';
 export default {
@@ -45,11 +47,14 @@ export default {
       items: [],
       currentPage: 1,
       pageSize: 15, // 페이지당 표시할 항목 수
-      cardRegister: true,
+      cardRegister: false,
+      cardList: true,
+      cardInfo: false
     };
   },
   components: {
-    ManagementCardRegisterForm
+    ManagementCardRegisterForm,
+    ManagementCardInfo
   },
   computed: {
     ...mapState(ManagementModule, ['cards']),
@@ -60,12 +65,16 @@ export default {
     }
   },
   methods: {
-    ...mapActions(ManagementModule, ['requestCardListToSpring']),
+    ...mapActions(ManagementModule, ['requestCardListToSpring', 'getCardInfoToSpring']),
     cancelRegistration() {
       this.cardRegister = !this.cardRegister;
+      this.cardList= true
+      this.cardInfo= false
     },
     register() {
-      this.cardRegister = false
+      this.cardRegister = true
+      this.cardList = false;
+      this.cardInfo = false;
     },
     prevPage() {
       if (this.currentPage > 1) {
@@ -77,6 +86,17 @@ export default {
       if (this.currentPage < maxPage) {
         this.currentPage++;
       }
+    },
+    goRead(id) {
+      this.cardList = false;
+      this.cardInfo = true;
+      this.getCardInfoToSpring(id)
+
+    },
+    async cancelForm() {
+      this.cardList = !this.cardList
+      this.cardInfo = false;
+      await this.requestCardListToSpring()
     }
   },
   mounted() {
@@ -85,7 +105,7 @@ export default {
         this.items = this.cards;
       });
   },
- 
+
 };
 </script>
 <style>
