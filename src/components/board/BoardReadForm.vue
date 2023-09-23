@@ -12,7 +12,8 @@
             <td class="board-read-text">no. {{ board.boardId }}</td>
           </v-col>
           <v-col cols="8">
-            <td class="board-read-text">작성자 : {{ board.userId.nickname }}</td>
+            <!-- <td class="board-read-text">작성자 : {{ board.userId.nickname }}</td> -->
+            <td class="board-read-text">작성자 :{{ board.writer || (board.userId ? board.userId.nickname : '없음') }}</td>
           </v-col>
           <v-col cols="3">
             <td class="board-read-text">등록일자 : {{ board.boardRegisterDate }}</td>

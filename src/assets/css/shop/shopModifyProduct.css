@@ -1,0 +1,29 @@
+/*
+    수정 Page
+*/
+
+
+/*
+    수정 Form
+*/
+.button-container {
+    display: flex;
+    justify-content: center; /* 가운데 정렬 설정 */
+    align-items: center;
+    margin-top: 20px;
+}
+.shopModifyProductCancle{
+    width: 165px;
+    height: 40px;
+    border: 1px solid rgb(136, 136, 136);
+    margin: 10px;
+    font-size: 13px;
+}
+.shopModifyProductFinish{
+    width: 165px;
+    height: 40px;
+    /* border: 1px solid rgb(136, 136, 136); */
+    margin: 10px;
+    font-size: 13px;
+    background-color: rgb(243, 79, 133);
+}

@@ -1,0 +1,44 @@
+/*
+    shopMain Page
+*/
+.shopMainPageTopText{
+    text-align: center;
+    text-decoration: underline;
+    text-underline-offset : 8px;
+    text-decoration-color: rgb(55, 55, 55); 
+}
+/* .fixed-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+} */
+
+
+
+/*
+    shopMain Form
+*/
+.shopMainRow{
+    margin: 120px;
+}
+.shopMainCol{
+    margin: 20px;
+}
+.shopMainProductName{
+    font-size: small;
+    margin-top: 20px;
+    font-weight: 600;
+}
+.shopMainProductPrice{
+    font-size: small
+}
+.shopMainProcutNewBox{
+    font-size: 10px;
+    width: 35px;
+    background-color: rgb(243, 79, 133);
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+}
