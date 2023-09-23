@@ -1,35 +1,38 @@
 <template>
-    <div>
-        <tr v-if="!products || (Array.isArray(products) && products.length === 0)">
-            <td colspan="4">현재 등록된 상품 목록이 없습니다!</td>
-        </tr>
-        <v-row v-if="products && products.length > 0">
-            <v-col v-for="product in products" :key="product.productId" cols="2">
-                <div align="center" >
+     <div>
+        <v-row dense class="shopMainRow">
+            <v-col v-for="product in products" :key="product.productId" cols="3">
+                <v-card class="mx-2 shopMainCol" flat>
                     <router-link
                             :to="{
                                 name: 'ShopReadProductPage',
-                                params: { productId:product.productId.toString() },
+                                params: { productId: product.productId.toString() },
                             }">
-                    <v-img src="@/assets/cardImg.jpg" style="max-width: 65%; height: auto;"/>
+                        <v-img
+                            :src="dynamicLink(product.image)"
+                            v-if="product.image"
+                            class="product"
+                        />
                     </router-link>
-                    <!-- <img :src="getImageUrl(product.filePathList)" style="max-width: 100%; margin-top: 10px;"/> -->
-                    <div>
-                        {{ product.name }}
-                    </div>
-                </div>
+                    <div class="shopMainProductName">{{ product.name }}</div>
+                    <div class="shopMainProductPrice">{{ product.price }}원</div>
+                    <div class="shopMainProcutNewBox">NEW</div>
+                </v-card>
             </v-col>
         </v-row>
     </div>
 </template>
 
 <script>
+import '@/assets/css/shop/shopMain.css'
+
+import AOS from "aos";
+const LINK = process.env.VUE_APP_S3_LINK;
+
 export default {
     data() {
         return {
-            awsBucketName: process.env.VUE_APP_S3_BUCKET_NAME,
-            awsBucketRegion: process.env.VUE_APP_S3_REGION,
-            awsIdentityPoolId: process.env.VUE_APP_S3_IDENTITY_POOL_ID,
+            link: LINK,
         };
     },
     props: {
@@ -37,18 +40,17 @@ export default {
             type: Array,
         },
     },
+    mounted() {
+        AOS.init({
+            duration: 1600,
+        });
+    },
     methods: {
-        // s3에서 이미지 가져오기
-        // getImageUrl(filePath) {
-        //     if(filePath != null) {
-        //         return `https://${this.awsBucketName}.s3.${this.awsBucketRegion}.amazonaws.com/${filePath}`;
-        //     }
-        //     else {
-        //         return `https://${this.awsBucketName}.s3.${this.awsBucketRegion}.amazonaws.com/${basicFile}`;
-        //     }
-        // },
+        dynamicLink(extraPath) {
+            return `${this.link}/${extraPath}`;
+        },
     }
 }
 </script>
 
-<style></style>
+<style lang="scss" scoped></style>
