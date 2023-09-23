@@ -91,6 +91,9 @@
     </v-menu>
 
     <v-col cols="auto">
+      <v-btn variant="plain" :ripple="false" to="/shopMainpage" class="main-button">쇼핑</v-btn>
+    </v-col>
+    <v-col cols="auto">
       <v-btn variant="plain" :ripple="false" to="/home" class="main-button">소개</v-btn>
     </v-col>
     <v-col cols="auto">
