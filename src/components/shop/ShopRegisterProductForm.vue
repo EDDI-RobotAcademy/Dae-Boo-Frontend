@@ -1,55 +1,57 @@
 <template>
-    <div>
-        <form @submit.prevent="onSubmit">
-            <v-table>
-                <tr>
+    <div class="registerContainer">
+        <form @submit.prevent="onSubmit" class="product-form">
+            <v-table class="productRegisterFormBox">
+                <tr class="productRegisterBox">
                     <th>상품 명</th>
                     <td>
                         <input type="text" v-model="productName"/>
                     </td>
                 </tr>
-                <tr>
+                <tr class="productRegisterBox">
                     <th>가격</th>
                     <td>
-                        <input type="number" v-model="price" />
+                        <input type="number" v-model="price"/>
                     </td>
                 </tr>
-                <tr>
+                <tr class="productRegisterBox">
                     <th>상품 소개</th>
                     <td>
-                        <textarea cols="60" rows="20" v-model="description" />
+                        <textarea cols="35" rows="15" v-model="description"/>
                     </td>
                 </tr>
-                    <tr>
-                        <td>사진</td>
+                    <tr class="productRegisterBox">
+                        <th>사진</th>
                         <td>
                             <input id="file-selector" ref="file" type="file" @change="handleFileUpload()" >
                             <v-btn @click="uploadAwsS3" color="primary" text>업로드</v-btn><br>
                             <div v-if="image != null">{{ image }}
-                                <v-btn v-if="image != null" @click="deleteAwsS3File(image)" color="red" text icon>x</v-btn>
+                                <v-btn v-if="image != null" @click="deleteAwsS3File(image)" style="width: 30px; height: 30px; font-size: small;" color="red" text icon>x</v-btn>
                             </div>
                         </td>
                     </tr>
             </v-table>
 
             <!-- 오른쪽 컨테이너 -->
-            <div style="flex: 1;">
+            <div style="flex: 1;" class="right-container">
                 <img v-if="imgSrc!==''" class="product" :src="dynamicLink(imgSrc)">
             </div>
 
             <div>
-                <v-btn raised type="submit">등록</v-btn>
-                <v-btn>
-                    <router-link :to="{path: '/shopMainpage'}">
-                        돌아가기
-                    </router-link>
-                </v-btn>
-            </div>
+            <v-btn raised type="submit" class="productRegisterBtn" style="color:white">등록</v-btn>
+            <v-btn class="productRegisterBackBtn">
+                <router-link :to="{path: '/shopMainpage'}" style="text-decoration: none; color:black">
+                    돌아가기
+                </router-link>
+            </v-btn>
+        </div>
         </form>
     </div>
 </template>
 
 <script>
+import '@/assets/css/shop/shopRegisterProduct.css'
+
 import { mapActions } from "vuex";
 const ShopModule = 'ShopModule'
 

@@ -1,0 +1,44 @@
+/*
+    shopModifyProduct Page
+*/
+
+
+/*
+    shopModifyProduct Form
+*/
+.product {
+    width:400px;
+}
+.product-form {
+    display: flex;
+    justify-content: space-between;
+}
+.right-container {
+    flex: 1;
+    align-items: center;
+    padding: 10px;
+}
+.registerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* min-height: 100vh; */
+    margin: 30px;
+}
+.productRegisterBtn{
+    width: 100px;
+    height: 40px;
+    margin: 5px;
+    font-size: 13px;
+    background-color: rgb(243, 79, 133);
+}
+.productRegisterBackBtn{
+    width: 100px;
+    height: 40px;
+    margin: 5px;
+    font-size: 13px;
+}
+.productRegisterBox{
+    font-size: 14px;
+}
