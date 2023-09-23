@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import '@/assets/css/shop/shopModifyProduct.css'
+
 import ShopModifyProductForm from '@/components/shop/ShopModifyProductForm.vue'
 import { mapActions, mapState } from 'vuex';
 
