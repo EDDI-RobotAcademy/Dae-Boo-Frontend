@@ -52,3 +52,7 @@
 .move-image {
   width: 50%;
 }
+
+.card-svg {
+  fill: #000000;
+}
