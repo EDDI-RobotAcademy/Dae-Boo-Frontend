@@ -1,14 +1,13 @@
 <template>
-    
     <v-container class="table-container">
-        
+
         <div class="left-table">
             <h1>주문 정보</h1>
             <v-table>
                 <div class="AddressBox">
                     <AddressComponent :totalAddress="totalAddress" @update:totalAddress="handleTotalAddressUpdate" />
                 </div>
-               
+
             </v-table>
         </div>
         <div class="right-table">
@@ -83,30 +82,30 @@ export default {
             return `${LINK}/${extraPath}`;
         },
 
-        // async pay() {
-        //     const purchaseForm = {
-        //         userId: this.products.userId,
-        //         productId: this.products.productId,
-        //         userAccount: this.totalAddress,
-        //         amount: this.products.amount,
-        //     };
+        async pay() {
+            const purchaseForm = {
+                userId: this.products.userId,
+                productId: this.products.productId,
+                userAccount: this.totalAddress,
+                amount: this.products.amount,
+            };
 
-        //     try {
-        //         console.log(purchaseForm)
-        //         let response = await this.requestPurchaseRegisterToSpring(purchaseForm, {
-        //             headers: {
-        //                 'Content-Type': 'application/json' // JSON 데이터를 전송하도록 설정
-        //             }
-        //         });
-        //         console.log(response.purchaseId);
-        //         this.requestPaymentToKakao(response)
-        //     } catch (error) {
-        //         console.error(error);
-        //     }
-        // }
+            try {
+                console.log(purchaseForm)
+                let response = await this.requestPurchaseRegisterToSpring(purchaseForm, {
+                    headers: {
+                        'Content-Type': 'application/json' // JSON 데이터를 전송하도록 설정
+                    }
+                });
+                console.log(response.purchaseId);
+                this.requestPaymentToKakao(response)
+            } catch (error) {
+                console.error(error);
+            }
+        }
     },
     mounted() {
-        // this.userId = this.myInfo.userId;
+        this.userId = this.myInfo.userId;
 
 
 
@@ -154,5 +153,6 @@ export default {
     /* 오른쪽 끝에 배치 */
     margin-top: 10px;
     /* 필요한 경우 상단 여백 추가 */
-}</style>
+}
+</style>
   
