@@ -1,44 +1,83 @@
 <template>
     <div>
-        <div>
-            <!-- <v-img :src="getImageUrl(book.filePathList)" class="imageCss" style="width: 300px"/> -->
-            <v-img src="@/assets/cardImg.jpg" style="max-width: 65%; height: auto;"/>
-        </div>
-        <div>
-        <V-table>
-            <tr>
-                <td>상품 번호</td>
-                <td>
-                    <input type="text" :value="product.productId" readonly/>
-                </td>
-            </tr>
-            <tr>
-                <td>상품 이름</td>
-                <td>
-                    <input type="text" :value="product.name" readonly/>
-                </td>
-            </tr>
-            <tr>
-                <td>가격</td>
-                <td>
-                    <input type="text" :value="product.price" readonly/>
-                </td>
-            </tr>
-            <tr>
-                <td>상품 설명</td>
-                <td>
-                    <textarea cols="60" rows="20" :value="product.description" readonly/>
-                </td>
-            </tr>
-        </V-table>
-        <router-link :to="{path: '/shopMainpage'}">
-            돌아가기
-        </router-link>
+        <div class="product-info-container">
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <img class="product-image" :src="dynamicLink(product.image)" v-if="product.image" />
+            </div>
+
+            <div class="product-table">
+                <V-table>
+                    <tr>
+                        <td class="shopReadProductName">
+                            <div class="shopReadProcutNewBox">NEW</div>
+                            <input type="text" :value="product.name" readonly/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="shopReadProductPrice">
+                            <input type="text" :value="product.price" readonly/>
+                        </td>
+                    </tr>
+                    <td>
+                        <hr style="width:345px; height: 1px; background-color: #ccc; border: none; margin: 5px 0;">
+                    </td>
+                    <br />
+                    <tr>
+                        <td>
+                            <span class="shopReadProductBigText">구매혜택 </span>
+                            <span class="shopReadProductSmallText">포인트 적립예정</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="shopReadProductBigText">배송 방법 </span>
+                            <span class="shopReadProductSmallText">택배</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="shopReadProductBigText">배송비 </span>
+                            <span class="shopReadProductSmallText">3,000원 | 도서 산간 배송비 추가</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="shopReadProductBigText">배송 안내 </span>
+                            <span class="shopReadProductSmallText">기본배송(결제 후 5일 내 배송) / 무료배송(3개이상 구매 시)</span>
+                        </td>
+                    </tr>
+                    <br />
+                    <tr>
+                        <td>
+                            <p class="shopReadProductBigDetail">상품 설명</p>
+                            <textarea class="shopReadProductDetail" cols="50" rows="3" :value="product.description" readonly/>
+                        </td>
+                    </tr>
+                </V-table>
+                <div>
+                    <button class="backBtn">
+                        <router-link :to="{path: '/shopMainpage'}" style="text-decoration: none; color:white">
+                            돌아가기
+                        </router-link>
+                    </button>
+                    <button class="BagBtn" color="orange">
+                        장바구니
+                    </button>
+                </div>
+                <div>
+                    <button class="kakaoPayBtn">카카오페이 구매하기</button>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+import '@/assets/css/shop/shopReadProduct.css'
+
+import AOS from "aos";
+const LINK = process.env.VUE_APP_S3_LINK;
+
 export default {
     name: "ShopReadProductForm",
     props: {
@@ -49,17 +88,19 @@ export default {
     },
     data() {
         return {
-            // awsBucketName: process.env.VUE_APP_S3_BUCKET_NAME,
-            // awsBucketRegion: process.env.VUE_APP_S3_REGION,
-            // awsIdentityPoolId: process.env.VUE_APP_S3_IDENTITY_POOL_ID,
+            link: LINK,
         }
     },
-    methods:{
-        // S3에서 업로드한 사진 가져오기
-        // getImageUrl(filePath){
-        //     return `https://${this.awsBucketName}.s3.${this.awsBucketRegion}.amazonaws.com/${filePath}`
-        // }
-    }
+    mounted() {
+        AOS.init({
+            duration: 1600,
+        });
+    },
+    methods: {
+        dynamicLink(extraPath) {
+            return `${this.link}/${extraPath}`;
+        },
+    },
 }
 </script>
 

@@ -1,49 +1,62 @@
 <template>
     <div>
-        <div>
-            <!-- <v-img :src="getImageUrl(book.filePathList)" class="imageCss" style="width: 300px"/> -->
-            <v-img src="@/assets/cardImg.jpg" style="max-width: 65%; height: auto;"/>
+        <div class="product-info-container">
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <img class="product-image" :src="dynamicLink(product.image)" v-if="product.image" />
+            </div>
+        
+            <form @submit.prevent="onSubmit" class="product-table">
+                <V-table>
+                    <tr>
+                        <td>상품 번호</td>
+                        <td>
+                            <input type="text" :value="product.productId" disabled/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>상품 이름</td>
+                        <td>
+                            <input type="text" v-model="productName"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>가격</td>
+                        <td>
+                            <input type="number" v-model="price"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>상품 설명</td>
+                        <td>
+                            <textarea cols="35" rows="15" v-model="description"/>
+                        </td>
+                    </tr>
+                </V-table>
+            </form>
         </div>
-        <form @submit.prevent="onSubmit">
-            <V-table>
-                <tr>
-                    <td>상품 번호</td>
-                    <td>
-                        <input type="text" :value="product.productId" disabled/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>상품 이름</td>
-                    <td>
-                        <input type="text" v-model="productName"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>가격</td>
-                    <td>
-                        <input type="number" v-model="price"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>상품 설명</td>
-                    <td>
-                        <textarea cols="60" rows="20" v-model="description"/>
-                    </td>
-                </tr>
-            </V-table>
-        </form>
-        <button type="button" @click="submitForm">수정 완료</button>
-        <router-link
-            :to="{
-                name: 'ShopModifyProductPage',
-                params: { productId: product.productId.toString() },
-            }">
-            수정 취소
-        </router-link>
+        <div class="button-container">
+            <button class="shopModifyProductFinish" style="color: white;" type="button" @click="submitForm">수정 완료</button>
+            <button class="shopModifyProductCancle">
+            <router-link
+                :to="{
+                    name: 'ShopReadProductPage',
+                    params: { productId: product.productId.toString() },
+                }"
+                style="text-decoration: none; color:black">
+                수정 취소
+            </router-link>
+            </button>
+        </div>
     </div>
 </template>
 
 <script>
+import '@/assets/css/shop/shopModifyProduct.css'
+import '@/assets/css/shop/shopReadProduct.css'
+
+import AOS from "aos";
+const LINK = process.env.VUE_APP_S3_LINK;
+
 export default {
     props: {
         product: {
@@ -56,14 +69,19 @@ export default {
             price: '',
             productName: '',
             description: '',
-            image: 'cardImg.jpg' // 임시로
+            link: LINK,
         }
     },
     created() {
         this.price = this.product.price;
-        this.productName = this.product.productName;
+        this.productName = this.product.name;
         this.description = this.product.description;
         this.image = this.product.image;
+    },
+    mounted() {
+        AOS.init({
+            duration: 1600,
+        });
     },
     methods: {
         onSubmit() {
@@ -73,6 +91,9 @@ export default {
         submitForm() {
             // 폼 제출 버튼 클릭 시 onSubmit 메서드 호출
             this.onSubmit();
+        },
+        dynamicLink(extraPath) {
+            return `${this.link}/${extraPath}`;
         },
     }
 }

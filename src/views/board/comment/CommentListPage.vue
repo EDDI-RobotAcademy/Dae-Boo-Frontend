@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <comment-list-component :comments="comments" />
+        <comment-list-component :comments="comments" :boardId="boardId"/>
     </v-container>
 </template>
 
@@ -9,6 +9,12 @@ import CommentListComponent from '@/components/board/comment/CommentListComponen
 import { mapActions, mapState } from 'vuex'
 const CommentModule = 'CommentModule'
 export default {
+      props: {
+    boardId: {
+      type: String,
+      required: true,
+    },
+  },
     components: {
         CommentListComponent
     },
@@ -16,7 +22,7 @@ export default {
         ...mapState(CommentModule, ['comments'])
     },
     mounted() {
-      this.requestCommentToSpring()      
+      this.requestCommentToSpring(this.boardId)      
     },
     methods: {
         ...mapActions(CommentModule, ['requestCommentToSpring']),

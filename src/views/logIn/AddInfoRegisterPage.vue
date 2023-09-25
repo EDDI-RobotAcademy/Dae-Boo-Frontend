@@ -15,7 +15,7 @@ export default {
         }
     },
     props: {
-        userId: Number, // userId를 props로 받아옵니다.
+        userId: Number,
     },
     components: {
         AddInfoRegisterForm
@@ -26,10 +26,6 @@ export default {
     created(){
         this.getMyInfoToSpring(this.userId);
     },
-    // mounted() {
-    //     this.userId = this.$store.state[LoginModule].memberInfo.userId;
-    //     alert("this.userId: ", this.userId);
-    // },
     methods: {
         ...mapActions(MyPageModule, ['requestMyInfoModifyToSpring', 'getMyInfoToSpring']),
         async onSubmit(payload) {

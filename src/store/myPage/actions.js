@@ -63,5 +63,16 @@ export default {
     },
     deleteVuexUserInfo({commit}) {
         commit(REQUEST_MY_INFO_TO_SPRING, null);
+    },
+    // 닉네임 중복 확인
+    requestSpringToCheckNickname(_, payload) {
+        const { nickname } = payload;
+
+        return axiosInst.post('/user/duplication-nickname', {
+            nickname
+        }).then((res) => {
+            console.log("중복확인 결과: ", res.data);
+            return res.data
+        })
     }
 }

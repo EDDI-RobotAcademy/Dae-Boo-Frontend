@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <comment-component @submit="onSubmit"/>
+        <comment-component @submit="onSubmit" />
     </v-container>
 </template>
 
@@ -15,6 +15,9 @@ export default {
     methods: {
         ...mapActions(CommentModule, ['requestCreateCommentToSpring']),
         onSubmit(payload) {
+            console.log(payload)
+            console.log(payload.userId)
+            console.log(payload.boardId)
             this.comment = this.requestCreateCommentToSpring(payload)
         },
     },

@@ -26,12 +26,18 @@ export default {
     },
     // 액세서리 가게 - 상품 등록
     requestRegisterProductToSpring(_, payload) {
-        const { productName, productPrice, description, image } = payload;
+        const config = {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          };
+
+        const { productName, price, description, image } = payload;
         return axiosInst.post("/product", {
-            productName, productPrice, description, image
+            productName, price, description, image, config
         }).then((res) => {
             alert("게시물 등록 성공");
-            return res.data;
+            return res.data.productId;
         }).catch(() => {
             alert("문제 발생!")
         })
