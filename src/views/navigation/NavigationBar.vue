@@ -100,10 +100,10 @@
       <v-btn variant="plain" :ripple="false" to="/board/list-page" class="main-button">게시판</v-btn>
     </v-col>
     <v-col cols="auto">
-      <v-btn variant="plain" :ripple="false" to="/myPage" class="main-button" @click="list">내 공간</v-btn>
+      <v-btn variant="plain" :ripple="false" to="/myPage" v-if="memberInfo && memberInfo.role === 'NORMAL'" class="main-button" @click="list">내 공간</v-btn>
     </v-col>
     <v-col cols="auto">
-      <v-btn variant="plain" :ripple="false" to="/manageMentPage" class="main-button">관리자 페이지</v-btn>
+      <v-btn variant="plain" :ripple="false" to="/manageMentPage" v-if="memberInfo && memberInfo.role === 'MANAGER'" class="main-button">관리자 페이지</v-btn>
     </v-col>
     <v-menu>
       <template v-slot:activator="{ props }">
@@ -137,7 +137,7 @@
 <script>
 import '@/assets/css/navigation/appbar.css'
 import { ref, onMounted } from 'vue';
-import { useStore, mapActions } from "vuex";
+import { useStore, mapActions, mapState } from "vuex";
 
 const LogInModule = 'LogInModule'
 const MyPageModule = 'MyPageModule'
@@ -243,6 +243,9 @@ export default {
       await window.location.reload();
     }
   },
+  computed: {
+        ...mapState(LogInModule, ['memberInfo'])
+    },
 }
 </script>
 
