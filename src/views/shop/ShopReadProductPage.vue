@@ -1,13 +1,12 @@
 <template>
     <div style="background-color:white">
         <ShopReadProductForm :product="product"/>
-        <button class="productModifyBtn">
+        <button class="productModifyBtn" v-if="memberInfo && memberInfo.role === 'MANAGER'">
             <router-link :to="{ name: 'ShopModifyProductPage', params: { productId: productId } }" style="text-decoration: none; color:black">
                 상품 수정
-                <!-- v-if="isManager()" : 관리자 인지 아닌지 확인하던 것 -->
             </router-link>
         </button>
-        <button class="productDeletebtn" @click="onDelete">상품 삭제</button>
+        <button class="productDeletebtn" v-if="memberInfo && memberInfo.role === 'MANAGER'" @click="onDelete">상품 삭제</button>
     </div>
 </template>
 
@@ -16,7 +15,9 @@ import '@/assets/css/shop/shopReadProduct.css'
 
 import ShopReadProductForm from '@/components/shop/ShopReadProductForm.vue'
 import { mapActions, mapState } from "vuex";
+
 const ShopModule = 'ShopModule'
+const LogInModule = 'LogInModule'
 
 export default {
     name: "ShopReadProductPage",
@@ -31,6 +32,7 @@ export default {
     },
     computed: {
         ...mapState(ShopModule, ["product"]),
+        ...mapState(LogInModule, ['memberInfo'])
     },
     methods: {
         ...mapActions(ShopModule, ["requestProductToSpring", "requestDeleteProductToSpring"]),
