@@ -1,8 +1,9 @@
 <template>
     <div style="background-color: white">
-        <v-btn color="primary" @click="prouctRegisterBtn">상품 등록</v-btn>
+        <br/>
         <p class="shopMainPageTopText">BEST/ALL</p>
         <ShopMainForm :products="products"/>
+        <v-btn color="primary" v-if="memberInfo && memberInfo.role === 'MANAGER'" @click="prouctRegisterBtn">상품 등록</v-btn>
     </div>
 </template>
 
@@ -13,6 +14,7 @@ import ShopMainForm from '@/components/shop/ShopMainForm.vue'
 import { mapActions, mapState } from "vuex";
 
 const ShopModule = 'ShopModule'
+const LogInModule = 'LogInModule'
 
 export default {
     components: {
@@ -21,6 +23,7 @@ export default {
     name: "ShopMainPage",
     computed: {
         ...mapState(ShopModule, ["products"]),
+        ...mapState(LogInModule, ['memberInfo'])
     },
     mounted() {
         this.requestProductListToSpring();
@@ -30,7 +33,7 @@ export default {
         prouctRegisterBtn() {
             this.$router.push({ path: 'shopRegisterProductPage' });
         }
-    }
+    },
 }
 </script>
 
