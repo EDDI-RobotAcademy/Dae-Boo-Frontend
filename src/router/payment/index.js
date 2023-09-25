@@ -3,10 +3,16 @@ import SuccessPage from '@/views/purchase/SuccessPage.vue'
 
 const paymentRouter = [
     {
-      path: '/payment/test',
+      path: '/payment/bill/:productId',
       name: 'BillPage',
-      component: BillPage
+      components: {
+        default: BillPage
+      },
+      props: {
+        default: true
+      }
     },
+  
     {
       path: '/payment/success',
       name: 'SuccessPage',
