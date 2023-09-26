@@ -1,4 +1,12 @@
 <template lang="">
+  <div class="btn-container">
+    <div>
+      <button class="btn" type="button" :class="{ active: all }" @click="initializationClick"># 전체</button>
+      <button class="btn" type="button" :class="{ active: gas }" @click="handleCategoryClick('GAS')"># 주유</button>
+      <button class="btn" type="button" :class="{ active: eatout }" @click="handleCategoryClick('EATOUT')"># 외식</button>
+    </div>
+  </div>
+
  <div>
       <v-card class="mx-auto search-mr" color="grey-lighten-3">
       <v-text-field
@@ -17,8 +25,8 @@
   <div v-if="cards.length > 0">
     <div class="container">
       <div class="row">
-        <div v-for="card in cards" :key="card.cardId" class="section">
-          <img :src="dynamicLink(card.cardImage)" alt="card image" class="card-image" data-aos="fade-top" style="width: 142px;height: 225px;" />
+        <div v-for="card in cards" :key="card.id" class="section">
+          <img :src="card.card_image" alt="card image" class="card-image" data-aos="fade-top" />
           <div class="intro">
             <p class="card-name">{{ card.name }}</p>
           </div>
@@ -53,13 +61,20 @@ export default {
     this.cardLoading();
   },
   methods: {
-    ...mapActions(CardModule, ["requestCardList"]),
+    ...mapActions(CardModule, ["requestCardList", "requestKeywordList"]),
     async cardLoading() {
       await this.requestCardList();
       this.cards = this.$store.state[CardModule].cards;
     },
     dynamicLink(extraPath) {
-      return `${LINK}/${extraPath}`;
+      return `${this.link}/${extraPath}`;
+    },
+    initializationClick() {
+      this.cardLoading();
+    },
+    handleCategoryClick(category) {
+      console.log(category);
+      this.requestKeywordList(category);
     },
     computed: {
       ...mapState(CardModule, ['cards']),
@@ -69,6 +84,10 @@ export default {
     return {
       cards: [],
       link: LINK,
+      all: false,    // all 버튼 상태
+      gas: false,    // gas 버튼 상태
+      eatout: false, // eatout 버튼 상태
+
     };
   },
 }
