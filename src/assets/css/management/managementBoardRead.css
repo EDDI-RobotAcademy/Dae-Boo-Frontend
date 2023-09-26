@@ -1,3 +1,12 @@
 .readBack{
     background-color: white;
 }
+.managementBoardReadTable{
+    border: 1px solid black;
+}
+.centeredTable {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
