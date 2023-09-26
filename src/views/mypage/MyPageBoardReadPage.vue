@@ -1,14 +1,31 @@
 <template>
-    <div style="color:black; background-color: white; padding: 30px;">
+    <div style="color:black; background-color: white; padding: 30px; width: 1200px; margin: auto; margin-top: 3rem;">
+        <div class="container"
+            style="color: black; display: flex; justify-content: flex-start; margin: 0; padding-bottom: 20px; align-items: center;">
+            <div class="item" style="width: 95%;"></div>
+            <div class="item" style="width: 5%;">
+                <v-btn class="closeBtn" color="red" @click="goToBack" variant="outlined">x</v-btn>
+            </div>
+        </div>
         <MyPageBoardReadForm v-if="nickname" :board="board" :nickname="nickname" />
-        <v-btn class="centerBtn" @click="openModifyModal"> 수정 </v-btn>
-        <v-btn class="centerBtn" @click="deleteBoard"> 삭제 </v-btn>
+        <v-container>
+            <v-row align="center">
+                <v-col cols="5"></v-col>
+                <v-col cols="1"><v-btn class="centerBtn" @click="openModifyModal"> 수정 </v-btn></v-col>
+                <v-col cols="1"><v-btn class="centerBtn" @click="deleteBoard"> 삭제 </v-btn></v-col>
+                <v-col cols="3"></v-col>
+                <v-col cols="2"><v-btn block class="centerBtn" @click="goToBoardReadPage(boardId)"> 게시물 보러가기
+                    </v-btn></v-col>
+            </v-row>
+        </v-container>
+
+
         <div id="modal">
             <v-container class="modal-content">
                 <v-row align="center">
                     <v-col cols="11"></v-col>
                     <v-col cols="1">
-                        <v-btn color="red" @click="closeModal">x</v-btn>
+                        <v-btn class="closeBtn" color="red" @click="closeModal" variant="outlined">x</v-btn>
                     </v-col>
                 </v-row>
                 <MyPageBoardModify @submit="onSubmit" v-if="nickname" v-model="board" :board="board" />
@@ -74,6 +91,12 @@ export default {
         },
         nicknameIs() {
             this.nickname = this.$store.state[BoardModule].board.userId.nickname;
+        },
+        goToBoardReadPage(boardId) {
+            this.$router.push({ path: `/board/read-page/${boardId}` })
+        },
+        goToBack() {
+            this.$router.push({ path: `/myPage` })
         }
     },
     async created() {
@@ -87,4 +110,8 @@ export default {
     }
 }
 </script>
-<style></style>
+<style>
+.closeBtn {
+    min-width: 0px;
+}
+</style>
