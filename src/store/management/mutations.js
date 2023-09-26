@@ -1,4 +1,4 @@
-import { REQUEST_CARD_LIST_TO_SPRING, REQUEST_ACCOUNT_LIST_TO_SPRING, REQUEST_USER_INFO_TO_SPRING, REQUEST_CARD_INFO_TO_SPRING, REQUEST_Purchase_LIST_TO_SPRING} from "./mutation-types"
+import { REQUEST_CARD_LIST_TO_SPRING, REQUEST_ACCOUNT_LIST_TO_SPRING, REQUEST_USER_INFO_TO_SPRING, REQUEST_CARD_INFO_TO_SPRING, REQUEST_Purchase_LIST_TO_SPRING,REQUEST_REFUND_LIST_TO_SPRING} from "./mutation-types"
 
 export default{
     [REQUEST_CARD_LIST_TO_SPRING](state,receiveData){
@@ -15,6 +15,9 @@ export default{
     },
     [REQUEST_Purchase_LIST_TO_SPRING](state, receiveData){
         state.purchaseList= receiveData;
+    },
+    [REQUEST_REFUND_LIST_TO_SPRING](state, receiveData){
+        state.refundList= receiveData;
     }
 
 }
