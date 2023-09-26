@@ -4,31 +4,31 @@
             <tr class="BoardReadTr">
                 <th> 게시물 번호 </th>
                 <td>
-                    {{ thisBoard.boardId }}
+                    {{ board.boardId }}
                 </td>
             </tr>
             <tr class="BoardReadTr">
                 <th> 작성자 </th>
                 <td>
-                    {{ thisBoard.userId.nickname }}
+                    {{ nickname }}
                 </td>
             </tr>
             <tr class="BoardReadTr">
                 <th> 등록일자 </th>
                 <td>
-                    {{ thisBoard.boardRegisterDate }}
+                    {{ board.boardRegisterDate }}
                 </td>
             </tr>
             <tr class="BoardReadTr">
                 <th> 제목 </th>
                 <td>
-                    {{ thisBoard.boardName }}
+                    {{ board.boardName }}
                 </td>
             </tr>
             <tr class="BoardReadTr">
                 <th> 내용 </th>
                 <td>
-                    {{ thisBoard.content }}
+                    {{ board.content }}
                 </td>
             </tr>
         </v-table>
@@ -37,11 +37,15 @@
 <script>
 export default {
     props: {
-        thisBoard: {
+        board: {
             type: Object,
             required: true
+        },
+        nickname: {
+            type: String,
+            required: true
         }
-    },
+    }
 }
 </script>
 <style>

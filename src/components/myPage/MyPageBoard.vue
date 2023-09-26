@@ -32,13 +32,8 @@
                         <td align="center">
                             {{ myBoard.boardId }}
                         </td>
-                        <td align="left">
-                            <router-link :to="{
-                                name: 'MyPageBoardReadPage',
-                                params: { boardId: myBoard.boardId.toString() }
-                            }">
-                                {{ myBoard.boardName }}
-                            </router-link>
+                        <td align="left" @click="myBoardReadRink(myBoard.boardId)">
+                            {{ myBoard.boardName }}
                         </td>
                         <td align="center">
                             {{ myBoard.boardRegisterDate }}
@@ -145,6 +140,9 @@ export default {
             console.log(this.selectedComments);
             let commentIds = this.selectedComments.toString()
             this.requestMyCommentsDeleteToSpring(commentIds);
+        },
+        myBoardReadRink(boardId) {
+            this.$router.push({ path: `/myPageBoardReadPage/${boardId}` })
         },
     }
 
