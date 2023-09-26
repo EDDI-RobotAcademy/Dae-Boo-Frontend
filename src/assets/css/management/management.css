@@ -74,3 +74,16 @@
     height: 130px;
     margin: 60px;
 }
+.red-text {
+    color: red;
+}
+.alertNoResponse{
+    font-size: 11px;
+}
+.requestDataText{
+    font-weight: 500;
+    font-size: 20px;
+}
+.blue-text {
+    color: blue;
+}
