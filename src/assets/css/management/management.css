@@ -5,7 +5,7 @@
     width: 90px;
     height: 90px;
     border-radius: 50%;
-    background-color: rgb(184, 184, 184);
+    background-color: orange;
 }
 .topBar {
     display: flex;
@@ -20,7 +20,8 @@
     align-items: center;
 }
 .managerHi {
-    color: white;
+    /* color: white; */
+    color: black;
     font-size: 18px;
     font-weight: 100;
     margin-top: 10px;
@@ -41,12 +42,13 @@
     font-size: 21px;
 }
 .managementBox{
-    background-color: white;
+    /* background-color: white; */
+    border: 1px solid black;
     width: 90%;
     height: 1000px;
-    border-radius: 4%;
+    /* border-radius: 4%; */
     margin-top: 40px;
-    padding: 30px;
+    padding: 50px;
 }
 .bottomBar {
     display: flex;

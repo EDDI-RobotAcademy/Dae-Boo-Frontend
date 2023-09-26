@@ -64,8 +64,8 @@
     position: absolute;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    /* border-bottom: 10px solid #222224; */
-    border-bottom: 10px solid white;
+    border-bottom: 10px solid #222224;
+    border-bottom: 10px solid rgb(238, 238, 238);
   }
   .list-mt{
     margin-top: 1rem;
