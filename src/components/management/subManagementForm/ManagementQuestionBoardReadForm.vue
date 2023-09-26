@@ -40,7 +40,9 @@
                 </td>
             </tr>
         </v-table>
-        <router-link class="returnBtn" :to="{ name: 'ManagementPage' }">돌아가기</router-link>
+        <button class="managementBoardReadBackBtn">
+            <router-link class="returnBtn" :to="{ name: 'ManagementPage' }" style="text-decoration: none; color: white;"> 돌아가기 </router-link>
+        </button>
     </div>
 </template>
 
