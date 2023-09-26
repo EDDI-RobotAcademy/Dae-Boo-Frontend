@@ -7,27 +7,31 @@
                 <div class="managerInfo">
                     <div class="managerInfoBox1">
                         <div class="managerImg"></div>
-                        <div class="managerHi">{{ memberInfo ?'관리자 '+ memberInfo.nickname + ' 님 환영합니다.' : '로그인이 필요합니다.' }}</div>
+                        <div class="managerHi">
+                            {{ memberInfo ?'관리자 '+ memberInfo.nickname + ' 님 환영합니다.' : '로그인이 필요합니다.' }}
+                        </div>
                     </div>
                     <div class="managerInfoLine"></div>
                     <div class="mamagerInfoBox2">
                         <div>회원 수</div>
-                        <div>{{ this.memberNum }} 명</div>
+                        <div class="requestDataText">{{ this.memberNum }} 명</div>
                     </div>
                     <div class="managerInfoLine"></div>
                     <div class="mamagerInfoBox3">
                         <div>미 응답 문의</div>
-                        <div>{{ this.noResponseNum }} 개</div>
+                        <div :class="{ 'red-text': this.noResponseNum > 3 }" class="requestDataText">{{ this.noResponseNum }} 개</div>
+                        <p class="alertNoResponse">미 응답 건수가 <br>3개 이상인 경우 경고</p>
                     </div>
                     <div class="managerInfoLine"></div>
                     <div class="mamagerInfoBox4">
                         <div>총 판매량</div>
-                        <div>{{ this.totalSalesNum }} 개</div>
+                        <div class="requestDataText">{{ this.totalSalesNum }} 개</div>
                     </div>
                     <div class="managerInfoLine"></div>
                     <div class="mamagerInfoBox5">
                         <div>환불 신청</div>
-                        <div>{{ this.applyRefundNum }} 개</div>
+                        <div :class="{ 'red-text': this.applyRefundNum > 3 }" class="requestDataText">{{ this.applyRefundNum }} 개</div>
+                        <p class="alertNoResponse">환불 신청 건수가 <br>3개 이상인 경우 경고</p>
                     </div>
                 </div>
             </div>
@@ -104,12 +108,12 @@ export default {
         ...mapState(MyPageModule, ['myInfo']),
         ...mapState(LogInModule, ['memberInfo'])
     },
-    created() {
-        this.getUserIngoToSpring();
-        this.memberNum = this.requestMemberNumberToSpring(); // 회원 수 가져오기
-        this.noResponseNum =  this.requestNoResponseNumberToSpring(); // 미응답 수 가져오기
-        this.totalSalesNum =  this.requestTotalSalesToSPring(); // 총 판매량 가져오기
-        this.applyRefundNum =  this.requestApplyRefundToSpring(); // 환불 신청 개수 가져오기
+    async created() {
+        this.memberNum = await this.requestMemberNumberToSpring(); // 회원 수 가져오기
+        this.noResponseNum = await this.requestNoResponseNumberToSpring(); // 미응답 수 가져오기
+        this.totalSalesNum = await this.requestTotalSalesToSPring(); // 총 판매량 가져오기
+        this.applyRefundNum = await this.requestApplyRefundToSpring(); // 환불 신청 개수 가져오기
+        await this.getUserIngoToSpring();
     },
     methods: {
         ...mapActions(BoardModule,[
