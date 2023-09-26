@@ -1,6 +1,6 @@
 <template>
     <div style="color:black; background-color: white; padding: 30px;">
-        <MyPageBoardReadForm v-if="thisBoard" :thisBoard="thisBoard" />
+        <MyPageBoardReadForm v-if="nickname" :board="board" :nickname="nickname" />
         <v-btn class="centerBtn" @click="openModifyModal"> 수정 </v-btn>
         <v-btn class="centerBtn" @click="deleteBoard"> 삭제 </v-btn>
 
@@ -8,7 +8,6 @@
         <div id="modal">
             <div class="modal-content">
                 <MyPageBoardModify @submit="onSubmit" v-if="thisBoardA" v-model="thisBoardA" :thisBoardA="thisBoardA" />
-                <!-- <MyPageBoardModify @submit="onSubmit" v-if="thisBoardA" v-model="thisBoardA" /> -->
                 <v-btn class="close" color="red" @click="closeModal">x</v-btn>
             </div>
         </div>
@@ -21,12 +20,12 @@ import MyPageBoardModify from '../../components/myPage/MyPageBoardModify.vue'
 import '@/assets/css/myPage/MyPageBoard.css'
 const BoardModule = 'BoardModule'
 const LogInModule = 'LogInModule'
-const MyPageModule = 'MyPageModule'
 export default {
     data() {
         return {
             userId: '',
-            thisBoardA: null
+            thisBoardA: null,
+            nickname: null
         }
     },
     components: {
@@ -40,7 +39,7 @@ export default {
         },
     },
     methods: {
-        ...mapActions(BoardModule, ['requestBoardReadToSpring', 'requestBoardDeleteToSpring', 'requestMyBoardModifyToSpring']),
+        ...mapActions(BoardModule, ['requestBoardDeleteToSpring', 'requestMyBoardModifyToSpring', 'BoardReadToSpring']),
         deleteBoard() {
             const IdData = {
                 boardId: this.boardId,
@@ -51,8 +50,8 @@ export default {
         async onSubmit(payload) {
             const { boardName, content } = payload
             const boardId = this.boardId
-            const category = this.thisBoard.category
-            const userId = this.thisBoard.userId
+            const category = this.board.category
+            const userId = this.board.userId
             // console.log("content: " + content + ", boardName: " + boardName)
             await this.requestMyBoardModifyToSpring({ category, boardName, content, userId, boardId });
         },
@@ -61,20 +60,23 @@ export default {
         },
         openModifyModal() {
             document.getElementById("modal").style.display = "block";
+        },
+        nicknameIs() {
+            this.nickname = this.$store.state[BoardModule].board.userId.nickname;
         }
     },
-    created() {
-        this.requestBoardReadToSpring(this.boardId);
+    async created() {
+        await this.BoardReadToSpring(this.boardId);
+        await this.nicknameIs();
         this.userId = this.$store.state[LogInModule].memberInfo.userId;
     },
     computed: {
-        ...mapState(MyPageModule, ['myInfo']),
-        ...mapState(BoardModule, ['thisBoard']),
+        ...mapState(BoardModule, ['board']),
         ...mapState(LogInModule, ['memberInfo']),
     },
     watch: {
         // state의 thisBoard가 변경될 때 thisBoardA에 할당
-        thisBoard: {
+        board: {
             handler(newThisBoard) {
                 this.thisBoardA = newThisBoard;
             },
