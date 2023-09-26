@@ -37,13 +37,13 @@
 }
 
 .modal-content {
-  background-color: #222222;
+  background-color: #ffffff;
     border-radius: 7px;
     margin: 15% auto;
     padding: 30px;
     border: 1px solid #888;
     width: 1200px;
-    height: 920px;
+    height: 950px;
 }
 .close {
     float: right;
@@ -103,3 +103,16 @@
 .myPageBoards-nation{
     margin: 1rem;
   }
+.myPageBoard-modify-container{
+    background-color: #ffffff;
+  }
+.myPageBoard-register-body {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+}
+.myPageBoard-read-text {
+  color: rgb(0, 0, 0);
+}
+.myPageBoard-read-mr {
+  margin: 3rem;
+}

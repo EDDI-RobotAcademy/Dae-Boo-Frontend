@@ -1,22 +1,22 @@
 <template>
-    <v-container class="board-modify-container">
+    <v-container class="myPageBoard-modify-container">
         <form @submit.prevent="onSubmit">
-            <div class="board-read-mr">
+            <div class="myPageBoard-read-mr">
                 <v-row align="center" justify="left">
                     <v-col cols="12">
-                        <v-text-field label="제목" variant="outlined" class="board-register-body" v-model="boardName" />
+                        <v-text-field label="제목" variant="outlined" class="myPageBoard-register-body" v-model="boardName" />
                     </v-col>
                     <v-col cols="1">
-                        <td class="board-read-text">no. {{ board.boardId }}</td>
+                        <td class="myPageBoard-read-text">no. {{ board.boardId }}</td>
                     </v-col>
                     <v-col cols="8">
-                        <td class="board-read-text">작성자 : {{ board.userId.nickname }}</td>
+                        <td class="myPageBoard-read-text">작성자 : {{ board.userId.nickname }}</td>
                     </v-col>
                     <v-col cols="3">
-                        <td class="board-read-text">등록일자 : {{ board.boardRegisterDate }}</td>
+                        <td class="myPageBoard-read-text">등록일자 : {{ board.boardRegisterDate }}</td>
                     </v-col>
                     <v-col cols="12">
-                        <span class="line" />
+                        <hr style="color: black;" />
                     </v-col>
                     <v-col cols="12">
                         <div id="editor" class="editor"></div>
@@ -40,9 +40,8 @@
   
 <script>
 import Editor from "@toast-ui/editor";
-import "@/assets/css/editor-custom-style.css";
-import "@/assets/css/board/boardModify.css";
 import "@toast-ui/editor/dist/toastui-editor.css";
+import "@/assets/css/myPage/MyPageBoard.css";
 import { mapActions, mapState } from "vuex";
 const BoardModule = 'BoardModule';
 
@@ -66,7 +65,7 @@ export default {
             previewStyle: "vertical",
             usageStatistics: false,
             initialValue: this.content,
-            theme: "dark",
+            // theme: "dark",
         });
     },
     methods: {
