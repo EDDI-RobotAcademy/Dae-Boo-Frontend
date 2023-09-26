@@ -96,7 +96,8 @@ export default {
             this.$router.push({ path: `/board/read-page/${boardId}` })
         },
         goToBack() {
-            this.$router.push({ path: `/myPage` })
+            // this.$router.push({ path: `/myPage` })
+            this.$router.go(-1)
         }
     },
     async created() {

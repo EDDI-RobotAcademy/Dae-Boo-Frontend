@@ -1,6 +1,10 @@
 <template>
-    <div>
-        <h1 class="mapShop-head" align="center">MOCA</h1>
+    <div style="margin-bottom: 20rem;">
+        <div>
+            <h1 class="mapShop-head" align="center">
+                Try using your card here!</h1>
+        </div>
+
         <div id="mapShop" class="mapShop"></div>
 
         <!-- 찜한 카드 -->
@@ -17,11 +21,6 @@
                 </template>
             </Carousel>
         </v-card>
-
-
-        <v-btn @click="this.cardId = 1, cardBtnClick()">cardId : 1</v-btn>
-        <v-btn @click="this.cardId = 2, cardBtnClick()">cardId : 2</v-btn>
-        <v-btn @click="this.cardId = 5, cardBtnClick()">cardId : 5</v-btn>
         <h3 class="mapShop-title">Category</h3>
         <p class="mapShop-text" id="AC5" @click="this.category = 'AC5', searchPlaces()">교육</p>
         <p class="mapShop-text" id="MT1" @click="this.category = 'MT1', searchPlaces()">대형마트</p>
@@ -180,12 +179,12 @@ export default {
                 console.log(response);
                 const elements = document.getElementsByClassName("mapShop-text");
                 for (let i = 0; i < elements.length; i++) {
-                    elements[i].style.color = "#d5d5d5";
+                    elements[i].style.color = "#8b8b8b;";
                 }
 
                 response.forEach((resp) => {
                     // this.category = resp;
-                    document.getElementById(resp).style.color = "#ff388e";
+                    document.getElementById(resp).style.color = "#f34f85";
                     console.log(resp);
                 });
             } catch (error) { console.error(error); }
