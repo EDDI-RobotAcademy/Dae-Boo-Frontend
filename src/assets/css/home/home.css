@@ -5,13 +5,15 @@
   
   .home-mr {
     width: 100%;
-    color: white;
+    /* color: white; */
+    color: black;
     position: relative;
     margin-top: 10rem;
     margin-bottom: 10rem;
   }
   .home-mr2 {
-    color: white;
+    /* color: white; */
+    color: black;
     margin-top: 5rem;
     margin-bottom: 5rem;
   }
@@ -21,8 +23,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
+    /* background-color: rgba(0, 0, 0, 0.7); */
+    background-color: rgba(255, 255, 255, 0.7);
+    /* color: white; */
+    color: black;
     text-align: center;
     width: 100%;
     height: 100vh;
@@ -36,7 +40,8 @@
     position: absolute;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 100%);
+    /* background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 100%); */
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.7) 0%, transparent 100%);
   }
   
   .page-image2 {
@@ -44,15 +49,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
+    /* background-color: rgba(0, 0, 0, 0.7); */
+    background-color: rgba(255, 255, 255, 0.7);
+    /* color: white; */
+    color: black;
     text-align: center;
     width: 100%;
     height: 150vh;
     /* background-image: url(""); */
     background-repeat: "no-repeat";
     background-size: cover;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 100%);
+    /* background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 100%); */
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.7) 0%, transparent 100%);
   }
     
   .home-font {
@@ -61,8 +69,10 @@
     width: 100%
     ;
     font-size: 25px;
-    color: white;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, transparent 100%);
+    /* color: white; */
+    color: black;
+    /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, transparent 100%); */
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.7) 0%, transparent 100%);
   }
   
   .image {
@@ -101,17 +111,20 @@
   }
   .font-color{
     margin: 3rem;
-    color: white;
+    /* color: white; */
+    color: black;
   }
   .card-text {    
     margin: 2rem;
     margin-top: 8rem;
     margin-bottom: 8rem;
     font-size: 19px;
-    color: white;
+    /* color: white; */
+    color: black;
   }
   .card-logo{
-    color: white;
+    color: black;
+    /* color: white; */
     margin-top: 2rem;
     margin-bottom: 6rem;
     font-family: 'Foldit';

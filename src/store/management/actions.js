@@ -70,6 +70,32 @@ export default {
         console.error
       })
   },
-  
-
+  // 관리자 메인 페이지 -  회원 수 가져오기
+  async requestMemberNumberToSpring() {
+    return await axiosInst.get('/user/manager/main-page/memberNum')
+    .then((res) => {
+      return res.data;
+    })
+  },
+  // 관리자 메인 페이지 -  미 응답 개수 가져오기
+  async requestNoResponseNumberToSpring() {
+    return await axiosInst.get('/question/manager/main-page/no-response')
+    .then((res) => {
+      return res.data;
+    })
+  },
+  // 관리자 메인 페이지 -  총 판매량 개수 가져오기
+  async requestTotalSalesToSPring() {
+    return await axiosInst.get('/purchase/manager/main-page/total-salesNum')
+    .then((res) => {
+      return res.data;
+    })
+  },
+  // 관리자 메인 페이지 -  환불 신청 개수 가져오기
+  async requestApplyRefundToSpring() {
+    return await axiosInst.get('/purchase/manager/main-page/apply-refundNum')
+    .then((res) => {
+      return res.data;
+    })
+  },
 }

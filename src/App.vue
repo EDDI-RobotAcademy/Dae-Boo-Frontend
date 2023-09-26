@@ -36,12 +36,14 @@ export default {
 
 <style>
 .back-ground-color {
-  background-color: #000000;
+  /* background-color: #000000; */
+  background-color: white;
 }
 
 .main-container {
   max-width: 1500px;
-  background-color: #000000;
+  /* background-color: #000000; */
+  background-color: white;
   margin: auto;
 }
 
