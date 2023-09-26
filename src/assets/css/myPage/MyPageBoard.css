@@ -37,19 +37,17 @@
 }
 
 .modal-content {
-    background-color: #fefefe;
+  background-color: #222222;
     border-radius: 7px;
     margin: 15% auto;
     padding: 30px;
     border: 1px solid #888;
-    width: 80%;
-    height: 350px;
+    width: 1200px;
+    height: 920px;
 }
 .close {
-    color: #aaa;
     float: right;
     font-size: 15px;
-    /* font-weight: bold; */
 }
 /* .close:hover,
 .close:focus {
