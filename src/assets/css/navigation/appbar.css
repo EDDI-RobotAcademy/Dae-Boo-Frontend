@@ -9,28 +9,33 @@
     font-family: 'Foldit';
     font-size: 40px;
     font-weight: 600;
-    background-color: #000000;
+    /* background-color: #000000; */
+    background-color: white;
   }
   .main-button{
     width: 100%;
-    color: rgb(255, 255, 255);
+    /* color: rgb(255, 255, 255); */
+    color: black;
     font-size: 15px;
   }
   .app-bar-color{
-    border: 1px linear-gradient(to right, #1697F4, #9790B6, #FF8983);;  
+    /* border: 1px linear-gradient(to right, #1697F4, #9790B6, #FF8983);   */
   }
   .login-title{
     margin-top: 1rem;
     margin-bottom: 1rem;
-    color: rgb(255, 255, 255);  
+    /* color: rgb(255, 255, 255); */
+    color: black;  
   }
   .login-font{
     margin-bottom: 2.5rem;
-    color: rgb(255, 255, 255);
+    /* color: rgb(255, 255, 255); */
+    color: black;  
   }
   .kakao{
     background-color: rgb(240, 204, 0);
-    color: white;
+    /* color: white; */
+    color: black;  
     width: 60%;
     height: 4vh;
     font-size: 18px;
@@ -39,7 +44,8 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
     background-color: rgb(19, 230, 110);
-    color: white;
+    /* color: white; */
+    color: black;
     width: 60%;
     height: 4vh;
     font-size: 18px;
@@ -58,28 +64,33 @@
     position: absolute;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-bottom: 10px solid #222224;
+    /* border-bottom: 10px solid #222224; */
+    border-bottom: 10px solid white;
   }
   .list-mt{
     margin-top: 1rem;
   }
   .color{
-    background-color: #000000;
+    /* background-color: #000000; */
+    background-color: white;
   }
   .logout{
     margin: 1.5rem;
-    background-color: #222224;
+    /* background-color: #222224; */
+    background-color: white;
     width: 60%;
     height: 2vh;
     font-size: 20px;
   }
   .card-title{
     margin-bottom: 1rem;
-    color: white;
+    /* color: white; */
+    color: black;
     padding: 0;
   }
   .appbar-card-text{
-    color: white;
+    /* color: white; */
+    color: black;
     margin-left: 1rem;
   }
   .card-list{
@@ -98,8 +109,10 @@
   .btn-size{
     width: 35rem;
     font-size: 20px;
-    border: 2px solid #444444;
-    background-color: #000000;
+    /* border: 2px solid #444444; */
+    border: 2px solid white;
+    /* background-color: #000000; */
+    background-color: white;
   }
 
   

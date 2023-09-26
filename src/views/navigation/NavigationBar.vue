@@ -13,15 +13,15 @@
       <!-- open-on-hover -->
       <template v-slot:activator="{ props }">
         <v-col cols="auto">
-          <v-btn v-bind="props" variant="plain" :ripple="false" class="main-button" style="color: white;">카드</v-btn>
+          <v-btn v-bind="props" variant="plain" :ripple="false" class="main-button">카드</v-btn>
           <!-- to="/card" -->
         </v-col>
       </template>
-      <v-list style="background-color: #000000" align="left" justify="center" class="card-list">
+      <v-list style="background-color: white" align="left" justify="center" class="card-list">
 
         <v-row>
           <v-col cols="2">
-            <v-btn class="btn-size" rounded="3" style="height: 11vh; color: white;" to="/card">카드 추천</v-btn>
+            <v-btn class="btn-size" rounded="3" style="height: 11vh; color: black;" to="/card">카드 추천</v-btn>
           </v-col>
           <v-col cols="1"><span /></v-col>
           <v-col cols="3">
@@ -67,7 +67,7 @@
 
         <v-row>
           <v-col cols="2">
-            <v-btn class="btn-size" style="height: 12vh; color: white;" to="/card-search">카드 검색</v-btn>
+            <v-btn class="btn-size" style="height: 12vh; color: black;" to="/card-search">카드 검색</v-btn>
           </v-col>
           <v-col cols="1"><span /></v-col>
           <v-col cols="3">
@@ -108,11 +108,11 @@
     <v-menu>
       <template v-slot:activator="{ props }">
         <v-col cols="auto">
-          <v-btn v-bind="props" rounded variant="plain" style="color: rgb(255, 255, 255)" icon="mdi-account"></v-btn>
+          <v-btn v-bind="props" rounded variant="plain" style="color: black" icon="mdi-account"></v-btn> <!--사람 아이콘 색-->
         </v-col>
       </template>
       <div class="triangle"></div>
-      <v-list style="background-color: #222224;" align="center" justify="center" class="list-mt">
+      <v-list style="background-color: white;" align="center" justify="center" class="list-mt">
         <div :style="{ display: LoginDisplay }">
           <p class="text-h4 login-title">LOGIN</p>
           <p class="login-font">로그인 후 이용해 주세요!</p>
@@ -125,7 +125,7 @@
 
         <div :style="{ display: LogoutDisplay }">
           <v-btn @click="logOut" class="logout" rounded>
-            <b style="color:rgb(255, 255, 255)"> LOGOUT </b>
+            <b style="color:black"> LOGOUT </b>
           </v-btn>
         </div>
       </v-list>
@@ -156,7 +156,8 @@ export default {
     const handleScroll = () => {
       // 스크롤 위치를 확인하여 배경 색상을 조절합니다.
       if (window.scrollY > 0) {
-        appBarStyle.value.backgroundColor = '#000000';
+        appBarStyle.value.backgroundColor = 'white';
+        // appBarStyle.value.backgroundColor = '#000000';
       } else {
         appBarStyle.value.backgroundColor = 'transparent';
       }

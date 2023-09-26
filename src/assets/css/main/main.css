@@ -5,7 +5,8 @@
 .h2{
   margin-top: 3rem;
   margin-bottom: 1rem;
-  color: white;
+  /* color: white; */
+  color: black;
 }
 .card-check2{ 
   width: 8rem;
