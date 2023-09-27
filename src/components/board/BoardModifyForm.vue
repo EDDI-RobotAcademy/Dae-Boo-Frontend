@@ -36,13 +36,13 @@
               name: 'BoardReadPage',
               params: { boardId: board.boardId },
             }"
-            style="text-decoration: none; color: white;"
+            style="text-decoration: none; color: #222;"
           >수정 취소</router-link>
         </v-col>
         <v-col cols="1">
-          <button @click="onDelete" type="button" style="color: white;">삭제</button>
+          <button @click="onDelete" type="button" style="color: #222;">삭제</button>
         </v-col>
-        <button @click="onSubmit" type="button" style="color: white;">수정 완료</button>
+        <button @click="onSubmit" type="button" style="color: #222;">수정 완료</button>
         <v-col cols="1">
         </v-col>
     </v-row>
@@ -78,8 +78,7 @@
         initialEditType: "wysiwyg",
         previewStyle: "vertical",
         usageStatistics: false,
-        initialValue: this.content,
-        theme: "dark",
+        initialValue: this.content
       });
     },
     methods: {

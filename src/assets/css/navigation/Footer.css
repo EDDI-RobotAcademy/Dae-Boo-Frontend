@@ -29,11 +29,11 @@
   }
   .footer-item2 {
     margin-top: 2rem;
-    border-top: 0.1rem solid #ffffff;    
-    border-bottom: 1px solid  #ffffff;  
+    border-top: 0.1rem solid #222;    
+    border-bottom: 1px solid  #222;  
     padding: 1rem;
     /* color: rgb(255, 255, 255); */
-    color: black;
+    color: #000;
   }
   .footer-item3 {
       /* color: rgb(255, 255, 255); */

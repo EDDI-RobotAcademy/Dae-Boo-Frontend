@@ -29,7 +29,7 @@
                 </router-link>
               </v-col>
               <v-col cols="1">
-                <button type="button" @click="onSubmit" class="submit-btn" style="color: white">
+                <button type="button" @click="onSubmit" class="submit-btn" style="color: #222">
                   작성완료
                 </button>
               </v-col>
@@ -67,8 +67,7 @@ export default {
       initialEditType: "wysiwyg",
       previewStyle: "vertical",
       usageStatistics: false,
-      initialValue: this.content,
-      theme: "dark",
+      initialValue: this.content
     });
   },
   methods: {

@@ -1,7 +1,7 @@
 <template>
-  <v-container class="question-container" >
+  <v-container>
     <div class="question-read-mr">
-      <v-row align="center" justify="left">
+      <v-row align="center">
         <v-col cols="12" class="text-center">
           <h2 class="question-read-text" style="margin: auto;">{{ question.title }}</h2>
         </v-col>
@@ -9,7 +9,7 @@
           <td class="question-read-text">no. {{ question.questionId }}</td>
         </v-col>
         <v-col cols="7">
-          <td class="question-read-text">작성자 : {{ myInfo.nickname }}</td>
+          <td class="question-read-text">작성자 : {{ memberInfo.nickname }}</td>
         </v-col>
         <v-col cols="3">
           <td class="question-read-text">등록일자 : {{ question.createdAt }}</td>
@@ -27,7 +27,6 @@
       <div>
         <v-btn @click="onDelete" style="margin-top: 1rem; text-align: center;" color="error">삭제하기</v-btn>
       </div>
-      <question-comment-component/>
     </div>
   </v-container>
 </template>
@@ -40,12 +39,9 @@ import "@toast-ui/editor/dist/theme/toastui-editor-dark.css";
 import "@/assets/css/help/questionRead.css";
 import { mapActions, mapState } from 'vuex';
 const QuestionModule = 'QuestionModule';
-const MyPageModule = 'MyPageModule';
-import QuestionCommentComponent from '@/components/help/QuestionCommentComponent.vue'
+const LogInModule = 'LogInModule';
 export default {
-  components: {
-    QuestionCommentComponent
-  },
+
   name: "QuestionReadForm",
   props: {
     question: {
@@ -82,10 +78,10 @@ export default {
     const questionId = this.question.questionId;
     await this.requestDeleteQuestionToSpring(questionId);
     await this.$router.push({name: 'MyPage'})
-    }
+    },
   },
   computed: {
-    ...mapState(MyPageModule, ['myInfo']),
+    ...mapState(LogInModule, ['memberInfo']),
   }
 };
 </script>

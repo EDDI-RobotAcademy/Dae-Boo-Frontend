@@ -6,7 +6,7 @@
           <v-row>
             <v-col cols="1" align="left">댓글작성</v-col>
             <v-col cols="11">
-              <span>닉네임: {{ myInfo.nickname }}</span>
+              <span>닉네임: {{ myInfo?.nickname || (comment?.userId ? comment.userId.nickname : '없음') }}</span>
             </v-col>
           </v-row>
           <v-row>
@@ -33,36 +33,37 @@
 import { mapState } from "vuex";
 import "@/assets/css/comment/comment.css";
 const BoardModule = "BoardModule";
-const MyPageModule = "MyPageModule";
+const LogInModule = "LogInModule";
 export default {
   data() {
     return {
       content: "",
-      writer: "",
-      userId: "",
-      boardId: ""
     };
   },
   methods: {
     onSubmit() {
+      if (!this.memberInfo || !this.memberInfo.userId) {
+        alert("로그인 후에 이용 가능합니다.");
+        return;
+      }
+      if (!this.content.trim()) {
+        alert("댓글을 작성해주세요.");
+        return;
+      }
       this.$emit("submit", {
         boardName: this.boardName,
-        writer: this.myInfo.nickname,
+        writer: this.memberInfo?.nickname,
         content: this.content,
         category: this.category,
-        userId: this.myInfo.userId,
-        boardId: this.board.boardId
+        userId: this.memberInfo?.userId,
+        boardId: this.board.boardId,
       });
     },
-    created() {
-    this.userId = this.myInfo.userId;
-    this.boardId = this.board.boardId
-  },
   },
   computed: {
-    ...mapState(MyPageModule, ["myInfo"]),
-    ...mapState(BoardModule, ["board"])
-  }
+    ...mapState(LogInModule, ["memberInfo"]),
+    ...mapState(BoardModule, ["board"]),
+  },
 };
 </script>
 

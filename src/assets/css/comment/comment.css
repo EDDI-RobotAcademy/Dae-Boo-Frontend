@@ -1,18 +1,18 @@
 .comment-page {
     padding-top: 0;
-    background-color: #222;
-    color: #fff;
+    background-color: #fff;
+    color: #222;
     margin-top: 2rem;
   }
   .comment-card{
-    background-color: #222;
-    color: #fff;    
+    background-color: #fff;
+    color: #222;    
   }
   .comment-list-page {
     margin-top: 3px;
     padding-bottom: 0;
   }
   .comment-card{
-  background-color: #222;
-  color: #fff;
+  background-color: #fff;
+  color: #222;
 }
