@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h2 style="color: white">게시물 읽기</h2>
         <ManagementBoardReadForm v-if="board" :board="board"/>
     </div>
 </template>

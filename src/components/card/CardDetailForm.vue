@@ -119,7 +119,8 @@ export default {
     margin-top: 8rem;
     margin-bottom: 8rem;
     font-size: 19px;
-    color: white;
+    /* color: white; */
+    color: black;
 }
 
 .fas.fa-heart {
