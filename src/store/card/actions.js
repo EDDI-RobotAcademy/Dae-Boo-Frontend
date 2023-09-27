@@ -4,6 +4,16 @@ import axiosInst from "@/utility/axiosInst";
 export default {
   async requestCardList({ commit }) {
     return await axiosInst
+      .get("/card/list")
+      .then((res) => {
+        commit(CARD_LIST, res.data);
+      })
+      .catch(() => {
+        console.error;
+      });
+  },
+  async requestAgeCardList({ commit }) {
+    return await axiosInst
       .get("/card/age/list")
       .then((res) => {
         commit(CARD_LIST, res.data);
@@ -59,6 +69,18 @@ export default {
         console.error;
       });
   },
+
+  async requestAllActivateCards({ commit }) {
+    return await axiosInst
+      .get("/card/allActivateCards")
+      .then((res) => {
+        commit(CARD_LIST, res.data);
+      })
+      .catch(() => {
+        console.error;
+      })
+  },
+
   responseWishCard(_, payload) {
     return axiosInst
       .post("/card/wishCard", null, {
