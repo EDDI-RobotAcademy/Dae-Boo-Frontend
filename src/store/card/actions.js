@@ -72,7 +72,7 @@ export default {
 
   async requestAllActivateCards({ commit }) {
     return await axiosInst
-      .get("/card/allActivateCards")
+      .get("/card/list")
       .then((res) => {
         commit(CARD_LIST, res.data);
       })
