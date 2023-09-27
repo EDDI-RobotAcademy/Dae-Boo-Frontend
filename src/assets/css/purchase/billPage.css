@@ -1,0 +1,103 @@
+.orderSheetTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 80px;
+}
+.orderSheetProductDetailInfo{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    margin: 10px;
+}
+.orderSheetProcutImg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.orderSheetProcutImg img{
+    width: 100px;
+    margin: 5px;
+}
+.orderSheetProductInfo,
+.orderSheetOrdererInfo,
+.orderSheetDeliveryInfo,
+.orderSheetCouponInfo,
+.orderSheetPayMentInfo,
+.orderSheetPrivacyAgreementInfo {
+    margin-bottom: 80px;
+}
+.orderProductTitle,
+.orderUserInfoTitle,
+.orderDeliveryInfoTitle,
+.orderCouponInfoTitle,
+.orderPayMentInfoTitle,
+.orderPrivacyInfoTitle {
+    font-weight: 600;
+    margin: 10px;
+}
+.orderSheetSenderInfo,
+.orderSheetSenderPhone,
+.orderSheetSenderEmail
+{
+    display: flex;
+    margin: 10px;
+    font-size: small;
+    font-weight: 600;
+}
+.orderSheetFirstText1{
+    margin-right: 134px;
+}
+.orderSheetFirstText2,
+.orderSheetFirstText3{
+    margin-right: 150px;
+}
+.orderSheetFirstText4{
+    margin-left: 200px;
+    font-size: 12px;
+    font-weight: 400;
+    color: red;
+}
+.orderSheetDeliveryDetailInfo1,
+.orderSheetDeliveryDetailInfo2,
+.orderCouponDetailInfo,
+.orderPayMentDetailInfo {
+    display: flex;
+    margin: 10px;
+}
+.orderSheetDeliveryFirstText1,
+.orderPayMentFirstText
+{
+    margin-right: 150px;
+    font-size: small;
+    font-weight: 600;
+}
+.orderSheetDeliveryDetailInfo1{
+    margin-bottom: 50px;
+}
+.orderKakaoPayBox{
+    width: 300px;
+    height: 40px;
+    border-radius: 3px;
+    background-color: rgb(243, 227, 0);
+    text-align: center;
+    font-size: medium;
+    font-weight: bold;
+}
+.orderPrivacyFirstText{
+    font-size: small;
+    font-weight: 600;
+    margin: 10px;
+}
+.orderSheetDeliveryFirstText2 {
+    margin-right: 108px;
+    font-size: small;
+    font-weight: 600;
+}
+.orderCouponFirstText{
+    margin-right: 135px;
+    font-size: small;
+    font-weight: 600;
+}
