@@ -25,7 +25,7 @@
   <div v-if="cards.length > 0">
     <div class="container">
       <div class="row">
-        <div v-for="card in cards" :key="card.id" class="section">
+        <div v-for="card in cards" :key="card.cardId" class="section">
           <img :src="dynamicLink(card.cardImage)" alt="card image" class="card-image" data-aos="fade-top" />
           <div class="intro">
             <p class="card-name">{{ card.name }}</p>
