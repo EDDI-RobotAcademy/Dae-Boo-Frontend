@@ -60,7 +60,7 @@
 import { mapActions, mapState } from "vuex";
 import '@/assets/css/myPage/myPageQA.css'
 const QuestionModule = "QuestionModule";
-const MyPageModule = "MyPageModule";
+const LogInModule = "LogInModule";
 // const QuestionBoardModule = 'QuestionBoardModule'
 
 export default {
@@ -77,11 +77,11 @@ export default {
       return this.questions.slice(startIndex, endIndex);
     },
     ...mapState(QuestionModule, ["questions"]),
-    ...mapState(MyPageModule,["myInfo"]),
+    ...mapState(LogInModule,["memberInfo"]),
     // ...mapState(QuestionBoardModule, ['questBoards'])
   },
   mounted() {
-    this.requestQuestionListToSpring(this.myInfo.userId);
+    this.requestQuestionListToSpring(this.memberInfo.userId);
   },
   methods: {
     ...mapActions(QuestionModule, ["requestQuestionListToSpring"]),
