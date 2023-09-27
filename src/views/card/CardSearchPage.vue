@@ -1,6 +1,5 @@
 <template lang="">
     <div>
-        asdf
         <card-search-form />
     </div>
 </template>

@@ -1,11 +1,11 @@
 <template lang="">
-  <div class="btn-container">
+  <!-- <div class="btn-container">
     <div>
       <button class="btn" type="button" :class="{ active: all }" @click="initializationClick"># 전체</button>
       <button class="btn" type="button" :class="{ active: gas }" @click="handleCategoryClick('GAS')"># 주유</button>
       <button class="btn" type="button" :class="{ active: eatout }" @click="handleCategoryClick('EATOUT')"># 외식</button>
     </div>
-  </div>
+  </div> -->
 
  <div>
       <v-card class="mx-auto search-mr" color="grey-lighten-3">
