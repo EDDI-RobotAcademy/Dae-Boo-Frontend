@@ -11,9 +11,8 @@
         <v-card v-if="cards.length > 0" class="mapShop-card-body" theme="dark" rounded="100%">
             <Carousel :items-to-show="1" :wrap-around="true" class="mapShop-card-carousel">
                 <Slide v-for="card in cards" :key="card.cardId">
-                    <div @click="this.cardId = card.cardId, cardBtnClick()">
-                        <img :src="dynamicLink(card.cardImage)" alt="카드 이미지" data-aos="flip-right"
-                            style="width: 142px;height: 225px;" />
+                    <div @click="this.cardId = card.cardId, cardBtnClick()" data-aos="flip-right">
+                        <img :src="dynamicLink(card.cardImage)" alt="카드 이미지" style="width: 142px;height: 225px;" />
                         <!-- <img :src="this.localImgPath" style="width: 142px;height: 225px;" /> -->
                         <div style="color: #222">{{ card.name }}</div>
                     </div>
@@ -39,6 +38,7 @@ import { Carousel, Navigation, Slide } from "vue3-carousel";
 import "@/assets/css/shopSearch/shopSearch.css";
 import { mapActions, mapState } from "vuex";
 import AOS from "aos";
+import 'aos/dist/aos.css';
 const CardModule = 'CardModule';
 const LINK = process.env.VUE_APP_S3_LINK;
 export default {
@@ -70,7 +70,7 @@ export default {
         this.cardLoading();
     },
     methods: {
-        ...mapActions(CardModule, ["getCardBenefit", "requestCardList"]),
+        ...mapActions(CardModule, ["getCardBenefit", "requestAllActivateCards"]),
         loadScript() {
             const script = document.createElement("script");
             script.src =
@@ -200,7 +200,7 @@ export default {
             } catch (error) { console.error(error); }
         },
         async cardLoading() {
-            await this.requestCardList();
+            await this.requestAllActivateCards();
             this.cards = this.$store.state[CardModule].cards;
         },
         dynamicLink(extraPath) {
