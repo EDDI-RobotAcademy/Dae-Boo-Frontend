@@ -16,7 +16,7 @@
     margin-top: 30px;
     margin-bottom: 10px;
 }
-.line{
+.mypageLine{
     justify-content: space-between; 
     display: flex;
 }
