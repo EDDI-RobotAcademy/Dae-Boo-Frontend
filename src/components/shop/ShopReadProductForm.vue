@@ -65,7 +65,7 @@
                     </button>
                 </div>
                 <div>
-                    <button class="kakaoPayBtn">카카오페이 구매하기</button>
+                    <button class="kakaoPayBtn" @click="kakakoPayBill(product.productId)">카카오페이 구매하기</button>
                 </div>
             </div>
         </div>
@@ -100,6 +100,9 @@ export default {
         dynamicLink(extraPath) {
             return `${this.link}/${extraPath}`;
         },
+        kakakoPayBill(productId) {
+            this.$router.push({ path: `/payment/bill/${productId}` })
+        }
     },
 }
 </script>
