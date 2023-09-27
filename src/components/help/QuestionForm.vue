@@ -23,7 +23,7 @@
                 @click="onSubmit"
                 color="primary"
                 class="question-button-mr"
-                style="color: #fff;"
+                style="color: #222;"
               >
                 작성완료
               </button>
@@ -44,40 +44,34 @@ import "@/assets/css/editor-custom-style.css";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import "@/assets/css/help/question.css";
 import { mapState } from 'vuex';
-const MyPageModule = 'MyPageModule'
+const LogInModule = 'LogInModule'
 
 export default {
   data() {
     return {
       editor: null,
       title: "",
-      contents: "",
-      myInfo: {
-        userId: Number
-      }
     };
   },
   mounted() {
-    console.log(this.userId),
     this.editor = new Editor({
       el: document.querySelector("#editor"),
       height: "500px",
       initialEditType: "wysiwyg",
       previewStyle: "vertical", 
       usageStatistics: false,
-      initialValue: this.contents,
     });
   },
   computed: {
-    ...mapState(MyPageModule,['myInfo'])
+    ...mapState(LogInModule,['memberInfo'])
   },
   methods: {
     onSubmit() {
-      this.contents = this.editor.getMarkdown();
+      const contents = this.editor.getMarkdown();
       this.$emit("submit", {
         title: this.title,
-        contents: this.contents,
-        userId: this.userId,
+        contents: contents,
+        userId: (this.memberInfo ? this.memberInfo.userId : null), 
       });
     },
   },

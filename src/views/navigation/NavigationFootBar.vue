@@ -27,7 +27,7 @@
         >
           <td
             v-if="index < 5"
-            style="color: white; text-decoration-line: none"
+            style="color: #000; text-decoration-line: none"
           >
             [공지] {{ notice.title }}
           </td>
@@ -108,12 +108,14 @@
 </template>
 
 <script>
-const NoticeModule = "NoticeModule";
 import "@/assets/css/navigation/Footer.css";
 import { mapActions, mapState } from "vuex";
+const NoticeModule = "NoticeModule";
+const LogInModule = "LogInModule";
 export default {
   computed: {
     ...mapState(NoticeModule, ["notices"]),
+    ...mapState(LogInModule, ["memberInfo"]),
   },
   mounted() {
     this.requestNoticeListToSpring();
@@ -124,13 +126,20 @@ export default {
       window.scrollTo(0, 0);
     },
     goQuestionPage() {
+      if (!this.memberInfo || !this.memberInfo.userId) {
+        alert("로그인 후 작성해주세요.");
+        return;
+      }else{
       this.$router.push("/help/question");
+    }
     },
     ...mapActions(NoticeModule, ["requestNoticeListToSpring"]),
-
     noticeReadRink(noticeId) {
-      this.$router.push({path: `/notice/read-page/${noticeId}`})
-    }
+      this.$router.push({ path: `/notice/read-page/${noticeId}` });
+    },
+    showLoginAlert() {
+      alert("로그인 후 작성해주세요.");
+    },
   },
 };
 </script>

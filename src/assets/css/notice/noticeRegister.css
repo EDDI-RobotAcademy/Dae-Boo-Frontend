@@ -1,14 +1,14 @@
 .pd{
   padding: 3rem;
-  background-color: #222222; 
+  background-color: #fff; 
 }
 .notice-register-body{
-  background-color: #222222; 
-  color: white;
+  background-color: #fff; 
+  color: #222;
 }
 .submit-btn{
   margin-top: 1rem;
-  color: white;
+  color: #222;
 }
 .notice-register-container{
   padding: 0; 
