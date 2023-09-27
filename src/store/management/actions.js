@@ -1,5 +1,5 @@
 import axiosInst from '@/utility/axiosInst'
-import { REQUEST_CARD_LIST_TO_SPRING, REQUEST_ACCOUNT_LIST_TO_SPRING, REQUEST_USER_INFO_TO_SPRING, REQUEST_CARD_INFO_TO_SPRING, REQUEST_Purchase_LIST_TO_SPRING } from './mutation-types'
+import { REQUEST_CARD_LIST_TO_SPRING, REQUEST_ACCOUNT_LIST_TO_SPRING, REQUEST_USER_INFO_TO_SPRING, REQUEST_CARD_INFO_TO_SPRING, REQUEST_Purchase_LIST_TO_SPRING,REQUEST_REFUND_LIST_TO_SPRING } from './mutation-types'
 
 export default {
   async requestCardListToSpring({ commit }) {
@@ -98,4 +98,13 @@ export default {
       return res.data;
     })
   },
+  async requestRefundListToSpring({ commit }) {
+    await axiosInst.post(`/purchase/manage/refundList`)
+    .then((res) => {
+        commit(REQUEST_REFUND_LIST_TO_SPRING, res.data);
+    })
+    .catch(() => {
+        console.error;
+    });
+},
 }
