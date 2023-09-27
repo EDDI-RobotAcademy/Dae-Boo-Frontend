@@ -164,13 +164,13 @@ export default {
             this.$router.push(link);
         },
         ...mapActions(CardModule, [
-            "requestCardList"
+            "requestAgeCardList"
         ]),
         ...mapActions(LogInModule, [
             'getUserIngoToSpring'
         ]),
         async cardLoading() {
-            await this.requestCardList();
+            await this.requestAgeCardList();
             this.cards = this.$store.state[CardModule].cards;
         },
         dynamicLink(extraPath) {
