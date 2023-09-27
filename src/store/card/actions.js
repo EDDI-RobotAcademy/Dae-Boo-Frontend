@@ -14,7 +14,7 @@ export default {
   },
   async requestAgeCardList({ commit }) {
     return await axiosInst
-      .get("/card/age/list")
+      .get("/ai-response")
       .then((res) => {
         commit(CARD_LIST, res.data);
       })
