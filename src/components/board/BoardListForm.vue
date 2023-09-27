@@ -1,5 +1,5 @@
 <template>
-  <v-container class="board-read-style">   
+  <v-container>   
    <div class="board-mr">
     <v-btn variant="plain" :ripple="false" class="category-st" @click="filterByCategory('전체')">전체</v-btn>
     <v-btn variant="plain" :ripple="false" class="category-st" @click="filterByCategory('DAILY')">DAILY</v-btn>
