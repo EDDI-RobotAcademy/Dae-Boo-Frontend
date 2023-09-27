@@ -59,6 +59,18 @@ export default {
         console.error;
       });
   },
+
+  async requestAllActivateCards({ commit }) {
+    return await axiosInst
+      .get("/card/allActivateCards")
+      .then((res) => {
+        commit(CARD_LIST, res.data);
+      })
+      .catch(() => {
+        console.error;
+      })
+  },
+
   responseWishCard(_, payload) {
     return axiosInst
       .post("/card/wishCard", null, {
