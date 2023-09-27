@@ -11,7 +11,7 @@
                         <p v-html="product.name" style="font-weight: 500; margin: 10px; font-size: small;"></p>
                     </div>
                     <span v-html="product.description"></span>
-                    <p> <input type="number" v-bind:value="amount" placeholder="수량을 지정해주세요."></p>
+                    <p> <input type="number" v-model="amount" placeholder="수량을 지정해주세요."></p>
                     <p v-html="product.price"></p>
                 </div>
             </div>
@@ -95,7 +95,7 @@
 
         <v-dialog class="PayButton" v-model="dialog" persistent>
             <template v-slot:activator>
-                <img :src="this.localImagePath" alt="로컬 이미지" />
+                <img :src="this.localImagePath" @click="pay" alt="로컬 이미지" />
             </template>
         </v-dialog>
     </v-container>
@@ -127,7 +127,7 @@ export default {
             dialog: false,
             value: '',
             localImagePath: require('@/assets/kakaoPayImg.png'),
-            amount:'',
+            amount:0,
         }
     },
     methods: {
@@ -143,10 +143,10 @@ export default {
 
         async pay() {
             const purchaseForm = {
-                userId: this.products.userId,
-                productId: this.products.productId,
+                userId: this.myInfo.userId,
+                productId: this.productId,
                 userAccount: this.totalAddress,
-                amount: this.products.amount,
+                amount: this.amount,
             };
 
             try {
