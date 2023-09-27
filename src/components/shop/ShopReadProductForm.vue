@@ -60,7 +60,7 @@
                             돌아가기
                         </router-link>
                     </button>
-                    <button class="BagBtn" color="orange">
+                    <button class="BagBtn" @click="cartButtonClick" color="orange">
                         장바구니
                     </button>
                 </div>
@@ -106,6 +106,9 @@ export default {
         },
         kakakoPayBill(productId) {
             this.$router.push({ path: `/payment/bill/${productId}` })
+        },
+        cartButtonClick() {
+            alert("준비 중입니다 !")
         }
     },
 }
