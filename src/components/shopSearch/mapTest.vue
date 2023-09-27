@@ -38,6 +38,7 @@
 import { Carousel, Navigation, Slide } from "vue3-carousel";
 import "@/assets/css/shopSearch/shopSearch.css";
 import { mapActions, mapState } from "vuex";
+import AOS from "aos";
 const CardModule = 'CardModule';
 const LINK = process.env.VUE_APP_S3_LINK;
 export default {
@@ -63,9 +64,13 @@ export default {
         } else {
             this.loadScript();
         }
+        AOS.init({
+            duration: 1600,
+        });
+        this.cardLoading();
     },
     methods: {
-        ...mapActions(CardModule, ["getCardBenefit", "requestLikeCardList"]),
+        ...mapActions(CardModule, ["getCardBenefit", "requestCardList"]),
         loadScript() {
             const script = document.createElement("script");
             script.src =
@@ -195,7 +200,7 @@ export default {
             } catch (error) { console.error(error); }
         },
         async cardLoading() {
-            await this.requestLikeCardList();
+            await this.requestCardList();
             this.cards = this.$store.state[CardModule].cards;
         },
         dynamicLink(extraPath) {
