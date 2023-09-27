@@ -1,4 +1,7 @@
 export default {
     product: {},
-    products: []
+    products: [],
+    purchase: {},
+    purchaseList: [],
+    myPurchaseList: []
 }

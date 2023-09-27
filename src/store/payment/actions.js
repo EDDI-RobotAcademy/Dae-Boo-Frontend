@@ -57,7 +57,7 @@ export default {
         return axiosInst.post("/payment/success", payload)
             .then((res) => {
                 if (res.data == true) {
-                    router.push({ name: 'BillPage' });
+                    router.push({ name: 'MyPage' });
 
                 }
             })

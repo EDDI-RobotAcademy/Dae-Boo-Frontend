@@ -1,6 +1,8 @@
 import {
     REQUEST_PRODUCT_LIST_TO_SPRING,
-    REQUEST_PRODUCT_TO_SPRING
+    REQUEST_PRODUCT_TO_SPRING,
+    REQUEST_MY_PURCHASE_LIST_TO_SPRING,
+   
   } from './mutation-types'
 import axiosInst from '@/utility/axiosInst'
 
@@ -81,4 +83,17 @@ export default {
             throw error; // 에러를 다시 던져서 호출한 곳에서 처리할 수 있도록 합니다.
         }
     },
+    async requestMyPurchaseListToSpring({ commit }, userId) {
+        return axiosInst.get(`/purchase/${userId}`)
+        .then((res) => {
+            commit(REQUEST_MY_PURCHASE_LIST_TO_SPRING, res.data);
+            return res.data;
+        })
+        .catch(() => {
+            console.error;
+        });
+    },
+    
+    
+    
 }
