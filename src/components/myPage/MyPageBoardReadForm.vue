@@ -4,7 +4,6 @@
         <div class="container"
             style="color: black; display: flex; justify-content: flex-start; margin: 0; padding-bottom: 20px; padding-top: 20px; align-items: flex-end;">
             <div class="item" style="width: 5%;">
-                <!-- <h2>No.{{ board.boardId }}</h2> -->
                 No.{{ board.boardId }}
             </div>
             <div class="item" style="width: 10%; margin-right:5px;">
@@ -18,7 +17,7 @@
             </div>
         </div>
         <hr style="color: black;" />
-        <div id="mypageboardviewer" style="min-height: 500px; margin-top: 50px; color: black;"></div>
+        <div id="mypageboardviewer" style="min-height: 500px; margin-top: 50px;"></div>
         <hr style="color: black;" />
     </v-container>
 </template>
@@ -46,7 +45,6 @@ export default {
                 el: document.querySelector("#mypageboardviewer"),
                 height: "500px",
                 initialValue: this.board.content,
-                theme: "dark",
             });
         });
     },

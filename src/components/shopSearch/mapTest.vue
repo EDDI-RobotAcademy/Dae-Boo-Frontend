@@ -6,14 +6,16 @@
         </div>
 
         <div id="mapShop" class="mapShop"></div>
-
-        <!-- 찜한 카드 -->
-        <h3 class="mapShop-title">Wish Card</h3>
+        <!--전체 카드 -->
+        <h3 class="mapShop-title">Cards</h3>
         <v-card v-if="cards.length > 0" class="mapShop-card-body" theme="dark" rounded="100%">
             <Carousel :items-to-show="1" :wrap-around="true" class="mapShop-card-carousel">
                 <Slide v-for="card in cards" :key="card.cardId">
-                    <div>
-                        <div style="color: #222" @click="this.cardId = card.cardId, cardBtnClick()">{{ card.name }}</div>
+                    <div @click="this.cardId = card.cardId, cardBtnClick()">
+                        <img :src="dynamicLink(card.cardImage)" alt="카드 이미지" data-aos="flip-right"
+                            style="width: 142px;height: 225px;" />
+                        <!-- <img :src="this.localImgPath" style="width: 142px;height: 225px;" /> -->
+                        <div style="color: #222">{{ card.name }}</div>
                     </div>
                 </Slide>
                 <template #addons>
@@ -37,6 +39,7 @@ import { Carousel, Navigation, Slide } from "vue3-carousel";
 import "@/assets/css/shopSearch/shopSearch.css";
 import { mapActions, mapState } from "vuex";
 const CardModule = 'CardModule';
+const LINK = process.env.VUE_APP_S3_LINK;
 export default {
     data() {
         return {
@@ -44,7 +47,9 @@ export default {
             markers: [],
             cardId: '',
             // infowindow: new window.kakao.maps.InfoWindow
-            category: 'PO3'
+            category: 'PO3',
+            link: LINK,
+            // localImgPath: require('@/assets/cardImg2.png')
         };
     },
     components: {
@@ -179,7 +184,7 @@ export default {
                 console.log(response);
                 const elements = document.getElementsByClassName("mapShop-text");
                 for (let i = 0; i < elements.length; i++) {
-                    elements[i].style.color = "#8b8b8b;";
+                    elements[i].style.color = "#8b8b8b";
                 }
 
                 response.forEach((resp) => {
@@ -193,6 +198,9 @@ export default {
             await this.requestLikeCardList();
             this.cards = this.$store.state[CardModule].cards;
         },
+        dynamicLink(extraPath) {
+            return `${LINK}/${extraPath}`;
+        }
     },
     computed: {
         ...mapState(CardModule, ["cards"]),
