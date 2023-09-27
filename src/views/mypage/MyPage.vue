@@ -15,9 +15,14 @@
                     <button class="edgeButton mdi mdi-chevron-right"></button>
                 </div>
                 <div class="mypageLine box3" style="padding-bottom: 15px;" @click="pageNumber = 4">
+                    <p class="myPageNavi">구매 내역</p>
+                    <button class="edgeButton mdi mdi-chevron-right"></button>
+                </div>
+                <div class="mypageLine box3" style="padding-bottom: 15px;" @click="pageNumber = 5">
                     <p class="myPageNavi">1:1 문의</p>
                     <button class="edgeButton mdi mdi-chevron-right"></button>
                 </div>
+               
             </div>
         </div>
         <div id="box2">
@@ -31,6 +36,9 @@
                 <MyPageCard />
             </div>
             <div v-if="pageNumber === 4">
+                <MyPagePurchase />
+            </div>
+            <div v-if="pageNumber === 5">
                 <MyPageQA />
             </div>
         </div>
@@ -42,11 +50,10 @@ import myPageInfo from '@/components/myPage/MyPageInfo.vue'
 import myPageBoard from '@/components/myPage/MyPageBoard.vue'
 import MyPageCard from '@/components/myPage/MyPageCard.vue'
 import MyPageQA from '@/components/myPage/MyPageQA.vue'
-
+import MyPagePurchase from '@/components/myPage/MyPagePurchase.vue'
 import { mapActions, mapState } from "vuex";
 const MyPageModule = 'MyPageModule'
 const LogInModule = 'LogInModule'
-
 export default {
     data() {
         return {
@@ -58,7 +65,8 @@ export default {
         myPageInfo,
         myPageBoard,
         MyPageCard,
-        MyPageQA
+        MyPageQA,
+        MyPagePurchase
     },
     mounted() {
         // 데이터를 가져오는 로직을 이동합니다.
