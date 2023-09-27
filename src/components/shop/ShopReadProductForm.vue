@@ -65,7 +65,7 @@
                     </button>
                 </div>
                 <div>
-                    <button class="kakaoPayBtn" @click="kakakoPayBill(product.productId)">카카오페이 구매하기</button>
+                    <button v-if="memberInfo && memberInfo.userId" class="kakaoPayBtn" @click="kakakoPayBill(product.productId)">카카오페이 구매하기</button>
                 </div>
             </div>
         </div>
@@ -74,9 +74,10 @@
 
 <script>
 import '@/assets/css/shop/shopReadProduct.css'
-
 import AOS from "aos";
 const LINK = process.env.VUE_APP_S3_LINK;
+const LogInModule = 'LogInModule'
+import { mapState } from 'vuex';
 
 export default {
     name: "ShopReadProductForm",
@@ -95,6 +96,9 @@ export default {
         AOS.init({
             duration: 1600,
         });
+    },
+    computed: {
+        ...mapState(LogInModule, ['memberInfo'])
     },
     methods: {
         dynamicLink(extraPath) {
