@@ -19,10 +19,6 @@ export default {
             required: true
         }
     },
-    data() {
-        return {
-        }
-    },
     mounted() {
         this.cardInfoLoading()
     },

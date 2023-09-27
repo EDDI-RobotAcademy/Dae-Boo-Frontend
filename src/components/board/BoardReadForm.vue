@@ -42,10 +42,6 @@
         type: Object,
         required: true,
       },
-      // memberinfo: {
-      //   type: Object,
-      //   required: true,
-      // }
     },
     watch: {
     board(newValue) {
@@ -64,8 +60,7 @@
     this.viewer = new Viewer({
       el: document.querySelector("#viewer"),
       height: "500px",
-      initialValue: this.board.content,
-      theme: "dark",
+      initialValue: this.board.content
     });
   });
 }

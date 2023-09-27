@@ -55,8 +55,7 @@ export default {
     this.viewer = new Viewer({
       el: document.querySelector("#viewer"),
       height: "500px",
-      initialValue: this.notice.content,
-      theme: "dark",
+      initialValue: this.notice.content
     });
   },
 };

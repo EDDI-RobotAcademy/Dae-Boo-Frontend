@@ -20,7 +20,7 @@
         </div>
 
             <div class="card-info-box">
-                <svg class="card-detail-svg" xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 512 512"><path d="M268.9 .9c-5.5-.7-11 1.4-14.5 5.7s-4.6 10.1-2.8 15.4c2.8 8.2 4.3 16.9 4.3 26.1c0 44.1-35.7 79.9-79.8 80H160c-35.3 0-64 28.7-64 64c0 19.1 8.4 36.3 21.7 48H104c-39.8 0-72 32.2-72 72c0 23.2 11 43.8 28 57c-34.1 5.7-60 35.3-60 71c0 39.8 32.2 72 72 72H440c39.8 0 72-32.2 72-72c0-35.7-25.9-65.3-60-71c17-13.2 28-33.8 28-57c0-39.8-32.2-72-72-72H394.3c13.3-11.7 21.7-28.9 21.7-48c0-35.3-28.7-64-64-64h-5.5c3.5-10 5.5-20.8 5.5-32c0-48.6-36.2-88.8-83.1-95.1zM192 256a32 32 0 1 1 0 64 32 32 0 1 1 0-64zm96 32a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm64 108.3c0 2.4-.7 4.8-2.2 6.7c-8.2 10.5-39.5 45-93.8 45s-85.6-34.6-93.8-45c-1.5-1.9-2.2-4.3-2.2-6.7c0-6.8 5.5-12.3 12.3-12.3H339.7c6.8 0 12.3 5.5 12.3 12.3z"/></svg>
+                <svg class="card-detail-svg" xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 512 512"><path d="M152.1 38.2c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 113C-2.3 103.6-2.3 88.4 7 79s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zm0 160c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 273c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zM224 96c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32zm0 160c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32zM160 416c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H192c-17.7 0-32-14.3-32-32zM48 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
             <div class="card-info-icon"><h3>카드 조건</h3></div>
             <div class="card-info-text">{{ card.cardCondition }}</div>
         </div>
@@ -63,6 +63,9 @@
 import AOS from "aos";
 import "aos/dist/aos.css";
 const LINK = process.env.VUE_APP_S3_LINK;
+import { mapActions, mapState } from "vuex"
+const CardModule = "CardModule"
+const LogInModule = "LoginModule"
 
 export default {
     name:
@@ -85,9 +88,20 @@ export default {
         });
     },
     methods: {
-        toggleHeart() {
-            this.isLiked = !this.isLiked;
+        async toggleHeart() {
+            try {
+                const payload = {
+                    userId: this.memberInfo.userId,
+                    cardId: this.card.cardId,
+                };
+                const response = await this.responseWishCard(payload);
+                this.isLiked = response.isWish;
+
+            } catch (error) {
+                console.error('Error:', error);
+            }
         },
+        ...mapActions(CardModule, ['responseWishCard']),
         dynamicLink(extraPath) {
             return `${LINK}/${extraPath}`;
         },
@@ -96,6 +110,8 @@ export default {
         heartClass() {
             return this.isLiked ? 'fas fa-heart' : 'far fa-heart';
         },
+        ...mapState(LogInModule, ['memberInfo']),
+        ...mapState(CardModule, ['card']),
     },
 }
 

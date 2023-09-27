@@ -31,7 +31,6 @@ export default {
   },
   async getCardBenefit(_, payload) {
     console.log("cardId: " + payload);
-
     return await axiosInst
       .get("/card/cardBenefit", { params: { cardId: payload } })
       .then((res) => {
@@ -58,6 +57,27 @@ export default {
       })
       .catch(() => {
         console.error;
+      });
+  },
+
+  async requestAllActivateCards({ commit }) {
+    return await axiosInst
+      .get("/card/allActivateCards")
+      .then((res) => {
+        commit(CARD_LIST, res.data);
+      })
+      .catch(() => {
+        console.error;
+      })
+  },
+
+  responseWishCard(_, payload) {
+    return axiosInst
+      .post("/card/wishCard", null, {
+        params: payload,
+      })
+      .then((res) => {
+        return res.data;
       });
   },
 };

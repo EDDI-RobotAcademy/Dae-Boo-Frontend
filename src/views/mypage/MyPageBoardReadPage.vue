@@ -115,4 +115,8 @@ export default {
 .closeBtn {
     min-width: 0px;
 }
+
+/* p {
+    color: black;
+} */
 </style>
