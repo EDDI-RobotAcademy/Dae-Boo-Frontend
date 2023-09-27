@@ -76,8 +76,7 @@
         initialEditType: "wysiwyg",
         previewStyle: "vertical",
         usageStatistics: false,
-        initialValue: this.content,
-        theme: "dark",
+        initialValue: this.content
       });
     },
     methods: {
