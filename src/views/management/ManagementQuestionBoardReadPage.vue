@@ -15,6 +15,7 @@ import { mapActions, mapState } from "vuex";
 
 const QuestionBoardModule = 'QuestionBoardModule';
 const MyPageModule = 'MyPageModule';
+const LogInModule = 'LogInModule'
 
 export default {
     data() {
@@ -34,6 +35,7 @@ export default {
     },
     computed: {
         ...mapState(QuestionBoardModule, ['questBoard', 'answer']),
+        ...mapState(LogInModule, ['memberInfo']),
         ...mapState(MyPageModule, ['myInfo']),
     },
     methods: {
@@ -51,7 +53,7 @@ export default {
                 const payload = {
                     answer,
                     questionId,
-                    userId: this.myInfo.userId
+                    userId: this.memberInfo.userId
                 };
                 await this.responseManagementQuestionAnswerSaveToSping(payload);
             } catch (error) {

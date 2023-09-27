@@ -1,7 +1,8 @@
 <template>
     <div>
         <v-carousel cycle hide-delimiters show-arrows="hover" class="mx-auto">
-            <v-carousel-item
+            <v-carousel-item src="@/assets/recommendcard.png" cover @click="eventLink('/event/1')" />
+            <!-- <v-carousel-item
                 src="https://support.catchfashion.com/hc/article_attachments/360102149993/201229_hyundai_Mainbanner_web.jpg"
                 cover @click="eventLink('/event/1')" />
 
@@ -11,7 +12,7 @@
 
             <v-carousel-item
                 src="https://support.catchfashion.com/hc/article_attachments/360098761074/201120_hyundaicard_Mainbanner_web.jpg"
-                cover @click="eventLink('/event/3')" />
+                cover @click="eventLink('/event/3')" /> -->
         </v-carousel>
     </div>
     <div class="container">

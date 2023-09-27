@@ -74,5 +74,14 @@ export default {
             console.log("중복확인 결과: ", res.data);
             return res.data
         })
+    },
+    getMyPageBoardToSpring(_, payload){
+        return axiosInst.get('', {params: {userId:payload}}
+        ).then((res) => {
+            alert("성공")
+            return res.data
+        }).catch(() => {
+            alert("실패")
+        })
     }
 }

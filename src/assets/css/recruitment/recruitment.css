@@ -6,7 +6,8 @@
     font-size: 80px;
 }
 .recruitment-title{
-    color: #d5d5d5;
+    /* color: #d5d5d5; */
+    color: black;
     font-size: 50px;
     margin-left: 2rem;
     margin-bottom: 2rem;
@@ -14,11 +15,13 @@
 .recruitment-text{
     margin-bottom: 3rem;
     margin-left: 2rem;
-    color: #bcbcbc;
+    /* color: #bcbcbc; */
+    color: black;
     font-size: 20px;
 }
 .recruitment-text2{
-    color: #bcbcbc;
+    /* color: #bcbcbc; */
+    color: black;
     font-size: 18px;
     margin-left: 2rem;
     margin-bottom: 8rem;

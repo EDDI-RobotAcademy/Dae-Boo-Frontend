@@ -3,7 +3,8 @@
     margin-bottom: 2rem;
     height: 30vh;
     padding: 0;
-    background-color: #000000;
+    /* background-color: #000000; */
+    background-color: white;
   }
   .footer-btn-group{
     display: flex;
@@ -20,7 +21,8 @@
     
   }
   .footer-item {
-      color: rgb(255, 255, 255);
+      /* color: rgb(255, 255, 255); */
+      color: black;
       font-size: 18px;
       margin-right: 12rem;
       margin-top: 1rem;
@@ -30,15 +32,18 @@
     border-top: 0.1rem solid #ffffff;    
     border-bottom: 1px solid  #ffffff;  
     padding: 1rem;
-    color: rgb(255, 255, 255);
+    /* color: rgb(255, 255, 255); */
+    color: black;
   }
   .footer-item3 {
-      color: rgb(255, 255, 255);
+      /* color: rgb(255, 255, 255); */
+      color: black;
       font-size: 14px;
   }
   .footer-item3-main{
     margin-top: 1.5rem;
-    color: rgb(255, 255, 255);
+    /* color: rgb(255, 255, 255); */
+    color: black;
     margin-bottom: 0.5rem;
   
   }

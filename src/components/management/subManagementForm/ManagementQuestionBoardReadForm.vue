@@ -29,7 +29,7 @@
                 <tr class="questionTopBar">
                     <td class="questionColumn">작성자</td>
                     <td>
-                        <input type="text" v-if="questBoard.user.nickname" :value="questBoard.user.nickname" readonly/>
+                        <input type="text" v-if="questBoard.user" :value="questBoard.user.nickname" readonly/>
                         <input type="text" v-else value="작성자 정보 없음" readonly/>
                     </td>
                 </tr>
@@ -40,7 +40,9 @@
                 </td>
             </tr>
         </v-table>
-        <router-link class="returnBtn" :to="{ name: 'ManagementPage' }">돌아가기</router-link>
+        <button class="managementBoardReadBackBtn">
+            <router-link class="returnBtn" :to="{ name: 'ManagementPage' }" style="text-decoration: none; color: white;"> 돌아가기 </router-link>
+        </button>
     </div>
 </template>
 

@@ -4,7 +4,7 @@
     <notice-list-form :notices="notices"/>
   </div>
   <div class="notice-register-link">
-    <router-link class="create-register" to="/notice/register-page" >생성하기</router-link>
+    <router-link class="create-register" to="/notice/register-page" style="color: black;">생성하기</router-link>
   </div>
 </template>
 

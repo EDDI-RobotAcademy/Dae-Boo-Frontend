@@ -10,11 +10,12 @@
   align-items: center;
   padding: 16px;
   margin: 20px;
+  color: black;
 }
 
 .circle {
   margin: 20px;
-  background-color: #fff;
+  background-color: #e7e7e7;
   border-radius: 50%;
   width: 100px;
   height: 100px;
@@ -39,14 +40,14 @@
 
 .card-mr {
   width: 100%;
-  color: white;
+  color: black;
   position: relative;
   margin-top: 10rem;
   margin-bottom: 10rem;
 }
 
 .card-name {
-  color: white;
+  color: black;
 }
 
 .move-image {

@@ -1,6 +1,6 @@
 <template>
   <div v-show="cardList">
-    <v-table class="cardList" style="width:1200px; height: 700px;">
+    <v-table class="cardList" style="height: 700px;">
       <tr>
         <th align="center" width="8%">ID</th>
         <th align="center" width="15%">Name</th>
