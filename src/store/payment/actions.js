@@ -63,8 +63,9 @@ export default {
             })
     },
     //고객의 환불 요청 액션 페이로드에는 purchaseId가 들어가야 한다
-    async requestPaymentCancelToSpring(context, payload) {
-         await axiosInst.post("/purchase/cancel", payload)
+    async requestPaymentCancelToSpring(context, purchaseId) {
+        const requestData = {purchaseId}
+         await axiosInst.post("/purchase/cancel", requestData)
             .then((res) => {
                 if (res.data == true) {
                     alert("환불이 신청되었습니다.")
