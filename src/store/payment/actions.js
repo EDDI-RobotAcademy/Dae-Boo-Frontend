@@ -82,7 +82,7 @@ export default {
         await axiosInst.post("/payment/refund", requestData)
            .then((res) => {
                if (res.data == true) {
-                   alert("환불이 신청되었습니다.")
+                   alert("환불을 승인하였습니다.")
                }
            })
            .catch(() => {
