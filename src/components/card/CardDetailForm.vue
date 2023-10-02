@@ -9,7 +9,7 @@
                     <button @click="toggleHeart">
                     <i :class="heartClass"></i>
                     </button>  
-                <v-btn class="card-detail-button"><h1>카드사 바로가기</h1></v-btn>
+                <v-btn class="card-detail-button" @click="goSite"><h1>카드사 바로가기</h1></v-btn>
                 </div>
             </div>
         <div data-aos="fade-center">
@@ -105,6 +105,31 @@ export default {
         dynamicLink(extraPath) {
             return `${LINK}/${extraPath}`;
         },
+        goSite() {
+            if (this.card.company === "삼성") {
+                window.location.href = "https://www.samsungcard.com/";
+            } else if (this.card.company === "하나") {
+                window.location.href = "https://www.hanacard.co.kr/";
+            } else if (this.card.company === "BC") {
+                window.location.href = "https://m.bccard.com/";
+            } else if (this.card.company === "신한") {
+                window.location.href = "https://www.shinhancard.com/";
+            } else if (this.card.company === "현대") {
+                window.location.href = "https://www.hyundaicard.com/";
+            } else if (this.card.company === "농협") {
+                window.location.href = "https://card.nonghyup.com/";
+            } else if (this.card.company === "우리") {
+                window.location.href = "https://pc.wooricard.com/";
+            } else if (this.card.company === "국민") {
+                window.location.href = "https://card.kbcard.com/";
+            } else if (this.card.company === "기업") {
+                window.location.href = "https://www.ibk.co.kr/";
+            } else if (this.card.company === "네이버") {
+                window.location.href = "https://campaign.naver.com/naverhyundaicard/?eventCode=NAV01";
+            } else if (this.card.company === "롯데") {
+                window.location.href = "https://www.lottecard.co.kr/";
+            }
+        }
     },
     computed: {
         heartClass() {

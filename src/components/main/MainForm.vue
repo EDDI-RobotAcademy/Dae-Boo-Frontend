@@ -14,7 +14,7 @@
           src="https://support.catchfashion.com/hc/article_attachments/360098761074/201120_hyundaicard_Mainbanner_web.jpg"
           cover @click="eventLink('/event/3')"></v-carousel-item>
 
-        <v-carousel-item src="@/assets/mocaXjejuair.png" cover @click="eventLink('/event/3')"></v-carousel-item>
+        <v-carousel-item :src="dynamicLink(imageName)" cover @click="eventLink('/event/3')"></v-carousel-item>
       </v-carousel>
     </div>
 
@@ -156,7 +156,8 @@ export default {
   },
   data() {
     return {
-      link: LINK
+      link: LINK,
+      imageName:'mocaXjejuair.png'
     };
   },
   methods: {
