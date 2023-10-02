@@ -5,7 +5,7 @@
     <v-card v-if="cards.length > 0" class="my-card-body" theme="dark" rounded="100%">
       <Carousel :items-to-show="3" :wrap-around="true" class="my-card-carousel">
         <Slide v-for="card in cards" :key="card.cardId">
-          <div @click="cardReadLink(`/card/${card.cardId}`)">
+          <div @click="cardReadLink(`/card-detail/${card.cardId}`)">
             <div>
               <div style="color: #222">{{ card.name }}</div>
               <img
