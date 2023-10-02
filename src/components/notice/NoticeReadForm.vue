@@ -15,10 +15,10 @@
           <td class="notice-read-text">등록일자 : {{ notice.createDate }}</td>
         </v-col>
         <v-col cols="12">
-          <span class="line"/>
+          <span class="line2"/>
         </v-col>
         <v-col cols="12">
-          <div id="viewer"></div>
+          <div id="viewer"  style="min-height: 300px; border: 1px solid #adadad;"></div>
         </v-col>
       </v-row>
     </div>
