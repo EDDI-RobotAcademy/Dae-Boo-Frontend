@@ -45,8 +45,9 @@ export default {
     },
     methods: {
         ...mapActions(ManagementModule,['requestAccountStatusSetToSpring','requestAccountListToSpring']),
-        golist() {
-            this.$emit('cancel');
+        async golist() {
+            this.requestAccountListToSpring()
+            await this.$emit('cancel');
         },
         userStop(id){
             this.requestAccountStatusSetToSpring(id)
