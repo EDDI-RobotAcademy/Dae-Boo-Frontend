@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-carousel cycle hide-delimiters show-arrows="hover" class="mx-auto">
-            <v-carousel-item src="@/assets/recommendcard.png" cover @click="eventLink('/event/1')" />
+            <v-carousel-item :src="dynamicLink(recommendcard)" cover @click="eventLink('/event/1')" />
             <!-- <v-carousel-item
                 src="https://support.catchfashion.com/hc/article_attachments/360102149993/201229_hyundai_Mainbanner_web.jpg"
                 cover @click="eventLink('/event/1')" />
@@ -143,7 +143,8 @@ export default {
         return {
             agecards: [],
             keywordcards: [],
-            link: LINK
+            link: LINK,
+            recommendcard:'recommendcard.png'
         }
     },
     components: {

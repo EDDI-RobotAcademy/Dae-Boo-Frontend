@@ -5,14 +5,14 @@
   margin: 2rem;
 }
 .board-read-title {
-  color: white;
+  color: #222;
   margin-bottom: 2rem; 
 }
 .board-read-text {
   color: white;
 }
-.line {
-  border-bottom: solid 1px white;
+.line2 {
+  border-bottom: solid 1px #222;
 }
 .board-read-container{
   background-color: #fff;

@@ -19,9 +19,9 @@
             <td class="board-read-text">등록일자 : {{ board.boardRegisterDate }}</td>
           </v-col>
           <v-col cols="12">
-            <span class="line"/>
+            <span class="line2"/>
           </v-col>
-          <v-col cols="12">
+          <v-col cols="12" style=" border-top: solid 1px #222;">
             <div id="viewer" style="min-height: 300px;"></div>
           </v-col>
         </v-row>
