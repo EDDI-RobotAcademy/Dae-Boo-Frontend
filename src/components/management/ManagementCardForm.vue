@@ -23,14 +23,15 @@
         <td><span align="center" v-html="item.benefit"></span></td>
       </tr>
     </v-table>
-
+    <v-btn @click="register">카드 등록</v-btn>
     <!-- 페이지네이션 컨트롤 -->
-    <div style="text-align: center;">
-      <v-btn @click="register">카드 등록</v-btn>
+    <div style="display: flex; justify-content: center; align-items: center;">
+
       <v-btn @click="prevPage">이전 페이지</v-btn>
+      <span style="padding: 10px"> {{ ' ' + currentPage }}</span>
       <v-btn @click="nextPage">다음 페이지</v-btn>
-      <span> {{ ' ' + currentPage }}</span>
     </div>
+
   </div>
   <management-card-info v-show="cardInfo" :cardId="cardId" @cancel="cancelForm" />
   <management-card-register-form v-show="cardRegister" @cancel="cancelRegistration" />
@@ -68,8 +69,8 @@ export default {
     ...mapActions(ManagementModule, ['requestCardListToSpring', 'getCardInfoToSpring']),
     cancelRegistration() {
       this.cardRegister = !this.cardRegister;
-      this.cardList= true
-      this.cardInfo= false
+      this.cardList = true
+      this.cardInfo = false
     },
     register() {
       this.cardRegister = true
