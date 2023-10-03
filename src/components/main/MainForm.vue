@@ -169,7 +169,7 @@ export default {
     },
     redirectToDetails(cardId) {
       console.log("Redirecting to details page for item ID:", cardId);
-      this.$router.push({ path: `/card/${cardId}` });
+      this.$router.push({ path: `/card-detail/${cardId}` });
     },
     dynamicLink(extraPath) {
       return `${LINK}/${extraPath}`;

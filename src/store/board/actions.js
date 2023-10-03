@@ -96,14 +96,15 @@ BoardReadToSpring ({ commit }, boardId) {
             commit(BOARD_TO_SPRING, res.data)
         })
 },
-DeleteBoardToSpring ( _ , boardId) {
-return axiosInst.delete(`/board/delete/${boardId}`)
-        .then(() => {
-            alert('삭제 성공!')
-        })
-        .catch(() => {
-            console.error()
-        })
+DeleteBoardToSpring(_, boardId) {
+    console.log("payload에 담긴 데이터:", boardId);
+    const boardIds = boardId
+    console.log(boardIds)
+
+    return axiosInst.delete("/board/delete", { params: { boardId: boardIds } })
+    .then(() => {
+        alert("게시물 삭제가 완료되었습니다.")
+    })
 },
 
 BoardModifyToSpring (_, payload) {
