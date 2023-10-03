@@ -21,7 +21,7 @@
               <td class="notice-read-text">등록일자 : {{ notice.createDate }}</td>
             </v-col>
             <v-col cols="12">
-              <span class="line" />
+              <span class="line2" />
             </v-col>
             <v-col cols="12">
               <div id="editor" class="editor"></div>
@@ -34,10 +34,10 @@
               name: 'NoticeReadPage',
               params: { noticeId: notice.noticeId },
             }"
-            style="text-decoration: none; color: white;"
+            style="text-decoration: none; color: #222;"
           >수정 취소</router-link>
-          <button @click="onDelete" type="button" class="notice-button" style="color: white;">삭제</button>
-          <button @click="onSubmit" type="button" class="notice-button" style="color: white;">수정 완료</button>
+          <button @click="onDelete" type="button" class="notice-button" style="color: #222;">삭제</button>
+          <button @click="onSubmit" type="button" class="notice-button" style="color: #222;">수정 완료</button>
         </div>
       </form>
     </v-container>

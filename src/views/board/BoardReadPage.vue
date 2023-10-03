@@ -4,7 +4,7 @@
       <h1 class="board-head" align="center">게시판</h1>
     </router-link>
   </v-col>
-  <v-container class="board-read-style">
+  <v-container class="board-read-style" style="border: solid 1px #afafaf;">
     <board-read-form v-if="board" :board="board"/>
     <div>
       <v-row align="center" justify="center">
