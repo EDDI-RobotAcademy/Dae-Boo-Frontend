@@ -34,7 +34,7 @@
 
   </div>
   <management-card-info v-show="cardInfo" :cardId="cardId" @cancel="cancelForm" />
-  <management-card-register-form v-show="cardRegister" @cancel="cancelRegistration" />
+  <management-card-register-form class="registerForm" v-show="cardRegister" @cancel="cancelRegistration" />
 </template>
   
 <script>
@@ -74,7 +74,6 @@ export default {
     },
     register() {
       this.cardRegister = true
-      this.cardList = false;
       this.cardInfo = false;
     },
     prevPage() {
@@ -115,5 +114,8 @@ export default {
   top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.registerForm{
+  padding-top: 200px;
 }
 </style>
