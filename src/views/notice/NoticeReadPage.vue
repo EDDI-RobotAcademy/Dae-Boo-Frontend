@@ -1,9 +1,12 @@
 <template>
     <div>
         <h1 class="notice-head">공지사항</h1>
-        <NoticeReadForm v-if="notice" :notice="notice"/>
-        <div>
-            <button class="notice-button" @click="noticeModifyRouter(notice.noticeId)">수정하기</button>
+        <div style="border: solid 1px #444; margin-bottom: 2rem;">
+            <NoticeReadForm v-if="notice" :notice="notice" />
+            <div>
+                <button v-if="memberInfo && memberInfo.role === 'MANAGER'" class="notice-button"
+                    @click="noticeModifyRouter(notice.noticeId)" style="margin-bottom: 1rem;">수정하기</button>
+            </div>
         </div>
     </div>
 </template>
@@ -12,10 +15,11 @@
 import NoticeReadForm from '@/components/notice/NoticeReadForm.vue';
 import { mapActions, mapState } from 'vuex';
 const NoticeModule = 'NoticeModule'
+const LogInModule = 'LogInModule'
 import "@/assets/css/notice/noticeRead.css";
 export default {
     components: {
-        NoticeReadForm 
+        NoticeReadForm
     },
     props: {
         noticeId: {
@@ -24,7 +28,8 @@ export default {
         }
     },
     computed: {
-        ...mapState(NoticeModule, ['notice'])
+        ...mapState(NoticeModule, ['notice']),
+        ...mapState(LogInModule, ['memberInfo']),
     },
     mounted() {
         this.requestNoticeToSpring(this.noticeId);
@@ -32,7 +37,7 @@ export default {
     methods: {
         ...mapActions(NoticeModule, ['requestNoticeToSpring']),
         noticeModifyRouter(noticeId) {
-            this.$router.push({path: `/notice/modify-page/${noticeId}`})
+            this.$router.push({ path: `/notice/modify-page/${noticeId}` })
         },
     },
     beforeRouteUpdate(to, from, next) {
@@ -43,9 +48,7 @@ export default {
         }
         next();
     }
-
 }
 </script>
 
-<style lang="css">
-</style>
+<style lang="css"></style>

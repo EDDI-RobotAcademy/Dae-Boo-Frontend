@@ -1,5 +1,7 @@
-import { CARD_LIST, CARD_INFO } from "./mutation-types";
+import { CARD_LIST, CARD_INFO, AGE_CARD_LIST, KEYWORD_CARD_LIST } from "./mutation-types";
 import axiosInst from "@/utility/axiosInst";
+import axiosInstFastApi from "@/utility/axiosInstFastapi";
+
 
 export default {
   async requestCardList({ commit }) {
@@ -12,11 +14,22 @@ export default {
         console.error;
       });
   },
-  async requestAgeCardList({ commit }) {
-    return await axiosInst
+  async responseAgeCardList({ commit }) {
+    return await axiosInstFastApi
       .get("/ai-response")
       .then((res) => {
-        commit(CARD_LIST, res.data);
+        console.log(res.data)
+        commit(AGE_CARD_LIST, res.data);
+      })
+      .catch(() => {
+        console.error;
+      });
+  },
+  async responseKeywordCardList({ commit }) {
+    return await axiosInstFastApi
+      .get("/ai-response")
+      .then((res) => {
+        commit(KEYWORD_CARD_LIST, res.data);
       })
       .catch(() => {
         console.error;
@@ -80,7 +93,6 @@ export default {
         console.error;
       })
   },
-
   responseWishCard(_, payload) {
     return axiosInst
       .post("/card/wishCard", null, {

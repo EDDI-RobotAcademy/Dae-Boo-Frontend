@@ -6,7 +6,7 @@
           <v-row>
             <v-col cols="1" align="left">댓글작성</v-col>
             <v-col cols="11">
-              <span>닉네임: {{ myInfo?.nickname || (comment?.userId ? comment.userId.nickname : '없음') }}</span>
+              <span>닉네임: {{ memberInfo?.nickname || (comment?.userId ? comment.userId.nickname : '없음') }}</span>
             </v-col>
           </v-row>
           <v-row>

@@ -30,9 +30,12 @@ export default {
 
     requestCommentDeleteToSpring(_, commentId) {
         console.log("comment : " ,commentId)
-        return axiosInst.delete(`/board/${commentId}`)
+        return axiosInst.delete(`/comment/${commentId}`)
         .then(() => {
-            alert("게시물 삭제가 완료되었습니다.")
+            alert("댓글 삭제가 완료되었습니다.")
+        })
+        .catch((error) => {
+            console.error(error)
         })
     },
 
