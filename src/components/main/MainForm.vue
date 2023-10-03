@@ -147,6 +147,9 @@
 <script>
 const LINK = process.env.VUE_APP_S3_LINK;
 import "@/assets/css/main/main.css";
+const CardModule = 'CardModule';
+import { mapActions } from "vuex";
+
 export default {
   props: {
     cards: {
@@ -160,6 +163,9 @@ export default {
     };
   },
   methods: {
+    ...mapActions(CardModule, ['responseAgeCardList']),
+    ...mapActions(CardModule, ['responseKeywordCardList']),
+
     redirectToLink(link) {
       this.$router.push(link);
     },
@@ -173,8 +179,21 @@ export default {
     dynamicLink(extraPath) {
       return `${LINK}/${extraPath}`;
     },
+    async cardLoading() {
+      console.log("responseAgeCardList")
+      this.responseAgeCardList();
+
+    }
   },
+  mounted() {
+    // this.cardLoading();
+    console.log("responseAgeCardList")
+    this.responseAgeCardList();
+    // console.log("responseKeywordCardList")
+    // this.responseKeywordCardList();
+
+  }
 };
 </script>
 
-<style lang="css" scoped></style>
+<style lang="css" scoped></style>s

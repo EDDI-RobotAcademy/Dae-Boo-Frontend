@@ -79,7 +79,7 @@
 
             </v-col>
             <Carousel :items-to-show="4" :wrap-around="true">
-                <Slide v-for="card in cards" :key="card.cardId">
+                <Slide v-for="card in agecards" :key="card.cardId">
                     <div @click="eventLink(`/card-detail/${card.cardId}`)">
                         <div>
                             <img :src="dynamicLink(card.cardImage)" alt="카드 이미지" class="move-image" data-aos="fade-top"
@@ -106,7 +106,7 @@
                 </h1>
             </v-col>
             <Carousel :items-to-show="4" :wrap-around="true">
-                <Slide v-for="card in cards" :key="card.cardId">
+                <Slide v-for="card in keywordcards" :key="card.cardId">
 
                     <div @click="eventLink(`/card-detail/${card.cardId}`)">
                         <div>
@@ -141,7 +141,8 @@ const LINK = process.env.VUE_APP_S3_LINK;
 export default {
     data() {
         return {
-            cards: [],
+            agecards: [],
+            keywordcards: [],
             link: LINK
         }
     },
@@ -163,15 +164,16 @@ export default {
         eventLink(link) {
             this.$router.push(link);
         },
-        ...mapActions(CardModule, [
-            "requestAgeCardList"
-        ]),
         ...mapActions(LogInModule, [
             'getUserIngoToSpring'
         ]),
         async cardLoading() {
-            await this.requestAgeCardList();
-            this.cards = this.$store.state[CardModule].cards;
+            const ageCards = this.$store.state[CardModule].agecards;
+            const keywordCards = this.$store.state[CardModule].keywordcards;
+            console.log("Age Cards:", ageCards);
+            console.log("Keyword Cards:", keywordCards);
+            this.agecards = ageCards;
+            this.keywordcards = keywordCards;
         },
         dynamicLink(extraPath) {
             return `${LINK}/${extraPath}`;
@@ -179,7 +181,8 @@ export default {
     },
     computed: {
         ...mapState(LogInModule, ['memberInfo']),
-        ...mapState(CardModule, ['cards']),
+        ...mapState(CardModule, ['agecards']),
+        ...mapState(CardModule, ['keywordcards']),
         ...mapState(MyPageModule, ['myInfo']),
     },
 };
