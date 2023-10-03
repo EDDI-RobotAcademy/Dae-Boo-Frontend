@@ -46,7 +46,7 @@ export default {
     return {
       items: [],
       currentPage: 1,
-      pageSize: 15, // 페이지당 표시할 항목 수
+      pageSize: 13, // 페이지당 표시할 항목 수
       cardRegister: false,
       cardList: true,
       cardInfo: false
