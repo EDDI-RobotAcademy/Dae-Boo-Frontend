@@ -41,14 +41,25 @@ export default {
     return {
       items: [],
       currentPage: 1,
-      pageSize: 8,
+      pageSize: 6,
     }
   },
   methods: {
     ...mapActions(ManagementModule, ['requestPurchaseListToSpring']),
     dynamicLink(extraPath) {
-            return `${LINK}/${extraPath}`;
-        },
+      return `${LINK}/${extraPath}`;
+    },
+    prevPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+      }
+    },
+    nextPage() {
+      const maxPage = Math.ceil(this.items.length / this.pageSize);
+      if (this.currentPage < maxPage) {
+        this.currentPage++;
+      }
+    },
   },
   computed: {
     ...mapState(ManagementModule, ['purchaseList'])
@@ -64,7 +75,7 @@ export default {
 }
 </script>
 <style lang="css">
-.purchaseList{
-  height:880px;
+.purchaseList {
+  height: 880px;
 }
 </style>
