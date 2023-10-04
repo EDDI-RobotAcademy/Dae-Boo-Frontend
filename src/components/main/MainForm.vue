@@ -184,9 +184,10 @@ export default {
     async ageCardLoading() {
       console.log("AiRequestAgeCardList")
       await this.requestAgeCardList(this.memberInfo.age)
-      // console.log("responseAgeCardList")
-      // const cardList = await this.responseAgeCardList();
-      // await this.requestAgeCardListToSpring(cardList)
+      await new Promise((resolve) => setTimeout(resolve, 60000));
+      console.log("responseAgeCardList")
+      const cardList = await this.responseAgeCardList();
+      await this.requestAgeCardListToSpring(cardList)
     }
   },
   async mounted() {

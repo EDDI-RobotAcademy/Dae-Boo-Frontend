@@ -25,7 +25,6 @@ export default {
       command: command,
       data: "," + age,
     };
-    console.log(requestData);
     return await axiosInstFastApi
       .post("/ai-request-command", requestData)
       .then((res) => {
