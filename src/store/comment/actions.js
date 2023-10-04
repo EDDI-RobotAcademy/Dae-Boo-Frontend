@@ -32,7 +32,7 @@ export default {
         console.log("comment : " ,commentId)
         return axiosInst.delete(`/comment/${commentId}`)
         .then(() => {
-            alert("댓글 삭제가 완료되었습니다.")
+            confirm("댓글을 삭제 하시겠습니까?")
         })
         .catch((error) => {
             console.error(error)

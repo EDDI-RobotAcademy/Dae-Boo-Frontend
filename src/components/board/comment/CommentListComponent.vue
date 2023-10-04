@@ -67,6 +67,7 @@ export default {
         return;
       }
       this.requestCommentDeleteToSpring(commentId);
+      window.location.reload();
     },
     hasPermission(commentWriter) {
       return this.memberInfo && this.memberInfo.nickname === commentWriter;
