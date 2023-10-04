@@ -19,7 +19,8 @@ export default {
             console.log(payload.userId)
             console.log(payload.boardId)
             this.comment = this.requestCreateCommentToSpring(payload)
-        },
+            window.location.reload();
+        },        
     },
 }
 </script>
