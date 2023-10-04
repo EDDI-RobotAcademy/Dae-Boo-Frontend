@@ -47,17 +47,13 @@ export default {
                 console.error()
             })
     },
-    
-    // requestInquiryModifyToSpring (_, payload) {
-    //     const { title, content, inquiryId, writer } = payload    
-    //     console.log("title: " + title + ", content: " + content + ", writer: " + writer + ", inquiryId: " + inquiryId)
-
-    //     return axiosInst.put(`/inquiry/${inquiryId}`, { title, content, writer })
-    //         .then(() => {
-    //             alert("수정 성공!")
-    //         })
-    //         .catch(() => {
-    //             console.error()
-    //         })
-    // }
+    requestManagementDetailQuestionAnswerToSpring({ commit }, questionId) {
+        console.log('답변', questionId)
+        return axiosInst.get(`/answer/details/${questionId}`)
+        .then((res) => {
+            commit(REQUEST_QUESTION_TO_SPRING, res.data)
+            console.log("test",res.data)
+            return res.data;
+        })
+    }
 }
