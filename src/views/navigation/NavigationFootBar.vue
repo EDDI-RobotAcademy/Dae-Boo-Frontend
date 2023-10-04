@@ -40,7 +40,7 @@
           <p>MOCA 소개</p>
         </router-link>
         <router-link to="/recruitment" class="custom-link">
-          <p>인재채용</p>
+          <p>오시는 길</p>
         </router-link>
       </v-col>
       <v-col class="footer-item2" cols="2">
