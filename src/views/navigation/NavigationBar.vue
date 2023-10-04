@@ -240,6 +240,7 @@ export default {
     async logOut() {
       // redis 작업 중 추가 (로그아웃 액션 호출)
       await this.logout();
+      await this.$router.push({ path: `/` });
       await this.deleteVuexUserInfo();
       await window.location.reload();
     }

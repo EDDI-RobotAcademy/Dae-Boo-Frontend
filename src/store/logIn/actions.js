@@ -10,7 +10,7 @@ export default {
   requestNaverLoginToSpring() {
     return axiosInst.get("/authentication/naver/login").then((res) => {
       window.location.href = res.data;
-      alert(res.data);
+      console.log(res.data);
     });
   },
   getTokenToSpring({ commit }, payload) {
@@ -24,7 +24,7 @@ export default {
 
         // 추가되는 코드 (토큰으로 사용자 정보 가져오기 함께 실행)
         const userToken = window.localStorage.getItem("userToken");
-        alert("userToken: " + userToken);
+        console.log("userToken: " + userToken);
 
         return axiosInst
           .post("/user/testToken", {
@@ -36,11 +36,14 @@ export default {
               alert(
                 "회원가입이 완료된 사용자는 정보 기입 페이지로 이동합니다."
               );
-              alert("userId: " + res.data.userId);
+              console.log("userId: " + res.data.userId);
               router.push({
                 name: "AddInfoRegisterPage",
                 params: { userId: res.data.userId },
               });
+            }
+            else {
+              window.location.reload();
             }
           });
       });
@@ -62,7 +65,7 @@ export default {
     });
   },
   getKakaoTokenToSpring({ commit }, payload) {
-    // alert("payload: " + payload)
+    console.log("payload: " + payload)
     axiosInst
       .get("/authentication/kakao/callback", { params: { code: payload } })
       .then((res) => {
@@ -73,7 +76,7 @@ export default {
 
         // 추가되는 코드 (토큰으로 사용자 정보 가져오기 함께 실행)
         const userToken = window.localStorage.getItem("userToken");
-        // alert("userToken: " + userToken);
+        console.log("userToken: " + userToken);
 
         return axiosInst
           .post("/user/testToken", {
@@ -85,11 +88,14 @@ export default {
               alert(
                 "회원가입이 완료된 사용자는 정보 기입 페이지로 이동합니다."
               );
-              alert("userId: " + res.data.userId);
+              console.log("userId: " + res.data.userId);
               router.push({
                 name: "AddInfoRegisterPage",
                 params: { userId: res.data.userId },
               });
+            }
+            else {
+              window.location.reload();
             }
           });
       })
@@ -116,7 +122,7 @@ export default {
   // vuex에 존재하는 값 삭제 (로그아웃)
   logout({ commit }) {
     const userToken = window.localStorage.getItem("userToken");
-    alert("userToken: " + userToken);
+    console.log("userToken: " + userToken);
 
     return axiosInst
       .post("/user/logout/userToken", {
