@@ -1,7 +1,7 @@
 <template>
   <div class="question-container">
     <question-read-form v-if="question" :question="question" :myInfo="myInfo"/>
-    <QuestionCommentComponent :answer="answer"/>
+    <QuestionCommentComponent :answer="answer" :question="question"/>
   </div>
 </template>
 
@@ -32,7 +32,7 @@ export default {
     this.requestQuestionToSpring(this.questionId);
   },
   methods: {
-    ...mapActions(QuestionBoardModule, ['requestManagementDetailQuestionAnswerToSpring']),
+    ...mapActions(QuestionModule, ['requestDetailQuestionAnswerToSpring']),
     ...mapActions(QuestionModule, ["requestQuestionToSpring"]),    
   },
   beforeRouteUpdate(to, from, next) {
