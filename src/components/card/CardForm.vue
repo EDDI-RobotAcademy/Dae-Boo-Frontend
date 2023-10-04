@@ -71,7 +71,7 @@
     </div>
 
     <div>
-        <div v-if="cards.length > 0">
+        <div v-if="agecards.length > 0">
             <v-col cols="12" class="flex">
                 <h1 data-aos="fade-left" class="card-mr" align="left">
                     {{ memberInfo ? memberInfo.nickname : '아무개' }} 님을 위한 혜택 만땅 카드
@@ -98,8 +98,8 @@
         </div>
     </div>
 
-    <div>
-        <div v-if="cards.length > 0">
+    <!-- <div>
+        <div v-if="keywordcards.length > 0">
             <v-col cols="12" class="flex">
                 <h1 data-aos="fade-left" class="card-mr" align="left">
                     {{ memberInfo ? memberInfo.nickname : '아무개' }} 님과 같은 연령대 사용자들에게 인기에요!
@@ -124,7 +124,7 @@
         <div class="card-name" v-else>
             <p>Loading...</p>
         </div>
-    </div>
+    </div> -->
 </template>
 <script>
 
