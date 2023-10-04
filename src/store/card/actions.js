@@ -18,6 +18,23 @@ export default {
         console.error;
       });
   },
+
+  async requestAgeCardList(_, age) {
+    const command = 1;
+    const requestData = {
+      command: command,
+      data: "," + age,
+    };
+    return await axiosInstFastApi
+      .post("/ai-request-command", requestData)
+      .then((res) => {
+        return res.data;
+      })
+      .catch(() => {
+        console.error;
+      });
+  },
+
   async responseAgeCardList() {
     return await axiosInstFastApi
       .get("/ai-response")
@@ -33,11 +50,7 @@ export default {
     console.log("actions에서 확인하는 cardList: ", cardList);
 
     return await axiosInst
-    .post("/card/age/result", JSON.stringify(cardList), {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+      .post("/card/age/result", cardList, {})
       .then((res) => {
         commit(AGE_CARD_LIST, res.data);
       })
