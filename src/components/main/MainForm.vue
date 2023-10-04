@@ -160,12 +160,12 @@ export default {
   data() {
     return {
       link: LINK,
-      imageName:'mocaXjejuair.png'
+      imageName: 'mocaXjejuair.png'
     };
   },
   methods: {
     ...mapActions(CardModule, ['responseAgeCardList']),
-    ...mapActions(CardModule, ['responseKeywordCardList']),
+    ...mapActions(CardModule, ['responseKeywordCardList', 'requestAgeCardListToSpring']),
 
     redirectToLink(link) {
       this.$router.push(link);
@@ -181,15 +181,14 @@ export default {
       return `${LINK}/${extraPath}`;
     },
     async cardLoading() {
-      console.log("responseAgeCardList")
-      this.responseAgeCardList();
 
+      console.log("responseAgeCardList")
+      const cardList = this.responseAgeCardList();
+      this.requestAgeCardListToSpring(cardList)
     }
   },
   mounted() {
-    // this.cardLoading();
-    console.log("responseAgeCardList")
-    this.responseAgeCardList();
+    this.cardLoading()
     // console.log("responseKeywordCardList")
     // this.responseKeywordCardList();
 
@@ -197,4 +196,4 @@ export default {
 };
 </script>
 
-<style lang="css" scoped></style>s
+<style lang="css" scoped></style>

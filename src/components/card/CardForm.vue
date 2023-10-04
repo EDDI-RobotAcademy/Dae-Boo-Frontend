@@ -144,7 +144,7 @@ export default {
             agecards: [],
             keywordcards: [],
             link: LINK,
-            recommendcard:'recommendcard.png'
+            recommendcard: 'recommendcard.png'
         }
     },
     components: {
