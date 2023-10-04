@@ -181,10 +181,9 @@ export default {
       return `${LINK}/${extraPath}`;
     },
     async cardLoading() {
-
       console.log("responseAgeCardList")
-      const cardList = this.responseAgeCardList();
-      this.requestAgeCardListToSpring(cardList)
+      const cardList = await this.responseAgeCardList();
+      await this.requestAgeCardListToSpring(cardList)
     }
   },
   mounted() {
