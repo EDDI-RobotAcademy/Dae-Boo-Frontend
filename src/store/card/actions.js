@@ -22,6 +22,7 @@ export default {
     return await axiosInstFastApi
       .get("/ai-response")
       .then((res) => {
+        console.log(res.data);
         return res.data;
       })
       .catch(() => {
@@ -30,7 +31,7 @@ export default {
   },
   requestAgeCardListToSpring({ commit }, cardList) {
     return axiosInst
-      .post("/card/age/result", { cardList })
+      .post("/card/age/result", cardList)
       .then((res) => {
         commit(AGE_CARD_LIST, res.data);
       })
