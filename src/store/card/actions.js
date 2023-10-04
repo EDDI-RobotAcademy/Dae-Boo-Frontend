@@ -33,11 +33,7 @@ export default {
     console.log("actions에서 확인하는 cardList: ", cardList);
 
     return await axiosInst
-    .post("/card/age/result", JSON.stringify(cardList), {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+      .post("/card/age/result", cardList, {})
       .then((res) => {
         commit(AGE_CARD_LIST, res.data);
       })
