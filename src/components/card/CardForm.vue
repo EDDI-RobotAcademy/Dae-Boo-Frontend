@@ -78,7 +78,7 @@
                 </h1>
 
             </v-col>
-            <Carousel :items-to-show="4" :wrap-around="true">
+            <Carousel :items-to-show="5" :wrap-around="true">
                 <Slide v-for="card in agecards" :key="card.cardId">
                     <div @click="eventLink(`/card-detail/${card.cardId}`)">
                         <div>
@@ -105,7 +105,7 @@
                     {{ memberInfo ? memberInfo.nickname : '아무개' }} 님과 같은 연령대 사용자들에게 인기에요!
                 </h1>
             </v-col>
-            <Carousel :items-to-show="4" :wrap-around="true">
+            <Carousel :items-to-show="5" :wrap-around="true">
                 <Slide v-for="card in keywordcards" :key="card.cardId">
 
                     <div @click="eventLink(`/card-detail/${card.cardId}`)">
@@ -144,7 +144,7 @@ export default {
             agecards: [],
             keywordcards: [],
             link: LINK,
-            recommendcard:'recommendcard.png'
+            recommendcard: 'recommendcard.png'
         }
     },
     components: {

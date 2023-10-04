@@ -160,7 +160,7 @@ export default {
   data() {
     return {
       link: LINK,
-      imageName:'mocaXjejuair.png'
+      imageName: 'mocaXjejuair.png'
     };
   },
   methods: {
@@ -181,15 +181,14 @@ export default {
       return `${LINK}/${extraPath}`;
     },
     async cardLoading() {
-      console.log("responseAgeCardList")
-      this.responseAgeCardList();
-
+      const cardList = this.responseAgeCardList();
+      requestAgeCardListToSpring(cardList)
     }
   },
   mounted() {
     // this.cardLoading();
     console.log("responseAgeCardList")
-    this.responseAgeCardList();
+    this.cardLoading()
     // console.log("responseKeywordCardList")
     // this.responseKeywordCardList();
 
