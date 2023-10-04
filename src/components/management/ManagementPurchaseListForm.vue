@@ -27,8 +27,9 @@
     </v-table>
     <div style="text-align: center;">
             <v-btn @click="prevPage">이전 페이지</v-btn>
+            <span style="padding: 10px"> {{ ' ' + currentPage }}</span>
             <v-btn @click="nextPage">다음 페이지</v-btn>
-            <span> {{ ' ' + currentPage }}</span>
+           
         </div>
     </div>
 </template>

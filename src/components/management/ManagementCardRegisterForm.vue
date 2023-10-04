@@ -1,5 +1,5 @@
 <template>
-  <div class="centered-div" style="width: 1000px;">
+  <v-container class="centered-div" style="width: 700px;">
     <v-card justify-center width="1000px">
       <div style="display: flex; justify-content: space-between;">
         <!-- 왼쪽 컨테이너 -->
@@ -66,7 +66,7 @@
         </div>
       </div>
     </v-card>
-  </div>
+  </v-container>
 </template>
 <script>
 import AWS from 'aws-sdk'
