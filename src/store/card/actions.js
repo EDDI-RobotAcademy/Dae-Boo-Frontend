@@ -18,6 +18,24 @@ export default {
         console.error;
       });
   },
+
+  async requestAgeCardList(_, age) {
+    const command = 1;
+    const requestData = {
+      command: command,
+      data: "," + age,
+    };
+    console.log(requestData);
+    return await axiosInstFastApi
+      .post("/ai-request-command", requestData)
+      .then((res) => {
+        return res.data;
+      })
+      .catch(() => {
+        console.error;
+      });
+  },
+
   async responseAgeCardList() {
     return await axiosInstFastApi
       .get("/ai-response")

@@ -148,7 +148,8 @@
 const LINK = process.env.VUE_APP_S3_LINK;
 import "@/assets/css/main/main.css";
 const CardModule = 'CardModule';
-import { mapActions } from "vuex";
+const LogInModule = 'LogInModule';
+import { mapActions, mapState } from "vuex";
 
 export default {
   props: {
@@ -165,7 +166,7 @@ export default {
   },
   methods: {
     ...mapActions(CardModule, ['responseAgeCardList']),
-    ...mapActions(CardModule, ['responseKeywordCardList', 'requestAgeCardListToSpring']),
+    ...mapActions(CardModule, ['responseKeywordCardList', 'requestAgeCardListToSpring', 'requestAgeCardList']),
 
     redirectToLink(link) {
       this.$router.push(link);
@@ -180,18 +181,21 @@ export default {
     dynamicLink(extraPath) {
       return `${LINK}/${extraPath}`;
     },
-    async cardLoading() {
-      console.log("responseAgeCardList")
-      const cardList = await this.responseAgeCardList();
-      await this.requestAgeCardListToSpring(cardList)
+    async ageCardLoading() {
+      console.log("AiRequestAgeCardList")
+      await this.requestAgeCardList(this.memberInfo.age)
+      // console.log("responseAgeCardList")
+      // const cardList = await this.responseAgeCardList();
+      // await this.requestAgeCardListToSpring(cardList)
     }
   },
-  mounted() {
-    this.cardLoading()
-    // console.log("responseKeywordCardList")
-    // this.responseKeywordCardList();
+  async mounted() {
+    await this.ageCardLoading();
 
-  }
+  },
+  computed: {
+    ...mapState(LogInModule, ['memberInfo']),
+  },
 };
 </script>
 
