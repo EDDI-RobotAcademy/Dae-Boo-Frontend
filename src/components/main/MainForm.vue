@@ -165,7 +165,7 @@ export default {
   },
   methods: {
     ...mapActions(CardModule, ['responseAgeCardList']),
-    ...mapActions(CardModule, ['responseKeywordCardList']),
+    ...mapActions(CardModule, ['responseKeywordCardList', 'requestAgeCardListToSpring']),
 
     redirectToLink(link) {
       this.$router.push(link);
@@ -182,7 +182,7 @@ export default {
     },
     async cardLoading() {
       const cardList = this.responseAgeCardList();
-      requestAgeCardListToSpring(cardList)
+      this.requestAgeCardListToSpring(cardList)
     }
   },
   mounted() {
@@ -196,4 +196,4 @@ export default {
 };
 </script>
 
-<style lang="css" scoped></style>s
+<style lang="css" scoped></style>

@@ -18,7 +18,7 @@ export default {
         console.error;
       });
   },
-  async responseAgeCardList(_) {
+  async responseAgeCardList() {
     return await axiosInstFastApi
       .get("/ai-response")
       .then((res) => {
@@ -28,9 +28,9 @@ export default {
         console.error;
       });
   },
-  requestAgeCardListToSpring({ commit }) {
+  requestAgeCardListToSpring({ commit }, cardList) {
     return axiosInst
-      .get("/card/age/result")
+      .post("/card/age/result", { cardList })
       .then((res) => {
         commit(AGE_CARD_LIST, res.data);
       })
@@ -38,6 +38,7 @@ export default {
         console.error;
       });
   },
+
   async responseKeywordCardList({ commit }) {
     return await axiosInstFastApi
       .get("/ai-response")
