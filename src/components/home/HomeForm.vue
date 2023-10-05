@@ -31,17 +31,12 @@
               완벽한 카드를 찾아보세요!
             </h2>
           </v-col>
-          <div>소비내역(의,식,주)</div>
-          <Carousel :autoplay="1500" :items-to-show="2.5" :wrap-around="true">
+          <!-- <div>소비내역(의,식,주)</div> -->
+          <Carousel :autoplay="2000" :items-to-show="2.5" :wrap-around="true">
             <Slide v-for="slide in slides" :key="slide.id">
               <a :href="slide.link" />
               <div>
-                <img
-                  :src="slide.imageUrl"
-                  alt="Slide Image"
-                  class="move-image"
-                  data-aos="fade-top"
-                />
+                <img :src="slide.imageUrl" alt="Slide Image" class="move-image" data-aos="fade-top" />
               </div>
             </Slide>
             <template #addons>
@@ -56,28 +51,27 @@
             </h1>
           </v-col>
           <h1 data-aos="fade-right" align="right" class="font-color">MOCA Point Card</h1>
-          <div class="flex-container">              
-                <div align="right" data-aos="fade-right" class="card-text">
-                <h2>포인트형</h2> <br>
-                1.5~2% <br>
-                MOCA 포인트 <br>
-                결제 포인트 적립 <br>
-                MOCA 이벤트 포인트 적립</div>
-            <img
-              class="card"
-              data-aos="fade-right"
-              src="https://www.hyundaicard.com/img/com/card/card_ZW_BA_f.png"
-            />
+          <div class="flex-container">
+            <div align="right" data-aos="fade-right" class="card-text">
+              <h2>포인트형</h2> <br>
+              1.5~2% <br>
+              MOCA 포인트 <br>
+              결제 포인트 적립 <br>
+              MOCA 이벤트 포인트 적립
+            </div>
+            <router-link to="/card">
+              <img class="card" data-aos="fade-right" :src="require('@/assets/daeboo.png')"
+              style="background-color: #fff; cursor: pointer;" />
+            </router-link>
           </div>
           <div>
           </div>
-          <h1 data-aos="fade-left" align="left" class="font-color">MOCA Point Card</h1>
+          <h1 data-aos="fade-left" align="left" class="font-color">MOCA Installment Card</h1>
           <div class="flex-container2">
-            <img
-              class="card"
-              data-aos="fade-left"
-              src="https://www.hyundaicard.com/img/com/card/card_ZW_BA_f.png"
-            />
+            <router-link to="/card">
+              <img class="card" data-aos="fade-left" :src="require('@/assets/moca.png')"
+                style="background-color: #fff; cursor: pointer;" />
+            </router-link>
             <div align="left" data-aos="fade-left" class="card-text">
               <h2>할부형</h2><br>
               2~3 개월 무이자 할부<br>
@@ -119,28 +113,15 @@ import { Carousel, Navigation, Slide } from "vue3-carousel";
 const slides = [
   {
     id: 1,
-    imageUrl:
-      "https://i.pinimg.com/564x/f3/bc/59/f3bc59bf46d419b3da7b2c413a99eecc.jpg",
+    imageUrl: require("@/assets/mart.png"),
   },
   {
     id: 2,
-    imageUrl:
-      "https://i.pinimg.com/564x/f3/bc/59/f3bc59bf46d419b3da7b2c413a99eecc.jpg",
+    imageUrl: require("@/assets/meet.png"),
   },
   {
     id: 3,
-    imageUrl:
-      "https://i.pinimg.com/564x/f3/bc/59/f3bc59bf46d419b3da7b2c413a99eecc.jpg",
-  },
-  {
-    id: 4,
-    imageUrl:
-      "https://i.pinimg.com/564x/f3/bc/59/f3bc59bf46d419b3da7b2c413a99eecc.jpg",
-  },
-  {
-    id: 5,
-    imageUrl:
-      "https://i.pinimg.com/564x/f3/bc/59/f3bc59bf46d419b3da7b2c413a99eecc.jpg",
+    imageUrl: require("@/assets/home.png"),
   },
 ];
 
@@ -149,7 +130,7 @@ onMounted(() => {
     duration: 1600,
   });
 });
+
 </script>
 
-<style>
-</style>
+<style></style>
