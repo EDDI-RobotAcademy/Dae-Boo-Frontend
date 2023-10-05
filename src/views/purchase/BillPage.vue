@@ -22,15 +22,15 @@
                 <div class="orderSheetOrdererDetailInfo">
                     <div class="orderSheetSenderInfo">
                         <p class="orderSheetFirstText1">보내는 분</p>
-                        <p>{{myInfo.nickname}}</p>
+                        <p>{{memberInfo.nickname}}</p>
                     </div>
                     <div class="orderSheetSenderPhone">
                         <p class="orderSheetFirstText2">휴대폰</p>
-                        <p>{{myInfo.mobile}}</p>
+                        <p>{{memberInfo.mobile}}</p>
                     </div>
                     <div class="orderSheetSenderEmail">
                         <p class="orderSheetFirstText3">이메일</p>
-                        <p v-if="myInfo.email && myInfo.email.includes('@')">{{ myInfo.email }}</p>
+                        <p v-if="memberInfo.email && memberInfo.email.includes('@')">{{ memberInfo.email }}</p>
                         <p v-else>이메일 없음</p>
                     </div>
                     <div>
@@ -107,6 +107,7 @@ import { mapActions, mapState } from 'vuex';
 import '@/assets/css/purchase/billPage.css'
 
 const PaymentModule = 'PaymentModule'
+const LogInModule = 'LogInModule'
 const ShopModule = 'ShopModule'
 const MyPageModule = 'MyPageModule'
 const LINK = process.env.VUE_APP_S3_LINK;
@@ -143,7 +144,7 @@ export default {
 
         async pay() {
             const purchaseForm = {
-                userId: this.myInfo.userId,
+                userId: this.memberInfo.userId,
                 productId: this.productId,
                 userAccount: this.totalAddress,
                 amount: this.amount,
@@ -164,7 +165,7 @@ export default {
         }
     },
     mounted() {
-        this.userId = this.myInfo.userId;
+        this.userId = this.memberInfo.userId;
     },
     created() {
         this.requestProductToSpring(this.productId)
@@ -172,6 +173,8 @@ export default {
     computed: {
         ...mapState(MyPageModule, ['myInfo']),
         ...mapState(ShopModule, ["product"]),
+        ...mapState(LogInModule, ["memberInfo"]),
+        
     }
 }
 </script>
