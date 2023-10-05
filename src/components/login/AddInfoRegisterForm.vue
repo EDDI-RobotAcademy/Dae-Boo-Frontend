@@ -34,16 +34,16 @@
                         </td>
                     </tr> -->
                     <tr>
-                        <th scope="row">관심사1 </th>
+                        <th scope="row">관심사 1 </th>
                         <td>
-                            <v-select v-model="formData.interest1" label="관심사1" :items="interestList" item-title="name"
+                            <v-select v-model="formData.interest1" :items="interestList" item-title="name"
                                 item-value="value" variant="underlined"></v-select>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">관심사2 </th>
+                        <th scope="row">관심사 2 </th>
                         <td>
-                            <v-select v-model="formData.interest2" label="관심사2" :items="interestList" item-title="name"
+                            <v-select v-model="formData.interest2" :items="interestList" item-title="name"
                                 item-value="value" variant="underlined"></v-select>
                         </td>
                     </tr>
@@ -77,10 +77,23 @@ export default {
                 nicknamePass: ''
             },
             interestList: [
-                { name: '관심사1번', value: 'INTEREST1' },
-                { name: '관심사2번', value: 'INTEREST2' },
-                { name: '관심사3번', value: 'INTEREST3' },
-                { name: '관심사4번', value: 'INTEREST4' }
+                { name: '관리비', value: '1' },
+                { name: '교육', value: '2' },
+                { name: '금융', value: '3' },
+                { name: '대형마트', value: '4' },
+                { name: '레저', value: '5' },
+                { name: '렌탈', value: '6' },
+                { name: '문화', value: '7' },
+                { name: '베이커리', value: '8' },
+                { name: '뷰티', value: '9' },
+                { name: '쇼핑', value: '10' },
+                { name: '영화', value: '11' },
+                { name: '외식', value: '12' },
+                { name: '의료', value: '13' },
+                { name: '주유', value: '14' },
+                { name: '카페', value: '15' },
+                { name: '통신', value: '16' },
+                { name: '편의점', value: '17' }
             ]
         }
     },

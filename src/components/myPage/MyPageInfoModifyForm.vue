@@ -91,10 +91,23 @@ export default {
             interest2: '',
             nicknamePass: false,
             interestList: [
-                { name: '관심사1번', value: 'INTEREST1' },
-                { name: '관심사2번', value: 'INTEREST2' },
-                { name: '관심사3번', value: 'INTEREST3' },
-                { name: '관심사4번', value: 'INTEREST4' }
+                { name: '관리비', value: '0' },
+                { name: '교육', value: '1' },
+                { name: '금융', value: '2' },
+                { name: '대형마트', value: '3' },
+                { name: '레저', value: '4' },
+                { name: '렌탈', value: '5' },
+                { name: '문화', value: '6' },
+                { name: '베이커리', value: '7' },
+                { name: '뷰티', value: '8' },
+                { name: '쇼핑', value: '9' },
+                { name: '영화', value: '10' },
+                { name: '외식', value: '11' },
+                { name: '의료', value: '12' },
+                { name: '주유', value: '13' },
+                { name: '카페', value: '14' },
+                { name: '통신', value: '15' },
+                { name: '편의점', value: '16' }
             ]
         }
     },
