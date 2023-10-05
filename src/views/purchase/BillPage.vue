@@ -93,9 +93,9 @@
             </div>
         </div>
 
-        <v-dialog class="PayButton" v-model="dialog" persistent style="align-content: center;">
+        <v-dialog class="PayButton" v-model="dialog" persistent>
             <template v-slot:activator>
-                <v-btn class="btnSet" @click="pay">결제</v-btn>
+                <v-btn size="large" class="btnSet" @click="pay">결제</v-btn>
             </template>
         </v-dialog>
     </v-container>
@@ -182,9 +182,10 @@ export default {
 <style>
 .btnSet{
     background-color: white;
-    width: 60px;
-    height: 120px;
-    border: 1px;
+    margin: 0px;
+}
+.PayButton{
+    text-align: center;
 }
 </style>
   
