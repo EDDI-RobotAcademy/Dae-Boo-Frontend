@@ -22,7 +22,6 @@
                     <p class="myPageNavi">1:1 문의</p>
                     <button class="edgeButton mdi mdi-chevron-right"></button>
                 </div>
-
             </div>
         </div>
         <div id="box2">
