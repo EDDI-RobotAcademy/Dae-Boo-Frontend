@@ -47,10 +47,9 @@ export default {
       });
   },
   async requestAgeCardListToSpring({ commit }, cardList) {
-    console.log("actions에서 확인하는 cardList: ", cardList);
-
+    console.log("Age CardList : ", cardList);
     return await axiosInst
-      .post("/card/age/result", cardList, {
+      .post("/card/recommend/result", cardList, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -63,9 +62,41 @@ export default {
       });
   },
 
-  async responseKeywordCardList({ commit }) {
+  async requestInterestCardList(_, interest1) {
+    const command = 2;
+    const requestData = {
+      command: command,
+      data: "," + interest1,
+    };
+    return await axiosInstFastApi
+      .post("/ai-request-command", requestData)
+      .then((res) => {
+        return res.data;
+      })
+      .catch(() => {
+        console.error;
+      });
+  },
+
+  async responseInterestCardList() {
     return await axiosInstFastApi
       .get("/ai-response")
+      .then((res) => {
+        console.log(res.data);
+        return res.data;
+      })
+      .catch(() => {
+        console.error;
+      });
+  },
+  async requestInterestCardListToSpring({ commit }, cardList) {
+    console.log("Interest CardList : ", cardList);
+    return await axiosInst
+      .post("/card/recommend/result", cardList, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
       .then((res) => {
         commit(KEYWORD_CARD_LIST, res.data);
       })
@@ -73,6 +104,7 @@ export default {
         console.error;
       });
   },
+
   bestCardListToSpring({ commit }) {
     return axiosInst.get("/card/interest/list").then((res) => {
       commit(CARD_LIST, res.data);

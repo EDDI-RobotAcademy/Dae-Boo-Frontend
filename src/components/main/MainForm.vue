@@ -2,13 +2,11 @@
   <div>
     <div>
       <v-carousel cycle hide-delimiters show-arrows="hover">
-        <v-carousel-item
-        :src="require('@/assets/mainimage.png')"
-          cover @click="redirectToExternalLink('https://www.hyundaicard.com/index.jsp')"></v-carousel-item>
+        <v-carousel-item :src="require('@/assets/mainimage.png')" cover
+          @click="redirectToExternalLink('https://www.hyundaicard.com/index.jsp')"></v-carousel-item>
 
-        <v-carousel-item
-        :src="require('@/assets/main2image.png')"
-          cover @click="redirectToExternalLink('https://www.hyundaicard.com/index.jsp')"></v-carousel-item>
+        <v-carousel-item :src="require('@/assets/main2image.png')" cover
+          @click="redirectToExternalLink('https://www.hyundaicard.com/index.jsp')"></v-carousel-item>
 
         <v-carousel-item :src="dynamicLink(imageName)" cover @click="eventLink('/event/3')"></v-carousel-item>
       </v-carousel>
@@ -141,8 +139,8 @@ export default {
     };
   },
   methods: {
-    ...mapActions(CardModule, ['responseAgeCardList']),
-    ...mapActions(CardModule, ['responseKeywordCardList', 'requestAgeCardListToSpring', 'requestAgeCardList']),
+    ...mapActions(CardModule, ['requestAgeCardList', 'responseAgeCardList', 'requestAgeCardListToSpring',
+      'requestInterestCardList', 'responseInterestCardList', 'requestInterestCardListToSpring']),
 
     redirectToLink(link) {
       this.$router.push(link);
@@ -157,10 +155,18 @@ export default {
     async ageCardLoading() {
       console.log("AiRequestAgeCardList")
       await this.requestAgeCardList(this.memberInfo.age)
-      await new Promise((resolve) => setTimeout(resolve, 60000));
+      await new Promise((resolve) => setTimeout(resolve, 30000));
       console.log("responseAgeCardList")
       const cardList = await this.responseAgeCardList();
       await this.requestAgeCardListToSpring(cardList)
+    },
+    async interestCardLoading() {
+      console.log("AiRequestInterestCardList")
+      await this.requestInterestCardList(this.memberInfo.interest1)
+      await new Promise((resolve) => setTimeout(resolve, 30000));
+      console.log("responseInterestCardList")
+      const cardList = await this.responseInterestCardList();
+      await this.requestInterestCardListToSpring(cardList)
     },
     redirectToExternalLink(externalLink) {
       window.open(externalLink, '_blank'); // 새 창으로 열기
@@ -168,6 +174,8 @@ export default {
   },
   async mounted() {
     await this.ageCardLoading();
+    await this.interestCardLoading();
+
 
   },
   computed: {
