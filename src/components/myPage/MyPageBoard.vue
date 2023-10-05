@@ -2,7 +2,7 @@
     <v-container class="myPageBoards-mr">
         <h2 class="myPageBoards-title">게시글 관리</h2>
         <div style="margin-top: 40px;">
-            <p class="ab" @click="boardPageNumber = 1">게시물</p>
+            <p class="ab" @click="boardPageNumber = 1">글</p>
             <p class="ab">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
             <p class="ab" @click="boardPageNumber = 2">댓글</p>
         </div>
@@ -20,7 +20,7 @@
                 <tbody>
                     <tr class="myPageBoards-mr" v-if="!myBoards || (Array.isArray(myBoards) && myBoards.length === 0)
                         ">
-                        <th colspan="3" style="text-align: center">
+                        <th colspan="4" style="text-align: center">
                             현재 등록하신 게시글이 없습니다!
                         </th>
                     </tr>
@@ -41,7 +41,7 @@
                     </tr>
                 </tbody>
                 <tr>
-                    <th colspan="3">
+                    <th colspan="4">
                         <v-pagination v-model="page" :length="Math.ceil(myBoards.length / itemsPerPage)"
                             class="myPageBoards-nation" />
                     </th>
