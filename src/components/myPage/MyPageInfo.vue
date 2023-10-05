@@ -1,9 +1,7 @@
 <template>
     <div class="myInfoContainer">
         <b>내 정보 관리</b>
-        <!-- <v-btn class="editBtn" append-icon="mdi-pencil-outline" variant="text"></v-btn> -->
         <span class="editBtn mdi mdi-pencil-outline" variant="text" @click="goToModifyPage"></span>
-        <td>.₊̣̇.— ฅ/ᐠ. ̫ .ᐟ\ฅ —.₊̣̇.ა</td>
         <v-table class="myInfoTable">
             <tbody>
                 <tr>
@@ -18,10 +16,6 @@
                     <th scope="row">휴대폰 번호</th>
                     <td>{{ myInfo && myInfo.mobile }}</td>
                 </tr>
-                <!-- <tr>
-                    <th scope="row">이메일</th>
-                    <td>{{ myInfo && myInfo.email }}</td>
-                </tr> -->
                 <tr>
                     <th scope="row">관심사1</th>
                     <td>1. {{ myInfo.interest1 }}</td>

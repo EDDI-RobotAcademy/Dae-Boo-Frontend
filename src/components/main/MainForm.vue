@@ -8,7 +8,8 @@
         <v-carousel-item :src="require('@/assets/main2image.png')" cover
           @click="redirectToExternalLink('https://www.hyundaicard.com/index.jsp')"></v-carousel-item>
 
-        <v-carousel-item :src="dynamicLink(imageName)" cover @click="eventLink('/event/3')"></v-carousel-item>
+        <v-carousel-item :src="dynamicLink(imageName1)" cover @click="eventLink('/event/3')"></v-carousel-item>
+        <v-carousel-item :src="dynamicLink(imageName2)" cover @click="eventLink('/event/3')"></v-carousel-item>
       </v-carousel>
     </div>
 
@@ -154,7 +155,9 @@ export default {
         '카페': '14',
         '통신': '15',
         '편의점': '16'
-      }
+      },
+      imageName1: 'mocaXjejuair.png',
+      imageName2: 'mocaXnasa.png'
     };
   },
   methods: {

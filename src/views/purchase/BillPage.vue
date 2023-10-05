@@ -95,7 +95,7 @@
 
         <v-dialog class="PayButton" v-model="dialog" persistent>
             <template v-slot:activator>
-                <img :src="this.localImagePath" @click="pay" alt="로컬 이미지" />
+                <v-btn size="large" class="btnSet" @click="pay">결제</v-btn>
             </template>
         </v-dialog>
     </v-container>
@@ -180,5 +180,12 @@ export default {
 </script>
 
 <style>
+.btnSet{
+    background-color: white;
+    margin: 0px;
+}
+.PayButton{
+    text-align: center;
+}
 </style>
   
