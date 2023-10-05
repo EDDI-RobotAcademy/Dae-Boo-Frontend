@@ -7,9 +7,8 @@
                         <th scope="row">닉네임</th>
                         <td>
                             <input type="text" v-model="nickname" />
-                            <v-btn @click="nicNameDuplicateCheck"
-                                    text large outlined style="font-size: 13px"
-                                    class="mt-1 ml-2" color="teal lighten-1">
+                            <v-btn @click="nicNameDuplicateCheck" text large outlined style="font-size: 13px"
+                                class="mt-1 ml-2" color="teal lighten-1">
                                 중복확인
                             </v-btn>
                         </td>
@@ -26,13 +25,6 @@
                             <input type="text" v-model="mobile" />
                         </td>
                     </tr>
-                    <!-- <tr>
-                        <th scope="row">이메일</th>
-                        <td>
-                            <input type="text" v-model="email" />
-                        </td>
-                    </tr> -->
-
                     <tr>
                         <th scope="row">관심사1 </th>
                         <td>
@@ -48,17 +40,6 @@
                                 item-value="value" variant="underlined"></v-select>
                         </td>
                     </tr>
-                    <!-- <tr>
-                        <th scope="row">관심사2 </th>
-                        <td>
-                            <select v-model="interest2">
-                                <option v-for="(interest, index) in interestList" :value="interest.value"
-                                    v-bind:key="index">
-                                    {{ interest.name }}
-                                </option>
-                            </select>
-                        </td>
-                    </tr> -->
                 </tbody>
             </v-table>
             <v-btn type="button" @click="onSubmit">
@@ -81,7 +62,6 @@ export default {
     },
     data() {
         return {
-            // name: '',
             nickname: '',
             gender: '',
             mobile: '',
@@ -99,7 +79,6 @@ export default {
         }
     },
     created() {
-        // this.name = this.myInfo.name
         this.nickname = this.myInfo.nickname
         this.mobile = this.myInfo.mobile
         this.gender = this.myInfo.gender
@@ -114,14 +93,10 @@ export default {
             const { nickname, mobile, email, interest1, interest2 } = this
             this.$emit('submit', { nickname, mobile, email, interest1, interest2 })
         },
-        // onSubmit() {
-        //     const { nickname, mobile, email, interest1 } = this
-        //     this.$emit('submit', { nickname, mobile, email, interest1 })
-        // },
         async nicNameDuplicateCheck() {
             console.log("nickname: ", this.nickname)
-            this.nicknamePass = await this.requestSpringToCheckNickname({ nickname: this.nickname});
-            if(!this.nicknamePass) {
+            this.nicknamePass = await this.requestSpringToCheckNickname({ nickname: this.nickname });
+            if (!this.nicknamePass) {
                 alert("중복된 닉네임 입니다.");
             } else {
                 alert("사용 가능한 닉네임입니다 !");
