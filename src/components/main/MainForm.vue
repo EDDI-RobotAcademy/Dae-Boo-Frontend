@@ -136,6 +136,26 @@ export default {
   data() {
     return {
       link: LINK,
+      imageName: 'mocaXjejuair.png',
+      interestMapping : {
+        '관리비': '0',
+        '교육': '1',
+        '금융': '2',
+        '대형마트': '3',
+        '레저': '4',
+        '렌탈': '5',
+        '문화': '6',
+        '베이커리': '7',
+        '뷰티': '8',
+        '쇼핑': '9',
+        '영화': '10',
+        '외식': '11',
+        '의료': '12',
+        '주유': '13',
+        '카페': '14',
+        '통신': '15',
+        '편의점': '16'
+      },
       imageName1: 'mocaXjejuair.png',
       imageName2: 'mocaXnasa.png'
     };
@@ -162,9 +182,18 @@ export default {
       const cardList = await this.responseAgeCardList();
       await this.requestAgeCardListToSpring(cardList)
     },
+    // 관심사 이름을 숫자로 변환하는 함수
+    convertInterestToNumber(interestName) {
+      return this.interestMapping[interestName] || '';
+    },
     async interestCardLoading() {
       console.log("AiRequestInterestCardList")
-      await this.requestInterestCardList(this.memberInfo.interest1)
+      
+      // 관심사 이름을 숫자로 변환하여 사용
+      const interest1Number = this.convertInterestToNumber(this.memberInfo.interest1);
+      console.log("interest1Number 테스트 중: "+ interest1Number);
+      await this.requestInterestCardList(interest1Number);
+      
       await new Promise((resolve) => setTimeout(resolve, 30000));
       console.log("responseInterestCardList")
       const cardList = await this.responseInterestCardList();
