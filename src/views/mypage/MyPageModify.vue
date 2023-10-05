@@ -2,19 +2,23 @@
     <div class="myPageContainer">
         <div>
             <div id="box1">
-                <div class="line box3" @click="pageNumber = 1">
+                <div class="mypageLine box3" @click="pageNumber = 1">
                     <p class="myPageNavi">내 정보 관리</p>
                     <button class="edgeButton mdi mdi-chevron-right"></button>
                 </div>
-                <div class="line box3" @click="pageNumber = 2">
+                <div class="mypageLine box3" @click="pageNumber = 2">
                     <p class="myPageNavi">게시글 관리</p>
                     <button class="edgeButton mdi mdi-chevron-right"></button>
                 </div>
-                <div class="line box3" @click="pageNumber = 3">
+                <div class="mypageLine box3" @click="pageNumber = 3">
                     <p class="myPageNavi">내가 찜한 카드</p>
                     <button class="edgeButton mdi mdi-chevron-right"></button>
                 </div>
-                <div class="line box3" style="padding-bottom: 15px;" @click="pageNumber = 4">
+                <div class="mypageLine box3" @click="pageNumber = 4">
+                    <p class="myPageNavi">구매 내역</p>
+                    <button class="edgeButton mdi mdi-chevron-right"></button>
+                </div>
+                <div class="mypageLine box3" style="padding-bottom: 15px;" @click="pageNumber = 5">
                     <p class="myPageNavi">1:1 문의</p>
                     <button class="edgeButton mdi mdi-chevron-right"></button>
                 </div>
@@ -31,9 +35,12 @@
                 <MyPageCard />
             </div>
             <div v-if="pageNumber === 4">
-                <MyPageQA />
+                <MyPagePurchase />
             </div>
             <div v-if="pageNumber === 5">
+                <MyPageQA />
+            </div>
+            <div v-if="pageNumber === 6">
                 <MyPageInfoModifyForm :myInfo="myInfo" @submit="onSubmit" />
             </div>
         </div>
@@ -54,7 +61,7 @@ const LogInModule = 'LogInModule'
 export default {
     data() {
         return {
-            pageNumber: 5,
+            pageNumber: 6,
             userId: ''
         }
     },
@@ -77,12 +84,6 @@ export default {
     },
     methods: {
         ...mapActions(MyPageModule, ['getMyBoardToSpring', 'requestMyInfoModifyToSpring']),
-        // async onSubmit(payload) {
-        //     const { nickname, mobile, email, interest1, interest2 } = payload
-        //     const userId = this.userId
-        //     await this.requestMyInfoModifyToSpring({ nickname, mobile, email, interest1, interest2, userId })
-        //     await this.$router.push({ path: `/myPage` });
-        // }
         async onSubmit(payload) {
             const { nickname, mobile, email, interest1, interest2 } = payload
             const userId = this.userId

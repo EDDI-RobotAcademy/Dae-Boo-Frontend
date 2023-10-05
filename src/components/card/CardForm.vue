@@ -71,14 +71,14 @@
     </div>
 
     <div>
-        <div v-if="cards.length > 0">
+        <div v-if="agecards.length > 0">
             <v-col cols="12" class="flex">
                 <h1 data-aos="fade-left" class="card-mr" align="left">
-                    {{ memberInfo ? memberInfo.nickname : '아무개' }} 님을 위한 혜택 만땅 카드
+                    {{ memberInfo ? memberInfo.nickname : '아무개' }} 님과 같은 연령대 사용자들에게 인기에요!
                 </h1>
 
             </v-col>
-            <Carousel :items-to-show="4" :wrap-around="true">
+            <Carousel :items-to-show="5" :wrap-around="true">
                 <Slide v-for="card in agecards" :key="card.cardId">
                     <div @click="eventLink(`/card-detail/${card.cardId}`)">
                         <div>
@@ -99,13 +99,13 @@
     </div>
 
     <div>
-        <div v-if="cards.length > 0">
+        <div v-if="keywordcards.length > 0">
             <v-col cols="12" class="flex">
                 <h1 data-aos="fade-left" class="card-mr" align="left">
-                    {{ memberInfo ? memberInfo.nickname : '아무개' }} 님과 같은 연령대 사용자들에게 인기에요!
+                    {{ memberInfo ? memberInfo.nickname : '아무개' }} 님을 위한 혜택 만땅 카드
                 </h1>
             </v-col>
-            <Carousel :items-to-show="4" :wrap-around="true">
+            <Carousel :items-to-show="5" :wrap-around="true">
                 <Slide v-for="card in keywordcards" :key="card.cardId">
 
                     <div @click="eventLink(`/card-detail/${card.cardId}`)">
@@ -144,7 +144,7 @@ export default {
             agecards: [],
             keywordcards: [],
             link: LINK,
-            recommendcard:'recommendcard.png'
+            recommendcard: 'recommendcard.png'
         }
     },
     components: {
@@ -172,7 +172,7 @@ export default {
             const ageCards = this.$store.state[CardModule].agecards;
             const keywordCards = this.$store.state[CardModule].keywordcards;
             console.log("Age Cards:", ageCards);
-            console.log("Keyword Cards:", keywordCards);
+            console.log("keyword Cards:", keywordCards);
             this.agecards = ageCards;
             this.keywordcards = keywordCards;
         },

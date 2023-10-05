@@ -2,27 +2,15 @@
   <div>
     <div>
       <v-carousel cycle hide-delimiters show-arrows="hover">
-        <v-carousel-item
-          src="https://support.catchfashion.com/hc/article_attachments/360102149993/201229_hyundai_Mainbanner_web.jpg"
-          cover @click="eventLink('/event/1')"></v-carousel-item>
+        <v-carousel-item :src="require('@/assets/mainimage.png')" cover
+          @click="redirectToExternalLink('https://www.hyundaicard.com/index.jsp')"></v-carousel-item>
 
-        <v-carousel-item
-          src="https://support.catchfashion.com/hc/article_attachments/4402717938583/210601_hyundaimpoint_Mainbanner_web.jpg"
-          cover @click="eventLink('/event/2')"></v-carousel-item>
+        <v-carousel-item :src="require('@/assets/main2image.png')" cover
+          @click="redirectToExternalLink('https://www.hyundaicard.com/index.jsp')"></v-carousel-item>
 
-        <v-carousel-item
-          src="https://support.catchfashion.com/hc/article_attachments/360098761074/201120_hyundaicard_Mainbanner_web.jpg"
-          cover @click="eventLink('/event/3')"></v-carousel-item>
-
-        <v-carousel-item :src="dynamicLink(imageName)" cover @click="eventLink('/event/3')"></v-carousel-item>
+        <v-carousel-item :src="dynamicLink(imageName1)" cover @click="eventLink('/event/3')"></v-carousel-item>
+        <v-carousel-item :src="dynamicLink(imageName2)" cover @click="eventLink('/event/3')"></v-carousel-item>
       </v-carousel>
-    </div>
-
-    <div>
-      <v-card class="mx-auto search-mr" color="grey-lighten-3">
-        <v-text-field density="compact" variant="underlined" label="통합검색" append-inner-icon="mdi-magnify" single-line
-          hide-details></v-text-field>
-      </v-card>
     </div>
 
     <v-row>
@@ -41,19 +29,6 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- <tr
-                    class="cardTr"
-                    v-for="item in desserts"
-                    :key="item.name"
-                    @click="redirectToDetails(item.id)"
-                  >
-                    <td class="text-center">{{ item.id }}</td>
-                    <td>
-                      <img :src="item.img" alt="Item Image" class="top10-img" />
-                    </td>
-                    <td class="text-center">{{ item.name }}</td>
-                    <td class="text-center">{{ item.calories }}</td>
-                  </tr> -->
                   <tr class="cardTr" v-for="(card, index) in cards" :key="card.name"
                     @click="redirectToDetails(card.cardId)">
                     <td v-if="index < 10" class="text-center">{{ card.cardId }}</td>
@@ -148,7 +123,8 @@
 const LINK = process.env.VUE_APP_S3_LINK;
 import "@/assets/css/main/main.css";
 const CardModule = 'CardModule';
-import { mapActions } from "vuex";
+const LogInModule = 'LogInModule';
+import { mapActions, mapState } from "vuex";
 
 export default {
   props: {
@@ -160,17 +136,15 @@ export default {
   data() {
     return {
       link: LINK,
-      imageName:'mocaXjejuair.png'
+      imageName1: 'mocaXjejuair.png',
+      imageName2: 'mocaXnasa.png'
     };
   },
   methods: {
-    ...mapActions(CardModule, ['responseAgeCardList']),
-    ...mapActions(CardModule, ['responseKeywordCardList']),
+    ...mapActions(CardModule, ['requestAgeCardList', 'responseAgeCardList', 'requestAgeCardListToSpring',
+      'requestInterestCardList', 'responseInterestCardList', 'requestInterestCardListToSpring']),
 
     redirectToLink(link) {
-      this.$router.push(link);
-    },
-    eventLink(link) {
       this.$router.push(link);
     },
     redirectToDetails(cardId) {
@@ -180,21 +154,36 @@ export default {
     dynamicLink(extraPath) {
       return `${LINK}/${extraPath}`;
     },
-    async cardLoading() {
+    async ageCardLoading() {
+      console.log("AiRequestAgeCardList")
+      await this.requestAgeCardList(this.memberInfo.age)
+      await new Promise((resolve) => setTimeout(resolve, 30000));
       console.log("responseAgeCardList")
-      this.responseAgeCardList();
-
-    }
+      const cardList = await this.responseAgeCardList();
+      await this.requestAgeCardListToSpring(cardList)
+    },
+    async interestCardLoading() {
+      console.log("AiRequestInterestCardList")
+      await this.requestInterestCardList(this.memberInfo.interest1)
+      await new Promise((resolve) => setTimeout(resolve, 30000));
+      console.log("responseInterestCardList")
+      const cardList = await this.responseInterestCardList();
+      await this.requestInterestCardListToSpring(cardList)
+    },
+    redirectToExternalLink(externalLink) {
+      window.open(externalLink, '_blank'); // 새 창으로 열기
+    },
   },
-  mounted() {
-    // this.cardLoading();
-    console.log("responseAgeCardList")
-    this.responseAgeCardList();
-    // console.log("responseKeywordCardList")
-    // this.responseKeywordCardList();
+  async mounted() {
+    await this.ageCardLoading();
+    await this.interestCardLoading();
 
-  }
+
+  },
+  computed: {
+    ...mapState(LogInModule, ['memberInfo']),
+  },
 };
 </script>
 
-<style lang="css" scoped></style>s
+<style lang="css" scoped></style>
