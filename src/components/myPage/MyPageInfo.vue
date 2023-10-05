@@ -18,11 +18,11 @@
                 </tr>
                 <tr>
                     <th scope="row">관심사1</th>
-                    <td>1. {{ interest1ToKorean }}</td>
+                    <td>1. {{ myInfo.interest1 }}</td>
                 </tr>
                 <tr>
                     <th scope="row">관심사2</th>
-                    <td>2. {{ interest2ToKorean }}</td>
+                    <td>2. {{ myInfo.interest2 }}</td>
                 </tr>
 
             </tbody>
