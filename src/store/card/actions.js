@@ -1,7 +1,11 @@
-import { CARD_LIST, CARD_INFO, AGE_CARD_LIST, KEYWORD_CARD_LIST } from "./mutation-types";
+import {
+  CARD_LIST,
+  CARD_INFO,
+  AGE_CARD_LIST,
+  KEYWORD_CARD_LIST,
+} from "./mutation-types";
 import axiosInst from "@/utility/axiosInst";
 import axiosInstFastApi from "@/utility/axiosInstFastapi";
-
 
 export default {
   async requestCardList({ commit }) {
@@ -14,20 +18,85 @@ export default {
         console.error;
       });
   },
-  async responseAgeCardList({ commit }) {
+
+  async requestAgeCardList(_, age) {
+    const command = 1;
+    const requestData = {
+      command: command,
+      data: "," + age,
+    };
+    return await axiosInstFastApi
+      .post("/ai-request-command", requestData)
+      .then((res) => {
+        return res.data;
+      })
+      .catch(() => {
+        console.error;
+      });
+  },
+
+  async responseAgeCardList() {
     return await axiosInstFastApi
       .get("/ai-response")
       .then((res) => {
-        console.log(res.data)
+        console.log(res.data);
+        return res.data;
+      })
+      .catch(() => {
+        console.error;
+      });
+  },
+  async requestAgeCardListToSpring({ commit }, cardList) {
+    console.log("Age CardList : ", cardList);
+    return await axiosInst
+      .post("/card/recommend/result", cardList, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
         commit(AGE_CARD_LIST, res.data);
       })
       .catch(() => {
         console.error;
       });
   },
-  async responseKeywordCardList({ commit }) {
+
+  async requestInterestCardList(_, interest1) {
+    const command = 2;
+    const requestData = {
+      command: command,
+      data: "," + interest1,
+    };
+    return await axiosInstFastApi
+      .post("/ai-request-command", requestData)
+      .then((res) => {
+        return res.data;
+      })
+      .catch(() => {
+        console.error;
+      });
+  },
+
+  async responseInterestCardList() {
     return await axiosInstFastApi
       .get("/ai-response")
+      .then((res) => {
+        console.log(res.data);
+        return res.data;
+      })
+      .catch(() => {
+        console.error;
+      });
+  },
+  async requestInterestCardListToSpring({ commit }, cardList) {
+    console.log("Interest CardList : ", cardList);
+    return await axiosInst
+      .post("/card/recommend/result", cardList, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
       .then((res) => {
         commit(KEYWORD_CARD_LIST, res.data);
       })
@@ -35,6 +104,7 @@ export default {
         console.error;
       });
   },
+
   bestCardListToSpring({ commit }) {
     return axiosInst.get("/card/interest/list").then((res) => {
       commit(CARD_LIST, res.data);
@@ -91,7 +161,7 @@ export default {
       })
       .catch(() => {
         console.error;
-      })
+      });
   },
   responseWishCard(_, payload) {
     return axiosInst

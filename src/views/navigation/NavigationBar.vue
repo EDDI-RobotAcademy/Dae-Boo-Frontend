@@ -47,7 +47,7 @@
           <v-col cols="3">
             <h3 class="card-title">우리의 카드</h3>
             <router-link to="/recruitment" class="custom-link">
-              <p class="appbar-card-text">인재채용</p>
+              <p class="appbar-card-text">오시는 길</p>
             </router-link>
             <router-link to="/notice/list-page" class="custom-link">
               <p class="appbar-card-text">공지사항</p>
@@ -57,9 +57,6 @@
             </router-link>
             <router-link to="/help/faq" class="custom-link">
               <p class="appbar-card-text">자주묻는 질문</p>
-            </router-link>
-            <router-link to="/help/directions" class="custom-link">
-              <p class="appbar-card-text">오시는 길</p>
             </router-link>
           </v-col>
 
@@ -240,6 +237,7 @@ export default {
     async logOut() {
       // redis 작업 중 추가 (로그아웃 액션 호출)
       await this.logout();
+      await this.$router.push({ path: `/` });
       await this.deleteVuexUserInfo();
       await window.location.reload();
     }

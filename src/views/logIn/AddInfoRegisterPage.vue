@@ -37,6 +37,7 @@ export default {
 
             await this.requestMyInfoModifyToSpring({ nickname, mobile, email, interest1, interest2, userId })
             await this.$router.push({ path: `/` });
+            window.location.reload();
         },
     }
 }
